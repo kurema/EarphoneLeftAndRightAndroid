@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?> 
 <resources>
-  <string name="app_name">Earphone Left/Right</string>
-  <string name="tile_play_name">Earphone</string>
+  <string name="app_name">Left/Right Stereo Test</string>
+  <string name="tile_play_name">Left/Right</string>
 </resources>

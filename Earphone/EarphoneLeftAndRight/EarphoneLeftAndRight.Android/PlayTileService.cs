@@ -27,6 +27,13 @@ namespace EarphoneLeftAndRight.Droid
 
         TextToSpeech TextToSpeech;
 
+        public override void OnCreate()
+        {
+            base.OnCreate();
+
+            TextToSpeech ??= new TextToSpeech(ApplicationContext, null);
+        }
+
         public override void OnClick()
         {
             base.OnClick();

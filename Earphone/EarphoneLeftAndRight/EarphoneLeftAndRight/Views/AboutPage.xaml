@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EarphoneLeftAndRight.Views.AboutPage"
              xmlns:vm="clr-namespace:EarphoneLeftAndRight.ViewModels"
-             Title="{Binding Title}">
+             xmlns:controls="clr-namespace:EarphoneLeftAndRight.Views"
+             Title="{Binding Title}"
+             >
     
     <ContentPage.BindingContext>
         <vm:AboutViewModel />
@@ -19,6 +21,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
@@ -47,6 +50,7 @@
                         TextColor="White" />
             </StackLayout>
         </ScrollView>
+        <controls:AdMobBanner HeightRequest="50" HorizontalOptions="Fill"  WidthRequest="320" Grid.Row="2" />
     </Grid>
 
 </ContentPage>

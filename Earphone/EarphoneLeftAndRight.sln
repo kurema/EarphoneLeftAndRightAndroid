@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EarphoneLeftAndRight.Android", "EarphoneLeftAndRight\EarphoneLeftAndRight.Android\EarphoneLeftAndRight.Android.csproj", "{3FFD8859-10FE-4709-939D-72E0E1188201}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EarphoneLeftAndRight", "EarphoneLeftAndRight\EarphoneLeftAndRight\EarphoneLeftAndRight.csproj", "{64FDF6B0-D2C1-4C7E-A96C-4B88C6B8551A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3FFD8859-10FE-4709-939D-72E0E1188201}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FFD8859-10FE-4709-939D-72E0E1188201}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FFD8859-10FE-4709-939D-72E0E1188201}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{3FFD8859-10FE-4709-939D-72E0E1188201}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FFD8859-10FE-4709-939D-72E0E1188201}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FFD8859-10FE-4709-939D-72E0E1188201}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{64FDF6B0-D2C1-4C7E-A96C-4B88C6B8551A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64FDF6B0-D2C1-4C7E-A96C-4B88C6B8551A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64FDF6B0-D2C1-4C7E-A96C-4B88C6B8551A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{64FDF6B0-D2C1-4C7E-A96C-4B88C6B8551A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64FDF6B0-D2C1-4C7E-A96C-4B88C6B8551A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64FDF6B0-D2C1-4C7E-A96C-4B88C6B8551A}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8062D0AE-2E0D-42D2-8476-A16327ED29EC}
+	EndGlobalSection
+EndGlobal

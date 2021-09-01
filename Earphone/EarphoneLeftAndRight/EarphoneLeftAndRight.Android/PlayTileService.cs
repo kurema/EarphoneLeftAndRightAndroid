@@ -27,9 +27,9 @@ namespace EarphoneLeftAndRight.Droid
 
         TextToSpeech TextToSpeech;
 
-        public override void OnCreate()
+        public override void OnStartListening()
         {
-            base.OnCreate();
+            base.OnStartListening();
 
             TextToSpeech ??= new TextToSpeech(ApplicationContext, null);
         }
@@ -46,7 +46,7 @@ namespace EarphoneLeftAndRight.Droid
             tts.SetSpeechRate(1.0f);
             tts.SetPitch(1.0f);
 
-            void SpeakWithPan(string text,float paramPan)
+            void SpeakWithPan(string text, float paramPan)
             {
                 var bundle = new Bundle();
                 bundle.PutFloat(TextToSpeech.Engine.KeyParamPan, paramPan);

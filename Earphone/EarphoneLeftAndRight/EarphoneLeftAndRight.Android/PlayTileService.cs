@@ -46,16 +46,8 @@ namespace EarphoneLeftAndRight.Droid
             tts.SetSpeechRate(1.0f);
             tts.SetPitch(1.0f);
 
-            void SpeakWithPan(string text, float paramPan)
-            {
-                var bundle = new Bundle();
-                bundle.PutFloat(TextToSpeech.Engine.KeyParamPan, paramPan);
-                bundle.PutFloat(TextToSpeech.Engine.KeyParamVolume, 1.0f);
-
-                tts.Speak(text, QueueMode.Add, bundle, Guid.NewGuid().ToString());
-            }
-            SpeakWithPan("Left", -1);
-            SpeakWithPan("Right", 1);
+            Manager.Tts.SpeakWithPan(tts, "Left", -1);
+            Manager.Tts.SpeakWithPan(tts,"Right", 1);
         }
     }
 }

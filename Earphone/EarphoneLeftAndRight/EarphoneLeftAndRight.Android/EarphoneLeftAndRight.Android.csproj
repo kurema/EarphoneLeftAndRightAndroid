@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdMobBannerRenderer.cs" />
+    <Compile Include="Manager\Tts.cs" />
     <Compile Include="PlayTileService.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />

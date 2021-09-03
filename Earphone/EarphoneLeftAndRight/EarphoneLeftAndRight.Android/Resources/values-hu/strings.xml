@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">Sztereó teszt</string>
+  <string name="tile_play_name">Bal/Jobb</string>
+  <string name="word.left">Bal</string>
+  <string name="word.right">Jobb</string>
+</resources>

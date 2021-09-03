@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">Stereo sinov</string>
+  <string name="tile_play_name">Chap/O\'ng</string>
+  <string name="word.left">Chap</string>
+  <string name="word.right">O\'ng</string>
+</resources>

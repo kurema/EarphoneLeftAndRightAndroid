@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">Teko ea stereo</string>
+  <string name="tile_play_name">Ka ho le letšehali/Ka ho le letona</string>
+  <string name="word.left">Ka ho le letšehali</string>
+  <string name="word.right">Ka ho le letona</string>
+</resources>

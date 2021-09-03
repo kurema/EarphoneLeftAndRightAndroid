@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">Stereo Test</string>
+  <string name="tile_play_name">Lénks/Riets</string>
+  <string name="word.left">Lénks</string>
+  <string name="word.right">Riets</string>
+</resources>

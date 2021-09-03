@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">Stereo synagy</string>
+  <string name="tile_play_name">Çep/Sag</string>
+  <string name="word.left">Çep</string>
+  <string name="word.right">Sag</string>
+</resources>

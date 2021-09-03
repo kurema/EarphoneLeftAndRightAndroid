@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">Στερεοφωνικό τεστ</string>
+  <string name="tile_play_name">Αριστερά/Δεξιά</string>
+  <string name="word.left">Αριστερά</string>
+  <string name="word.right">Δεξιά</string>
+</resources>

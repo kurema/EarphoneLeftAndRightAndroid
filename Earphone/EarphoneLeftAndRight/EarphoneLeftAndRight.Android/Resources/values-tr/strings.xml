@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">Stereo testi</string>
+  <string name="tile_play_name">Sol/Sağ</string>
+  <string name="word.left">Sol</string>
+  <string name="word.right">Sağ</string>
+</resources>

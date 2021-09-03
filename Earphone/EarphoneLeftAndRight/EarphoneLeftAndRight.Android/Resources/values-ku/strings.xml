@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">Testa stereo</string>
+  <string name="tile_play_name">Çep/Rast</string>
+  <string name="word.left">Çep</string>
+  <string name="word.right">Rast</string>
+</resources>

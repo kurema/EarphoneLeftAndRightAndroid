@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">Ukuhlolwa kwestiriyo</string>
+  <string name="tile_play_name">Kwesobunxele/Kwesokudla</string>
+  <string name="word.left">Kwesobunxele</string>
+  <string name="word.right">Kwesokudla</string>
+</resources>

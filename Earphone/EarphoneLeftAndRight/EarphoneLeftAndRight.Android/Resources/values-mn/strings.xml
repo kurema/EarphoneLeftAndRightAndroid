@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">Стерео тест</string>
+  <string name="tile_play_name">Зүүн/Баруун</string>
+  <string name="word.left">Зүүн</string>
+  <string name="word.right">Баруун</string>
+</resources>

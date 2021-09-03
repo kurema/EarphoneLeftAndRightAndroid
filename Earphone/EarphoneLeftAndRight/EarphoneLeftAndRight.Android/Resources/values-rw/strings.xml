@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">Ikizamini cya Stereo</string>
+  <string name="tile_play_name">Ibumoso/Iburyo</string>
+  <string name="word.left">Ibumoso</string>
+  <string name="word.right">Iburyo</string>
+</resources>

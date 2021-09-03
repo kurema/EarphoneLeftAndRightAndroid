@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">Uvavanyo lwe stereo</string>
+  <string name="tile_play_name">Ekhohlo/Ekunene</string>
+  <string name="word.left">Ekhohlo</string>
+  <string name="word.right">Ekunene</string>
+</resources>

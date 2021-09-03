@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">स्टिरिओ चाचणी</string>
+  <string name="tile_play_name">डावे/उजवे</string>
+  <string name="word.left">डावे</string>
+  <string name="word.right">उजवे</string>
+</resources>

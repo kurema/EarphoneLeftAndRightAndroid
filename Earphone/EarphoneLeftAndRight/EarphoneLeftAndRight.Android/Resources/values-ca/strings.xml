@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">Prova estèreo</string>
+  <string name="tile_play_name">Esquerra/Dreta</string>
+  <string name="word.left">Esquerra</string>
+  <string name="word.right">Dreta</string>
+</resources>

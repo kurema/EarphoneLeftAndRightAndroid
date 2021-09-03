@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">Tástáil steirió</string>
+  <string name="tile_play_name">Ar chlé/Ar dheis</string>
+  <string name="word.left">Ar chlé</string>
+  <string name="word.right">Ar dheis</string>
+</resources>

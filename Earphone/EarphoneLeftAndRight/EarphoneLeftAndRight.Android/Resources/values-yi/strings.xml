@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">סטערעאָ פּרובירן</string>
+  <string name="tile_play_name">לינקס/רעכטס</string>
+  <string name="word.left">לינקס</string>
+  <string name="word.right">רעכטס</string>
+</resources>

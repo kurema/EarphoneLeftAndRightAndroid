@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">การทดสอบสเตอริโอ</string>
+  <string name="tile_play_name">ซ้าย/ขวา</string>
+  <string name="word.left">ซ้าย</string>
+  <string name="word.right">ขวา</string>
+</resources>

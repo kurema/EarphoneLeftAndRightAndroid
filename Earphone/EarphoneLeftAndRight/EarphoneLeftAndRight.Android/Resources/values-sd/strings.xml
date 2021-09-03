@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">اسٽيريو ٽيسٽ</string>
+  <string name="tile_play_name">کاٻو/ساڄو</string>
+  <string name="word.left">کاٻو</string>
+  <string name="word.right">ساڄو</string>
+</resources>

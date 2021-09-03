@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">စတီရီယိုစမ်းသပ်မှု</string>
+  <string name="tile_play_name">ဘယ်/ညာ</string>
+  <string name="word.left">ဘယ်</string>
+  <string name="word.right">ညာ</string>
+</resources>

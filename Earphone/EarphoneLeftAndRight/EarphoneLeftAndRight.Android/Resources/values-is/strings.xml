@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">Stereó próf</string>
+  <string name="tile_play_name">Vinstri/Hægri</string>
+  <string name="word.left">Vinstri</string>
+  <string name="word.right">Hægri</string>
+</resources>

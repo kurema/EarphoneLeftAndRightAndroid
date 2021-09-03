@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">Stereotest</string>
+  <string name="tile_play_name">Venstre/Højre</string>
+  <string name="word.left">Venstre</string>
+  <string name="word.right">Højre</string>
+</resources>

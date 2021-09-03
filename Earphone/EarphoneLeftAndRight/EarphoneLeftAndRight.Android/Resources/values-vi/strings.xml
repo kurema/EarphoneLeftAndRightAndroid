@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">Kiểm tra âm thanh nổi</string>
+  <string name="tile_play_name">Trái/Phải</string>
+  <string name="word.left">Trái</string>
+  <string name="word.right">Phải</string>
+</resources>

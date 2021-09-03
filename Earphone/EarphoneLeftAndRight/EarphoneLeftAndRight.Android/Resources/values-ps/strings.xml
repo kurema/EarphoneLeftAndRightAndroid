@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">د سټیریو ازموینه</string>
+  <string name="tile_play_name">کیft/ښی</string>
+  <string name="word.left">کیft</string>
+  <string name="word.right">ښی</string>
+</resources>

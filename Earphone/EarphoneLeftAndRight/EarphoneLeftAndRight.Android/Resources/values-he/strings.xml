@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">מבחן סטריאו</string>
+  <string name="tile_play_name">שמאל/ימין</string>
+  <string name="word.left">שמאל</string>
+  <string name="word.right">ימין</string>
+</resources>

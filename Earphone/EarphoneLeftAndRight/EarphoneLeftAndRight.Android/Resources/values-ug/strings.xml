@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">سول ۋە ئوڭ سىناق</string>
+  <string name="tile_play_name">سول/ئوڭ</string>
+  <string name="word.left">سول</string>
+  <string name="word.right">ئوڭ</string>
+</resources>

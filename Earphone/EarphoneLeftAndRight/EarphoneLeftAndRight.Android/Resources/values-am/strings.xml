@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">ስቴሪዮ ሙከራ</string>
+  <string name="tile_play_name">ግራ/ትክክል</string>
+  <string name="word.left">ግራ</string>
+  <string name="word.right">ትክክል</string>
+</resources>

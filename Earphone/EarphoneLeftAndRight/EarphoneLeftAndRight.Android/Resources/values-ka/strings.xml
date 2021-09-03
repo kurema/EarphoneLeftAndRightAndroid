@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">სტერეო ტესტი</string>
+  <string name="tile_play_name">მარცხნივ/მარჯვნივ</string>
+  <string name="word.left">მარცხნივ</string>
+  <string name="word.right">მარჯვნივ</string>
+</resources>

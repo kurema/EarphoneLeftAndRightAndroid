@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">Mtihani wa Stereo</string>
+  <string name="tile_play_name">Kushoto/Kulia</string>
+  <string name="word.left">Kushoto</string>
+  <string name="word.right">Kulia</string>
+</resources>

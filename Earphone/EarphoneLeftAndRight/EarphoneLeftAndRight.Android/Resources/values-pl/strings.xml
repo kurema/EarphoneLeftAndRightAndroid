@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">Test stereofoniczny</string>
+  <string name="tile_play_name">Lewo/Prawo</string>
+  <string name="word.left">Lewo</string>
+  <string name="word.right">Prawo</string>
+</resources>

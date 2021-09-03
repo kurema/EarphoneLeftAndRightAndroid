@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">Stereo testas</string>
+  <string name="tile_play_name">Kairė/Dešinė</string>
+  <string name="word.left">Kairė</string>
+  <string name="word.right">Dešinė</string>
+</resources>

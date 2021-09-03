@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">स्टीरियो टेस्ट</string>
+  <string name="tile_play_name">बाएँ/दाएँ</string>
+  <string name="word.left">बाएँ</string>
+  <string name="word.right">दाएँ</string>
+</resources>

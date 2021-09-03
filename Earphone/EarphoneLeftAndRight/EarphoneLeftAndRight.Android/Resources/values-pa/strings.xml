@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">ਸਟੀਰੀਓ ਟੈਸਟ</string>
+  <string name="tile_play_name">ਖੱਬਾ/ਸੱਜਾ</string>
+  <string name="word.left">ਖੱਬਾ</string>
+  <string name="word.right">ਸੱਜਾ</string>
+</resources>

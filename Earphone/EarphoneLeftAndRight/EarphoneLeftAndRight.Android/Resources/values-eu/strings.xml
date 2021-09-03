@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">Estereo proba</string>
+  <string name="tile_play_name">Ezkerra/Eskuina</string>
+  <string name="word.left">Ezkerra</string>
+  <string name="word.right">Eskuina</string>
+</resources>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">Стэрэа тэст</string>
+  <string name="tile_play_name">Злева/Справа</string>
+  <string name="word.left">Злева</string>
+  <string name="word.right">Справа</string>
+</resources>

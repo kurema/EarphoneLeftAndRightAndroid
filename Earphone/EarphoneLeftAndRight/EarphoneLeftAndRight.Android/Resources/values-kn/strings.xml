@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">ಸ್ಟೀರಿಯೋ ಪರೀಕ್ಷೆ</string>
+  <string name="tile_play_name">ಎಡ/ಬಲ</string>
+  <string name="word.left">ಎಡ</string>
+  <string name="word.right">ಬಲ</string>
+</resources>

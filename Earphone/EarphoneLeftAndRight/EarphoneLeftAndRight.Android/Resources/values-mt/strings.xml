@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">Test sterjo</string>
+  <string name="tile_play_name">Xellug/Lemin</string>
+  <string name="word.left">Xellug</string>
+  <string name="word.right">Lemin</string>
+</resources>

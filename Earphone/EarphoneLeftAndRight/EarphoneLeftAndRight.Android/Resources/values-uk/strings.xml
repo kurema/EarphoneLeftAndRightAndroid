@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">Стерео тест</string>
+  <string name="tile_play_name">Ліворуч/Праворуч</string>
+  <string name="word.left">Ліворуч</string>
+  <string name="word.right">Праворуч</string>
+</resources>

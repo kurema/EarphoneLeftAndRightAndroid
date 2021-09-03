@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">Proba estéreo</string>
+  <string name="tile_play_name">Esquerda/Dereita</string>
+  <string name="word.left">Esquerda</string>
+  <string name="word.right">Dereita</string>
+</resources>

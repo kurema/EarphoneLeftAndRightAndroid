@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">Stereo test</string>
+  <string name="tile_play_name">Lijevo/Desno</string>
+  <string name="word.left">Lijevo</string>
+  <string name="word.right">Desno</string>
+</resources>

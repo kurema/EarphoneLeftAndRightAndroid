@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">스테레오 테스트</string>
+  <string name="tile_play_name">왼쪽/오른쪽</string>
+  <string name="word.left">왼쪽</string>
+  <string name="word.right">오른쪽</string>
+</resources>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">Стерео тест</string>
+  <string name="tile_play_name">Сол/Оң</string>
+  <string name="word.left">Сол</string>
+  <string name="word.right">Оң</string>
+</resources>

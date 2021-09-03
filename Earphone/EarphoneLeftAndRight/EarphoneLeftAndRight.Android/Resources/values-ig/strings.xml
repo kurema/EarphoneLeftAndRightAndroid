@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">Nnwale stereo</string>
+  <string name="tile_play_name">N\'aka ekpe/Aka nri</string>
+  <string name="word.left">N\'aka ekpe</string>
+  <string name="word.right">Aka nri</string>
+</resources>

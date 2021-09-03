@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">تست استریو</string>
+  <string name="tile_play_name">چپ/راست</string>
+  <string name="word.left">چپ</string>
+  <string name="word.right">راست</string>
+</resources>

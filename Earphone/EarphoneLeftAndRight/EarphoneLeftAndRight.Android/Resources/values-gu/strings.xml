@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">સ્ટીરિયો ટેસ્ટ</string>
+  <string name="tile_play_name">ડાબે/જમણે</string>
+  <string name="word.left">ડાબે</string>
+  <string name="word.right">જમણે</string>
+</resources>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">Test stereo</string>
+  <string name="tile_play_name">Stânga/Dreapta</string>
+  <string name="word.left">Stânga</string>
+  <string name="word.right">Dreapta</string>
+</resources>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">Санҷиши стерео</string>
+  <string name="tile_play_name">Чап/Ҳуқуқ</string>
+  <string name="word.left">Чап</string>
+  <string name="word.right">Ҳуқуқ</string>
+</resources>

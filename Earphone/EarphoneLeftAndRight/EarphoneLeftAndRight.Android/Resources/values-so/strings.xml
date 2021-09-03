@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">Tijaabada isteeriga</string>
+  <string name="tile_play_name">Bidix/Xaq</string>
+  <string name="word.left">Bidix</string>
+  <string name="word.right">Xaq</string>
+</resources>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">Deuchainn stereo</string>
+  <string name="tile_play_name">Clì/Deas</string>
+  <string name="word.left">Clì</string>
+  <string name="word.right">Deas</string>
+</resources>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">سٹیریو ٹیسٹ۔</string>
+  <string name="tile_play_name">بائیں/دائیں</string>
+  <string name="word.left">بائیں</string>
+  <string name="word.right">دائیں</string>
+</resources>

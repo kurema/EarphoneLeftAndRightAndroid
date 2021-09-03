@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">Stereotesti</string>
+  <string name="tile_play_name">Vasen/Oikea</string>
+  <string name="word.left">Vasen</string>
+  <string name="word.right">Oikea</string>
+</resources>

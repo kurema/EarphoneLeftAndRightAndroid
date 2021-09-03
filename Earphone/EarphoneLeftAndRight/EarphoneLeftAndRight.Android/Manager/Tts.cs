@@ -15,6 +15,8 @@ using Java.Interop;
 
 namespace EarphoneLeftAndRight.Droid.Manager
 {
+    //TextToSpeechと名前被りを避けるためTts
+    //Tts not TextToSpeech in order to avoid same name.
     public static class Tts
     {
         static TtsListner listner;
@@ -27,12 +29,23 @@ namespace EarphoneLeftAndRight.Droid.Manager
             if (Content.IsSpeaking) Content.Stop();
         }
 
-        public static async Task SpeakWithPan(string text, float paramPan,Java.Util.Locale locale)
+        public static async Task SpeakLeft()
+        {
+            await SpeakWithPan("Left", -1.0f, Java.Util.Locale.English);
+        }
+
+        public static async Task SpeakRight()
+        {
+            await SpeakWithPan("Right", 1.0f, Java.Util.Locale.English);
+        }
+
+
+        public static async Task SpeakWithPan(string text, float paramPan, Java.Util.Locale locale)
         {
             await listner.SemaphoreWaitAsync();
             Content.SetLanguage(locale);
             var bundle = new Bundle();
-            bundle.PutFloat(TextToSpeech.Engine.KeyParamPan, paramPan);
+            if (paramPan != 0.0f) bundle.PutFloat(TextToSpeech.Engine.KeyParamPan, paramPan);
             bundle.PutFloat(TextToSpeech.Engine.KeyParamVolume, 1.0f);
             Content.Speak(text, QueueMode.Add, bundle, Guid.NewGuid().ToString());
         }

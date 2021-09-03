@@ -13646,6 +13646,12 @@ namespace EarphoneLeftAndRight.Droid
 			// aapt resource value: 0x7F0E006A
 			public const int tile_play_name = 2131624042;
 			
+			// aapt resource value: 0x7F0E006B
+			public const int word_left = 2131624043;
+			
+			// aapt resource value: 0x7F0E006C
+			public const int word_right = 2131624044;
+			
 			static String()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();

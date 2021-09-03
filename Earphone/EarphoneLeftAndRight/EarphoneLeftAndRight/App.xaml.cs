@@ -1,4 +1,4 @@
-﻿using EarphoneLeftAndRight.Services;
+﻿//using EarphoneLeftAndRight.Services;
 using EarphoneLeftAndRight.Views;
 using System;
 using Xamarin.Forms;
@@ -13,7 +13,7 @@ namespace EarphoneLeftAndRight
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
+            //DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
         }
 

@@ -2,4 +2,6 @@
 <resources>
   <string name="app_name">Left/Right Stereo Test</string>
   <string name="tile_play_name">Left/Right</string>
+  <string name="word.left">Left</string>
+  <string name="word.right">Right</string>
 </resources>

@@ -31,8 +31,8 @@ namespace EarphoneLeftAndRight.Droid
 
             Manager.Tts.StopIfSpeaking();
 
-            await Manager.Tts.SpeakWithPan("Left", -1, Java.Util.Locale.English);
-            await Manager.Tts.SpeakWithPan("Right", 1, Java.Util.Locale.English);
+            await Manager.Tts.SpeakLeft();
+            await Manager.Tts.SpeakRight();
         }
     }
 }

@@ -1,0 +1,2 @@
+Stereo test
+Left|Right

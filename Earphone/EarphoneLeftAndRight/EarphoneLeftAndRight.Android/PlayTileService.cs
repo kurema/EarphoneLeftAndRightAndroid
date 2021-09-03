@@ -25,29 +25,14 @@ namespace EarphoneLeftAndRight.Droid
     {
         //https://devblogs.microsoft.com/xamarin/android-nougat-quick-setting-tiles/
 
-        TextToSpeech TextToSpeech;
-
-        public override void OnStartListening()
-        {
-            base.OnStartListening();
-
-            TextToSpeech ??= new TextToSpeech(ApplicationContext, null);
-        }
-
-        public override void OnClick()
+        public override async void OnClick()
         {
             base.OnClick();
 
-            var tts = TextToSpeech ??= new TextToSpeech(ApplicationContext, null);
+            Manager.Tts.StopIfSpeaking();
 
-            if (tts.IsSpeaking) { tts.Stop(); }
-
-            tts.SetLanguage(Java.Util.Locale.English);
-            tts.SetSpeechRate(1.0f);
-            tts.SetPitch(1.0f);
-
-            Manager.Tts.SpeakWithPan(tts, "Left", -1);
-            Manager.Tts.SpeakWithPan(tts,"Right", 1);
+            await Manager.Tts.SpeakWithPan("Left", -1, Java.Util.Locale.English);
+            await Manager.Tts.SpeakWithPan("Right", 1, Java.Util.Locale.English);
         }
     }
 }

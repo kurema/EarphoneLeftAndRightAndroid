@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+  <string name="app_name">耳机测试</string>
+  <string name="tile_play_name">左/右</string>
+  <string name="word.left">左</string>
+  <string name="word.right">右</string>
+</resources>

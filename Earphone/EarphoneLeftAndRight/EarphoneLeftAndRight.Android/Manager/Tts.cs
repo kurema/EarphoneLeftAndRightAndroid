@@ -29,21 +29,62 @@ namespace EarphoneLeftAndRight.Droid.Manager
             if (Content.IsSpeaking) Content.Stop();
         }
 
+        public static (Java.Util.Locale, string) GetLocalized(int key)
+        {
+            //TTSエンジンがサポートしてる言語の翻訳を優先する。
+            //strings.xmlがその言語を対応しているのか見分ける方法は良く分からない。
+            //If TextToSpeech engine support the language in your preference list, we use the string of the locale.
+            //It seems there's no way to know which strings.xml is used. (or embbed lang code as string).
+            //https://stackoverflow.com/questions/68227872/get-fallback-locale-when-device-locale-strings-xml-is-not-present
+            Java.Util.Locale[] locales;
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.N)
+            {
+                var localesLL = Application.Context.Resources.Configuration.Locales;
+
+                locales = new Java.Util.Locale[localesLL.Size() + 1];
+                for (int i = 0; i < localesLL.Size(); i++)
+                {
+                    locales[i] = localesLL.Get(i);
+                }
+                locales[localesLL.Size()] = Java.Util.Locale.English;
+            }
+            else
+            {
+                //なんとなく旧APIをサポートしてみたけど意味あるか謎だし、他で新API使ってるから多分意味ない。
+#pragma warning disable CS0618 // 型またはメンバーが旧型式です
+                locales = new[] { Application.Context.Resources.Configuration.Locale, Java.Util.Locale.English };
+#pragma warning restore CS0618 // 型またはメンバーが旧型式です
+            }
+
+            foreach (var item in locales)
+            {
+                if (Content.IsLanguageAvailable(item) < LanguageAvailableResult.Available) continue;
+
+                {
+                    var config = new Android.Content.Res.Configuration(Application.Context.Resources.Configuration);
+                    config.SetLocale(item);
+                    return (item, Application.Context.CreateConfigurationContext(config).GetString(key));
+                }
+            }
+            return (null, Application.Context.GetString(key));
+        }
+
         public static async Task SpeakLeft()
         {
-            await SpeakWithPan("Left", -1.0f, Java.Util.Locale.English);
+            var local = GetLocalized(Resource.String.word_left);
+            await SpeakWithPan(local.Item2, -1.0f, local.Item2.ToUpperInvariant() == "LEFT" && Content.IsLanguageAvailable(Java.Util.Locale.English)>=LanguageAvailableResult.Available ? Java.Util.Locale.English : local.Item1);
         }
 
         public static async Task SpeakRight()
         {
-            await SpeakWithPan("Right", 1.0f, Java.Util.Locale.English);
+            var local = GetLocalized(Resource.String.word_right);
+            await SpeakWithPan(local.Item2, +1.0f, local.Item2.ToUpperInvariant() == "RIGHT" && Content.IsLanguageAvailable(Java.Util.Locale.English) >= LanguageAvailableResult.Available ? Java.Util.Locale.English : local.Item1);
         }
-
 
         public static async Task SpeakWithPan(string text, float paramPan, Java.Util.Locale locale)
         {
             await listner.SemaphoreWaitAsync();
-            Content.SetLanguage(locale);
+            if (!(locale is null)) Content.SetLanguage(locale);
             var bundle = new Bundle();
             if (paramPan != 0.0f) bundle.PutFloat(TextToSpeech.Engine.KeyParamPan, paramPan);
             bundle.PutFloat(TextToSpeech.Engine.KeyParamVolume, 1.0f);

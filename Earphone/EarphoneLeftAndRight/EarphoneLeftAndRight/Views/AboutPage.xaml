@@ -5,6 +5,7 @@
              xmlns:vm="clr-namespace:EarphoneLeftAndRight.ViewModels"
              xmlns:controls="clr-namespace:EarphoneLeftAndRight.Views"
              Title="{Binding Title}"
+             BackgroundColor="{AppThemeBinding Default=White,Light=White,Dark=Black}"
              >
     
     <ContentPage.BindingContext>
@@ -15,6 +16,9 @@
         <ResourceDictionary>
             <Color x:Key="Accent">#96d1ff</Color>
         </ResourceDictionary>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="{AppThemeBinding Default=Black,Dark=White,Light=Black}"/>
+        </Style>
     </ContentPage.Resources>
 
     <Grid>

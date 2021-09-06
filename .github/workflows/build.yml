@@ -2,17 +2,17 @@ name: CI on Push and Pull Request
 on: [push, pull_request]
 jobs:
   Android:
-    runs-on: macos-latest
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v1
-#    - name: Add msbuild to PATH
-#      uses: microsoft/setup-msbuild@v1.0.3
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v1.0.3
     - name: Android
       run: |
         cd Earphone
         nuget restore
-        msbuild EarphoneLeftAndRight.Android/EarphoneLeftAndRight.Android.csproj /verbosity:normal /t:Rebuild /t:PackageForAndroid /t:SignAndroidPackage /p:Configuration=Debug 
+        msbuild EarphoneLeftAndRight/EarphoneLeftAndRight.Android/EarphoneLeftAndRight.Android.csproj /verbosity:normal /t:Rebuild /t:PackageForAndroid /t:SignAndroidPackage /p:Configuration=Debug 
     - uses: actions/upload-artifact@v2
       with:
         name: Android App
-        path: Earphone/EarphoneLeftAndRight.Android/bin/Debug/com.github.kurema.earphoneleftandright-Signed.apk
+        path: Earphone/EarphoneLeftAndRight/EarphoneLeftAndRight.Android/bin/Debug/com.github.kurema.earphoneleftandright-Signed.apk

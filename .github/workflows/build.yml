@@ -4,7 +4,9 @@ jobs:
   Android:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v1      
+    - uses: actions/checkout@v1
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v1.0.3
     - name: Android
       run: |
         cd Earphone
@@ -13,4 +15,4 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: Android App
-        path: Blank/Blank.Android/bin/Debug/com.tfp.blank-Signed.apk   
+        path: Earphone/EarphoneLeftAndRight.Android/bin/Debug/com.github.kurema.earphoneleftandright-Signed.apk

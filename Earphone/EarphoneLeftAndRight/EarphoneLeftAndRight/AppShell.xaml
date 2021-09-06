@@ -31,6 +31,7 @@
 
     <TabBar>
         <ShellContent Title="About" Icon="icon_about.png" Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
+        <ShellContent Title="Dict" Icon="icon_about.png" Route="Dictionary" ContentTemplate="{DataTemplate local:DictionaryTabbed}"/>
     </TabBar>
 
     <!--

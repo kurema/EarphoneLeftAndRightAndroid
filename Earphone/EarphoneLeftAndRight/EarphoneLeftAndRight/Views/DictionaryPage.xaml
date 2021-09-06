@@ -2,16 +2,17 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EarphoneLeftAndRight.Views.DictionaryPage">
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Label>
-                <Label.FormattedText>
-                    <FormattedString>
-                        <FormattedString.Spans>
-                        </FormattedString.Spans>
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <StackLayout x:Name="layoutMain" Margin="15"/>
+                <Label x:Name="labelDictionaryName" HorizontalOptions="Center"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

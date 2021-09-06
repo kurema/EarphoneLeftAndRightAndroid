@@ -15,6 +15,22 @@ namespace EarphoneLeftAndRight.Views
         public DictionaryPage()
         {
             InitializeComponent();
+
+        }
+
+        private string _Html;
+        public string Html { get => _Html;
+            set
+            {
+                _Html = value;
+                var labels = Helper.Helpers.XhtmlToFormattedString(value);
+                foreach (var item in labels) layoutMain.Children.Add(item);
+            }
+        }
+        public string DictionaryName
+        {
+            get => labelDictionaryName.Text;
+            set => labelDictionaryName.Text = value;
         }
     }
 }

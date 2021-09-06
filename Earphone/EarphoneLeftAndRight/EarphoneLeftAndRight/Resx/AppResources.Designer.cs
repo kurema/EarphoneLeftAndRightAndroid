@@ -70,6 +70,59 @@ namespace EarphoneLeftAndRight.Resx {
         }
         
         /// <summary>
+        ///   &lt;!DOCTYPE html&gt;
+        ///&lt;html&gt;
+        ///&lt;head&gt;
+        ///&lt;title&gt;Left&lt;/title&gt;
+        ///&lt;/head&gt;
+        ///&lt;body&gt;
+        ///&lt;b&gt;Left&lt;/b&gt;&lt;br/&gt;
+        ///(lĕft), &lt;I&gt;imp. &amp;amp; p. p.&lt;/I&gt;of ≪Leave≫.&lt;br/&gt;
+        ///&lt;hr/&gt;
+        ///&lt;b&gt;Left&lt;/b&gt;&lt;br/&gt;
+        ///&lt;I&gt;a.&lt;/I&gt;[OE. &lt;I&gt;left&lt;/I&gt;, &lt;I&gt;lift&lt;/I&gt;, &lt;I&gt;luft&lt;/I&gt;; akin to Fries. &lt;I&gt;leeft&lt;/I&gt;, OD. &lt;I&gt;lucht&lt;/I&gt;, &lt;I&gt;luft&lt;/I&gt;; cf. AS. &lt;I&gt;left&lt;/I&gt; (equiv. to L. &lt;I&gt;inanis&lt;/I&gt;), &lt;I&gt;lyftādl&lt;/I&gt; palsy; or cf. AS. &lt;I&gt;lēf&lt;/I&gt; weak.] Of or pertaining to that side of the body in man on which the muscular action of the limbs is usually weaker than on the other side; -- [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Dict_Left_Html {
+            get {
+                return ResourceManager.GetString("Dict.Left.Html", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Left に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Dict_Left_Title {
+            get {
+                return ResourceManager.GetString("Dict.Left.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   &lt;!DOCTYPE html&gt;
+        ///&lt;html&gt;
+        ///&lt;head&gt;
+        ///&lt;title&gt;Right&lt;/title&gt;
+        ///&lt;/head&gt;
+        ///&lt;body&gt;
+        ///&lt;b&gt;Right&lt;/b&gt;&lt;br/&gt;
+        ///(rīt), &lt;I&gt;a.&lt;/I&gt;[OE. &lt;I&gt;right&lt;/I&gt;, &lt;I&gt;riht&lt;/I&gt;, AS. &lt;I&gt;riht&lt;/I&gt;; akin to D. &lt;I&gt;regt&lt;/I&gt;, OS. &amp;amp; OHG. &lt;I&gt;reht&lt;/I&gt;, G. &lt;I&gt;recht&lt;/I&gt;, Dan. &lt;I&gt;ret&lt;/I&gt;, Sw. rätt, Icel. &lt;I&gt;rëttr&lt;/I&gt;, Goth. &lt;I&gt;raí	hts&lt;/I&gt;, L. &lt;I&gt;rectus&lt;/I&gt;, p. p. of &lt;I&gt;regere&lt;/I&gt; to guide, rule; cf. Skr. &lt;I&gt;ṛju&lt;/I&gt; straight, right. ✓115. Cf. ≪Adroit≫,≪Alert≫, ≪Correct≫, ≪Dress≫, ≪Regular≫, ≪Rector≫, ≪Recto≫, ≪Rectum≫, ≪Regent≫, ≪Region≫, ≪Realm≫, ≪Rich≫, [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Dict_Right_Html {
+            get {
+                return ResourceManager.GetString("Dict.Right.Html", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Right に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Dict_Right_Title {
+            get {
+                return ResourceManager.GetString("Dict.Right.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   More informations に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string More_Title {

@@ -7,6 +7,7 @@ namespace EarphoneLeftAndRight.Dependency
 {
     public interface ITextToSpeech
     {
+        Task Clear();
         Task SpeakLeft();
         Task SpeakRight();
     }

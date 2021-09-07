@@ -2,6 +2,8 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:EarphoneLeftAndRight.Views"
+       xmlns:r="clr-namespace:EarphoneLeftAndRight.Resx"
+
        Title="EarphoneLeftAndRight"
        x:Class="EarphoneLeftAndRight.AppShell">
 
@@ -14,12 +16,12 @@
     <Shell.Resources>
         <ResourceDictionary>
             <Style x:Key="BaseStyle" TargetType="Element">
-                <Setter Property="Shell.BackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Default={StaticResource PrimaryLight},Light={StaticResource PrimaryLight},Dark={StaticResource PrimaryDark}}" />
                 <Setter Property="Shell.ForegroundColor" Value="White" />
                 <Setter Property="Shell.TitleColor" Value="White" />
                 <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
                 <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
-                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{AppThemeBinding Default={StaticResource PrimaryLight},Light={StaticResource PrimaryLight},Dark={StaticResource PrimaryDark}}" />
                 <Setter Property="Shell.TabBarForegroundColor" Value="White"/>
                 <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
                 <Setter Property="Shell.TabBarTitleColor" Value="White"/>
@@ -30,8 +32,9 @@
     </Shell.Resources>
 
     <TabBar>
+        <ShellContent Title="{x:Static r:AppResources.Play_Title}" Icon="icon_about.png" Route="PlayPage" ContentTemplate="{DataTemplate local:PlayPage}"/>
+        <ShellContent Title="{x:Static r:AppResources.Dict_Header}" Icon="icon_about.png" Route="Dictionary" ContentTemplate="{DataTemplate local:DictionaryTabbed}"/>
         <ShellContent Title="About" Icon="icon_about.png" Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
-        <ShellContent Title="Dict" Icon="icon_about.png" Route="Dictionary" ContentTemplate="{DataTemplate local:DictionaryTabbed}"/>
     </TabBar>
 
     <!--

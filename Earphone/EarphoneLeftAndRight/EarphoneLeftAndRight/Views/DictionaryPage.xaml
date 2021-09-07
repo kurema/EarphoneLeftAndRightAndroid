@@ -1,18 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="EarphoneLeftAndRight.Views.DictionaryPage">
-    <ContentPage.Resources>
-        <Style TargetType="Label">
-            <Setter Property="TextColor" Value="Black"/>
-        </Style>
-    </ContentPage.Resources>
+             x:Class="EarphoneLeftAndRight.Views.DictionaryPage"
+            xmlns:r="clr-namespace:EarphoneLeftAndRight.Resx"
+             Title="{x:Static r:AppResources.Dict_Header}"
+             BackgroundColor="{AppThemeBinding Default=White,Light=White,Dark=Black}"
+             xmlns:controls="clr-namespace:EarphoneLeftAndRight.Views"
+             >
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout>
-                <StackLayout x:Name="layoutMain" Margin="15"/>
-                <Label x:Name="labelDictionaryName" HorizontalOptions="Center"/>
-            </StackLayout>
-        </ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ScrollView Grid.Row="1">
+                <StackLayout>
+                    <StackLayout x:Name="layoutMain" Margin="15"/>
+                    <Label x:Name="labelDictionaryName" HorizontalOptions="Center" IsVisible="False"/>
+                </StackLayout>
+            </ScrollView>
+            <controls:AdMobBanner HeightRequest="51" HorizontalOptions="Fill"  WidthRequest="320" Grid.Row="0" />
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

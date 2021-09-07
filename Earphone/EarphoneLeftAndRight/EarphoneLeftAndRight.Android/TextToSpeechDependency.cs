@@ -17,6 +17,12 @@ namespace EarphoneLeftAndRight.Droid
 
     public class TextToSpeechDependency : Dependency.ITextToSpeech
     {
+        public Task Clear()
+        {
+            Manager.Tts.StopIfSpeaking();
+            return Task.CompletedTask;
+        }
+
         public async Task SpeakLeft()
         {
             await Manager.Tts.SpeakLeft();

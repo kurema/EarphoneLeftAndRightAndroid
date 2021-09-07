@@ -7,7 +7,14 @@
     -->
     <Application.Resources>
         <ResourceDictionary>
-            <Color x:Key="Primary">#2196F3</Color>
+            <Color x:Key="PrimaryLight">#2196F3</Color>
+            <Color x:Key="PrimaryDark">#1d1d1d</Color>
+            <Style TargetType="Label">
+                <Setter Property="TextColor"  Value="{AppThemeBinding Default=Black,Light=Black,Dark=White}"/>
+            </Style>
+            <Style TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Default=White,Light=White,Dark=#222222}"/>
+            </Style>
             <Style TargetType="Button">
                 <Setter Property="TextColor" Value="White"></Setter>
                 <Setter Property="VisualStateManager.VisualStateGroups">
@@ -15,12 +22,12 @@
                         <VisualStateGroup x:Name="CommonStates">
                             <VisualState x:Name="Normal">
                                 <VisualState.Setters>
-                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                    <Setter Property="BackgroundColor" Value="{AppThemeBinding Default={StaticResource PrimaryLight},Light={StaticResource PrimaryLight},Dark=#333333}" />
                                 </VisualState.Setters>
                             </VisualState>
                             <VisualState x:Name="Disabled">
                                 <VisualState.Setters>
-                                    <Setter Property="BackgroundColor" Value="#332196F3" />
+                                    <Setter Property="BackgroundColor" Value="{AppThemeBinding Default=#332196F3,Light=#332196F3,Dark=#33333333}" />
                                 </VisualState.Setters>
                             </VisualState>
                         </VisualStateGroup>

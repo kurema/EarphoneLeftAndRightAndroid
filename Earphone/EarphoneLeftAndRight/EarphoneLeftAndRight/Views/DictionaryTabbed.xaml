@@ -4,6 +4,8 @@
              x:Class="EarphoneLeftAndRight.Views.DictionaryTabbed"
             xmlns:v="clr-namespace:EarphoneLeftAndRight.Views"
             xmlns:r="clr-namespace:EarphoneLeftAndRight.Resx"
+             Title="{x:Static r:AppResources.Dict_Header}"
+            BarBackgroundColor="{AppThemeBinding Default={StaticResource PrimaryLight},Light={StaticResource PrimaryLight},Dark={StaticResource PrimaryDark}}"
             >
   <!--Pages can be added as references or inline-->
     <v:DictionaryPage Title="{x:Static r:AppResources.Dict_Left_Title}" Html="{x:Static r:AppResources.Dict_Left_Html}" DictionaryName="{x:Static r:AppResources.Dict_Dict_Title}"/>

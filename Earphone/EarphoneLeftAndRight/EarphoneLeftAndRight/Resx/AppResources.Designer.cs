@@ -70,6 +70,15 @@ namespace EarphoneLeftAndRight.Resx {
         }
         
         /// <summary>
+        ///   Dictionary に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Dict_Header {
+            get {
+                return ResourceManager.GetString("Dict.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   &lt;!DOCTYPE html&gt;
         ///&lt;html&gt;
         ///&lt;head&gt;
@@ -128,6 +137,15 @@ namespace EarphoneLeftAndRight.Resx {
         internal static string More_Title {
             get {
                 return ResourceManager.GetString("More.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Play に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Play_Title {
+            get {
+                return ResourceManager.GetString("Play.Title", resourceCulture);
             }
         }
     }

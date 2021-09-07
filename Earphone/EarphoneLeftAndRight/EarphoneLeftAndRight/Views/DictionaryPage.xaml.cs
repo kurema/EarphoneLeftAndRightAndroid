@@ -30,7 +30,11 @@ namespace EarphoneLeftAndRight.Views
         public string DictionaryName
         {
             get => labelDictionaryName.Text;
-            set => labelDictionaryName.Text = value;
+            set
+            {
+                labelDictionaryName.IsVisible = !string.IsNullOrWhiteSpace(value);
+                labelDictionaryName.Text = value;
+            }
         }
     }
 }

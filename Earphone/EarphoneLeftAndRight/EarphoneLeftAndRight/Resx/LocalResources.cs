@@ -11,5 +11,6 @@ namespace EarphoneLeftAndRight.Resx
 
         internal static string Left => localization.WordLeft;
         internal static string Right => localization.WordRight;
+        internal static string LeftRight => $"{localization.WordLeft} / {localization.WordRight}";
     }
 }

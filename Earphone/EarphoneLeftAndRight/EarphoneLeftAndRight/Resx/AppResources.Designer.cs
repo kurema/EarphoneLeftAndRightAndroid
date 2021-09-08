@@ -132,7 +132,43 @@ namespace EarphoneLeftAndRight.Resx {
         }
         
         /// <summary>
-        ///   More informations に類似しているローカライズされた文字列を検索します。
+        ///   Are you left or right? に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string More_OpenCompass_Title {
+            get {
+                return ResourceManager.GetString("More.OpenCompass.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   https://politicalcompass.org/test に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string More_OpenCompass_URL {
+            get {
+                return ResourceManager.GetString("More.OpenCompass.URL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   What is &quot;left&quot; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string More_OpenDictionary_Left {
+            get {
+                return ResourceManager.GetString("More.OpenDictionary.Left", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   What is &quot;right&quot; に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string More_OpenDictionary_Right {
+            get {
+                return ResourceManager.GetString("More.OpenDictionary.Right", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   More about Left/Right に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string More_Title {
             get {

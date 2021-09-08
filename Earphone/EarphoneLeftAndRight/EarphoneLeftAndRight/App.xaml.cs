@@ -3,6 +3,7 @@ using EarphoneLeftAndRight.Views;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Plugin.GoogleUserMessagingPlatform;
 
 namespace EarphoneLeftAndRight
 {
@@ -17,7 +18,7 @@ namespace EarphoneLeftAndRight
             MainPage = new AppShell();
         }
 
-        protected override void OnStart()
+        protected override  void OnStart()
         {
         }
 

@@ -300,8 +300,20 @@ All experience hath shown that mankind are more disposed to suffer while evils a
   <data name="Dict.Right.Title" xml:space="preserve">
     <value>Right</value>
   </data>
+  <data name="More.OpenCompass.Title" xml:space="preserve">
+    <value>Are you left or right?</value>
+  </data>
+  <data name="More.OpenCompass.URL" xml:space="preserve">
+    <value>https://politicalcompass.org/test</value>
+  </data>
+  <data name="More.OpenDictionary.Left" xml:space="preserve">
+    <value>What is "left"</value>
+  </data>
+  <data name="More.OpenDictionary.Right" xml:space="preserve">
+    <value>What is "right"</value>
+  </data>
   <data name="More.Title" xml:space="preserve">
-    <value>More informations</value>
+    <value>More about Left/Right</value>
   </data>
   <data name="Play.Title" xml:space="preserve">
     <value>Play</value>

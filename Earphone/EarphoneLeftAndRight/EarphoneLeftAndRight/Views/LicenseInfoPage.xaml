@@ -4,13 +4,26 @@
              xmlns:vc="clr-namespace:EarphoneLeftAndRight.ValueConverters"
              xmlns:r="clr-namespace:EarphoneLeftAndRight.Resx"
              x:Class="EarphoneLeftAndRight.Views.LicenseInfoPage"
+             BackgroundColor="{AppThemeBinding Default=#EEEEEE,Light=#EEEEEE,Dark=Black}"
              Title="{x:Static r:AppResources.License_Title}">
     <ContentPage.Resources>
         <vc:NullOrEmptyStringToTextValueConverter x:Key="neVC" />
+        <ResourceDictionary>
+            <Style TargetType="Frame" x:Key="CardStyle">
+                <Setter Property="Margin" Value="5"/>
+                <Setter Property="CornerRadius" Value="2"/>
+                <Setter Property="HasShadow" Value="True"/>
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Default=White,Light=White,Dark=#111111}"/>
+            </Style>
+            <Style x:Key="MyTitleStyle" TargetType="Label" BaseResourceKey="TitleStyle">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="Large" />
+            </Style>
+        </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout>
+            <StackLayout Padding="15">
                 <Label Margin="10" Text="{Binding Name}" Style="{DynamicResource Key=MyTitleStyle}" HorizontalOptions="Center"/>
                 <Frame Style="{StaticResource CardStyle}">
                     <StackLayout>

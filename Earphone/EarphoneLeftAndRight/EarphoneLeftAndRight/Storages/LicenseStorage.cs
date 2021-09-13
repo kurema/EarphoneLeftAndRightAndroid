@@ -28,7 +28,7 @@ namespace EarphoneLeftAndRight.Storages
 
         public static License.NormalLicense[] AdditonalLicense => new License.NormalLicense[]
         {
-            new License.NormalLicense(){Name="Google Noto Fonts.Noto Sans CJK JP",LicenseUrl="http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL",ProjectName="WordbookImpressApp",Version="v2017-06-01-serif-cjk-1-1"}
+            new License.NormalLicense(){Name="Material Icons",LicenseUrl="https://www.apache.org/licenses/LICENSE-2.0.html",ProjectName=nameof(EarphoneLeftAndRight),Version="4.0.0", ProjectUrl="https://material.io/", LicenseText="Apache License, Version 2.0"}
         };
 
         public static ObservableCollection<License.NugetData> GetNugetDatasCsv()

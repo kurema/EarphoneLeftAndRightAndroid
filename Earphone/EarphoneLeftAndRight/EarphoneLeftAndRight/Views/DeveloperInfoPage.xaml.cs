@@ -23,21 +23,21 @@ using Xamarin.Essentials;
 
 namespace EarphoneLeftAndRight.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class DeveloperInfoPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class DeveloperInfoPage : ContentPage
+    {
         public DeveloperInfoViewModel Model => this.BindingContext as DeveloperInfoViewModel;
 
-        public DeveloperInfoPage ()
-		{
-			InitializeComponent ();
+        public DeveloperInfoPage()
+        {
+            InitializeComponent();
 
             this.BindingContextChanged += (s, e) => LinksUpdate();
 
             DeveloperInfoViewModel model;
             this.BindingContext = model = new DeveloperInfoViewModel(Navigation);
             this.Model.PropertyChanged += (s, e) => LinksUpdate();
-            RemoteStorage.Updated += (s, e) => { LinksUpdate();  };
+            RemoteStorage.Updated += (s, e) => { LinksUpdate(); };
 
             {
                 GithubGrid.ColumnDefinitions = new ColumnDefinitionCollection();
@@ -48,6 +48,11 @@ namespace EarphoneLeftAndRight.Views
             }
 
             UpdateGithubInfo();
+
+            new Action(async () =>
+            {
+                await RemoteStorage.LoadRemoteDatas();
+            }).Invoke();
         }
 
         public async void UpdateGithubInfo()
@@ -61,7 +66,7 @@ namespace EarphoneLeftAndRight.Views
             catch { }
         }
 
-        public void AddGithubInfo(string source, string Header, string command=null,string commandParameter=null)
+        public void AddGithubInfo(string source, string Header, string command = null, string commandParameter = null)
         {
             var cnt = GithubGrid.ColumnDefinitions?.Count() ?? 0;
 
@@ -84,11 +89,17 @@ namespace EarphoneLeftAndRight.Views
             }
             var fc = new FontSizeConverter();
             {
-                var label = new Label() {HorizontalTextAlignment = TextAlignment.Center, HorizontalOptions=LayoutOptions.CenterAndExpand, FontSize = (double)fc.ConvertFromInvariantString("Large"), FontAttributes = FontAttributes.Bold };
+                var label = new Label() { HorizontalTextAlignment = TextAlignment.Center, HorizontalOptions = LayoutOptions.CenterAndExpand, FontSize = (double)fc.ConvertFromInvariantString("Large"), FontAttributes = FontAttributes.Bold };
                 label.SetBinding(Label.TextProperty, source);
                 sl.Children.Add(label);
             }
-            sl.Children.Add(new Label() { Text = Header, HorizontalTextAlignment = TextAlignment.Center, HorizontalOptions = LayoutOptions.CenterAndExpand, TextColor = new Color(0.0, 0.0, 0.0, 0.5) });
+            sl.Children.Add(new Label()
+            {
+                Text = Header,
+                HorizontalTextAlignment = TextAlignment.Center,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                TextColor = Application.Current.RequestedTheme == OSAppTheme.Dark ? new Color(1.0, 1.0, 1.0, 0.5) : new Color(0.0, 0.0, 0.0, 0.5)
+            });
             Grid.SetColumn(sl, cnt);
             GithubGrid.Children.Add(sl);
         }
@@ -112,7 +123,7 @@ namespace EarphoneLeftAndRight.Views
             }
         }
 
-        private void LinkUpdateAddLink(string title,string detail, System.Windows.Input.ICommand command)
+        private void LinkUpdateAddLink(string title, string detail, System.Windows.Input.ICommand command)
         {
             var stack = new StackLayout();
             {
@@ -130,14 +141,14 @@ namespace EarphoneLeftAndRight.Views
                 label.Text = detail;
                 //label.VerticalTextAlignment = TextAlignment.End;
                 //label.VerticalOptions = LayoutOptions.EndAndExpand;
-                label.TextColor = new Color(0, 0, 0, 0.5);
+                label.TextColor = Application.Current.RequestedTheme == OSAppTheme.Dark ? new Color(1, 1, 1, 0.5) : new Color(0, 0, 0, 0.5);
                 label.LineBreakMode = LineBreakMode.TailTruncation;
                 stack.Children.Add(label);
             }
             Links.Children.Add(stack);
         }
 
-        public class DeveloperInfoViewModel: ViewModels.BaseViewModel
+        public class DeveloperInfoViewModel : ViewModels.BaseViewModel
         {
             private GithubUserViewModel _GithubUser;
             public GithubUserViewModel GithubUser { get => _GithubUser; set => SetProperty(ref _GithubUser, value); }
@@ -204,7 +215,7 @@ namespace EarphoneLeftAndRight.Views
             public ObservableCollection<Link> GetLinks()
             {
                 if (author?.links == null) return new ObservableCollection<Link>();
-                var result=new ObservableCollection<Link>();
+                var result = new ObservableCollection<Link>();
                 foreach (var item in author.links)
                 {
                     result.Add(new Link(RemoteStorage.GetStringByMultilingal(item?.title?.multilingal) ?? item.title1, item.src));
@@ -212,8 +223,9 @@ namespace EarphoneLeftAndRight.Views
                 return result;
             }
 
-            public ICommand OpenDonationCommand { get => new Command(
-                (p)=>
+            public ICommand OpenDonationCommand
+            {
+                get => new Command((p) =>
                 {
                     new ConfigPage();
                     var result = new ObservableCollection<ConfigPage.SettingItems>();
@@ -221,11 +233,9 @@ namespace EarphoneLeftAndRight.Views
                     {
                         var items = new ConfigPage.SettingItems(item.Title);
                         foreach (var item2 in item)
-
                         {
-                            items.Add(new ConfigPage.SettingItem(item2.Title, string.IsNullOrWhiteSpace(item2.Address)?item2.Src: item2.Address)
+                            items.Add(new ConfigPage.SettingItem(item2.Title, string.IsNullOrWhiteSpace(item2.Address) ? item2.Src : item2.Address)
                             {
-
                                 Action = async (w) =>
                                 {
                                     if (item2.Src != null)
@@ -237,6 +247,7 @@ namespace EarphoneLeftAndRight.Views
                                     }
                                     else if (item2.Address != null)
                                     {
+                                        await Clipboard.SetTextAsync(item2.Address);
                                     }
                                 }
                             });
@@ -244,23 +255,24 @@ namespace EarphoneLeftAndRight.Views
                         result.Add(items);
                     }
                     navigation.PushAsync(new ConfigPage(result) { Title = AppResources.Profile_Donation_Header });
-                }); }
+                });
+            }
 
 
             private ObservableCollection<Group<LinkDonation>> donations;
-            public ObservableCollection<AuthorInformationViewModel.Group<LinkDonation>> Donations { get => donations=donations ?? GetDonations(); }
+            public ObservableCollection<AuthorInformationViewModel.Group<LinkDonation>> Donations { get => donations = donations ?? GetDonations(); }
 
             public ObservableCollection<AuthorInformationViewModel.Group<LinkDonation>> GetDonations()
             {
                 if (author?.donations == null) return new ObservableCollection<Group<LinkDonation>>();
-                var result= new ObservableCollection<Group<LinkDonation>>();
+                var result = new ObservableCollection<Group<LinkDonation>>();
                 foreach (var gp in author.donations)
                 {
                     var group = new Group<LinkDonation>();
                     group.Title = EarphoneLeftAndRight.Storages.RemoteStorage.GetStringByMultilingal(gp?.title?.multilingal) ?? gp.title1;
-                    foreach(var item in gp.donation)
+                    foreach (var item in gp.donation)
                     {
-                        group.Add(new LinkDonation(RemoteStorage.GetStringByMultilingal(item?.title?.multilingal) ?? item.title1, item.src,item.address));
+                        group.Add(new LinkDonation(RemoteStorage.GetStringByMultilingal(item?.title?.multilingal) ?? item.title1, item.src, item.address));
                     }
                     result.Add(group);
                 }
@@ -272,7 +284,7 @@ namespace EarphoneLeftAndRight.Views
                 public string Src { get; set; }
                 public string Title { get; set; }
 
-                public Link(string title,string src)
+                public Link(string title, string src)
                 {
                     this.Src = src;
                     this.Title = title;
@@ -294,12 +306,12 @@ namespace EarphoneLeftAndRight.Views
             {
                 public string Address { get; set; }
 
-                public LinkDonation(string title, string src) : base(title,src) { }
-                public LinkDonation(string title, string src,string Address) : base(title, src) { this.Address = Address; }
+                public LinkDonation(string title, string src) : base(title, src) { }
+                public LinkDonation(string title, string src, string Address) : base(title, src) { this.Address = Address; }
 
             }
 
-            public class Group<T> : ObservableCollection<T>,INotifyPropertyChanged
+            public class Group<T> : ObservableCollection<T>, INotifyPropertyChanged
             {
                 private string title;
                 public string Title { get => title; set { title = value; OnPropertyChanged(); } }

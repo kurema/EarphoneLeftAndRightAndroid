@@ -7,6 +7,7 @@
     -->
     <Application.Resources>
         <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
             <Color x:Key="PrimaryLight">#2196F3</Color>
             <Color x:Key="PrimaryDark">#1d1d1d</Color>
             <Style TargetType="Label">

@@ -43,6 +43,17 @@ namespace EarphoneLeftAndRight.Views
             SaveOnDisappearing = true;
 
             var licenseChildren = GetLicenseChildren(Navigation);
+
+            Items = new ObservableCollection<SettingItems>
+            {
+                new SettingItems("About")
+                {
+                    new SettingItem("License", "")
+                    {
+                        Children=licenseChildren
+                    }
+                }
+            };
 			
 			MyListView.ItemsSource = Items;
         }

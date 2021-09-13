@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using System.Linq;
 
 namespace EarphoneLeftAndRight.ValueConverters
 {
@@ -31,6 +32,25 @@ namespace EarphoneLeftAndRight.ValueConverters
             else text = (string)parameter;
             var texts = text.Split(':', (char)2);
             return value == null ? texts[0] : (value is string && string.IsNullOrEmpty((string)value) ? texts[0]: texts[1]);
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class AnyValueConverter : Xamarin.Forms.IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var args = (parameter?.ToString() ?? "True:False").Split(':');
+            if (!(value is System.Collections.IEnumerable enu)) return "";
+            foreach(var item in enu)
+            {
+                return args[0];
+            }
+            return args[1];
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

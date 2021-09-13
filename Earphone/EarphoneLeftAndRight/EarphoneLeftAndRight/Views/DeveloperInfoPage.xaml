@@ -1,17 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vc="clr-namespace:EarphoneLeftAndRight.ValueConverters"
              x:Class="EarphoneLeftAndRight.Views.DeveloperInfoPage"
              xmlns:r="clr-namespace:EarphoneLeftAndRight.Resx"
              Title="{x:Static r:AppResources.Profile_Title}"
+             BackgroundColor="{AppThemeBinding Default=White,Light=White,Dark=Black}"
              x:Name="page"
              >
     <ContentPage.Resources>
         <ResourceDictionary>
+            <vc:AnyValueConverter x:Key="AnyVC"/>
             <Style TargetType="Frame" x:Key="CardStyleDeveloperInfo">
                 <Setter Property="HasShadow" Value="True" />
                 <Setter Property="CornerRadius" Value="0" />
                 <Setter Property="Margin" Value="10"/>
+                <Setter Property="BackgroundColor" Value="{AppThemeBinding Default=White,Light=White,Dark=#111111}" />
             </Style>
             <Style TargetType="Label" x:Key="GroupHeader">
                 <Setter Property="FontSize" Value="Medium" />
@@ -44,7 +48,7 @@
                 </Frame>
                 <Frame Style="{StaticResource CardStyleDeveloperInfo}">
                     <StackLayout>
-                        <Label Style="{StaticResource GroupHeader}" Text="{x:Static r:AppResources.Profile_Contact}" />
+                        <Label Style="{StaticResource GroupHeader}" Text="{x:Static r:AppResources.Profile_Contact}" IsVisible="{Binding Source={Reference Links},Path=Children,Converter={StaticResource AnyVC},ConverterParameter=True:False}" />
                         <StackLayout x:Name="Links" />
                         <Label Style="{StaticResource GroupHeader}" Text="{x:Static r:AppResources.Profile_Support}" />
                         <Button HorizontalOptions="Start" Text="{x:Static r:AppResources.Profile_GitHubSponsors}" Command="{Binding AuthorInformation.OpenDonationCommand}"/>

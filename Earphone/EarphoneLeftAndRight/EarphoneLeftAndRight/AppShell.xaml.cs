@@ -21,6 +21,7 @@ namespace EarphoneLeftAndRight
             {
                 await Prepare();
             });
+
         }
 
         private async Task Prepare()

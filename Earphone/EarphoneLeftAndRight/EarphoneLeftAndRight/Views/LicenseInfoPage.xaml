@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vc="clr-namespace:EarphoneLeftAndRight.ValueConverters"
+             xmlns:r="clr-namespace:EarphoneLeftAndRight.Resx"
+             x:Class="EarphoneLeftAndRight.Views.LicenseInfoPage"
+             Title="{x:Static r:AppResources.License_Title}">
+    <ContentPage.Resources>
+        <vc:NullOrEmptyStringToTextValueConverter x:Key="neVC" />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label Margin="10" Text="{Binding Name}" Style="{DynamicResource Key=MyTitleStyle}" HorizontalOptions="Center"/>
+                <Frame Style="{StaticResource CardStyle}">
+                    <StackLayout>
+                        <Label Text="{Binding LicenseText}"/>
+                        <Button Text="{x:Static r:AppResources.License_Title}" Clicked="Button_Clicked_1" IsVisible="{Binding LicenseUrl,Converter={StaticResource neVC},ConverterParameter='False:True'}"/>
+                    </StackLayout>
+                </Frame>
+                <Button Text="{x:Static r:AppResources.License_DetailPage}" IsVisible="{Binding ProjectUrl,Converter={StaticResource neVC},ConverterParameter='False:True'}" Clicked="Button_Clicked" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="AuthorInformation"
+    targetNamespace="https://github.com/kurema/WordbookImpressApp/blob/master/WordbookImpressApp/WordbookImpressLibrary/Schemas/AuthorInformation.xsd"
+elementFormDefault="qualified"
+xmlns="https://github.com/kurema/WordbookImpressApp/blob/master/WordbookImpressApp/WordbookImpressLibrary/Schemas/AuthorInformation.xsd"
+xmlns:mstns="https://github.com/kurema/WordbookImpressApp/blob/master/WordbookImpressApp/WordbookImpressLibrary/Schemas/AuthorInformation.xsd"
+xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+<xs:element name="author">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="name" type="xs:string" />
+        <xs:element name="links">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="link" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="title" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element ref="multilingal" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="src" type="xs:anyURI" />
+                  <xs:attribute name="title" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="donations">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="group" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="title" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element ref="multilingal" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="donation" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="title" minOccurs="0">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element ref="multilingal" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="address" type="xs:string" use="optional" />
+                        <xs:attribute name="src" type="xs:anyURI" />
+                        <xs:attribute name="title" type="xs:string" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="title" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="multilingal">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute name="language" type="xs:language" />
+                <!--<xs:attribute name="default" default="false" type="xs:boolean" />-->
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

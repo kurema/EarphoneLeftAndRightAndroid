@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vc="clr-namespace:EarphoneLeftAndRight.ValueConverters"
+             x:Class="EarphoneLeftAndRight.Views.ConfigPage"
+             >
+    <ContentPage.Resources>
+        <vc:NullOrEmptyStringToTextValueConverter x:Key="nevc" />
+    </ContentPage.Resources>
+    <ListView x:Name="MyListView"
+              ItemSelected="MyListView_ItemSelected"
+            ItemsSource="{Binding Items}"
+             IsGroupingEnabled="True"
+              SeparatorVisibility="None"
+            CachingStrategy="RecycleElement" HasUnevenRows="True">
+        <ListView.GroupHeaderTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Grid Padding="10">
+                        <Label Text="{Binding Title}" FontSize="Medium" TextColor="Accent"  VerticalTextAlignment="Center"/>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.GroupHeaderTemplate>
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell >
+                    <Grid Padding="20,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="0" VerticalOptions="CenterAndExpand">
+                            <Label Text="{Binding Text}" FontSize="Medium" TextColor="Black"  VerticalTextAlignment="Center"/>
+                            <Label Text="{Binding Detail}"  FontSize="Small" TextColor="Gray"  VerticalTextAlignment="Center" IsVisible="{Binding Detail,Converter={StaticResource Key=nevc},ConverterParameter='False:True'}"/>
+                        </StackLayout>
+                        <Switch Grid.Column="1" VerticalOptions="CenterAndExpand" IsToggled="{Binding BoolValue}" IsVisible="{Binding BoolSetting}" />
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EarphoneLeftAndRight.Views.DeveloperInfoPage"
+             xmlns:r="clr-namespace:EarphoneLeftAndRight.Resx"
+             Title="{x:Static r:AppResources.Profile_Title}"
+             x:Name="page"
+             >
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Frame" x:Key="CardStyleDeveloperInfo">
+                <Setter Property="HasShadow" Value="True" />
+                <Setter Property="CornerRadius" Value="0" />
+                <Setter Property="Margin" Value="10"/>
+            </Style>
+            <Style TargetType="Label" x:Key="GroupHeader">
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="Accent" />
+            </Style>
+            <Style TargetType="Label" x:Key="LinkedText">
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Grid HeightRequest="200" BackgroundColor="Accent">
+                    <Image Source="{Binding TwitterUser.ProfileBannerUrl}" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                        <Frame CornerRadius="20" Padding="0" Margin="0" HorizontalOptions="Center" WidthRequest="100" HeightRequest="100">
+                            <Image Margin="0" Source="{Binding GithubUser.AvatarUri}" />
+                        </Frame>
+                        <Label Text="{Binding GithubUser.Name}" TextColor="White" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold"/>
+                    </StackLayout>
+                </Grid>
+                <Grid x:Name="GithubGrid" />
+                <Frame Style="{StaticResource CardStyleDeveloperInfo}">
+                    <StackLayout>
+                        <Label Style="{StaticResource GroupHeader}" Text="{x:Static r:AppResources.Profile_Bio}" />
+                        <Label Text="{Binding GithubUser.Bio}" />
+                        <!--<Label Text="{i18n:Translate DeveloperProfileAvailableForHire}" IsVisible="{Binding GithubUser.Hireable}" />-->
+                    </StackLayout>
+                </Frame>
+                <Frame Style="{StaticResource CardStyleDeveloperInfo}">
+                    <StackLayout>
+                        <Label Style="{StaticResource GroupHeader}" Text="{x:Static r:AppResources.Profile_Contact}" />
+                        <StackLayout x:Name="Links" />
+                        <Label Style="{StaticResource GroupHeader}" Text="{x:Static r:AppResources.Profile_Support}" />
+                        <Button HorizontalOptions="Start" Text="{x:Static r:AppResources.Profile_GitHubSponsors}" Command="{Binding AuthorInformation.OpenDonationCommand}"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

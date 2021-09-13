@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EarphoneLeftAndRight.Android", "EarphoneLeftAndRight\EarphoneLeftAndRight.Android\EarphoneLeftAndRight.Android.csproj", "{3FFD8859-10FE-4709-939D-72E0E1188201}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EarphoneLeftAndRight", "EarphoneLeftAndRight\EarphoneLeftAndRight\EarphoneLeftAndRight.csproj", "{64FDF6B0-D2C1-4C7E-A96C-4B88C6B8551A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EarphoneLeftAndRight", "EarphoneLeftAndRight\EarphoneLeftAndRight\EarphoneLeftAndRight.csproj", "{64FDF6B0-D2C1-4C7E-A96C-4B88C6B8551A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

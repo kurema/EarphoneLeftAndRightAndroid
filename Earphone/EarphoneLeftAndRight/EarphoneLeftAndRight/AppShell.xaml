@@ -35,6 +35,7 @@
         <ShellContent Title="{x:Static r:AppResources.Play_Title}" Icon="icon_about.png" Route="PlayPage" ContentTemplate="{DataTemplate local:PlayPage}"/>
         <ShellContent Title="{x:Static r:AppResources.Dict_Header}" Icon="icon_about.png" Route="Dictionary" ContentTemplate="{DataTemplate local:DictionaryTabbed}"/>
         <ShellContent Title="About" Icon="icon_about.png" Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
+        <ShellContent Title="About" Icon="icon_about.png" Route="AboutPage" ContentTemplate="{DataTemplate local:DeveloperInfoPage}" />
     </TabBar>
 
     <!--

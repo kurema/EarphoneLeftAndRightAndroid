@@ -132,6 +132,33 @@ namespace EarphoneLeftAndRight.Resx {
         }
         
         /// <summary>
+        ///   Detail に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string License_DetailPage {
+            get {
+                return ResourceManager.GetString("License.DetailPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Open に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string License_Open {
+            get {
+                return ResourceManager.GetString("License.Open", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   License に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string License_Title {
+            get {
+                return ResourceManager.GetString("License.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Are you left or right? に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string More_OpenCompass_Title {
@@ -182,6 +209,96 @@ namespace EarphoneLeftAndRight.Resx {
         internal static string Play_Title {
             get {
                 return ResourceManager.GetString("Play.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   kurema に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Profile_Accounts_Github_ID {
+            get {
+                return ResourceManager.GetString("Profile.Accounts.Github.ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Bio に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Profile_Bio {
+            get {
+                return ResourceManager.GetString("Profile.Bio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Contact に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Profile_Contact {
+            get {
+                return ResourceManager.GetString("Profile.Contact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Donation に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Profile_Donation_Header {
+            get {
+                return ResourceManager.GetString("Profile.Donation.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Email に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Profile_Email_Header {
+            get {
+                return ResourceManager.GetString("Profile.Email.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Followers に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Profile_Followers_Header {
+            get {
+                return ResourceManager.GetString("Profile.Followers.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   GitHub Sponsors に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Profile_GitHubSponsors {
+            get {
+                return ResourceManager.GetString("Profile.GitHubSponsors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Projects に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Profile_Projects_Header {
+            get {
+                return ResourceManager.GetString("Profile.Projects.Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Support に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Profile_Support {
+            get {
+                return ResourceManager.GetString("Profile.Support", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Profile に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Profile_Title {
+            get {
+                return ResourceManager.GetString("Profile.Title", resourceCulture);
             }
         }
     }

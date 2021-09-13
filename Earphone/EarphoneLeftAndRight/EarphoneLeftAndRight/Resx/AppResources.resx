@@ -300,6 +300,15 @@ All experience hath shown that mankind are more disposed to suffer while evils a
   <data name="Dict.Right.Title" xml:space="preserve">
     <value>Right</value>
   </data>
+  <data name="License.DetailPage" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="License.Open" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="License.Title" xml:space="preserve">
+    <value>License</value>
+  </data>
   <data name="More.OpenCompass.Title" xml:space="preserve">
     <value>Are you left or right?</value>
   </data>
@@ -317,5 +326,35 @@ All experience hath shown that mankind are more disposed to suffer while evils a
   </data>
   <data name="Play.Title" xml:space="preserve">
     <value>Play</value>
+  </data>
+  <data name="Profile.Accounts.Github.ID" xml:space="preserve">
+    <value>kurema</value>
+  </data>
+  <data name="Profile.Bio" xml:space="preserve">
+    <value>Bio</value>
+  </data>
+  <data name="Profile.Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="Profile.Donation.Header" xml:space="preserve">
+    <value>Donation</value>
+  </data>
+  <data name="Profile.Email.Header" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Profile.Followers.Header" xml:space="preserve">
+    <value>Followers</value>
+  </data>
+  <data name="Profile.GitHubSponsors" xml:space="preserve">
+    <value>GitHub Sponsors</value>
+  </data>
+  <data name="Profile.Projects.Header" xml:space="preserve">
+    <value>Projects</value>
+  </data>
+  <data name="Profile.Support" xml:space="preserve">
+    <value>Support</value>
+  </data>
+  <data name="Profile.Title" xml:space="preserve">
+    <value>Profile</value>
   </data>
 </root>

@@ -12,9 +12,6 @@ namespace EarphoneLeftAndRight.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PlayPage : ContentPage
     {
-        private Dependency.ITextToSpeech tts;
-
-
         public PlayPage()
         {
             InitializeComponent();

@@ -2,11 +2,12 @@ name: CI on Push and Pull Request
 on: [push, pull_request]
 jobs:
   Android:
-    runs-on: windows-latest
+    runs-on: macos-latest
     steps:
     - uses: actions/checkout@v1
-    - name: Add msbuild to PATH
-      uses: microsoft/setup-msbuild@v1.0.3
+# For Windows    
+#    - name: Add msbuild to PATH
+#      uses: microsoft/setup-msbuild@v1.0.3
     - name: Android
       run: |
         cd Earphone

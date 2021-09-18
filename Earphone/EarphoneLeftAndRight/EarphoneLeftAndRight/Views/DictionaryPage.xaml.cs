@@ -15,26 +15,39 @@ namespace EarphoneLeftAndRight.Views
         public DictionaryPage()
         {
             InitializeComponent();
-
         }
 
-        private string _Html;
-        public string Html { get => _Html;
-            set
+        public string Html
+        {
+            get => (string)GetValue(HtmlProperty);
+            set => SetValue(HtmlProperty, value);
+        }
+
+        public void UpdateHtml()
+        {
+            layoutMain.Children.Clear();
+            var labels = Helper.Helpers.XhtmlToFormattedString(Html);
+            foreach (var item in labels) layoutMain.Children.Add(item);
+        }
+
+        public static readonly BindableProperty HtmlProperty =
+            BindableProperty.Create(nameof(Html), typeof(string), typeof(DictionaryPage), "", BindingMode.OneWay, propertyChanged: (bindable, oldValue, newValue) =>
             {
-                _Html = value;
-                var labels = Helper.Helpers.XhtmlToFormattedString(value);
-                foreach (var item in labels) layoutMain.Children.Add(item);
-            }
-        }
+                (bindable as DictionaryPage)?.UpdateHtml();
+            });
+
         public string DictionaryName
         {
-            get => labelDictionaryName.Text;
-            set
-            {
-                labelDictionaryName.IsVisible = !string.IsNullOrWhiteSpace(value);
-                labelDictionaryName.Text = value;
-            }
+            get => (string)GetValue(DictionaryNameProperty);
+            set => SetValue(DictionaryNameProperty, value);
         }
+
+        public static readonly BindableProperty DictionaryNameProperty =
+            BindableProperty.Create(nameof(DictionaryName), typeof(string), typeof(DictionaryPage), "", BindingMode.OneWay, propertyChanged: (bindable, oldValue, newValue) =>
+            {
+                (bindable as DictionaryPage).DictionaryName = newValue.ToString();
+            });
+
+
     }
 }

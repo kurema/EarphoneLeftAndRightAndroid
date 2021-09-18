@@ -50,8 +50,9 @@
                     <StackLayout>
                         <Label Style="{StaticResource GroupHeader}" Text="{x:Static r:AppResources.Profile_Contact}" IsVisible="{Binding Source={Reference Links},Path=Children,Converter={StaticResource AnyVC},ConverterParameter=True:False}" />
                         <StackLayout x:Name="Links" />
-                        <Label Style="{StaticResource GroupHeader}" Text="{x:Static r:AppResources.Profile_Support}" />
-                        <Button HorizontalOptions="Start" Text="{x:Static r:AppResources.Profile_GitHubSponsors}" Command="{Binding AuthorInformation.OpenDonationCommand}"/>
+                        <Label Style="{StaticResource GroupHeader}" Text="{x:Static r:AppResources.Profile_Support_Title}" />
+                        <Button HorizontalOptions="Start" Text="{x:Static r:AppResources.Profile_Support_Button
+                            }" Command="{Binding AuthorInformation.OpenDonationCommand}"/>
                     </StackLayout>
                 </Frame>
             </StackLayout>

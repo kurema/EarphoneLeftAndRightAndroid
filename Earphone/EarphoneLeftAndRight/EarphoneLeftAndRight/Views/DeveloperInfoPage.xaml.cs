@@ -164,7 +164,7 @@ namespace EarphoneLeftAndRight.Views
                 {
                     try
                     {
-                        await Launcher.OpenAsync(new Uri(o.ToString()));
+                        await Browser.OpenAsync(new Uri(o.ToString()));
                     }
                     catch { }
                 });
@@ -240,7 +240,7 @@ namespace EarphoneLeftAndRight.Views
                                 {
                                     if (item2.Src != null)
                                     {
-                                        try { await Launcher.OpenAsync(new Uri(item2.Src)); }
+                                        try { await Browser.OpenAsync(new Uri(item2.Src)); }
                                         catch
                                         {
                                         }
@@ -296,7 +296,7 @@ namespace EarphoneLeftAndRight.Views
                     {
                         try
                         {
-                            await Launcher.OpenAsync(new Uri(Src));
+                            await Browser.OpenAsync(new Uri(Src));
                         }
                         catch { }
                     });

@@ -16,6 +16,10 @@ namespace EarphoneLeftAndRight.ViewModels
             Title = Resx.AppResources.Play_Title;
             OpenWebCommand = new Command(async a => await Browser.OpenAsync(a.ToString()));
             SpeakCommand = new Command(Speak);
+            OpenDictionaryCommand = new Command(async a =>
+            {
+                await Shell.Current.GoToAsync($"///{nameof(Views.DictionaryTabbed)}?{nameof(ViewModels.DictionaryTabbedViewModel.SelectedItemId)}={a?.ToString() ?? ""}");
+            });
         }
 
         private async static void Speak(object a)
@@ -41,6 +45,8 @@ namespace EarphoneLeftAndRight.ViewModels
 
         public ICommand OpenWebCommand { get; }
         public ICommand SpeakCommand { get; }
+
+        public ICommand OpenDictionaryCommand { get; }
 
     }
 }

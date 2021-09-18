@@ -6,7 +6,14 @@
              Title="{x:Static r:AppResources.Dict_Header}"
              BackgroundColor="{AppThemeBinding Default=White,Light=White,Dark=Black}"
              xmlns:controls="clr-namespace:EarphoneLeftAndRight.Views"
+             xmlns:vc="clr-namespace:EarphoneLeftAndRight.ValueConverters"
+             x:Name="contentPage"
              >
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <vc:NullOrEmptyStringToTextValueConverter x:Key="nesvc"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -16,7 +23,10 @@
             <ScrollView Grid.Row="1">
                 <StackLayout>
                     <StackLayout x:Name="layoutMain" Margin="15"/>
-                    <Label x:Name="labelDictionaryName" HorizontalOptions="Center" IsVisible="False"/>
+                    <Label x:Name="labelDictionaryName" HorizontalOptions="Center"
+                           IsVisible="{Binding Source={Reference contentPage},Path=DictionaryName,Converter={StaticResource nesvc},ConverterParameter=False:True}" 
+                           Text="{Binding Source={Reference contentPage},Path=DictionaryName}" 
+                           />
                 </StackLayout>
             </ScrollView>
             <controls:AdMobBanner HeightRequest="51" HorizontalOptions="Fill"  WidthRequest="320" Grid.Row="0" />

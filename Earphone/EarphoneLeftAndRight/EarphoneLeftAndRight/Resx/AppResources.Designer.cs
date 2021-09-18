@@ -285,11 +285,20 @@ namespace EarphoneLeftAndRight.Resx {
         }
         
         /// <summary>
-        ///   Support に類似しているローカライズされた文字列を検索します。
+        ///   Open に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string Profile_Support {
+        internal static string Profile_Support_Button {
             get {
-                return ResourceManager.GetString("Profile.Support", resourceCulture);
+                return ResourceManager.GetString("Profile.Support.Button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Support Us に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Profile_Support_Title {
+            get {
+                return ResourceManager.GetString("Profile.Support.Title", resourceCulture);
             }
         }
         

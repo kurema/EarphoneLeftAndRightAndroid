@@ -11,8 +11,8 @@ jobs:
       run: |
         cd Earphone
         nuget restore
-        msbuild EarphoneLeftAndRight/EarphoneLeftAndRight.Android/EarphoneLeftAndRight.Android.csproj /verbosity:normal /t:Rebuild /t:PackageForAndroid /t:SignAndroidPackage /p:Configuration=Debug 
+        msbuild EarphoneLeftAndRight/EarphoneLeftAndRight.Android/EarphoneLeftAndRight.Android.csproj /verbosity:normal /t:Rebuild /t:PackageForAndroid /t:SignAndroidPackage /p:Configuration=Release 
     - uses: actions/upload-artifact@v2
       with:
         name: Android App
-        path: Earphone/EarphoneLeftAndRight/EarphoneLeftAndRight.Android/bin/Debug/com.github.kurema.earphoneleftandright-Signed.apk
+        path: Earphone/EarphoneLeftAndRight/EarphoneLeftAndRight.Android/bin/Release/com.github.kurema.earphoneleftandright-Signed.apk

@@ -18,6 +18,7 @@ namespace EarphoneLeftAndRight.Helper
                 var result = new List<Label>();
                 var cString = new FormattedString();
                 var cSpan = new Span() { Text = string.Empty }; // c is current.
+                double basicFontSize = new Label().FontSize;
                 xr.ReadToFollowing("body");
 
                 void CloseSpan()
@@ -65,6 +66,14 @@ namespace EarphoneLeftAndRight.Helper
                                     break;
                                 case "HR":
                                     CloseString();
+                                    break;
+                                case "SMALL":
+                                    CloseSpan();
+                                    cSpan = new Span()
+                                    {
+                                        Text = string.Empty,
+                                        FontSize = basicFontSize * 0.6,
+                                    };
                                     break;
                             }
                             break;

@@ -13,15 +13,17 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using EarphoneLeftAndRight.Views;
 using EarphoneLeftAndRight.Droid.Renderers;
+using Android.Gms.Ads;
 
 //https://qiita.com/t-miyake/items/3f92a6601848e5b21de4
 
-[assembly: ExportRenderer(typeof(AdMobBanner),typeof(AdMobBannerRenderer))]
+[assembly: ExportRenderer(typeof(AdMobBanner), typeof(AdMobBannerRenderer))]
 namespace EarphoneLeftAndRight.Droid.Renderers
 {
     public class AdMobBannerRenderer : ViewRenderer<AdMobBanner, Android.Gms.Ads.AdView>
     {
-        public const string AdUnitId = "ca-app-pub-3940256099942544/6300978111";
+        public const string AdUnitIdBanner = "ca-app-pub-3940256099942544/6300978111";
+
 
         public AdMobBannerRenderer(Context context) : base(context)
         {
@@ -31,17 +33,38 @@ namespace EarphoneLeftAndRight.Droid.Renderers
         {
             base.OnElementChanged(e);
 
-            if(Control is null)
+            if (Control is null)
             {
-                var adMobBanner = new Android.Gms.Ads.AdView(Context);
-                adMobBanner.AdSize = Android.Gms.Ads.AdSize.Fluid;
-                adMobBanner.AdUnitId = AdUnitId;
+                if (e.NewElement.IsAdaptive) {
+                    //https://stackoverflow.com/questions/66661164/xamarin-forms-admob-adaptive-banner-ad-android
+                    var w = (int)(Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Width / Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Density);
+                    var adView = new AdView(Context)
+                    {
+                        AdUnitId = AdUnitIdBanner,
+                        LayoutParameters = new LinearLayout.LayoutParams(LayoutParams.WrapContent, LayoutParams.WrapContent),
+                        AdSize = AdSize.GetCurrentOrientationAnchoredAdaptiveBannerAdSize(Context, w),
+                    };
 
-                var reqbuilder = new Android.Gms.Ads.AdRequest.Builder();
-                adMobBanner.LoadAd(reqbuilder.Build());
+                    var reqbuilder = new AdRequest.Builder();
+                    adView.LoadAd(reqbuilder.Build());
 
-                SetNativeControl(adMobBanner);
+                    SetNativeControl(adView);
+                }
+                else
+                {
+                    var adMobBanner = new AdView(Context)
+                    {
+                        AdSize = AdSize.Fluid,
+                        AdUnitId = AdUnitIdBanner
+                    };
+
+                    var reqbuilder = new AdRequest.Builder();
+                    adMobBanner.LoadAd(reqbuilder.Build());
+
+                    SetNativeControl(adMobBanner);
+                }
             }
         }
+
     }
 }

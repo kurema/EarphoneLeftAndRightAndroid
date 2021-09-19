@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Config.Menu.About.Developer.Desc" xml:space="preserve">
+    <value>開発者に関する詳細情報</value>
+  </data>
+  <data name="Config.Menu.About.Developer.Title" xml:space="preserve">
+    <value>開発者</value>
+  </data>
+  <data name="Config.Menu.About.LicenseApp.Desc" xml:space="preserve">
+    <value>このアプリのライセンスを表示</value>
+  </data>
+  <data name="Config.Menu.About.LicenseApp.Title" xml:space="preserve">
+    <value>ライセンス</value>
+  </data>
+  <data name="Config.Menu.About.LicenseOSS.Desc" xml:space="preserve">
+    <value>オープンソースソフトウェアに関するライセンスの詳細</value>
+  </data>
+  <data name="Config.Menu.About.LicenseOSS.Title" xml:space="preserve">
+    <value>オープンソースライセンス</value>
+  </data>
+  <data name="Config.Menu.About.Title" xml:space="preserve">
+    <value>情報</value>
+  </data>
+  <data name="Config.Title" xml:space="preserve">
+    <value>情報</value>
+  </data>
+  <data name="Dict.Dict.Title" xml:space="preserve">
+    <value>大日本国語辞典 (1919年)</value>
+  </data>
+  <data name="Dict.Header" xml:space="preserve">
+    <value>辞書</value>
+  </data>
+  <data name="Dict.Left.Html" xml:space="preserve">
+    <value>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;左&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;b&gt;ひ-たり&lt;/b&gt; &lt;b&gt;一人&lt;/b&gt; (名)&lt;br/&gt;
+ひとり(一人)に同じ。神武紀「えみしを毗儾利&lt;small&gt;(ヒダリ)&lt;/small&gt;、ももな人」
+&lt;hr /&gt;
+&lt;b&gt;ひだり&lt;/b&gt; &lt;b&gt;左&lt;/b&gt; (名)&lt;br/&gt;
+❶日の出づる方に向かひて北に當たる方。(右の對)&lt;br /&gt;
+萬&lt;small&gt;九&lt;/small&gt;「わぎもこが釧にあらなむ、左&lt;small&gt;(ヒダリ)&lt;/small&gt;手の我が奥の手にまきていなましを」
+新六帖&lt;small&gt;四&lt;/small&gt;「左藤右櫻とてとりなれし、かざしの花も昔なりけり」&lt;br /&gt;
+❷ひだりの手。ひだりて。&lt;br /&gt;
+狂言&lt;small&gt;鱸庖丁&lt;/small&gt;「ひだりを以て、五盃のうでくれさしめ」
+同&lt;small&gt;算勘聟&lt;/small&gt;「右の手の指が五つ、左が五つ、合せて十」&lt;br /&gt;
+❸酒を飲むこと。&lt;br /&gt;
+&lt;b&gt;左 が きく&lt;/b&gt; 左利 能く酒をのむ。飲酒の量人並より多し。&lt;br /&gt;
+&lt;b&gt;ひだり も みぎ も&lt;/b&gt; 左右 左なるも右なるも。かれもこれも。いづれも。どちらも。&lt;br /&gt;
+榮華&lt;small&gt;月宴&lt;/small&gt;「宮たち皆さまざま美しう、いづ方にもおはしますを、うへ左も右もとぞ思召さるるが内にも」&lt;br /&gt;
+&lt;b&gt;ひだり を きかす&lt;/b&gt; 利左 酒を好みて飲む。&lt;br /&gt;
+(諺)&lt;b&gt;左は勝手、右は得手&lt;/b&gt; いづれにしても都合よしのこと。
+&lt;hr /&gt;
+&lt;b&gt;ぴたり&lt;/b&gt; (副)&lt;br /&gt;
+❶遽かに止まるさまにいふ語。&lt;br /&gt;
+❷物の密著するさま、又、よく適合するさまにいふ語。&lt;br /&gt;
+❸丁度出逢ふさまにいふ語。
+&lt;hr /&gt;
+補足：&lt;br /&gt;
+「遽か」は「にわか」。急に。速やかに。&lt;br /&gt;
+❶❷❸は原文では■囲みの漢数字。他改行も適宜変更した。&lt;br /&gt;
+書名：&lt;br /&gt;
+神武紀 - 『日本書紀』神武紀&lt;br /&gt;
+萬 - 『万葉集』&lt;br /&gt;
+新六帖 - 『新撰六帖』&lt;br /&gt;
+狂言 - 『狂言記』&lt;br /&gt;
+榮華 - 『栄花物語』
+&lt;/body&gt;
+&lt;/html&gt;</value>
+  </data>
+  <data name="Dict.Left.Title" xml:space="preserve">
+    <value>左</value>
+  </data>
+  <data name="Dict.Right.Html" xml:space="preserve">
+    <value>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;右&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;b&gt;みぎ&lt;/b&gt; &lt;b&gt;右&lt;/b&gt; (名)&lt;br/&gt;
+❶人の、朝、日の出づる方に面して立てる時、其の南の方。みぎり。(左の對)&lt;br /&gt;
+枕&lt;small&gt;七&lt;/small&gt;「なぞなぞあはせ&lt;small&gt;中略&lt;/small&gt;右の方の人」
+榮華&lt;small&gt;着るは佗しと歎く女房&lt;/small&gt;「けさ見れば歎きあかせる涙には、右の袂ぞあらはれにける」&lt;br/&gt;
+❷二つを比べてすぐれてある方。もと支那にて、座席に、右を貴しとせしより出づ。&lt;br /&gt;
+継體紀「正直仁勇、通&lt;small&gt;二&lt;/small&gt;於兵事&lt;small&gt;一&lt;/small&gt;、今無&lt;small&gt;レ&lt;/small&gt;出&lt;small&gt;二&lt;/small&gt;於麁鹿火右&lt;small&gt;(ミギ)&lt;/small&gt;&lt;small&gt;一&lt;/small&gt;」&lt;br/&gt;
+❸文章にて、前に書きある方。前條。前件。&lt;br /&gt;
+(諺)&lt;b&gt;右から左&lt;/b&gt; 即座にとりやりすること。&lt;br /&gt;
+(諺)&lt;b&gt;右といへば左&lt;/b&gt; 殊更に反対すること。&lt;br /&gt;
+(諺)&lt;b&gt;右が京道、左は伊勢道&lt;/b&gt; 始めは聊かの差なれど、末には大なる相違を生ずるに至る譬へ。&lt;br /&gt;
+&lt;hr/&gt;
+&lt;b&gt;みぎ&lt;/b&gt; (名)&lt;br/&gt;
+鹿・牛などのにれかみたるもの。幾度も反し噛みたるもの。萬&lt;small&gt;十六&lt;/small&gt;「わが美義&lt;small&gt;(ミギ)&lt;/small&gt;はみしほのはやし」
+&lt;hr /&gt;
+補足：&lt;br /&gt;
+「にれかむ」は反芻のこと。鹿・牛・羊などが、一度飲み込んだ食べ物を再び口に戻して噛むこと。&lt;br /&gt;
+❶❷❸は原文では■囲みの漢数字。他改行も適宜変更した。&lt;br /&gt;
+書名：&lt;br /&gt;
+継體紀 - 『日本書紀』継体紀&lt;br /&gt;
+枕 - 『枕草子』&lt;br /&gt;
+榮華 - 『栄花物語』
+&lt;/body&gt;
+&lt;/html&gt;</value>
+  </data>
+  <data name="Dict.Right.Title" xml:space="preserve">
+    <value>右</value>
+  </data>
+  <data name="License.DetailPage" xml:space="preserve">
+    <value>詳細</value>
+  </data>
+  <data name="License.Open" xml:space="preserve">
+    <value>開く</value>
+  </data>
+  <data name="License.Title" xml:space="preserve">
+    <value>ライセンス</value>
+  </data>
+  <data name="More.OpenCompass.Title" xml:space="preserve">
+    <value>あなたは左？ 右？</value>
+  </data>
+  <data name="More.OpenCompass.URL" xml:space="preserve">
+    <value>https://www.idrlabs.com/jp/political-coordinates/test.php</value>
+  </data>
+  <data name="More.OpenDictionary.Left" xml:space="preserve">
+    <value>「左」とは？</value>
+  </data>
+  <data name="More.OpenDictionary.Right" xml:space="preserve">
+    <value>「右」とは？</value>
+  </data>
+  <data name="More.Title" xml:space="preserve">
+    <value>追加情報</value>
+  </data>
+  <data name="Play.Title" xml:space="preserve">
+    <value>テスト</value>
+  </data>
+  <data name="Profile.Accounts.Github.ID" xml:space="preserve">
+    <value>kurema</value>
+  </data>
+  <data name="Profile.Bio" xml:space="preserve">
+    <value>紹介</value>
+  </data>
+  <data name="Profile.Contact" xml:space="preserve">
+    <value>リンク</value>
+  </data>
+  <data name="Profile.Donation.Header" xml:space="preserve">
+    <value>寄付</value>
+  </data>
+  <data name="Profile.Email.Header" xml:space="preserve">
+    <value>メール</value>
+  </data>
+  <data name="Profile.Followers.Header" xml:space="preserve">
+    <value>Followers</value>
+  </data>
+  <data name="Profile.Projects.Header" xml:space="preserve">
+    <value>Projects</value>
+  </data>
+  <data name="Profile.Support.Button" xml:space="preserve">
+    <value>開く</value>
+  </data>
+  <data name="Profile.Support.Title" xml:space="preserve">
+    <value>寄付</value>
+  </data>
+  <data name="Profile.Title" xml:space="preserve">
+    <value>プロフィール</value>
+  </data>
+</root>

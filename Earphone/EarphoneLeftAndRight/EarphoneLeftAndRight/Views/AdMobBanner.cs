@@ -8,6 +8,8 @@ namespace EarphoneLeftAndRight.Views
 {
     public class AdMobBanner : ContentView
     {
+        public bool IsAdaptive { get; set; } = true;
+
         public AdMobBanner()
         {
         }

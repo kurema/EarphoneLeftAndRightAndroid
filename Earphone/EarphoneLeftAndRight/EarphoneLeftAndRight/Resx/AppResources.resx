@@ -117,6 +117,33 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Config.Menu.About.Developer.Desc" xml:space="preserve">
+    <value>Know more about the developer.</value>
+  </data>
+  <data name="Config.Menu.About.Developer.Title" xml:space="preserve">
+    <value>Developer</value>
+  </data>
+  <data name="Config.Menu.About.LicenseApp.Desc" xml:space="preserve">
+    <value>Display license of this application.</value>
+  </data>
+  <data name="Config.Menu.About.LicenseApp.LicenseUrl" xml:space="preserve">
+    <value>https://github.com/kurema/EarphoneLeftAndRightAndroid/blob/master/LICENSE</value>
+  </data>
+  <data name="Config.Menu.About.LicenseApp.Title" xml:space="preserve">
+    <value>License</value>
+  </data>
+  <data name="Config.Menu.About.LicenseOSS.Desc" xml:space="preserve">
+    <value>License details for open-source software.</value>
+  </data>
+  <data name="Config.Menu.About.LicenseOSS.Title" xml:space="preserve">
+    <value>Open-source licenses</value>
+  </data>
+  <data name="Config.Menu.About.Title" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Config.Title" xml:space="preserve">
+    <value>About</value>
+  </data>
   <data name="Dict.Dict.Title" xml:space="preserve">
     <value>Webster's Dictionary, 1913</value>
   </data>
@@ -344,9 +371,6 @@ All experience hath shown that mankind are more disposed to suffer while evils a
   </data>
   <data name="Profile.Followers.Header" xml:space="preserve">
     <value>Followers</value>
-  </data>
-  <data name="Profile.GitHubSponsors" xml:space="preserve">
-    <value>GitHub Sponsors</value>
   </data>
   <data name="Profile.Projects.Header" xml:space="preserve">
     <value>Projects</value>

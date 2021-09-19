@@ -45,7 +45,6 @@ namespace EarphoneLeftAndRight.ViewModels
 
         public ICommand OpenWebCommand { get; }
         public ICommand SpeakCommand { get; }
-
         public ICommand OpenDictionaryCommand { get; }
 
     }

@@ -41,7 +41,7 @@ namespace EarphoneLeftAndRight.Storages
                     nugets = License.GetNugetData(sr);
                 }
             }
-            catch
+            catch(Exception e)
             {
                 return new ObservableCollection<License.NugetData>();
             }

@@ -6,6 +6,34 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Fonts\MaterialIcons-Regular.ttf" />
+    <None Remove="Licenses\CsvHelper.txt" />
+    <None Remove="Licenses\EarphoneLeftAndRight.txt" />
+    <None Remove="Licenses\NETStandard.Library.txt" />
+    <None Remove="Licenses\nuget.csv" />
+    <None Remove="Licenses\Octokit.txt" />
+    <None Remove="Licenses\Plugin.GoogleUserMessagingPlatform.txt" />
+    <None Remove="Licenses\Xamarin.Essentials.txt" />
+    <None Remove="Licenses\Xamarin.Forms.txt" />
+    <None Remove="Licenses\Xamarin.Google.UserMessagingPlatform.txt" />
+    <None Remove="Licenses\Xamarin.GooglePlayServices.Ads.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Fonts\MaterialIcons-Regular.ttf" />
+    <EmbeddedResource Include="Licenses\CsvHelper.txt" />
+    <EmbeddedResource Include="Licenses\EarphoneLeftAndRight.txt" />
+    <EmbeddedResource Include="Licenses\NETStandard.Library.txt" />
+    <EmbeddedResource Include="Licenses\nuget.csv" />
+    <EmbeddedResource Include="Licenses\Octokit.txt" />
+    <EmbeddedResource Include="Licenses\Plugin.GoogleUserMessagingPlatform.txt" />
+    <EmbeddedResource Include="Licenses\Xamarin.Essentials.txt" />
+    <EmbeddedResource Include="Licenses\Xamarin.Forms.txt" />
+    <EmbeddedResource Include="Licenses\Xamarin.Google.UserMessagingPlatform.txt" />
+    <EmbeddedResource Include="Licenses\Xamarin.GooglePlayServices.Ads.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CsvHelper" Version="27.1.1" />
     <PackageReference Include="Octokit" Version="0.50.0" />
     <PackageReference Include="Plugin.GoogleUserMessagingPlatform" Version="0.0.7-alpha" />

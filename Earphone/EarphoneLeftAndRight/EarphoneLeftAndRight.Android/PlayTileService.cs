@@ -19,7 +19,7 @@ namespace EarphoneLeftAndRight.Droid
     [Service(Name = "com.github.kurema.earphoneleftandright.PlayService",
         Permission = Android.Manifest.Permission.BindQuickSettingsTile,
         Label = "@string/tile_play_name",
-        Icon = "@drawable/ic_tile_play")]
+        Icon = "@drawable/outline_earbuds_24")]
     [IntentFilter(new[] { ActionQsTile })]
     public class PlayTileService : TileService
     {

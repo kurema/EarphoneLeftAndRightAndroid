@@ -227,14 +227,13 @@ namespace EarphoneLeftAndRight.Views
             {
                 get => new Command((p) =>
                 {
-                    new ConfigPage();
-                    var result = new ObservableCollection<ConfigPage.SettingItems>();
+                    var result = new List<ViewModels.SettingItems>();
                     foreach (var item in Donations)
                     {
-                        var items = new ConfigPage.SettingItems(item.Title);
+                        var items = new ViewModels.SettingItems(item.Title);
                         foreach (var item2 in item)
                         {
-                            items.Add(new ConfigPage.SettingItem(item2.Title, string.IsNullOrWhiteSpace(item2.Address) ? item2.Src : item2.Address)
+                            items.Add(new ViewModels.SettingItem(item2.Title, string.IsNullOrWhiteSpace(item2.Address) ? item2.Src : item2.Address)
                             {
                                 Action = async (w) =>
                                 {

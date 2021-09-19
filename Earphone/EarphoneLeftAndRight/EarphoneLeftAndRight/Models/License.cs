@@ -67,8 +67,11 @@ namespace EarphoneLeftAndRight.Models
             public bool AllVersions { get; set; }
             [Name("LicenseUrl")]
             public string LicenseUrl { get; set; }
+            [Ignore]
             public string LicenseText { get; set; }
+            [Ignore]
             public string Name => Id;
+            [Ignore]
             public string ProjectUrl => "https://www.nuget.org/packages/" + Id;
         }
     }

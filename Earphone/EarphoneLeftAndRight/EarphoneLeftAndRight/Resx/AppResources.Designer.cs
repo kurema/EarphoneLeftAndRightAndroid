@@ -61,6 +61,87 @@ namespace EarphoneLeftAndRight.Resx {
         }
         
         /// <summary>
+        ///   Know more about the developer. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Config_Menu_About_Developer_Desc {
+            get {
+                return ResourceManager.GetString("Config.Menu.About.Developer.Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Developer に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Config_Menu_About_Developer_Title {
+            get {
+                return ResourceManager.GetString("Config.Menu.About.Developer.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Display license of this application. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Config_Menu_About_LicenseApp_Desc {
+            get {
+                return ResourceManager.GetString("Config.Menu.About.LicenseApp.Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   https://github.com/kurema/EarphoneLeftAndRightAndroid/blob/master/LICENSE に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Config_Menu_About_LicenseApp_LicenseUrl {
+            get {
+                return ResourceManager.GetString("Config.Menu.About.LicenseApp.LicenseUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   License に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Config_Menu_About_LicenseApp_Title {
+            get {
+                return ResourceManager.GetString("Config.Menu.About.LicenseApp.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   License details for open-source software. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Config_Menu_About_LicenseOSS_Desc {
+            get {
+                return ResourceManager.GetString("Config.Menu.About.LicenseOSS.Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Open-source licenses に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Config_Menu_About_LicenseOSS_Title {
+            get {
+                return ResourceManager.GetString("Config.Menu.About.LicenseOSS.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   About に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Config_Menu_About_Title {
+            get {
+                return ResourceManager.GetString("Config.Menu.About.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   About に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Config_Title {
+            get {
+                return ResourceManager.GetString("Config.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Webster&apos;s Dictionary, 1913 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Dict_Dict_Title {
@@ -263,15 +344,6 @@ namespace EarphoneLeftAndRight.Resx {
         internal static string Profile_Followers_Header {
             get {
                 return ResourceManager.GetString("Profile.Followers.Header", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   GitHub Sponsors に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        internal static string Profile_GitHubSponsors {
-            get {
-                return ResourceManager.GetString("Profile.GitHubSponsors", resourceCulture);
             }
         }
         

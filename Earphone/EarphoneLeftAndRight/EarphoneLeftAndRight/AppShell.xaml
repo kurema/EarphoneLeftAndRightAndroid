@@ -32,10 +32,23 @@
     </Shell.Resources>
 
     <TabBar>
-        <ShellContent Title="{x:Static r:AppResources.Play_Title}" Icon="icon_about.png" Route="PlayPage" ContentTemplate="{DataTemplate local:PlayPage}"/>
-        <ShellContent Title="{x:Static r:AppResources.Dict_Header}" Icon="icon_about.png" Route="DictionaryTabbed" ContentTemplate="{DataTemplate local:DictionaryTabbed}"/>
-        <ShellContent Title="Setting" Icon="icon_about.png" Route="SettingPage" ContentTemplate="{DataTemplate local:ConfigPage}" />
-        <ShellContent Title="About" Icon="icon_about.png" Route="AboutPage" ContentTemplate="{DataTemplate local:DeveloperInfoPage}" />
+        <ShellContent Title="{x:Static r:AppResources.Play_Title}" Route="PlayPage" ContentTemplate="{DataTemplate local:PlayPage}">
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="Material" Glyph="&#xf003;" />
+            </ShellContent.Icon>
+        </ShellContent>
+        <ShellContent Title="{x:Static r:AppResources.Dict_Header}" Route="DictionaryTabbed" ContentTemplate="{DataTemplate local:DictionaryTabbed}">
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="Material" Glyph="&#xe873;" />
+            </ShellContent.Icon>
+        </ShellContent>
+        <ShellContent Title="{x:Static r:AppResources.Config_Title}" Route="SettingPage" ContentTemplate="{DataTemplate local:ConfigPage}" >
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="Material" Glyph="&#xe88e;" />
+            </ShellContent.Icon>
+
+        </ShellContent>
+        <!--<ShellContent Title="About" Icon="icon_about.png" Route="AboutPage" ContentTemplate="{DataTemplate local:DeveloperInfoPage}" />-->
     </TabBar>
 
     <!--

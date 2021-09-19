@@ -57,27 +57,44 @@ namespace EarphoneLeftAndRight.ViewModels
                                 SetItems(
                                     new SettingItems(AppResources.Config_Menu_About_Title)
                                     {
-                                    new SettingItem(AppResources.Config_Menu_About_Developer_Title, AppResources.Config_Menu_About_Developer_Desc)
-                                    {
-                                        Action= async (a)=>{
-                                            await Shell.Current.GoToAsync($"/{nameof( Views.DeveloperInfoPage)}");
-                                        }
-                                    },
-                                    new SettingItem(AppResources.Config_Menu_About_LicenseApp_Title, AppResources.Config_Menu_About_LicenseApp_Desc){
-                                        Action = async (a) =>
+                                        new SettingItem(AppResources.Config_Menu_About_Developer_Title, AppResources.Config_Menu_About_Developer_Desc)
                                         {
-                                            await Navigation.PushAsync(new Views.LicenseInfoPage(new Models.License.NormalLicense(){
-                                                LicenseText =await Storages.LicenseStorage.LoadLicenseText(nameof(EarphoneLeftAndRight))
-                                                ,Name=nameof(EarphoneLeftAndRight)
-                                                ,ProjectName=nameof(EarphoneLeftAndRight)
-                                                ,LicenseUrl=AppResources.Config_Menu_About_LicenseApp_LicenseUrl
-                                            }));
-                                        }
+                                            Action= async (a)=>{
+                                                await Shell.Current.GoToAsync($"/{nameof( Views.DeveloperInfoPage)}");
+                                            }
+                                        },
+                                        new SettingItem(AppResources.Config_Menu_About_LicenseApp_Title, AppResources.Config_Menu_About_LicenseApp_Desc){
+                                            Action = async (a) =>
+                                            {
+                                                await Navigation.PushAsync(new Views.LicenseInfoPage(new Models.License.NormalLicense(){
+                                                    LicenseText =await Storages.LicenseStorage.LoadLicenseText(nameof(EarphoneLeftAndRight))
+                                                    ,Name=nameof(EarphoneLeftAndRight)
+                                                    ,ProjectName=nameof(EarphoneLeftAndRight)
+                                                    ,LicenseUrl=AppResources.Config_Menu_About_LicenseApp_LicenseUrl
+                                                }));
+                                            }
+                                        },
+                                        new SettingItem(AppResources.Config_Menu_About_LicenseOSS_Title,AppResources.Config_Menu_About_LicenseOSS_Desc)
+                                        {
+                                            Children=licenseChildren
+                                        },
                                     },
-                                    new SettingItem(AppResources.Config_Menu_About_LicenseOSS_Title,AppResources.Config_Menu_About_LicenseOSS_Desc)
+                                    new SettingItems(AppResources.Config_Menu_OtherApps_Title)
                                     {
-                                        Children=licenseChildren
-                                    },
+                                        new SettingItem(AppResources.Config_Menu_OtherApps_MobileWB_Name, AppResources.Config_Menu_OtherApps_MobileWB_Desc)
+                                        {
+                                            Action = async (a) =>
+                                            {
+                                                await Xamarin.Essentials.Launcher.OpenAsync("https://play.google.com/store/apps/details?id=com.github.kurema.WordbookImpressApp");
+                                            }
+                                        },
+                                        new SettingItem(AppResources.Config_Menu_OtherApps_BDManager_Name, AppResources.Config_Menu_OtherApps_BDManager_Desc)
+                                        {
+                                            Action = async (a) =>
+                                            {
+                                                await Xamarin.Essentials.Launcher.OpenAsync("https://play.google.com/store/apps/details?id=com.github.kurema.BDVideoLibraryManager");
+                                            }
+                                        },
                                     }
                                     );
                             }).Invoke();

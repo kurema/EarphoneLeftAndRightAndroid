@@ -141,6 +141,21 @@
   <data name="Config.Menu.About.Title" xml:space="preserve">
     <value>About</value>
   </data>
+  <data name="Config.Menu.OtherApps.BDManager.Desc" xml:space="preserve">
+    <value>My first Xamarin Forms app.</value>
+  </data>
+  <data name="Config.Menu.OtherApps.BDManager.Name" xml:space="preserve">
+    <value>BD Library Manager</value>
+  </data>
+  <data name="Config.Menu.OtherApps.MobileWB.Desc" xml:space="preserve">
+    <value>A wordbook app.</value>
+  </data>
+  <data name="Config.Menu.OtherApps.MobileWB.Name" xml:space="preserve">
+    <value>Mobile Wordbook</value>
+  </data>
+  <data name="Config.Menu.OtherApps.Title" xml:space="preserve">
+    <value>Other Apps</value>
+  </data>
   <data name="Config.Title" xml:space="preserve">
     <value>About</value>
   </data>
@@ -326,6 +341,15 @@ All experience hath shown that mankind are more disposed to suffer while evils a
   </data>
   <data name="Dict.Right.Title" xml:space="preserve">
     <value>Right</value>
+  </data>
+  <data name="Dict.WebDic.Left.Url" xml:space="preserve">
+    <value>https://www.merriam-webster.com/dictionary/left</value>
+  </data>
+  <data name="Dict.WebDic.Right.Url" xml:space="preserve">
+    <value>https://www.merriam-webster.com/dictionary/right</value>
+  </data>
+  <data name="Dict.WebDic.Text" xml:space="preserve">
+    <value>Browse the latest definition</value>
   </data>
   <data name="License.DetailPage" xml:space="preserve">
     <value>Detail</value>

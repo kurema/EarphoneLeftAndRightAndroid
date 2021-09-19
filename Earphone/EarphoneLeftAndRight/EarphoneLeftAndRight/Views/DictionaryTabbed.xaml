@@ -15,7 +15,7 @@
     </TabbedPage.BindingContext>
     <TabbedPage.ItemTemplate>
         <DataTemplate>
-            <v:DictionaryPage Title="{Binding Title}" Html="{Binding Html}" DictionaryName="{Binding DictionaryTitle}"/>
+            <v:DictionaryPage Title="{Binding Title}" Html="{Binding Html}" DictionaryName="{Binding DictionaryTitle}" OpenWebDictionaryCommand="{Binding OpenWebDictionaryCommand}"/>
         </DataTemplate>
     </TabbedPage.ItemTemplate>
 </TabbedPage>

@@ -6,7 +6,6 @@ using EarphoneLeftAndRight.Resx;
 using System.Linq;
 using Xamarin.Forms;
 
-
 namespace EarphoneLeftAndRight.ViewModels
 {
     [QueryProperty(nameof(SelectedItemId), nameof(SelectedItemId))]
@@ -15,8 +14,8 @@ namespace EarphoneLeftAndRight.ViewModels
         public DictionaryTabbedViewModel()
         {
             Items.Clear();
-            Items.Add(new DictionaryViewModel() { Title = AppResources.Dict_Left_Title, DictionaryTitle = AppResources.Dict_Dict_Title, Html = AppResources.Dict_Left_Html, Id = "Left" });
-            Items.Add(new DictionaryViewModel() { Title = AppResources.Dict_Right_Title, DictionaryTitle = AppResources.Dict_Dict_Title, Html = AppResources.Dict_Right_Html, Id = "Right" });
+            Items.Add(new DictionaryViewModel() { Title = AppResources.Dict_Left_Title, DictionaryTitle = AppResources.Dict_Dict_Title, Html = AppResources.Dict_Left_Html, Id = "Left",WebDictionaryLink=AppResources.Dict_WebDic_Left_Url });
+            Items.Add(new DictionaryViewModel() { Title = AppResources.Dict_Right_Title, DictionaryTitle = AppResources.Dict_Dict_Title, Html = AppResources.Dict_Right_Html, Id = "Right", WebDictionaryLink = AppResources.Dict_WebDic_Right_Url });
             SelectedItem = Items[0];
         }
 

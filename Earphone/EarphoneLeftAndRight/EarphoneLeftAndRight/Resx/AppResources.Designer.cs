@@ -133,6 +133,51 @@ namespace EarphoneLeftAndRight.Resx {
         }
         
         /// <summary>
+        ///   My first Xamarin Forms app. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Config_Menu_OtherApps_BDManager_Desc {
+            get {
+                return ResourceManager.GetString("Config.Menu.OtherApps.BDManager.Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   BD Library Manager に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Config_Menu_OtherApps_BDManager_Name {
+            get {
+                return ResourceManager.GetString("Config.Menu.OtherApps.BDManager.Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   A wordbook app. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Config_Menu_OtherApps_MobileWB_Desc {
+            get {
+                return ResourceManager.GetString("Config.Menu.OtherApps.MobileWB.Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Mobile Wordbook に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Config_Menu_OtherApps_MobileWB_Name {
+            get {
+                return ResourceManager.GetString("Config.Menu.OtherApps.MobileWB.Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Other Apps に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Config_Menu_OtherApps_Title {
+            get {
+                return ResourceManager.GetString("Config.Menu.OtherApps.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   About に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Config_Title {
@@ -209,6 +254,33 @@ namespace EarphoneLeftAndRight.Resx {
         internal static string Dict_Right_Title {
             get {
                 return ResourceManager.GetString("Dict.Right.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   https://www.merriam-webster.com/dictionary/left に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Dict_WebDic_Left_Url {
+            get {
+                return ResourceManager.GetString("Dict.WebDic.Left.Url", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   https://www.merriam-webster.com/dictionary/right に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Dict_WebDic_Right_Url {
+            get {
+                return ResourceManager.GetString("Dict.WebDic.Right.Url", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Browse the latest definition に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Dict_WebDic_Text {
+            get {
+                return ResourceManager.GetString("Dict.WebDic.Text", resourceCulture);
             }
         }
         

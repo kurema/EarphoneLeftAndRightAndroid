@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Windows.Input;
+
 
 namespace EarphoneLeftAndRight.Views
 {
@@ -48,6 +50,13 @@ namespace EarphoneLeftAndRight.Views
                 (bindable as DictionaryPage).DictionaryName = newValue.ToString();
             });
 
+        public ICommand OpenWebDictionaryCommand
+        {
+            get => (ICommand)GetValue(OpenWebDictionaryCommandProperty);
+            set => SetValue(OpenWebDictionaryCommandProperty, value);
+        }
 
+        public static readonly BindableProperty OpenWebDictionaryCommandProperty =
+            BindableProperty.Create(nameof(OpenWebDictionaryCommand), typeof(ICommand), typeof(DictionaryPage), new Command(() => { }, () => false), BindingMode.OneWay);
     }
 }

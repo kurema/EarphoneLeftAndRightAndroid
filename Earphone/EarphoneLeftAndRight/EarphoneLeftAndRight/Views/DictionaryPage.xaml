@@ -23,6 +23,7 @@
                            IsVisible="{Binding Source={Reference contentPage},Path=DictionaryName,Converter={StaticResource nesvc},ConverterParameter=False:True}" 
                            Text="{Binding Source={Reference contentPage},Path=DictionaryName}" 
                            />
+                <Button Text="{x:Static r:AppResources.Dict_WebDic_Text}" Command="{Binding Source={Reference contentPage},Path=OpenWebDictionaryCommand}" Margin="15" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

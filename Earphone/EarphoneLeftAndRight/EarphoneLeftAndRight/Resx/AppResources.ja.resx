@@ -138,6 +138,21 @@
   <data name="Config.Menu.About.Title" xml:space="preserve">
     <value>情報</value>
   </data>
+  <data name="Config.Menu.OtherApps.BDManager.Desc" xml:space="preserve">
+    <value>BD録画情報をアプリで管理。</value>
+  </data>
+  <data name="Config.Menu.OtherApps.BDManager.Name" xml:space="preserve">
+    <value>BD録画管理</value>
+  </data>
+  <data name="Config.Menu.OtherApps.MobileWB.Desc" xml:space="preserve">
+    <value>高機能単語帳。</value>
+  </data>
+  <data name="Config.Menu.OtherApps.MobileWB.Name" xml:space="preserve">
+    <value>モバイル単語帳</value>
+  </data>
+  <data name="Config.Menu.OtherApps.Title" xml:space="preserve">
+    <value>他のアプリ</value>
+  </data>
   <data name="Config.Title" xml:space="preserve">
     <value>情報</value>
   </data>
@@ -213,6 +228,7 @@
 鹿・牛などのにれかみたるもの。幾度も反し噛みたるもの。萬&lt;small&gt;十六&lt;/small&gt;「わが美義&lt;small&gt;(ミギ)&lt;/small&gt;はみしほのはやし」
 &lt;hr /&gt;
 補足：&lt;br /&gt;
+「とりやり」は受け取ったり与えたりすること。&lt;br /&gt;
 「にれかむ」は反芻のこと。鹿・牛・羊などが、一度飲み込んだ食べ物を再び口に戻して噛むこと。&lt;br /&gt;
 ❶❷❸は原文では■囲みの漢数字。他改行も適宜変更した。&lt;br /&gt;
 書名：&lt;br /&gt;
@@ -224,6 +240,15 @@
   </data>
   <data name="Dict.Right.Title" xml:space="preserve">
     <value>右</value>
+  </data>
+  <data name="Dict.WebDic.Left.Url" xml:space="preserve">
+    <value>https://www.weblio.jp/content/%E5%B7%A6</value>
+  </data>
+  <data name="Dict.WebDic.Right.Url" xml:space="preserve">
+    <value>https://www.weblio.jp/content/%E5%8F%B3</value>
+  </data>
+  <data name="Dict.WebDic.Text" xml:space="preserve">
+    <value>ウェブ辞書</value>
   </data>
   <data name="License.DetailPage" xml:space="preserve">
     <value>詳細</value>

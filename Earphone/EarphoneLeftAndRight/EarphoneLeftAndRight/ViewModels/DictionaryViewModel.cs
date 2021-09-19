@@ -1,6 +1,8 @@
-﻿namespace EarphoneLeftAndRight.ViewModels
+﻿using System.Windows.Input;
+
+namespace EarphoneLeftAndRight.ViewModels
 {
-    public class DictionaryViewModel:BaseViewModel
+    public class DictionaryViewModel : BaseViewModel
     {
 
         private string _Id;
@@ -13,5 +15,27 @@
 
         private string _DictionaryTitle;
         public string DictionaryTitle { get => _DictionaryTitle; set => SetProperty(ref _DictionaryTitle, value); }
+
+
+        private string _WebDictionaryLink;
+
+        public DictionaryViewModel()
+        {
+            OpenWebDictionaryCommand = new Xamarin.Forms.Command(async () =>
+            {
+                if (!string.IsNullOrWhiteSpace(WebDictionaryLink))
+                {
+                    try
+                    {
+                        await Xamarin.Essentials.Browser.OpenAsync(WebDictionaryLink);
+                    }
+                    catch { }
+                }
+            });
+        }
+
+        public string WebDictionaryLink { get => _WebDictionaryLink; set => SetProperty(ref _WebDictionaryLink, value); }
+
+        public ICommand OpenWebDictionaryCommand { get; }
     }
 }

@@ -13,7 +13,7 @@
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView HorizontalOptions="Fill" VerticalOptions="Fill">
             <StackLayout>
                 <controls:AdMobBanner HeightRequest="100" HorizontalOptions="Fill"  WidthRequest="320" Grid.Row="0"  />
                 <StackLayout Margin="10,20,10,10">

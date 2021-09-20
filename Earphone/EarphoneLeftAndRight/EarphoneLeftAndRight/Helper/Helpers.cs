@@ -72,7 +72,7 @@ namespace EarphoneLeftAndRight.Helper
                                     cSpan = new Span()
                                     {
                                         Text = string.Empty,
-                                        FontSize = basicFontSize * 0.6,
+                                        FontSize = basicFontSize * 0.8,
                                     };
                                     break;
                             }

@@ -13,7 +13,7 @@
     <ContentPage.Resources>
         <vc:NullOrEmptyStringToTextValueConverter x:Key="nevc" />
     </ContentPage.Resources>
-    <ListView x:Name="MyListView"
+    <ListView x:Name="MyListView" HorizontalOptions="Fill" VerticalOptions="Fill"
               ItemSelected="MyListView_ItemSelected"
             ItemsSource="{Binding Items}"
              IsGroupingEnabled="True"

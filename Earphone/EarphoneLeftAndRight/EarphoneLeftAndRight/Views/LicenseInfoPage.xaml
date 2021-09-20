@@ -22,7 +22,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView HorizontalOptions="Fill" VerticalOptions="Fill">
             <StackLayout Padding="15">
                 <Label Margin="10" Text="{Binding Name}" Style="{DynamicResource Key=MyTitleStyle}" HorizontalOptions="Center"/>
                 <Frame Style="{StaticResource CardStyle}">

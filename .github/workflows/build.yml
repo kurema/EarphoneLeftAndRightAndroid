@@ -15,7 +15,7 @@ jobs:
         KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64_ENCODED }}
     - name: Get tag
       id: tag
-      if: github.event_name == 'push'
+      if: contains(github.ref, 'tags/v')
       uses: dawidd6/action-get-tag@v1
     - name: Replace Ad Unit ID
       run: |

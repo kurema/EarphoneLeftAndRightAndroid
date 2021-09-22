@@ -351,3 +351,4 @@ MigrationBackup/
 
 # Secrets
 Secrets.cs
+/Res/key/*

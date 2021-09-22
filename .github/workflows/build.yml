@@ -25,31 +25,31 @@ jobs:
         ADMOB_NEW: ${{ secrets.ADMOB_UNIT_ID_BANNER }}
     - name: Is tagged version
       id: tagged
-      run: echo yes
+      run: echo '::set-output name=tagged::yes'
       #https://pione30.hatenablog.com/entry/2021/02/05/015545
       if: contains(github.ref, 'tags/v')
     - name: android package format
       id: apf
       run: |
-        if "${{steps.tagged.outputs.result}}" -eq "yes"; then
-          echo "aab"
+        if "${{steps.tagged.outputs.tagged}}" -eq "yes"; then
+          echo '::set-output name=format::aab'
         else
-          echo "apk"
+          echo '::set-output name=format::apk'
         fi
     - name: Android
       run: |
         cd Earphone
         nuget restore
-        msbuild EarphoneLeftAndRight/EarphoneLeftAndRight.Android/EarphoneLeftAndRight.Android.csproj /verbosity:normal /t:Rebuild /t:PackageForAndroid /t:SignAndroidPackage /p:Configuration=Release /p:AndroidKeyStore=True /p:AndroidSigningKeyStore=github.keystore /p:AndroidSigningStorePass=${{ secrets.KEYSTORE_PASSWORD }} /p:AndroidSigningKeyAlias=github /p:AndroidSigningKeyPass=${{ secrets.KEYSTORE_PASSWORD }} /p:AndroidPackageFormat=${{steps.apf.outputs.result}}
+        msbuild EarphoneLeftAndRight/EarphoneLeftAndRight.Android/EarphoneLeftAndRight.Android.csproj /verbosity:normal /t:Rebuild /t:PackageForAndroid /t:SignAndroidPackage /p:Configuration=Release /p:AndroidKeyStore=True /p:AndroidSigningKeyStore=github.keystore /p:AndroidSigningStorePass=${{ secrets.KEYSTORE_PASSWORD }} /p:AndroidSigningKeyAlias=github /p:AndroidSigningKeyPass=${{ secrets.KEYSTORE_PASSWORD }} /p:AndroidPackageFormat=${{ steps.apf.outputs.format }}
     - name: delete keystore
       run: |
         rm Earphone/EarphoneLeftAndRight/EarphoneLeftAndRight.Android/github.keystore
+      if: always()
     - uses: actions/upload-artifact@v2
       with:
         name: Android App
         path: Earphone/EarphoneLeftAndRight/EarphoneLeftAndRight.Android/bin/Release/com.github.kurema.earphoneleftandright-Signed.*
-        if: ${{ !contains(github.ref, 'tags/v') }}
-
+      if: ${{ !contains(github.ref, 'tags/v') }}
     - name: Create release
       id: create_release
       uses: actions/create-release@v1

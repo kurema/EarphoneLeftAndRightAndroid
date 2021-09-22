@@ -31,7 +31,7 @@ jobs:
     - name: android package format
       id: apf
       run: |
-        if "${{steps.tagged.outputs.tagged}}" -eq "yes"; then
+        if [ "${{steps.tagged.outputs.tagged}}" = "yes" ]; then
           echo '::set-output name=format::aab'
         else
           echo '::set-output name=format::apk'

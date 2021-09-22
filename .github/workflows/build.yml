@@ -15,7 +15,7 @@ jobs:
         KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64_ENCODED }}
     - name: Replace Ad Unit ID
       run: |
-        sed s/$ADMOB_OLD/$ADMOB_NEW/g Earphone/EarphoneLeftAndRight/EarphoneLeftAndRight.Android/AdMobBannerRenderer.cs
+        sed s/'$ADMOB_OLD'/'$ADMOB_NEW'/g Earphone/EarphoneLeftAndRight/EarphoneLeftAndRight.Android/AdMobBannerRenderer.cs
       env:
         ADMOB_OLD: ca-app-pub-3940256099942544/6300978111
         ADMOB_NEW: ${{ secrets.ADMOB_UNIT_ID_BANNER }}

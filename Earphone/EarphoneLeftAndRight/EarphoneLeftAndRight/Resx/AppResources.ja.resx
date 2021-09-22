@@ -274,6 +274,9 @@
   <data name="More.Title" xml:space="preserve">
     <value>追加情報</value>
   </data>
+  <data name="Play.StereoTest.Title" xml:space="preserve">
+    <value>ステレオテスト</value>
+  </data>
   <data name="Play.Title" xml:space="preserve">
     <value>テスト</value>
   </data>

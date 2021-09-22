@@ -357,6 +357,15 @@ namespace EarphoneLeftAndRight.Resx {
         }
         
         /// <summary>
+        ///   Stereo Test に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Play_StereoTest_Title {
+            get {
+                return ResourceManager.GetString("Play.StereoTest.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Play に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Play_Title {

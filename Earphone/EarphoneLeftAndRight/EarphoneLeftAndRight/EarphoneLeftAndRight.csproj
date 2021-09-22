@@ -9,10 +9,12 @@
     <None Remove="Fonts\MaterialIcons-Regular.ttf" />
     <None Remove="Licenses\CsvHelper.txt" />
     <None Remove="Licenses\EarphoneLeftAndRight.txt" />
+    <None Remove="Licenses\Material Icons.txt" />
     <None Remove="Licenses\NETStandard.Library.txt" />
     <None Remove="Licenses\nuget.csv" />
     <None Remove="Licenses\Octokit.txt" />
     <None Remove="Licenses\Plugin.GoogleUserMessagingPlatform.txt" />
+    <None Remove="Licenses\Xamarin.AndroidX.Lifecycle.LiveData.txt" />
     <None Remove="Licenses\Xamarin.Essentials.txt" />
     <None Remove="Licenses\Xamarin.Forms.txt" />
     <None Remove="Licenses\Xamarin.Google.UserMessagingPlatform.txt" />
@@ -23,10 +25,12 @@
     <EmbeddedResource Include="Fonts\MaterialIcons-Regular.ttf" />
     <EmbeddedResource Include="Licenses\CsvHelper.txt" />
     <EmbeddedResource Include="Licenses\EarphoneLeftAndRight.txt" />
+    <EmbeddedResource Include="Licenses\Material Icons.txt" />
     <EmbeddedResource Include="Licenses\NETStandard.Library.txt" />
     <EmbeddedResource Include="Licenses\nuget.csv" />
     <EmbeddedResource Include="Licenses\Octokit.txt" />
     <EmbeddedResource Include="Licenses\Plugin.GoogleUserMessagingPlatform.txt" />
+    <EmbeddedResource Include="Licenses\Xamarin.AndroidX.Lifecycle.LiveData.txt" />
     <EmbeddedResource Include="Licenses\Xamarin.Essentials.txt" />
     <EmbeddedResource Include="Licenses\Xamarin.Forms.txt" />
     <EmbeddedResource Include="Licenses\Xamarin.Google.UserMessagingPlatform.txt" />

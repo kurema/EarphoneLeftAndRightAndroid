@@ -1,5 +1,5 @@
 name: CI on Push and Pull Request
-on: [push, pull_request]
+on: [push, pull_request, workflow_dispatch]
 jobs:
   Android:
     runs-on: macos-latest
@@ -13,22 +13,60 @@ jobs:
         echo $KEYSTORE_BASE64 | base64 --decode > Earphone/EarphoneLeftAndRight/EarphoneLeftAndRight.Android/github.keystore
       env:
         KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64_ENCODED }}
+    - name: Get tag
+      id: tag
+      if: github.event_name == 'push'
+      uses: dawidd6/action-get-tag@v1
     - name: Replace Ad Unit ID
       run: |
         sed -i -e "s@$ADMOB_OLD@$ADMOB_NEW@g" Earphone/EarphoneLeftAndRight/EarphoneLeftAndRight.Android/AdMobBannerRenderer.cs
-        cat Earphone/EarphoneLeftAndRight/EarphoneLeftAndRight.Android/AdMobBannerRenderer.cs
       env:
         ADMOB_OLD: ca-app-pub-3940256099942544/6300978111
         ADMOB_NEW: ${{ secrets.ADMOB_UNIT_ID_BANNER }}
+    - name: Is tagged version
+      id: tagged
+      run: echo yes
+      #https://pione30.hatenablog.com/entry/2021/02/05/015545
+      if: contains(github.ref, 'tags/v')
+    - name: android package format
+      id: apf
+      run: |
+        if "${{steps.tagged.outputs.result}}" -eq "yes"; then
+          echo "aab"
+        else
+          echo "apk"       
     - name: Android
       run: |
         cd Earphone
         nuget restore
-        msbuild EarphoneLeftAndRight/EarphoneLeftAndRight.Android/EarphoneLeftAndRight.Android.csproj /verbosity:normal /t:Rebuild /t:PackageForAndroid /t:SignAndroidPackage /p:Configuration=Release /p:AndroidKeyStore=True /p:AndroidSigningKeyStore=github.keystore /p:AndroidSigningStorePass=${{ secrets.KEYSTORE_PASSWORD }} /p:AndroidSigningKeyAlias=github /p:AndroidSigningKeyPass=${{ secrets.KEYSTORE_PASSWORD }}
+        msbuild EarphoneLeftAndRight/EarphoneLeftAndRight.Android/EarphoneLeftAndRight.Android.csproj /verbosity:normal /t:Rebuild /t:PackageForAndroid /t:SignAndroidPackage /p:Configuration=Release /p:AndroidKeyStore=True /p:AndroidSigningKeyStore=github.keystore /p:AndroidSigningStorePass=${{ secrets.KEYSTORE_PASSWORD }} /p:AndroidSigningKeyAlias=github /p:AndroidSigningKeyPass=${{ secrets.KEYSTORE_PASSWORD }} /p:AndroidPackageFormat=${{steps.apf.outputs.result}}
     - name: delete keystore
       run: |
         rm Earphone/EarphoneLeftAndRight/EarphoneLeftAndRight.Android/github.keystore
     - uses: actions/upload-artifact@v2
       with:
         name: Android App
-        path: Earphone/EarphoneLeftAndRight/EarphoneLeftAndRight.Android/bin/Release/com.github.kurema.earphoneleftandright-Signed.aab
+        path: Earphone/EarphoneLeftAndRight/EarphoneLeftAndRight.Android/bin/Release/com.github.kurema.earphoneleftandright-Signed.*
+        if: ${{ !contains(github.ref, 'tags/v') }}
+
+    - name: Create release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      if: contains(github.ref, 'tags/v')
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: ${{steps.tag.outputs.tag}}
+        draft: false
+        prerelease: false
+    - name: Update release asset
+      uses: actions/upload-release-asset@v1
+      if: contains(github.ref, 'tags/v')
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: Earphone/EarphoneLeftAndRight/EarphoneLeftAndRight.Android/bin/Release/com.github.kurema.earphoneleftandright-Signed.aab
+        asset_name: com.github.kurema.earphoneleftandright-Signed.aab
+        asset_content_type: application/zip

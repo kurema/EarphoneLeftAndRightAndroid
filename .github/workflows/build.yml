@@ -10,7 +10,9 @@ jobs:
 #      uses: microsoft/setup-msbuild@v1.0.3
     - name: write keystore
       run: |
-        echo ${{ secrets.KEYSTORE_BASE64_ENCODED }} | base64 -D > Earphone/github.keystore
+        echo $KEYSTORE_BASE64 | base64 --decode > Earphone/github.keystore
+      env:
+        KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64_ENCODED }}
     - name: Android
       run: |
         cd Earphone

@@ -4,6 +4,8 @@ This Privacy Policy explains how Stereo Test by kurema or forked version of it c
 
 Current version of WordbookImpressApp uses following APIs.
 1. Admob
+2. Github API
+3. Github Pages
 
 In some cases, we may use other third party APIs.
 

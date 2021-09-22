@@ -16,4 +16,4 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: Android App
-        path: Earphone/EarphoneLeftAndRight/EarphoneLeftAndRight.Android/bin/Release/com.github.kurema.earphoneleftandright-Signed.apk
+        path: Earphone/EarphoneLeftAndRight/EarphoneLeftAndRight.Android/bin/Release/com.github.kurema.earphoneleftandright-Signed.aab

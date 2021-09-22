@@ -8,11 +8,14 @@ jobs:
 # For Windows    
 #    - name: Add msbuild to PATH
 #      uses: microsoft/setup-msbuild@v1.0.3
+    - name: write keystore
+      run: |
+        echo ${{ secrets.KEYSTORE_BASE64_ENCODED }} | base64 -D > Earphone/github.keystore
     - name: Android
       run: |
         cd Earphone
         nuget restore
-        msbuild EarphoneLeftAndRight/EarphoneLeftAndRight.Android/EarphoneLeftAndRight.Android.csproj /verbosity:normal /t:Rebuild /t:PackageForAndroid /t:SignAndroidPackage /p:Configuration=Release 
+        msbuild EarphoneLeftAndRight/EarphoneLeftAndRight.Android/EarphoneLeftAndRight.Android.csproj /verbosity:normal /t:Rebuild /t:PackageForAndroid /t:SignAndroidPackage /p:Configuration=Release /p:AndroidKeyStore=True /p:AndroidSigningKeyStore=github.keystore /p:AndroidSigningStorePass=${{ secrets.KEYSTORE_PASSWORD }} /p:AndroidSigningKeyAlias=github /p:AndroidSigningKeyPass=${{ secrets.KEYSTORE_PASSWORD }}
     - uses: actions/upload-artifact@v2
       with:
         name: Android App

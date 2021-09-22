@@ -34,7 +34,8 @@ jobs:
         if "${{steps.tagged.outputs.result}}" -eq "yes"; then
           echo "aab"
         else
-          echo "apk"       
+          echo "apk"
+        fi
     - name: Android
       run: |
         cd Earphone

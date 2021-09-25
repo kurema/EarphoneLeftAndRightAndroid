@@ -1,5 +1,5 @@
 # Stereo Test - Quick Settings Tile
-You can figure out which earbuds is left or right, in the App and on the Quick Setting Tile.  
+You can figure out which earbuds is left or right, in the App and on the Quick Settings Tile.  
 There's lots of similar apps in the Store, but I wanted a version with Quick Settings Tile.
 
 ![Screenshots](Res/phone/render/007.png)

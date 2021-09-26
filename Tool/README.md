@@ -12,5 +12,5 @@ Left|Right
 ## LeftRight
 Make "Left" and "Right" voice .wav. It's windows's voice. A litttle sad.
 ## LeftRight.WPF
-This is to make the youtube video. It can record the timing you pushed the button. I mean, this is the basic sampler.  
-But I didn't use this after all. It doesn't sounds as good. I used Audacity after all.
+This is to make the YouTube video. It can play and record the timing you pushed the button. I mean, this is the basic sampler.  
+But I didn't use this after all. It doesn't sounds as good. I used Audacity instead.

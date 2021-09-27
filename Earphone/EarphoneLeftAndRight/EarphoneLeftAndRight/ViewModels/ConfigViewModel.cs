@@ -71,12 +71,27 @@ namespace EarphoneLeftAndRight.ViewModels
                                                     ,Name=nameof(EarphoneLeftAndRight)
                                                     ,ProjectName=nameof(EarphoneLeftAndRight)
                                                     ,LicenseUrl=AppResources.Config_Menu_About_LicenseApp_LicenseUrl
+                                                    ,ProjectUrl="https://github.com/kurema/EarphoneLeftAndRightAndroid"
                                                 }));
                                             }
                                         },
                                         new SettingItem(AppResources.Config_Menu_About_LicenseOSS_Title,AppResources.Config_Menu_About_LicenseOSS_Desc)
                                         {
                                             Children=licenseChildren
+                                        },
+                                        new SettingItem(AppResources.Config_Menu_About_PrivacyPolicy_Title, AppResources.Config_Menu_About_PrivacyPolicy_Desc)
+                                        {
+                                            Action = async (a) =>
+                                            {
+                                                await Xamarin.Essentials.Browser.OpenAsync("https://github.com/kurema/EarphoneLeftAndRightAndroid/blob/master/Privacy.md");
+                                            }
+                                        },
+                                        new SettingItem(AppResources.Config_Menu_About_RateThisApp_Title, AppResources.Config_Menu_About_RateThisApp_Desc)
+                                        {
+                                            Action = async (a) =>
+                                            {
+                                                await Xamarin.Essentials.Launcher.OpenAsync("https://play.google.com/store/apps/details?id=com.github.kurema.earphoneleftandright");
+                                            }
                                         },
                                     },
                                     new SettingItems(AppResources.Config_Menu_OtherApps_Title)

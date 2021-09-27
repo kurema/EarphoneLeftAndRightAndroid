@@ -15,7 +15,7 @@
     <ContentPage.Content>
         <ScrollView HorizontalOptions="Fill" VerticalOptions="Fill">
             <StackLayout>
-                <controls:AdMobBanner HeightRequest="100" HorizontalOptions="Fill"  WidthRequest="320" Grid.Row="0"  />
+                <controls:AdMobBanner HeightRequest="51" HorizontalOptions="Fill"  WidthRequest="320" Grid.Row="0"  />
                 <StackLayout Margin="10">
                     <Label Text="{x:Static r:AppResources.Play_StereoTest_Title}" FontSize="Large" />
                     <Grid Margin="10">
@@ -36,6 +36,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
@@ -44,6 +45,7 @@
                         <Button Grid.Row="0" Grid.Column="0" Text="{x:Static r:AppResources.More_OpenDictionary_Left}" Command="{Binding OpenDictionaryCommand}" CommandParameter="Left"/>
                         <Button Grid.Row="0" Grid.Column="1" Text="{x:Static r:AppResources.More_OpenDictionary_Right}" Command="{Binding OpenDictionaryCommand}" CommandParameter="Right"/>
                         <Button Grid.Row="1" Grid.ColumnSpan="2" Text="{x:Static r:AppResources.More_OpenCompass_Title}" Command="{Binding OpenWebCommand}" CommandParameter="{x:Static r:AppResources.More_OpenCompass_URL}"/>
+                        <Button Grid.Row="2" Grid.ColumnSpan="2" Text="{x:Static r:AppResources.More_OpenTutorial_Title}" Command="{Binding OpenWebCommand}" CommandParameter="{x:Static r:AppResources.More_OpenTutorial_URL}"/>
                     </Grid>
                 </StackLayout>
             </StackLayout>

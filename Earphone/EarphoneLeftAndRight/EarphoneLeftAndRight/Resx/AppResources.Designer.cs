@@ -124,6 +124,42 @@ namespace EarphoneLeftAndRight.Resx {
         }
         
         /// <summary>
+        ///   Open Privacy Policy of this App. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Config_Menu_About_PrivacyPolicy_Desc {
+            get {
+                return ResourceManager.GetString("Config.Menu.About.PrivacyPolicy.Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Privacy Policy に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Config_Menu_About_PrivacyPolicy_Title {
+            get {
+                return ResourceManager.GetString("Config.Menu.About.PrivacyPolicy.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Open this App in Google Play. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Config_Menu_About_RateThisApp_Desc {
+            get {
+                return ResourceManager.GetString("Config.Menu.About.RateThisApp.Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Rate this App に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Config_Menu_About_RateThisApp_Title {
+            get {
+                return ResourceManager.GetString("Config.Menu.About.RateThisApp.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   About に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Config_Menu_About_Title {
@@ -344,6 +380,24 @@ namespace EarphoneLeftAndRight.Resx {
         internal static string More_OpenDictionary_Right {
             get {
                 return ResourceManager.GetString("More.OpenDictionary.Right", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   How to add Quick Settings Tile に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string More_OpenTutorial_Title {
+            get {
+                return ResourceManager.GetString("More.OpenTutorial.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   https://www.youtube.com/watch?v=TDPHDW3JMRU に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string More_OpenTutorial_URL {
+            get {
+                return ResourceManager.GetString("More.OpenTutorial.URL", resourceCulture);
             }
         }
         

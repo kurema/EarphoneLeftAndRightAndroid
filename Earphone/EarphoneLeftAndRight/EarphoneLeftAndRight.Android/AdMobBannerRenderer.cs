@@ -35,15 +35,18 @@ namespace EarphoneLeftAndRight.Droid.Renderers
 
             if (Control is null)
             {
-                if (e.NewElement.IsAdaptive) {
+                if (e.NewElement.IsAdaptive)
+                {
                     //https://stackoverflow.com/questions/66661164/xamarin-forms-admob-adaptive-banner-ad-android
                     var w = (int)(Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Width / Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Density);
+                    var size = AdSize.GetCurrentOrientationAnchoredAdaptiveBannerAdSize(Context, w);
                     var adView = new AdView(Context)
                     {
                         AdUnitId = AdUnitIdBanner,
                         LayoutParameters = new LinearLayout.LayoutParams(LayoutParams.WrapContent, LayoutParams.WrapContent),
-                        AdSize = AdSize.GetCurrentOrientationAnchoredAdaptiveBannerAdSize(Context, w),
+                        AdSize = size
                     };
+                    if (size?.IsAutoHeight != true) e.NewElement.HeightRequest = size.Height;
 
                     var reqbuilder = new AdRequest.Builder();
                     adView.LoadAd(reqbuilder.Build());

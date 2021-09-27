@@ -138,6 +138,18 @@
   <data name="Config.Menu.About.LicenseOSS.Title" xml:space="preserve">
     <value>Open-source licenses</value>
   </data>
+  <data name="Config.Menu.About.PrivacyPolicy.Desc" xml:space="preserve">
+    <value>Open Privacy Policy of this App.</value>
+  </data>
+  <data name="Config.Menu.About.PrivacyPolicy.Title" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="Config.Menu.About.RateThisApp.Desc" xml:space="preserve">
+    <value>Open this App in Google Play.</value>
+  </data>
+  <data name="Config.Menu.About.RateThisApp.Title" xml:space="preserve">
+    <value>Rate this App</value>
+  </data>
   <data name="Config.Menu.About.Title" xml:space="preserve">
     <value>About</value>
   </data>
@@ -371,6 +383,12 @@ All experience hath shown that mankind are more disposed to suffer while evils a
   </data>
   <data name="More.OpenDictionary.Right" xml:space="preserve">
     <value>What is "right"</value>
+  </data>
+  <data name="More.OpenTutorial.Title" xml:space="preserve">
+    <value>How to add Quick Settings Tile</value>
+  </data>
+  <data name="More.OpenTutorial.URL" xml:space="preserve">
+    <value>https://www.youtube.com/watch?v=TDPHDW3JMRU</value>
   </data>
   <data name="More.Title" xml:space="preserve">
     <value>More about Left/Right</value>

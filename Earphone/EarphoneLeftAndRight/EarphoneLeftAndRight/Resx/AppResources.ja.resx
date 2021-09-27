@@ -135,6 +135,18 @@
   <data name="Config.Menu.About.LicenseOSS.Title" xml:space="preserve">
     <value>オープンソースライセンス</value>
   </data>
+  <data name="Config.Menu.About.PrivacyPolicy.Desc" xml:space="preserve">
+    <value>プライバシーポリシーを開く</value>
+  </data>
+  <data name="Config.Menu.About.PrivacyPolicy.Title" xml:space="preserve">
+    <value>プライバシーポリシー</value>
+  </data>
+  <data name="Config.Menu.About.RateThisApp.Desc" xml:space="preserve">
+    <value>Google Playでアプリを表示する</value>
+  </data>
+  <data name="Config.Menu.About.RateThisApp.Title" xml:space="preserve">
+    <value>アプリを評価する</value>
+  </data>
   <data name="Config.Menu.About.Title" xml:space="preserve">
     <value>情報</value>
   </data>
@@ -270,6 +282,12 @@
   </data>
   <data name="More.OpenDictionary.Right" xml:space="preserve">
     <value>「右」とは？</value>
+  </data>
+  <data name="More.OpenTutorial.Title" xml:space="preserve">
+    <value>クイック設定タイル追加方法</value>
+  </data>
+  <data name="More.OpenTutorial.URL" xml:space="preserve">
+    <value>https://www.youtube.com/watch?v=4K_icWsNJlY</value>
   </data>
   <data name="More.Title" xml:space="preserve">
     <value>追加情報</value>

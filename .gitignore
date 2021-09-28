@@ -353,3 +353,4 @@ MigrationBackup/
 Secrets.cs
 /Res/key/*
 *.blend1
+/Res/GitHub Actions/

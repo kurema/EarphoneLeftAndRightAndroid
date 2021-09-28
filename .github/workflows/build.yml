@@ -52,7 +52,7 @@ jobs:
         msbuild ${{ env.AndroidCsprojPath }}${{ env.AndroidCsprojName }} /verbosity:normal /t:Rebuild /t:PackageForAndroid /t:SignAndroidPackage /p:Configuration=Release /p:AndroidKeyStore=True /p:AndroidSigningKeyStore=github.keystore /p:AndroidSigningStorePass=${{ secrets.KEYSTORE_PASSWORD }} /p:AndroidSigningKeyAlias=github /p:AndroidSigningKeyPass=${{ secrets.KEYSTORE_PASSWORD }} /p:AndroidPackageFormat=${{ steps.apf.outputs.format }}
     - name: Build Apk version
       run: |
-        cd Earphone
+        cd ${{ env.SlnPath }}
         msbuild ${{ env.AndroidCsprojPath }}${{ env.AndroidCsprojName }} /verbosity:quiet /t:Build /t:PackageForAndroid /t:SignAndroidPackage /p:Configuration=Release /p:AndroidKeyStore=True /p:AndroidSigningKeyStore=github.keystore /p:AndroidSigningStorePass=${{ secrets.KEYSTORE_PASSWORD }} /p:AndroidSigningKeyAlias=github /p:AndroidSigningKeyPass=${{ secrets.KEYSTORE_PASSWORD }} /p:AndroidPackageFormat=apk
       if: contains(github.ref, 'tags/v')
     - name: delete keystore

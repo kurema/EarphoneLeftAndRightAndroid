@@ -7,6 +7,11 @@ on:
 jobs:
   Android:
     runs-on: macos-latest
+    env:
+      SlnPath: Earphone/
+      AndroidCsprojPath: EarphoneLeftAndRight/EarphoneLeftAndRight.Android/
+      AndroidCsprojName: EarphoneLeftAndRight.Android.csproj
+      AndroidAppName: com.github.kurema.earphoneleftandright
     steps:
     - uses: actions/checkout@v1
 # For Windows    
@@ -14,7 +19,7 @@ jobs:
 #      uses: microsoft/setup-msbuild@v1.0.3
     - name: write keystore
       run: |
-        echo $KEYSTORE_BASE64 | base64 --decode > Earphone/EarphoneLeftAndRight/EarphoneLeftAndRight.Android/github.keystore
+        echo $KEYSTORE_BASE64 | base64 --decode > ${{ env.SlnPath }}${{ env.AndroidCsprojPath }}github.keystore
       env:
         KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64_ENCODED }}
     - name: Get tag
@@ -23,7 +28,7 @@ jobs:
       uses: dawidd6/action-get-tag@v1
     - name: Replace Ad Unit ID
       run: |
-        sed -i -e "s@$ADMOB_OLD@$ADMOB_NEW@g" Earphone/EarphoneLeftAndRight/EarphoneLeftAndRight.Android/AdMobBannerRenderer.cs
+        sed -i -e "s@$ADMOB_OLD@$ADMOB_NEW@g" ${{ env.SlnPath }}${{ env.AndroidCsprojPath }}AdMobBannerRenderer.cs
       env:
         ADMOB_OLD: ca-app-pub-3940256099942544/6300978111
         ADMOB_NEW: ${{ secrets.ADMOB_UNIT_ID_BANNER }}
@@ -42,22 +47,22 @@ jobs:
         fi
     - name: Android
       run: |
-        cd Earphone
+        cd ${{ env.SlnPath }}
         nuget restore
-        msbuild EarphoneLeftAndRight/EarphoneLeftAndRight.Android/EarphoneLeftAndRight.Android.csproj /verbosity:normal /t:Rebuild /t:PackageForAndroid /t:SignAndroidPackage /p:Configuration=Release /p:AndroidKeyStore=True /p:AndroidSigningKeyStore=github.keystore /p:AndroidSigningStorePass=${{ secrets.KEYSTORE_PASSWORD }} /p:AndroidSigningKeyAlias=github /p:AndroidSigningKeyPass=${{ secrets.KEYSTORE_PASSWORD }} /p:AndroidPackageFormat=${{ steps.apf.outputs.format }}
+        msbuild ${{ env.AndroidCsprojPath }}${{ env.AndroidCsprojName }} /verbosity:normal /t:Rebuild /t:PackageForAndroid /t:SignAndroidPackage /p:Configuration=Release /p:AndroidKeyStore=True /p:AndroidSigningKeyStore=github.keystore /p:AndroidSigningStorePass=${{ secrets.KEYSTORE_PASSWORD }} /p:AndroidSigningKeyAlias=github /p:AndroidSigningKeyPass=${{ secrets.KEYSTORE_PASSWORD }} /p:AndroidPackageFormat=${{ steps.apf.outputs.format }}
     - name: Build Apk version
       run: |
         cd Earphone
-        msbuild EarphoneLeftAndRight/EarphoneLeftAndRight.Android/EarphoneLeftAndRight.Android.csproj /verbosity:quiet /t:Build /t:PackageForAndroid /t:SignAndroidPackage /p:Configuration=Release /p:AndroidKeyStore=True /p:AndroidSigningKeyStore=github.keystore /p:AndroidSigningStorePass=${{ secrets.KEYSTORE_PASSWORD }} /p:AndroidSigningKeyAlias=github /p:AndroidSigningKeyPass=${{ secrets.KEYSTORE_PASSWORD }} /p:AndroidPackageFormat=apk
+        msbuild ${{ env.AndroidCsprojPath }}${{ env.AndroidCsprojName }} /verbosity:quiet /t:Build /t:PackageForAndroid /t:SignAndroidPackage /p:Configuration=Release /p:AndroidKeyStore=True /p:AndroidSigningKeyStore=github.keystore /p:AndroidSigningStorePass=${{ secrets.KEYSTORE_PASSWORD }} /p:AndroidSigningKeyAlias=github /p:AndroidSigningKeyPass=${{ secrets.KEYSTORE_PASSWORD }} /p:AndroidPackageFormat=apk
       if: contains(github.ref, 'tags/v')
     - name: delete keystore
       run: |
-        rm Earphone/EarphoneLeftAndRight/EarphoneLeftAndRight.Android/github.keystore
+        rm ${{ env.SlnPath }}${{ env.AndroidCsprojPath }}github.keystore
       if: always()
     - uses: actions/upload-artifact@v2
       with:
         name: Android App
-        path: Earphone/EarphoneLeftAndRight/EarphoneLeftAndRight.Android/bin/Release/com.github.kurema.earphoneleftandright-Signed.*
+        path: ${{ env.SlnPath }}${{ env.AndroidCsprojPath }}bin/Release/${{ env.AndroidAppName }}-Signed.*
       if: ${{ !contains(github.ref, 'tags/v') }}
     - name: Create release
       id: create_release
@@ -77,8 +82,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: Earphone/EarphoneLeftAndRight/EarphoneLeftAndRight.Android/bin/Release/com.github.kurema.earphoneleftandright-Signed.aab
-        asset_name: com.github.kurema.earphoneleftandright-Signed.aab
+        asset_path: ${{ env.SlnPath }}${{ env.AndroidCsprojPath }}bin/Release/${{ env.AndroidAppName }}-Signed.aab
+        asset_name: ${{ env.AndroidAppName }}-Signed.aab
         asset_content_type: application/zip
     - name: Update release asset Apk
       uses: actions/upload-release-asset@v1
@@ -87,6 +92,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: Earphone/EarphoneLeftAndRight/EarphoneLeftAndRight.Android/bin/Release/com.github.kurema.earphoneleftandright-Signed.apk
-        asset_name: com.github.kurema.earphoneleftandright-Signed.apk
+        asset_path: ${{ env.SlnPath }}${{ env.AndroidCsprojPath }}bin/Release/${{ env.AndroidAppName }}-Signed.apk
+        asset_name: ${{ env.AndroidAppName }}-Signed.apk
         asset_content_type: application/zip

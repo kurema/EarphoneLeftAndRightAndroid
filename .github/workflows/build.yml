@@ -51,6 +51,7 @@ jobs:
       if: contains(github.ref, 'tags/v')
     - name: delete keystore
       run: |
+        cd Earphone
         rm Earphone/EarphoneLeftAndRight/EarphoneLeftAndRight.Android/github.keystore
       if: always()
     - uses: actions/upload-artifact@v2

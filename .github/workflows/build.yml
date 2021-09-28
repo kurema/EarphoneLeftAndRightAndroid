@@ -45,6 +45,10 @@ jobs:
         cd Earphone
         nuget restore
         msbuild EarphoneLeftAndRight/EarphoneLeftAndRight.Android/EarphoneLeftAndRight.Android.csproj /verbosity:normal /t:Rebuild /t:PackageForAndroid /t:SignAndroidPackage /p:Configuration=Release /p:AndroidKeyStore=True /p:AndroidSigningKeyStore=github.keystore /p:AndroidSigningStorePass=${{ secrets.KEYSTORE_PASSWORD }} /p:AndroidSigningKeyAlias=github /p:AndroidSigningKeyPass=${{ secrets.KEYSTORE_PASSWORD }} /p:AndroidPackageFormat=${{ steps.apf.outputs.format }}
+    - name: Build Apk version
+      run: |
+        msbuild EarphoneLeftAndRight/EarphoneLeftAndRight.Android/EarphoneLeftAndRight.Android.csproj /verbosity:quiet /t:Build /t:PackageForAndroid /t:SignAndroidPackage /p:Configuration=Release /p:AndroidKeyStore=True /p:AndroidSigningKeyStore=github.keystore /p:AndroidSigningStorePass=${{ secrets.KEYSTORE_PASSWORD }} /p:AndroidSigningKeyAlias=github /p:AndroidSigningKeyPass=${{ secrets.KEYSTORE_PASSWORD }} /p:AndroidPackageFormat=apk
+      if: contains(github.ref, 'tags/v')
     - name: delete keystore
       run: |
         rm Earphone/EarphoneLeftAndRight/EarphoneLeftAndRight.Android/github.keystore
@@ -74,4 +78,14 @@ jobs:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: Earphone/EarphoneLeftAndRight/EarphoneLeftAndRight.Android/bin/Release/com.github.kurema.earphoneleftandright-Signed.aab
         asset_name: com.github.kurema.earphoneleftandright-Signed.aab
+        asset_content_type: application/zip
+    - name: Update release asset Apk
+      uses: actions/upload-release-asset@v1
+      if: contains(github.ref, 'tags/v')
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: Earphone/EarphoneLeftAndRight/EarphoneLeftAndRight.Android/bin/Release/com.github.kurema.earphoneleftandright-Signed.apk
+        asset_name: com.github.kurema.earphoneleftandright-Signed.apk
         asset_content_type: application/zip

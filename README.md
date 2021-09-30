@@ -7,10 +7,13 @@ You can figure out which earbuds is left or right, in the App and on the Quick S
 
 [<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png"
       alt="Download from Google Play"
-      height="80">](https://play.google.com/store/apps/details?id=com.github.kurema.earphoneleftandright)
+      height="60">](https://play.google.com/store/apps/details?id=com.github.kurema.earphoneleftandright)
 <!-- [<img src=".github/assets/direct-apk-download.png"
       alt="Direct apk download"
-      height="80">](https://github.com/kurema/EarphoneLeftAndRightAndroid/releases/latest) -->
+      height="60">](https://github.com/kurema/EarphoneLeftAndRightAndroid/releases/latest) -->
+
+# Screenshots
+![Screenshots](Res/phone/render/007.png)
 
 # Features
 * Play the stereo test voice in
@@ -21,9 +24,6 @@ You can figure out which earbuds is left or right, in the App and on the Quick S
 * Support
   * 96 language (voice and title).
   * Dark theme (Android 10+)
-
-# Screenshots
-![Screenshots](Res/phone/render/007.png)
 
 ## Introduction / Tutorial
 [![YouTube](https://img.youtube.com/vi/TDPHDW3JMRU/0.jpg)](https://www.youtube.com/watch?v=TDPHDW3JMRU)

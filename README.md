@@ -1,6 +1,6 @@
 [![CI on Push and Pull Request](https://github.com/kurema/EarphoneLeftAndRightAndroid/actions/workflows/build.yml/badge.svg)](https://github.com/kurema/EarphoneLeftAndRightAndroid/actions/workflows/build.yml)
 [![Releases](https://img.shields.io/github/release/kurema/EarphoneLeftAndRightAndroid.svg)](https://github.com/kurema/EarphoneLeftAndRightAndroid/releases/latest)
-[![License: GPL v3](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/kurema/EarphoneLeftAndRightAndroid/blob/master/LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/kurema/EarphoneLeftAndRightAndroid/blob/master/LICENSE)
 
 # Stereo Test - Quick Settings Tile
 You can figure out which earbuds is left or right, in the App and on the Quick Settings Tile.  

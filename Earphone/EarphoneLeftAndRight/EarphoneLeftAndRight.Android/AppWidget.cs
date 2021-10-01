@@ -35,6 +35,9 @@ namespace EarphoneLeftAndRight.Droid
             intent.SetAction(ACTION_SELECTED);
             var pi = PendingIntent.GetBroadcast(context, 0, intent, PendingIntentFlags.UpdateCurrent);
             widgetView.SetOnClickPendingIntent(Resource.Id.imageView1, pi);
+            //Note:
+            //android:src="@mipmap/icon_round" in app_widget.xml crashed on the Lilipop 5.0. But @mipmap/icon is good enough. So next line is not required anyway.
+            //if (Build.VERSION.SdkInt >= BuildVersionCodes.O) widgetView.SetImageViewResource(Resource.Id.imageView1, Resource.Mipmap.icon_round);
             return widgetView;
         }
 

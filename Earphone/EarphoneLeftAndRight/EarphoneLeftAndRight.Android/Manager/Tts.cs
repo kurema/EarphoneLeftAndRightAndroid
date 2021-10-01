@@ -50,7 +50,7 @@ namespace EarphoneLeftAndRight.Droid.Manager
             }
             else
             {
-                //なんとなく旧APIをサポートしてみたけど意味あるか謎だし、他で新API使ってるから多分意味ない。
+                //旧APIをサポート。機能しています。
 #pragma warning disable CS0618 // 型またはメンバーが旧型式です
                 locales = new[] { Application.Context.Resources.Configuration.Locale, Java.Util.Locale.English };
 #pragma warning restore CS0618 // 型またはメンバーが旧型式です

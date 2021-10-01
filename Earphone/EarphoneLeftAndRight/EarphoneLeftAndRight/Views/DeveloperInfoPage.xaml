@@ -5,7 +5,7 @@
              x:Class="EarphoneLeftAndRight.Views.DeveloperInfoPage"
              xmlns:r="clr-namespace:EarphoneLeftAndRight.Resx"
              Title="{x:Static r:AppResources.Profile_Title}"
-             BackgroundColor="{AppThemeBinding Default=White,Light=White,Dark=Black}"
+             BackgroundColor="{AppThemeBinding Default=#EEEEEE,Light=#EEEEEE,Dark=Black}"
              x:Name="page"
              >
     <ContentPage.Resources>

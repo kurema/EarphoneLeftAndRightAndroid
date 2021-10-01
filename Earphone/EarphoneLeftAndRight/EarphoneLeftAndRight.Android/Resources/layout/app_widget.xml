@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,12 +9,21 @@
     android:minHeight="25px"
     android:background="#00000000"
     >
+    <!-- https://stackoverflow.com/questions/2459916/how-to-make-an-imageview-with-rounded-corners -->
+<!--    <com.google.android.material.imageview.ShapeableImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:shapeAppearanceOverlay="@style/roundedImageView"
+        android:src="@mipmap/icon"
+        android:background="@color/launcher_background"
+        android:id="@+id/imageView1"
+        />-->
     <ImageView
         android:contentDescription="@string/tile_play_name"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitCenter"
-        android:src="@mipmap/icon_round"
+        android:src="@mipmap/icon"
         android:background="#00000000"
         android:id="@+id/imageView1" />
 </LinearLayout>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EarphoneLeftAndRight.Views.AdDefaultView"
+             xmlns:controls="clr-namespace:EarphoneLeftAndRight.Views"
+             xmlns:vc="clr-namespace:EarphoneLeftAndRight.ValueConverters"
+             >
+    <ContentView.Resources>
+        <vc:BooleanNotValueConverter x:Key="notVC"/>
+    </ContentView.Resources>
+  <ContentView.Content>
+        <Grid>
+            <Image Source="default_ad.jpg" IsVisible="{Binding Source={Reference adBanner}, Path=IsAdLoaded,Converter={StaticResource notVC}}">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                </Image.GestureRecognizers>
+            </Image>
+            <controls:AdMobBanner x:Name="adBanner" />
+        </Grid>
+  </ContentView.Content>
+</ContentView>

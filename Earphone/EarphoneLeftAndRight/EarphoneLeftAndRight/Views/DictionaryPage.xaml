@@ -17,7 +17,7 @@
     <ContentPage.Content>
         <ScrollView HorizontalOptions="Fill" VerticalOptions="Fill">
             <StackLayout>
-                <controls:AdMobBanner HeightRequest="51" HorizontalOptions="Fill"  WidthRequest="320" Grid.Row="0" Margin="0,10,0,0" />
+                <controls:AdDefaultView HeightRequest="51" HorizontalOptions="Fill"  WidthRequest="320" Grid.Row="0" Margin="0,10,0,0" />
                 <StackLayout x:Name="layoutMain" Margin="15"/>
                 <Label x:Name="labelDictionaryName" HorizontalOptions="Center"
                            IsVisible="{Binding Source={Reference contentPage},Path=DictionaryName,Converter={StaticResource nesvc},ConverterParameter=False:True}" 

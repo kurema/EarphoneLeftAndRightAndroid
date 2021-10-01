@@ -4,6 +4,7 @@
              x:Class="EarphoneLeftAndRight.Views.AdDefaultView"
              xmlns:controls="clr-namespace:EarphoneLeftAndRight.Views"
              xmlns:vc="clr-namespace:EarphoneLeftAndRight.ValueConverters"
+             HeightRequest="{Binding Source={Reference adBanner},Path=AdHeight,Mode=TwoWay}"
              >
     <ContentView.Resources>
         <vc:BooleanNotValueConverter x:Key="notVC"/>

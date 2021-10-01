@@ -45,7 +45,7 @@ namespace EarphoneLeftAndRight.Droid.Renderers
                         LayoutParameters = new LinearLayout.LayoutParams(LayoutParams.WrapContent, LayoutParams.WrapContent),
                         AdSize = size
                     };
-                    if (size?.IsAutoHeight != true) e.NewElement.HeightRequest = size.Height;
+                    if (size?.IsAutoHeight != true) e.NewElement.AdHeight = size.Height;
 
                     var reqbuilder = new AdRequest.Builder();
                     adView.LoadAd(reqbuilder.Build());

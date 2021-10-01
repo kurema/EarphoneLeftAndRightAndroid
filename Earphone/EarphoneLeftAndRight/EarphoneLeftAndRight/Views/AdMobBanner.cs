@@ -30,6 +30,17 @@ namespace EarphoneLeftAndRight.Views
             }
         }
 
+        double _AdHeight = 0;
+        public double AdHeight
+        {
+            get => _AdHeight;
+            set
+            {
+                _AdHeight = value;
+                OnPropertyChanged();
+            }
+        }
+
         public AdMobBanner()
         {
         }

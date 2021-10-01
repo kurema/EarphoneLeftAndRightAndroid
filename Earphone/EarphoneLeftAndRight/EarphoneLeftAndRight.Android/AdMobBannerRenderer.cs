@@ -23,8 +23,7 @@ namespace EarphoneLeftAndRight.Droid.Renderers
     public class AdMobBannerRenderer : ViewRenderer<AdMobBanner, Android.Gms.Ads.AdView>
     {
         public const string AdUnitIdBanner = "ca-app-pub-3940256099942544/6300978111";
-
-
+        
         public AdMobBannerRenderer(Context context) : base(context)
         {
         }

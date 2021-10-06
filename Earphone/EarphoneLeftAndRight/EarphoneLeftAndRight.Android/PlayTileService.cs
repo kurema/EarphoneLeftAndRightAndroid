@@ -34,5 +34,15 @@ namespace EarphoneLeftAndRight.Droid
             await Manager.Tts.SpeakLeft();
             await Manager.Tts.SpeakRight();
         }
+
+        public override void OnStartListening()
+        {
+            base.OnStartListening();
+
+            // Load tts engine when the user swipes down.
+            // This shold improve the lag.
+            //https://devblogs.microsoft.com/xamarin/android-nougat-quick-setting-tiles/
+            _ = Manager.Tts.Content;
+        }
     }
 }

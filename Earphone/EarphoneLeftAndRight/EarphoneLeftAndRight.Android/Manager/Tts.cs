@@ -22,7 +22,15 @@ namespace EarphoneLeftAndRight.Droid.Manager
         static TtsListner listner;
 
         private static TextToSpeech _Content;
-        public static TextToSpeech Content => _Content ??= new TextToSpeech(Application.Context, listner = new TtsListner());
+        public static TextToSpeech Content { get => _Content ??= new TextToSpeech(Application.Context, listner = new TtsListner()); private set { _Content = value; } }
+
+        private static int ResetCount = 0;
+
+        internal static void ResetEngine()
+        {
+            if (ResetCount < 3) Content = null;
+            ResetCount++;
+        }
 
         public static void StopIfSpeaking()
         {
@@ -108,7 +116,18 @@ namespace EarphoneLeftAndRight.Droid.Manager
 
             public void OnInit([GeneratedEnum] OperationResult status)
             {
-                semaphoreSlim.Release(1);
+                switch (status)
+                {
+                    case OperationResult.Error:
+                    case OperationResult.Stopped:
+                        ResetEngine();
+                        break;
+                    case OperationResult.Success:
+                        semaphoreSlim.Release(1);
+                        break;
+                    default:
+                        break;
+                }
             }
         }
     }

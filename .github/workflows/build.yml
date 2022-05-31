@@ -22,8 +22,8 @@ jobs:
       run: |
         echo $GITHUB_WORKSPACE
         ls -lah
-        ls -lah ${{ env.SlnPathOriginal }}
-        ls -lah ${{ env.SlnPathOriginal }}${{ env.AndroidCsprojPath }}
+        ls -lah ${{ env.SlnPath }}
+        ls -lah ${{ env.SlnPath }}${{ env.AndroidCsprojPath }}
 # For Windows    
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v1.0.3

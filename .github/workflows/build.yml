@@ -23,10 +23,8 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.3
     - name: Write keystore
       run: |
-        $pfx_cert_byte = [System.Convert]::FromBase64String($KEYSTORE_BASE64)
+        $pfx_cert_byte = [System.Convert]::FromBase64String("${{ secrets.KEYSTORE_BASE64_ENCODED }}")
         [IO.File]::WriteAllBytes("${{ env.SlnPath }}${{ env.AndroidCsprojPath }}github.keystore", $pfx_cert_byte)
-      env:
-        KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64_ENCODED }}
     - name: Get tag
       id: tag
       if: contains(github.ref, 'tags/v')

@@ -17,6 +17,13 @@ jobs:
     - uses: actions/checkout@v3
     - name: Move directory
       run: Move-Item ${{ env.SlnPathOriginal }} ${{env.SlnPath}} 
+    - name: test
+      shell: bash
+      run: |
+        echo $GITHUB_WORKSPACE
+        ls -lah
+        ls -lah ${{ env.SlnPathOriginal }}
+        ls -lah ${{ env.SlnPathOriginal }}${{ env.AndroidCsprojPath }}
 # For Windows    
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v1.0.3

@@ -6,20 +6,26 @@ on:
   pull_request:
 jobs:
   Android:
-    runs-on: macos-latest
+    runs-on: windows-latest
     env:
       SlnPath: Earphone/
       AndroidCsprojPath: EarphoneLeftAndRight/EarphoneLeftAndRight.Android/
       AndroidCsprojName: EarphoneLeftAndRight.Android.csproj
       AndroidAppName: com.github.kurema.earphoneleftandright
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v3
+      with:
+        path: e
+    - run: |
+        echo $GITHUB_WORKSPACE
+        ls
 # For Windows    
-#    - name: Add msbuild to PATH
-#      uses: microsoft/setup-msbuild@v1.0.3
-    - name: write keystore
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v1.0.3
+    - name: Write keystore
       run: |
-        echo $KEYSTORE_BASE64 | base64 --decode > ${{ env.SlnPath }}${{ env.AndroidCsprojPath }}github.keystore
+        $pfx_cert_byte = [System.Convert]::FromBase64String("${{ KEYSTORE_BASE64 }}")
+        [IO.File]::WriteAllBytes("${{ env.SlnPath }}${{ env.AndroidCsprojPath }}github.keystore", $pfx_cert_byte)
       env:
         KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64_ENCODED }}
     - name: Get tag
@@ -27,6 +33,7 @@ jobs:
       if: contains(github.ref, 'tags/v')
       uses: dawidd6/action-get-tag@v1
     - name: Replace Ad Unit ID
+      shell: bash
       run: |
         sed -i -e "s@$ADMOB_OLD@$ADMOB_NEW@g" ${{ env.SlnPath }}${{ env.AndroidCsprojPath }}AdMobBannerRenderer.cs
       env:
@@ -39,6 +46,7 @@ jobs:
       if: contains(github.ref, 'tags/v')
     - name: android package format
       id: apf
+      shell: bash
       run: |
         if [ "${{steps.tagged.outputs.tagged}}" = "yes" ]; then
           echo '::set-output name=format::aab'

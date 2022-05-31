@@ -248,10 +248,10 @@ namespace EarphoneLeftAndRight.Resx {
         ///&lt;/head&gt;
         ///&lt;body&gt;
         ///&lt;b&gt;Left&lt;/b&gt;&lt;br/&gt;
-        ///(lĕft), &lt;I&gt;imp. &amp;amp; p. p.&lt;/I&gt;of ≪Leave≫.&lt;br/&gt;
+        ///(lĕft), &lt;I&gt;imp. &amp;amp; p. p.&lt;/I&gt;of ≪Leave≫.
         ///&lt;hr/&gt;
         ///&lt;b&gt;Left&lt;/b&gt;&lt;br/&gt;
-        ///&lt;I&gt;a.&lt;/I&gt;[OE. &lt;I&gt;left&lt;/I&gt;, &lt;I&gt;lift&lt;/I&gt;, &lt;I&gt;luft&lt;/I&gt;; akin to Fries. &lt;I&gt;leeft&lt;/I&gt;, OD. &lt;I&gt;lucht&lt;/I&gt;, &lt;I&gt;luft&lt;/I&gt;; cf. AS. &lt;I&gt;left&lt;/I&gt; (equiv. to L. &lt;I&gt;inanis&lt;/I&gt;), &lt;I&gt;lyftādl&lt;/I&gt; palsy; or cf. AS. &lt;I&gt;lēf&lt;/I&gt; weak.] Of or pertaining to that side of the body in man on which the muscular action of the limbs is usually weaker than on the other side; -- [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
+        ///&lt;I&gt;a.&lt;/I&gt;[OE. &lt;I&gt;left&lt;/I&gt;, &lt;I&gt;lift&lt;/I&gt;, &lt;I&gt;luft&lt;/I&gt;; akin to Fries. &lt;I&gt;leeft&lt;/I&gt;, OD. &lt;I&gt;lucht&lt;/I&gt;, &lt;I&gt;luft&lt;/I&gt;; cf. AS. &lt;I&gt;left&lt;/I&gt; (equiv. to L. &lt;I&gt;inanis&lt;/I&gt;), &lt;I&gt;lyftādl&lt;/I&gt; palsy; or cf. AS. &lt;I&gt;lēf&lt;/I&gt; weak.] Of or pertaining to that side of the body in man on which the muscular action of the limbs is usually weaker than on the other side; -- oppo [残りの文字列は切り詰められました]&quot;; に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Dict_Left_Html {
             get {

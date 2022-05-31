@@ -8,17 +8,15 @@ jobs:
   Android:
     runs-on: windows-latest
     env:
-      SlnPath: Earphone/
+      SlnPath: D:\a/e/
+      SlnPathOriginal: Earphone/
       AndroidCsprojPath: EarphoneLeftAndRight/EarphoneLeftAndRight.Android/
       AndroidCsprojName: EarphoneLeftAndRight.Android.csproj
       AndroidAppName: com.github.kurema.earphoneleftandright
     steps:
     - uses: actions/checkout@v3
-      with:
-        path: e
-    - run: |
-        echo $GITHUB_WORKSPACE
-        ls
+    - name: Move directory
+      run: Move-Item ${{ env.SlnPathOriginal }} ${{env.SlnPath}} 
 # For Windows    
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v1.0.3
@@ -44,7 +42,7 @@ jobs:
       run: echo '::set-output name=tagged::yes'
       #https://pione30.hatenablog.com/entry/2021/02/05/015545
       if: contains(github.ref, 'tags/v')
-    - name: android package format
+    - name: Require Android package format
       id: apf
       shell: bash
       run: |
@@ -63,7 +61,7 @@ jobs:
         cd ${{ env.SlnPath }}
         msbuild ${{ env.AndroidCsprojPath }}${{ env.AndroidCsprojName }} /verbosity:quiet /t:Build /t:PackageForAndroid /t:SignAndroidPackage /p:Configuration=Release /p:AndroidKeyStore=True /p:AndroidSigningKeyStore=github.keystore /p:AndroidSigningStorePass=${{ secrets.KEYSTORE_PASSWORD }} /p:AndroidSigningKeyAlias=github /p:AndroidSigningKeyPass=${{ secrets.KEYSTORE_PASSWORD }} /p:AndroidPackageFormat=apk /p:AotAssemblies=true /p:EnableLLVM=true
       if: contains(github.ref, 'tags/v')
-    - name: delete keystore
+    - name: Delete keystore
       run: |
         rm ${{ env.SlnPath }}${{ env.AndroidCsprojPath }}github.keystore
       if: always()
@@ -103,3 +101,7 @@ jobs:
         asset_path: ${{ env.SlnPath }}${{ env.AndroidCsprojPath }}bin/Release/${{ env.AndroidAppName }}-Signed.apk
         asset_name: ${{ env.AndroidAppName }}-Signed.apk
         asset_content_type: application/zip
+    - name: Delete moved directory
+      run: |
+        Remove-Item -Path ${{ env.SlnPath }}* -Recurse
+      if: always()

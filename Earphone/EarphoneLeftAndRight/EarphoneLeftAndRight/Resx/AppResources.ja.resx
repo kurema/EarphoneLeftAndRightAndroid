@@ -287,6 +287,9 @@
     <value>クイック設定タイル追加方法</value>
   </data>
   <data name="More.OpenTutorial.URL" xml:space="preserve">
+    <value>https://www.youtube.com/shorts/dUNxZWk7e2w</value>
+  </data>
+  <data name="More.OpenVideo.URL" xml:space="preserve">
     <value>https://www.youtube.com/watch?v=4K_icWsNJlY</value>
   </data>
   <data name="More.Title" xml:space="preserve">
@@ -327,5 +330,8 @@
   </data>
   <data name="Profile.Title" xml:space="preserve">
     <value>プロフィール</value>
+  </data>
+  <data name="Config.Menu.About.LicenseApp.LicenseUrl" xml:space="preserve">
+    <value>https://github.com/kurema/EarphoneLeftAndRightAndroid/blob/master/LICENSE</value>
   </data>
 </root>

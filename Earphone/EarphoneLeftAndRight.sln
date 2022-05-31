@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31424.327
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32519.379
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EarphoneLeftAndRight.Android", "EarphoneLeftAndRight\EarphoneLeftAndRight.Android\EarphoneLeftAndRight.Android.csproj", "{3FFD8859-10FE-4709-939D-72E0E1188201}"
 EndProject

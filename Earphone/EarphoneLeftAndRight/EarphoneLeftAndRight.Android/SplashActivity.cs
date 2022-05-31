@@ -13,13 +13,15 @@ using System.Threading.Tasks;
 
 namespace EarphoneLeftAndRight.Droid
 {
-    [Activity(Label = "@string/app_name", Icon = "@mipmap/icon", Theme = "@style/MainTheme.Splash", MainLauncher = true, NoHistory = true)]
+    [Activity(Label = "@string/app_name", Icon = "@mipmap/icon", Theme = "@style/MainTheme.Splash", MainLauncher = true, NoHistory = true, Exported = true)]
     public class SplashActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         //https://itblogdsi.blog.fc2.com/blog-entry-181.html
         //https://docs.microsoft.com/xamarin/android/user-interface/splash-screen
         public override void OnCreate(Bundle savedInstanceState, PersistableBundle persistentState)
         {
+            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+
             base.OnCreate(savedInstanceState, persistentState);
         }
 
@@ -28,6 +30,11 @@ namespace EarphoneLeftAndRight.Droid
             base.OnResume();
             var startupWork = new Task(() => { StartActivity(new Intent(Application.Context, typeof(MainActivity))); });
             startupWork.Start();
+        }
+
+        public override void OnBackPressed()
+        {
+            //base.OnBackPressed();
         }
     }
 }

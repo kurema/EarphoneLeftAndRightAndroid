@@ -27,9 +27,25 @@ namespace EarphoneLeftAndRight.Views
 
         public void UpdateHtml()
         {
-            layoutMain.Children.Clear();
-            var labels = Helper.Helpers.XhtmlToFormattedString(Html);
-            foreach (var item in labels) layoutMain.Children.Add(item);
+            //Operation is too slow so I measured time it takes.
+            layoutMain.Children.Clear();//Ticks: 33,828
+            {
+                //var labels = Helper.Helpers.XhtmlToLabelsClassical(Html);//Ticks: 1,364,394! This is the problem!
+                //foreach (var item in labels) layoutMain.Children.Add(item);//Ticks: 20,413
+            }
+            {
+                var labels = Helper.Helpers.XhtmlToLabels(Html);
+                foreach (var item in labels) layoutMain.Children.Add(item);
+            }
+
+            //{
+            //    var label = new Label()
+            //    {
+            //        TextType = TextType.Html,
+            //        Text = Html,
+            //    };
+            //    layoutMain.Children.Add(label);
+            //}
         }
 
         public static readonly BindableProperty HtmlProperty =

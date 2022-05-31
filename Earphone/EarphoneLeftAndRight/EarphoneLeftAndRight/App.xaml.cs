@@ -3,7 +3,6 @@ using EarphoneLeftAndRight.Views;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Plugin.GoogleUserMessagingPlatform;
 
 namespace EarphoneLeftAndRight
 {

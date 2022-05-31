@@ -19,7 +19,7 @@ namespace EarphoneLeftAndRight.Resx {
     // または Visual Studio のようなツールを使用して自動生成されました。
     // メンバーを追加または削除するには、.ResX ファイルを編集して、/str オプションと共に
     // ResGen を実行し直すか、または VS プロジェクトをビルドし直します。
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class AppResources {
@@ -61,7 +61,7 @@ namespace EarphoneLeftAndRight.Resx {
         }
         
         /// <summary>
-        ///   Know more about the developer. に類似しているローカライズされた文字列を検索します。
+        ///   Know more about the developer に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Config_Menu_About_Developer_Desc {
             get {
@@ -79,7 +79,7 @@ namespace EarphoneLeftAndRight.Resx {
         }
         
         /// <summary>
-        ///   Display license of this application. に類似しているローカライズされた文字列を検索します。
+        ///   Display license of this application に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Config_Menu_About_LicenseApp_Desc {
             get {
@@ -106,7 +106,7 @@ namespace EarphoneLeftAndRight.Resx {
         }
         
         /// <summary>
-        ///   License details for open-source software. に類似しているローカライズされた文字列を検索します。
+        ///   License details for open-source software に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Config_Menu_About_LicenseOSS_Desc {
             get {
@@ -124,7 +124,7 @@ namespace EarphoneLeftAndRight.Resx {
         }
         
         /// <summary>
-        ///   Open Privacy Policy of this App. に類似しているローカライズされた文字列を検索します。
+        ///   Open Privacy Policy of this App に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Config_Menu_About_PrivacyPolicy_Desc {
             get {
@@ -142,7 +142,7 @@ namespace EarphoneLeftAndRight.Resx {
         }
         
         /// <summary>
-        ///   Open this App in Google Play. に類似しているローカライズされた文字列を検索します。
+        ///   Open this App in Google Play に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Config_Menu_About_RateThisApp_Desc {
             get {
@@ -393,11 +393,20 @@ namespace EarphoneLeftAndRight.Resx {
         }
         
         /// <summary>
-        ///   https://www.youtube.com/watch?v=TDPHDW3JMRU に類似しているローカライズされた文字列を検索します。
+        ///   https://www.youtube.com/shorts/dUNxZWk7e2w に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string More_OpenTutorial_URL {
             get {
                 return ResourceManager.GetString("More.OpenTutorial.URL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   https://www.youtube.com/watch?v=TDPHDW3JMRU に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string More_OpenVideo_URL {
+            get {
+                return ResourceManager.GetString("More.OpenVideo.URL", resourceCulture);
             }
         }
         

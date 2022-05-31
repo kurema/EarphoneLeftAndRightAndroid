@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -29,7 +29,6 @@
     <EmbeddedResource Include="Licenses\NETStandard.Library.txt" />
     <EmbeddedResource Include="Licenses\nuget.csv" />
     <EmbeddedResource Include="Licenses\Octokit.txt" />
-    <EmbeddedResource Include="Licenses\Plugin.GoogleUserMessagingPlatform.txt" />
     <EmbeddedResource Include="Licenses\Xamarin.AndroidX.Lifecycle.LiveData.txt" />
     <EmbeddedResource Include="Licenses\Xamarin.Essentials.txt" />
     <EmbeddedResource Include="Licenses\Xamarin.Forms.txt" />
@@ -38,11 +37,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CsvHelper" Version="27.1.1" />
-    <PackageReference Include="Octokit" Version="0.50.0" />
-    <PackageReference Include="Plugin.GoogleUserMessagingPlatform" Version="0.0.7-alpha" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2083" />  
-    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="CsvHelper" Version="27.2.1" />
+    <PackageReference Include="Octokit" Version="0.51.0" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2401" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
   </ItemGroup>
 
   <ItemGroup>

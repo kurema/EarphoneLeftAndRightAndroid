@@ -10,8 +10,70 @@ namespace EarphoneLeftAndRight.Helper
 {
     public static class Helpers
     {
-        public static Label[] XhtmlToFormattedString(string xml)
+        public static Label[] XhtmlToLabels(string xml)
         {
+            //https://social.msdn.microsoft.com/Forums/en-US/acc75e12-4a66-43bd-805b-986620689ca4/formattedstring-is-killing-my-listview?forum=xamarinforms
+            //https://github.com/xamarin/Xamarin.Forms/issues/5087
+            //FormattedString is slow.
+            using (var sr = new StringReader(xml))
+            using (var xr = XmlReader.Create(sr, new XmlReaderSettings() { DtdProcessing = DtdProcessing.Ignore }))
+            {
+                var result = new List<Label>();
+                var currentSB = new StringBuilder();
+                double basicFontSize = new Label().FontSize;
+                xr.ReadToFollowing("body");
+
+                void CloseString()
+                {
+                    result.Add(new Label() { Text = currentSB.ToString(), TextType = TextType.Html });
+                    currentSB.Clear();
+                }
+
+                while (xr.Read())
+                {
+                    switch (xr.NodeType)
+                    {
+                        case XmlNodeType.Element:
+                            switch (xr.Name.ToUpperInvariant())
+                            {
+                                case "B":
+                                case "I":
+                                case "SMALL":
+                                default:
+                                    currentSB.Append($"<{xr.Name}>");
+                                    break;
+                                case "BR":
+                                    currentSB.Append($"<br />");
+                                    break;
+                                case "HR":
+                                    CloseString();
+                                    break;
+                            }
+                            break;
+                        case XmlNodeType.EndElement:
+                            currentSB.Append($"</{xr.Name}>");
+                            break;
+                        case XmlNodeType.Text:
+                        case XmlNodeType.SignificantWhitespace:
+                        case XmlNodeType.Whitespace:
+                            currentSB.Append(xr.Value.Replace("\r", "").Replace("\n", ""));
+                            break;
+                        default:
+                            //throw new NotImplementedException();
+                            break;
+                    }
+                }
+                CloseString();
+
+                return result.ToArray();
+            }
+        }
+
+        public static Label[] XhtmlToLabelsClassical(string xml)
+        {
+            //https://social.msdn.microsoft.com/Forums/en-US/acc75e12-4a66-43bd-805b-986620689ca4/formattedstring-is-killing-my-listview?forum=xamarinforms
+            //https://github.com/xamarin/Xamarin.Forms/issues/5087
+            //FormattedString is slow.
             using (var sr = new StringReader(xml))
             using (var xr = XmlReader.Create(sr, new XmlReaderSettings() { DtdProcessing = DtdProcessing.Ignore }))
             {
@@ -62,7 +124,7 @@ namespace EarphoneLeftAndRight.Helper
                                     break;
                                 case "BR":
                                     CloseSpan();
-                                    cString.Spans.Add(new Span() { Text = System.Environment.NewLine });
+                                    cString.Spans.Add(new Span() { Text = Environment.NewLine });
                                     break;
                                 case "HR":
                                     CloseString();

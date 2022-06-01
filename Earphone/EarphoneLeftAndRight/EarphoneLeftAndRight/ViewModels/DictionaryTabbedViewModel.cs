@@ -15,8 +15,8 @@ namespace EarphoneLeftAndRight.ViewModels
         public DictionaryTabbedViewModel()
         {
             Items.Clear();
-            Items.Add(new DictionaryViewModel() { Title = LocalResources.Left, DictionaryTitle = AppResources.Dict_Dict_Title, Html = AppResources.Dict_Left_Html, Id = "Left",WebDictionaryLink=AppResources.Dict_WebDic_Left_Url });
-            Items.Add(new DictionaryViewModel() { Title = LocalResources.Right, DictionaryTitle = AppResources.Dict_Dict_Title, Html = AppResources.Dict_Right_Html, Id = "Right", WebDictionaryLink = AppResources.Dict_WebDic_Right_Url });
+            Items.Add(new DictionaryViewModel() { Title = LocalResources.Left, DictionaryTitle = AppResources.Dict_Dict_Title, Html = AppResources.Dict_Left_Html, HtmlLocale = AppResources.Dict_Dict_LangCode, Id = "Left", WebDictionaryLink = AppResources.Dict_WebDic_Left_Url });
+            Items.Add(new DictionaryViewModel() { Title = LocalResources.Right, DictionaryTitle = AppResources.Dict_Dict_Title, Html = AppResources.Dict_Right_Html, HtmlLocale = AppResources.Dict_Dict_LangCode, Id = "Right", WebDictionaryLink = AppResources.Dict_WebDic_Right_Url });
             SelectedItem = Items[0];
 
             ShellGoToCommand = new Xamarin.Forms.Command(async a =>
@@ -46,7 +46,7 @@ namespace EarphoneLeftAndRight.ViewModels
             set
             {
                 var result = Items?.FirstOrDefault(a => a.Id == value);
-                if(!(result is null))
+                if (!(result is null))
                 {
                     SelectedItem = result;
                 }

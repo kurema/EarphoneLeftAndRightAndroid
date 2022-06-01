@@ -16,6 +16,7 @@ namespace EarphoneLeftAndRight.Droid
 
             try
             {
+                _ = Manager.Tts.Content;
                 Android.Gms.Ads.MobileAds.Initialize(ApplicationContext);
                 new GDPR().SetGDPR(this, ContentResolver);
             }

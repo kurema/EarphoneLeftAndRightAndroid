@@ -30,12 +30,14 @@ namespace EarphoneLeftAndRight.Views
             //Operation is too slow so I measured time it takes.
             layoutMain.Children.Clear();//Ticks: 33,828
             {
-                //var labels = Helper.Helpers.XhtmlToLabelsClassical(Html);//Ticks: 1,364,394! This is the problem!
-                //foreach (var item in labels) layoutMain.Children.Add(item);//Ticks: 20,413
-            }
-            {
                 var labels = Helper.Helpers.XhtmlToLabels(Html);
-                foreach (var item in labels) layoutMain.Children.Add(item);
+                var sizeD = Device.GetNamedSize(NamedSize.Body, typeof(Label));
+                foreach (var item in labels)
+                {
+                    item.InputTransparent = true;
+                    item.FontSize = sizeD;
+                    layoutMain.Children.Add(item);
+                }
             }
 
             //{
@@ -74,5 +76,64 @@ namespace EarphoneLeftAndRight.Views
 
         public static readonly BindableProperty OpenWebDictionaryCommandProperty =
             BindableProperty.Create(nameof(OpenWebDictionaryCommand), typeof(ICommand), typeof(DictionaryPage), new Command(() => { }, () => false), BindingMode.OneWay);
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            var sizeM = Device.GetNamedSize(NamedSize.Body, typeof(Label));
+            var sizeS = sizeM / 1.3;
+            var sizeL = sizeM * 1.3;
+            foreach (var item in layoutMain.Children)
+            {
+                if (item is not Label l) continue;
+                if (l.FontSize == sizeM)
+                {
+                    l.FontSize = sizeL;
+                }
+                else if (l.FontSize == sizeL)
+                {
+                    l.FontSize = sizeS;
+                }
+                else
+                {
+                    l.FontSize = sizeM;
+                }
+            }
+        }
+
+        double currentSize = -1;
+
+        private void PinchGestureRecognizer_PinchUpdated(object sender, PinchGestureUpdatedEventArgs e)
+        {
+            var scale = (e.Scale - 1) * 5 + 1;
+            switch (e.Status)
+            {
+                case GestureStatus.Started:
+                    //scaleProgressBar.IsVisible = true;
+                    //scaleProgressBar.Progress = 0.5;
+                    currentSize = layoutMain.Children.OfType<Label>().FirstOrDefault()?.FontSize ?? -1;
+                    return;
+                case GestureStatus.Running:
+                    currentSize *= scale;
+                    //scaleProgressBar.Progress *= scale;
+                    break;
+                case GestureStatus.Completed:
+                    currentSize *= scale;
+                    //scaleProgressBar.IsVisible = false;
+                    break;
+                case GestureStatus.Canceled:
+                    currentSize *= scale;
+                    //scaleProgressBar.IsVisible = false;
+                    break;
+                default:return;
+            }
+
+            if (currentSize < 0) return;
+
+            foreach (var item in layoutMain.Children)
+            {
+                if (item is not Label l) continue;
+                l.FontSize = currentSize;
+            }
+        }
     }
 }

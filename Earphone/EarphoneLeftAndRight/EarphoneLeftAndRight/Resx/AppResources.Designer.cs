@@ -223,6 +223,15 @@ namespace EarphoneLeftAndRight.Resx {
         }
         
         /// <summary>
+        ///   en-US に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Dict_Dict_LangCode {
+            get {
+                return ResourceManager.GetString("Dict.Dict.LangCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Webster&apos;s Dictionary, 1913 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Dict_Dict_Title {

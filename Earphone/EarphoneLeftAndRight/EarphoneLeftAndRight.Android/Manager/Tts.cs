@@ -89,6 +89,11 @@ namespace EarphoneLeftAndRight.Droid.Manager
             await SpeakWithPan(local.Item2, +1.0f, local.Item2.ToUpperInvariant() == "RIGHT" && Content.IsLanguageAvailable(Java.Util.Locale.English) >= LanguageAvailableResult.Available ? Java.Util.Locale.English : local.Item1);
         }
 
+        public static async Task WaitReadyAsync()
+        {
+            await listner.SemaphoreWaitAsync();
+        }
+
         public static async Task SpeakWithPan(string text, float paramPan, Java.Util.Locale locale)
         {
             await listner.SemaphoreWaitAsync();

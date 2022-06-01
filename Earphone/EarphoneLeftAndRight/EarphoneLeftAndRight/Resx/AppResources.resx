@@ -444,4 +444,8 @@ All experience hath shown that mankind are more disposed to suffer while evils a
   <data name="Profile.Title" xml:space="preserve">
     <value>Profile</value>
   </data>
+  <data name="Dict.Dict.LangCode" xml:space="preserve">
+    <value>en-US</value>
+    <comment>@Invariant</comment>
+  </data>
 </root>

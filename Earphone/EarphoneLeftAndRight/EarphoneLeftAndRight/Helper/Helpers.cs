@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 using Xamarin.Forms;
 using System.IO;
@@ -10,6 +11,56 @@ namespace EarphoneLeftAndRight.Helper
 {
     public static class Helpers
     {
+        public static string[] XhtmlToStrings(string xml)
+        {
+            //https://social.msdn.microsoft.com/Forums/en-US/acc75e12-4a66-43bd-805b-986620689ca4/formattedstring-is-killing-my-listview?forum=xamarinforms
+            //https://github.com/xamarin/Xamarin.Forms/issues/5087
+            //FormattedString is slow.
+            using (var sr = new StringReader(xml))
+            using (var xr = XmlReader.Create(sr, new XmlReaderSettings() { DtdProcessing = DtdProcessing.Ignore }))
+            {
+                xr.ReadToFollowing("body");
+                var result = new List<StringBuilder>() { new StringBuilder() };
+
+                while (xr.Read())
+                {
+                    switch (xr.NodeType)
+                    {
+                        case XmlNodeType.Element:
+                            switch (xr.Name.ToUpperInvariant())
+                            {
+                                case "B":
+                                case "I":
+                                case "SMALL":
+                                default:
+                                    result[result.Count - 1].Append(" ");
+                                    break;
+                                case "BR":
+                                    result[result.Count - 1].Append("\n");
+                                    break;
+                                case "HR":
+                                    result.Add(new StringBuilder());
+                                    break;
+                            }
+                            break;
+                        case XmlNodeType.EndElement:
+                            break;
+                        case XmlNodeType.SignificantWhitespace:
+                        case XmlNodeType.Whitespace:
+                            result[result.Count - 1].Append(" ");
+                            break;
+                        case XmlNodeType.Text:
+                            result[result.Count - 1].Append(xr.Value.Replace("\r", "").Replace("\n", ""));
+                            break;
+                        default:
+                            //throw new NotImplementedException();
+                            break;
+                    }
+                }
+                return result.Select(a => a.ToString()).ToArray();
+            }
+        }
+
         public static Label[] XhtmlToLabels(string xml)
         {
             //https://social.msdn.microsoft.com/Forums/en-US/acc75e12-4a66-43bd-805b-986620689ca4/formattedstring-is-killing-my-listview?forum=xamarinforms

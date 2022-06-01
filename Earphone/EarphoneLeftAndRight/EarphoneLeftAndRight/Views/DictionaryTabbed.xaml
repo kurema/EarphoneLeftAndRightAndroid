@@ -11,6 +11,12 @@
             SelectedItem="{Binding SelectedItem}"
             >
     <TabbedPage.ToolbarItems>
+        <ToolbarItem Clicked="ToolbarItem_Clicked_TextToSpeech">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="Material" Glyph="&#xe32d;" />
+                <!-- Material Symbols do have text-to-speech symbol (f1bc) but Material Icons do not. Adding another font is a bit of trouble. So this is compromise. -->
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
         <ToolbarItem Command="{Binding ShellGoToCommand}" CommandParameter="/DefinitionGraphicalPage">
             <ToolbarItem.IconImageSource>
                 <FontImageSource FontFamily="Material" Glyph="&#xe3f4;" />

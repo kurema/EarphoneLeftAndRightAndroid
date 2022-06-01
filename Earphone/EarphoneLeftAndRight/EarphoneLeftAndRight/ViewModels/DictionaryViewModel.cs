@@ -13,6 +13,10 @@ namespace EarphoneLeftAndRight.ViewModels
         public string Html { get => _Html; set => SetProperty(ref _Html, value); }
 
 
+        private string _HtmlLocale;
+        public string HtmlLocale { get => _HtmlLocale; set => SetProperty(ref _HtmlLocale, value); }
+
+
         private string _DictionaryTitle;
         public string DictionaryTitle { get => _DictionaryTitle; set => SetProperty(ref _DictionaryTitle, value); }
 

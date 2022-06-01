@@ -328,4 +328,7 @@
   <data name="Profile.Title" xml:space="preserve">
     <value>プロフィール</value>
   </data>
+  <data name="Dict.Dict.LangCode" xml:space="preserve">
+    <value>ja-JP</value>
+  </data>
 </root>

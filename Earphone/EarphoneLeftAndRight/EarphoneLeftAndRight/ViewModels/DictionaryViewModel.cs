@@ -37,5 +37,6 @@ namespace EarphoneLeftAndRight.ViewModels
         public string WebDictionaryLink { get => _WebDictionaryLink; set => SetProperty(ref _WebDictionaryLink, value); }
 
         public ICommand OpenWebDictionaryCommand { get; }
+
     }
 }

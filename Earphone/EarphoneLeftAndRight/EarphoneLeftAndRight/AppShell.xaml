@@ -47,17 +47,7 @@
             <ShellContent.Icon>
                 <FontImageSource FontFamily="Material" Glyph="&#xe88e;" />
             </ShellContent.Icon>
-
         </ShellContent>
         <!--<ShellContent Title="About" Icon="icon_about.png" Route="AboutPage" ContentTemplate="{DataTemplate local:DeveloperInfoPage}" />-->
     </TabBar>
-
-    <!--
-        If you would like to navigate to this content you can do so by calling
-        await Shell.Current.GoToAsync("//LoginPage");
-    -->
-    <TabBar>
-    </TabBar>
-
-
 </Shell>

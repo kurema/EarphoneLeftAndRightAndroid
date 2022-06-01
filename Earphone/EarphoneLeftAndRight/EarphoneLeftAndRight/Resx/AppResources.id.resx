@@ -128,7 +128,7 @@
     <value>Beri nilai Aplikasi ini</value>
   </data>
   <data name="Config.Menu.About.Title" xml:space="preserve">
-    <value>Tentang</value>
+    <value>Info</value>
   </data>
   <data name="Config.Menu.OtherApps.BDManager.Desc" xml:space="preserve">
     <value>Aplikasi Xamarin Forms pertama saya.</value>

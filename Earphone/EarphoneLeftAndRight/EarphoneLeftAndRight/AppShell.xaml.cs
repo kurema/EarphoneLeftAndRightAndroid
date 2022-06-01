@@ -16,6 +16,7 @@ namespace EarphoneLeftAndRight
             //Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
             //Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
             Routing.RegisterRoute(nameof(DeveloperInfoPage), typeof(DeveloperInfoPage));
+            Routing.RegisterRoute(nameof(DefinitionGraphicalPage), typeof(DefinitionGraphicalPage));
 
             //Device.BeginInvokeOnMainThread(async () =>
             //{

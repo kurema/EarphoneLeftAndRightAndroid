@@ -14,10 +14,12 @@ namespace EarphoneLeftAndRight.Droid
         {
             base.OnCreate(savedInstanceState);
 
-            Android.Gms.Ads.MobileAds.Initialize(ApplicationContext);
-            new GDPR().SetGDPR(this, ContentResolver);
-            //ここだとAppShell.xaml.csのawait ump.GetConsentInformationAsync(parameters);で落ちる。SplashActivity.cs内だと落ちない。何故？
-            //Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+            try
+            {
+                Android.Gms.Ads.MobileAds.Initialize(ApplicationContext);
+                new GDPR().SetGDPR(this, ContentResolver);
+            }
+            catch { }
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
             LoadApplication(new App());

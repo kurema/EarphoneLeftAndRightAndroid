@@ -128,7 +128,7 @@
     <value>Valuta questa applicazione</value>
   </data>
   <data name="Config.Menu.About.Title" xml:space="preserve">
-    <value>Circa</value>
+    <value>Info</value>
   </data>
   <data name="Config.Menu.OtherApps.BDManager.Desc" xml:space="preserve">
     <value>La mia prima applicazione Xamarin Forms.</value>

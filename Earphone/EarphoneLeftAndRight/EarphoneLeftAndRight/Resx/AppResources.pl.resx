@@ -152,7 +152,7 @@
     <value>Słownik</value>
   </data>
   <data name="Dict.Left.Title" xml:space="preserve">
-    <value>Z lewej strony</value>
+    <value>Lewy</value>
   </data>
   <data name="Dict.Right.Title" xml:space="preserve">
     <value>Prawo</value>
@@ -200,7 +200,7 @@
     <value>Darowizna</value>
   </data>
   <data name="Profile.Email.Header" xml:space="preserve">
-    <value>E-mail:</value>
+    <value>E-mail</value>
   </data>
   <data name="Profile.Followers.Header" xml:space="preserve">
     <value>Naśladowcy</value>

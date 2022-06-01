@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:r="clr-namespace:EarphoneLeftAndRight.Resx"
+             x:Class="EarphoneLeftAndRight.Views.DefinitionGraphicalPage"
+             Title="{x:Static r:LocalResources.LeftRight}"
+             >
+    <ContentPage.Content>
+        <Grid SizeChanged="Grid_SizeChanged" ColumnSpacing="0" RowSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <Grid BackgroundColor="Black" Grid.RowSpan="2" Grid.Column="0" HorizontalOptions="FillAndExpand">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_Left" />
+                </Grid.GestureRecognizers>
+            </Grid>
+            <Grid BackgroundColor="White" Grid.RowSpan="2" Grid.Column="1" HorizontalOptions="FillAndExpand">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_Right" />
+                </Grid.GestureRecognizers>
+            </Grid>
+            <Label InputTransparent="True" TextColor="White" x:Name="labelLeft" Text="{x:Static r:LocalResources.Left}" LineBreakMode="NoWrap" FontSize="200" Grid.Row="0" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center" FontAttributes="Bold"/>
+            <Label InputTransparent="True" TextColor="Black" x:Name="labelRight" Text="{x:Static r:LocalResources.Right}" LineBreakMode="NoWrap" FontSize="200" Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" FontAttributes="Bold"/>
+
+            <Grid InputTransparent="True" Grid.Column="0" Grid.Row="1" IsClippedToBounds="True" Margin="0" HorizontalOptions="FillAndExpand">
+                <Label InputTransparent="True" x:Name="labelLeftArrow" TextColor="White"  FontFamily="Material" Text="&#xf1e6;"  FontSize="200" HorizontalOptions="End"/>
+            </Grid>
+            <Grid InputTransparent="True" Grid.Column="1" Grid.Row="1" IsClippedToBounds="True" Margin="0" HorizontalOptions="FillAndExpand">
+                <Label InputTransparent="True" x:Name="labelRightArrow" TextColor="Black" FontFamily="Material" Text="&#xf1df;"  FontSize="200" HorizontalOptions="Start"/>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

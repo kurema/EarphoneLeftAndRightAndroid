@@ -152,10 +152,10 @@
     <value>词典</value>
   </data>
   <data name="Dict.Left.Title" xml:space="preserve">
-    <value>左边</value>
+    <value>左</value>
   </data>
   <data name="Dict.Right.Title" xml:space="preserve">
-    <value>对</value>
+    <value>右</value>
   </data>
   <data name="Dict.WebDic.Text" xml:space="preserve">
     <value>浏览最新定义</value>
@@ -176,7 +176,7 @@
     <value>什么是 "左"？</value>
   </data>
   <data name="More.OpenDictionary.Right" xml:space="preserve">
-    <value>什么是 "正确"</value>
+    <value>什么是 "右"？</value>
   </data>
   <data name="More.OpenTutorial.Title" xml:space="preserve">
     <value>如何添加快速设置磁贴</value>
@@ -185,13 +185,13 @@
     <value>更多关于左/右</value>
   </data>
   <data name="Play.StereoTest.Title" xml:space="preserve">
-    <value>立体声测试</value>
+    <value>左右音频测试</value>
   </data>
   <data name="Play.Title" xml:space="preserve">
     <value>播放</value>
   </data>
   <data name="Profile.Bio" xml:space="preserve">
-    <value>生物</value>
+    <value>传</value>
   </data>
   <data name="Profile.Contact" xml:space="preserve">
     <value>联系我们</value>
@@ -212,9 +212,15 @@
     <value>开放式</value>
   </data>
   <data name="Profile.Support.Title" xml:space="preserve">
-    <value>支持我们</value>
+    <value>捐款</value>
   </data>
   <data name="Profile.Title" xml:space="preserve">
     <value>形象</value>
+  </data>
+  <data name="Dict.WebDic.Left.Url" xml:space="preserve">
+    <value>https://dict.baidu.com/s?wd=%E5%B7%A6&amp;ptype=zici</value>
+  </data>
+  <data name="Dict.WebDic.Right.Url" xml:space="preserve">
+    <value>https://dict.baidu.com/s?wd=%E5%8F%B3&amp;ptype=zici</value>
   </data>
 </root>

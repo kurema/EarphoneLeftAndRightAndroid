@@ -128,7 +128,7 @@
     <value>Beoordeel deze app</value>
   </data>
   <data name="Config.Menu.About.Title" xml:space="preserve">
-    <value>Over</value>
+    <value>Info</value>
   </data>
   <data name="Config.Menu.OtherApps.BDManager.Desc" xml:space="preserve">
     <value>Mijn eerste Xamarin Forms app.</value>

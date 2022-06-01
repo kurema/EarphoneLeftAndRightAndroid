@@ -122,7 +122,7 @@
     <value>Privatumo politika</value>
   </data>
   <data name="Config.Menu.About.RateThisApp.Desc" xml:space="preserve">
-    <value>Atidarykite šią programėlę "Google Play</value>
+    <value>Atidarykite šią programą „Google Play“</value>
   </data>
   <data name="Config.Menu.About.RateThisApp.Title" xml:space="preserve">
     <value>Įvertinkite šią programėlę</value>
@@ -152,7 +152,7 @@
     <value>Žodynas</value>
   </data>
   <data name="Dict.Left.Title" xml:space="preserve">
-    <value>Kairėje pusėje</value>
+    <value>Kairė</value>
   </data>
   <data name="Dict.Right.Title" xml:space="preserve">
     <value>Dešinė</value>

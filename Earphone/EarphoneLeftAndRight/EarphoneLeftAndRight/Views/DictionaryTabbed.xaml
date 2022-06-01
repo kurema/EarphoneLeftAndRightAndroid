@@ -10,6 +10,13 @@
             ItemsSource="{Binding Items}"
             SelectedItem="{Binding SelectedItem}"
             >
+    <TabbedPage.ToolbarItems>
+        <ToolbarItem Command="{Binding ShellGoToCommand}" CommandParameter="/DefinitionGraphicalPage">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="Material" Glyph="&#xe3f4;" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </TabbedPage.ToolbarItems>
     <TabbedPage.BindingContext>
         <vm:DictionaryTabbedViewModel/>
     </TabbedPage.BindingContext>

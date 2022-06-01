@@ -1,85 +1,92 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+		<LangVersion>latest</LangVersion>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Fonts\MaterialIcons-Regular.ttf" />
-    <None Remove="Licenses\CsvHelper.txt" />
-    <None Remove="Licenses\EarphoneLeftAndRight.txt" />
-    <None Remove="Licenses\Material Icons.txt" />
-    <None Remove="Licenses\NETStandard.Library.txt" />
-    <None Remove="Licenses\nuget.csv" />
-    <None Remove="Licenses\Octokit.txt" />
-    <None Remove="Licenses\Plugin.GoogleUserMessagingPlatform.txt" />
-    <None Remove="Licenses\Xamarin.AndroidX.Lifecycle.LiveData.txt" />
-    <None Remove="Licenses\Xamarin.Essentials.txt" />
-    <None Remove="Licenses\Xamarin.Forms.txt" />
-    <None Remove="Licenses\Xamarin.Google.UserMessagingPlatform.txt" />
-    <None Remove="Licenses\Xamarin.GooglePlayServices.Ads.txt" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Remove="Fonts\MaterialIcons-Regular.ttf" />
+		<None Remove="Licenses\CsvHelper.txt" />
+		<None Remove="Licenses\EarphoneLeftAndRight.txt" />
+		<None Remove="Licenses\Material Icons.txt" />
+		<None Remove="Licenses\NETStandard.Library.txt" />
+		<None Remove="Licenses\nuget.csv" />
+		<None Remove="Licenses\Octokit.txt" />
+		<None Remove="Licenses\Plugin.GoogleUserMessagingPlatform.txt" />
+		<None Remove="Licenses\Xamarin.AndroidX.Lifecycle.LiveData.txt" />
+		<None Remove="Licenses\Xamarin.Essentials.txt" />
+		<None Remove="Licenses\Xamarin.Forms.txt" />
+		<None Remove="Licenses\Xamarin.Google.UserMessagingPlatform.txt" />
+		<None Remove="Licenses\Xamarin.GooglePlayServices.Ads.txt" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Include="Fonts\MaterialIcons-Regular.ttf" />
-    <EmbeddedResource Include="Licenses\CsvHelper.txt" />
-    <EmbeddedResource Include="Licenses\EarphoneLeftAndRight.txt" />
-    <EmbeddedResource Include="Licenses\Material Icons.txt" />
-    <EmbeddedResource Include="Licenses\NETStandard.Library.txt" />
-    <EmbeddedResource Include="Licenses\nuget.csv" />
-    <EmbeddedResource Include="Licenses\Octokit.txt" />
-    <EmbeddedResource Include="Licenses\Xamarin.AndroidX.Lifecycle.LiveData.txt" />
-    <EmbeddedResource Include="Licenses\Xamarin.Essentials.txt" />
-    <EmbeddedResource Include="Licenses\Xamarin.Forms.txt" />
-    <EmbeddedResource Include="Licenses\Xamarin.Google.UserMessagingPlatform.txt" />
-    <EmbeddedResource Include="Licenses\Xamarin.GooglePlayServices.Ads.txt" />
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="Fonts\MaterialIcons-Regular.ttf" />
+		<EmbeddedResource Include="Licenses\CsvHelper.txt" />
+		<EmbeddedResource Include="Licenses\EarphoneLeftAndRight.txt" />
+		<EmbeddedResource Include="Licenses\Material Icons.txt" />
+		<EmbeddedResource Include="Licenses\NETStandard.Library.txt" />
+		<EmbeddedResource Include="Licenses\nuget.csv" />
+		<EmbeddedResource Include="Licenses\Octokit.txt" />
+		<EmbeddedResource Include="Licenses\Xamarin.AndroidX.Lifecycle.LiveData.txt" />
+		<EmbeddedResource Include="Licenses\Xamarin.Essentials.txt" />
+		<EmbeddedResource Include="Licenses\Xamarin.Forms.txt" />
+		<EmbeddedResource Include="Licenses\Xamarin.Google.UserMessagingPlatform.txt" />
+		<EmbeddedResource Include="Licenses\Xamarin.GooglePlayServices.Ads.txt" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="CsvHelper" Version="27.2.1" />
-    <PackageReference Include="Octokit" Version="0.51.0" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2401" />  
-    <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="CsvHelper" Version="27.2.1" />
+		<PackageReference Include="Octokit" Version="0.51.0" />
+		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2401" />
+		<PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+	<ItemGroup>
+		<Folder Include="Services\" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="Resx\AppResources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>AppResources.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Update="Resx\AppResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>AppResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Views\DefinitionGraphicalPage.xaml.cs">
+			<DependentUpon>DefinitionGraphicalPage.xaml</DependentUpon>
+		</Compile>
+	</ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Update="Resx\AppResources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\AdDefaultView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\ConfigPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\DeveloperInfoPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\DictionaryPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\DictionaryTabbed.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\LicenseInfoPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\PlayPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Update="Resx\AppResources.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\AdDefaultView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\ConfigPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\DefinitionGraphicalPage.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\DeveloperInfoPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\DictionaryPage.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\DictionaryTabbed.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\LicenseInfoPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\PlayPage.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+	</ItemGroup>
 </Project>

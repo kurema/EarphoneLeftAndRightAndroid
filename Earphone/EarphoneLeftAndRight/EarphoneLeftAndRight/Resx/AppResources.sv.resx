@@ -128,7 +128,7 @@
     <value>Betygsätt den här appen</value>
   </data>
   <data name="Config.Menu.About.Title" xml:space="preserve">
-    <value>Om</value>
+    <value>Info</value>
   </data>
   <data name="Config.Menu.OtherApps.BDManager.Desc" xml:space="preserve">
     <value>Min första Xamarin Forms-app.</value>

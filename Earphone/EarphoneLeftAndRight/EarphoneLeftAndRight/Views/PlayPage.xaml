@@ -26,7 +26,7 @@
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <ScrollView HorizontalOptions="Fill" VerticalOptions="Fill">
+        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <StackLayout>
                 <controls:AdDefaultView HeightRequest="51" HorizontalOptions="Fill"  WidthRequest="320" Grid.Row="0"  />
                 <StackLayout Margin="10">

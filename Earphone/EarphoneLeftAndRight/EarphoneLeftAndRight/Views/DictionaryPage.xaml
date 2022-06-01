@@ -15,21 +15,21 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-            <ScrollView HorizontalOptions="Fill" VerticalOptions="Fill">
-                <StackLayout>
-                    <controls:AdDefaultView HeightRequest="51" HorizontalOptions="Fill"  WidthRequest="320" Grid.Row="0" Margin="0,10,0,0" />
-                    <StackLayout x:Name="layoutMain" Margin="15">
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                            <PinchGestureRecognizer PinchUpdated="PinchGestureRecognizer_PinchUpdated"/>
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
-                    <Label x:Name="labelDictionaryName" HorizontalOptions="Center"
+        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout>
+                <controls:AdDefaultView HeightRequest="51" HorizontalOptions="Fill"  WidthRequest="320" Grid.Row="0" Margin="0,10,0,0" />
+                <StackLayout x:Name="layoutMain" Margin="15">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                        <PinchGestureRecognizer PinchUpdated="PinchGestureRecognizer_PinchUpdated"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+                <Label x:Name="labelDictionaryName" HorizontalOptions="Center" InputTransparent="True"
                            IsVisible="{Binding Source={Reference contentPage},Path=DictionaryName,Converter={StaticResource nesvc},ConverterParameter=False:True}" 
                            Text="{Binding Source={Reference contentPage},Path=DictionaryName}" 
                            />
-                    <Button Text="{x:Static r:AppResources.Dict_WebDic_Text}" Command="{Binding Source={Reference contentPage},Path=OpenWebDictionaryCommand}" Margin="15" />
-                </StackLayout>
-            </ScrollView>
+                <Button Text="{x:Static r:AppResources.Dict_WebDic_Text}" Command="{Binding Source={Reference contentPage},Path=OpenWebDictionaryCommand}" Margin="15" />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

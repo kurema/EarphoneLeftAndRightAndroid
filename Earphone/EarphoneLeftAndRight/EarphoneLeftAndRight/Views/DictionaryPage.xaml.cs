@@ -100,29 +100,18 @@ namespace EarphoneLeftAndRight.Views
             }
         }
 
-        double currentSize = -1;
 
         private void PinchGestureRecognizer_PinchUpdated(object sender, PinchGestureUpdatedEventArgs e)
         {
+            double currentSize = layoutMain.Children.OfType<Label>().FirstOrDefault()?.FontSize ?? -1;
             var scale = (e.Scale - 1) * 5 + 1;
             switch (e.Status)
             {
                 case GestureStatus.Started:
-                    //scaleProgressBar.IsVisible = true;
-                    //scaleProgressBar.Progress = 0.5;
-                    currentSize = layoutMain.Children.OfType<Label>().FirstOrDefault()?.FontSize ?? -1;
-                    return;
                 case GestureStatus.Running:
-                    currentSize *= scale;
-                    //scaleProgressBar.Progress *= scale;
-                    break;
                 case GestureStatus.Completed:
-                    currentSize *= scale;
-                    //scaleProgressBar.IsVisible = false;
-                    break;
                 case GestureStatus.Canceled:
                     currentSize *= scale;
-                    //scaleProgressBar.IsVisible = false;
                     break;
                 default:return;
             }

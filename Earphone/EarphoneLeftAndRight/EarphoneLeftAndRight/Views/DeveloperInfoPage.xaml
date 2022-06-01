@@ -27,7 +27,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <ScrollView HorizontalOptions="Fill" VerticalOptions="Fill">
+        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <StackLayout>
                 <Grid HeightRequest="200" BackgroundColor="Accent">
                     <Image Source="{Binding TwitterUser.ProfileBannerUrl}" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>

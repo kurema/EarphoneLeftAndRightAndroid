@@ -301,9 +301,6 @@
   <data name="Play.Title" xml:space="preserve">
     <value>テスト</value>
   </data>
-  <data name="Profile.Accounts.Github.ID" xml:space="preserve">
-    <value>kurema</value>
-  </data>
   <data name="Profile.Bio" xml:space="preserve">
     <value>紹介</value>
   </data>
@@ -330,8 +327,5 @@
   </data>
   <data name="Profile.Title" xml:space="preserve">
     <value>プロフィール</value>
-  </data>
-  <data name="Config.Menu.About.LicenseApp.LicenseUrl" xml:space="preserve">
-    <value>https://github.com/kurema/EarphoneLeftAndRightAndroid/blob/master/LICENSE</value>
   </data>
 </root>

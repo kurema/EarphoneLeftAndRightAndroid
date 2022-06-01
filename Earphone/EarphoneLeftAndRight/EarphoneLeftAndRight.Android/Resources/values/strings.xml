@@ -4,4 +4,5 @@
   <string name="tile_play_name">Left/Right</string>
   <string name="word.left">Left</string>
   <string name="word.right">Right</string>
+  <string name="widget_name">Stereo Test Widget</string>
 </resources>

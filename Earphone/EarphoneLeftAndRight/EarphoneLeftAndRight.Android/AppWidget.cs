@@ -12,7 +12,7 @@ using System.Text;
 
 namespace EarphoneLeftAndRight.Droid
 {
-    [BroadcastReceiver(Label = "Stereo Test Widget", Exported = true)]
+    [BroadcastReceiver(Label = "@string/widget_name", Exported = true)]
     [IntentFilter(new string[] { "android.appwidget.action.APPWIDGET_UPDATE" })]
     [MetaData("android.appwidget.provider", Resource = "@xml/appwidget_provider")]
     public class AppWidget : AppWidgetProvider

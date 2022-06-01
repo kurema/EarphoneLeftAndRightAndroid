@@ -37,9 +37,9 @@ namespace EarphoneLeftAndRight.Droid
                     .Build();
 
                 var consentInformation = Xamarin.Google.UserMesssagingPlatform.UserMessagingPlatform.GetConsentInformation(activity);
-#if DEBUG
-                consentInformation.Reset();
-#endif
+//#if DEBUG
+//                consentInformation.Reset();
+//#endif
 
                 consentInformation.RequestConsentInfoUpdate(
                     activity,
@@ -73,7 +73,7 @@ namespace EarphoneLeftAndRight.Droid
                         })
                     );
             }
-            catch (Exception ex)
+            catch
             {
             }
         }
@@ -129,7 +129,7 @@ namespace EarphoneLeftAndRight.Droid
                 {
                 }
             }
-            catch (Exception ex)
+            catch
             {
             }
         }

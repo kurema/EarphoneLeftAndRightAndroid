@@ -160,7 +160,7 @@ namespace EarphoneLeftAndRight.Resx {
         }
         
         /// <summary>
-        ///   About に類似しているローカライズされた文字列を検索します。
+        ///   Info に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Config_Menu_About_Title {
             get {
@@ -214,7 +214,7 @@ namespace EarphoneLeftAndRight.Resx {
         }
         
         /// <summary>
-        ///   About に類似しているローカライズされた文字列を検索します。
+        ///   Info に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Config_Title {
             get {

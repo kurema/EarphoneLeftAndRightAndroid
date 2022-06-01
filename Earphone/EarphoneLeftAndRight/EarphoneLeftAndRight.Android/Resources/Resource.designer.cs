@@ -19293,10 +19293,13 @@ namespace EarphoneLeftAndRight.Droid
 			public const int v7_preference_on = 2131624071;
 			
 			// aapt resource value: 0x7F0E0088
-			public const int word_left = 2131624072;
+			public const int widget_name = 2131624072;
 			
 			// aapt resource value: 0x7F0E0089
-			public const int word_right = 2131624073;
+			public const int word_left = 2131624073;
+			
+			// aapt resource value: 0x7F0E008A
+			public const int word_right = 2131624074;
 			
 			static String()
 			{

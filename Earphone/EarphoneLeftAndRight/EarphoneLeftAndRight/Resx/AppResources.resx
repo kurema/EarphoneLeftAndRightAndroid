@@ -128,6 +128,7 @@
   </data>
   <data name="Config.Menu.About.LicenseApp.LicenseUrl" xml:space="preserve">
     <value>https://github.com/kurema/EarphoneLeftAndRightAndroid/blob/master/LICENSE</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="Config.Menu.About.LicenseApp.Title" xml:space="preserve">
     <value>License</value>
@@ -151,7 +152,7 @@
     <value>Rate this App</value>
   </data>
   <data name="Config.Menu.About.Title" xml:space="preserve">
-    <value>About</value>
+    <value>Info</value>
   </data>
   <data name="Config.Menu.OtherApps.BDManager.Desc" xml:space="preserve">
     <value>My first Xamarin Forms app.</value>
@@ -169,10 +170,11 @@
     <value>Other Apps</value>
   </data>
   <data name="Config.Title" xml:space="preserve">
-    <value>About</value>
+    <value>Info</value>
   </data>
   <data name="Dict.Dict.Title" xml:space="preserve">
     <value>Webster's Dictionary, 1913</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="Dict.Header" xml:space="preserve">
     <value>Dictionary</value>
@@ -206,6 +208,7 @@ Put that rose a little more to the &lt;I&gt;left&lt;/I&gt;.&lt;br/&gt;
 &lt;I&gt;a.&lt;/I&gt;Situated so that the left side of the body is toward it; as, the &lt;I&gt;left&lt;/I&gt; side of a deliberative meeting is that to the left of the presiding officer; the &lt;I&gt;left&lt;/I&gt; wing of an army is that to the left of the center to one facing an enemy.
 &lt;/body&gt;
 &lt;/html&gt;</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="Dict.Left.Title" xml:space="preserve">
     <value>Left</value>
@@ -350,15 +353,18 @@ All experience hath shown that mankind are more disposed to suffer while evils a
 &lt;B&gt;2.&lt;/B&gt; &lt;I&gt;(Naut.)&lt;/I&gt; Hence, to regain an upright position, as a ship or boat, after careening.
 &lt;/body&gt;
 &lt;/html&gt;</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="Dict.Right.Title" xml:space="preserve">
     <value>Right</value>
   </data>
   <data name="Dict.WebDic.Left.Url" xml:space="preserve">
     <value>https://www.merriam-webster.com/dictionary/left</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="Dict.WebDic.Right.Url" xml:space="preserve">
     <value>https://www.merriam-webster.com/dictionary/right</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="Dict.WebDic.Text" xml:space="preserve">
     <value>Browse the latest definition</value>
@@ -377,6 +383,7 @@ All experience hath shown that mankind are more disposed to suffer while evils a
   </data>
   <data name="More.OpenCompass.URL" xml:space="preserve">
     <value>https://politicalcompass.org/test</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="More.OpenDictionary.Left" xml:space="preserve">
     <value>What is "left"</value>
@@ -391,9 +398,11 @@ All experience hath shown that mankind are more disposed to suffer while evils a
   </data>
   <data name="More.OpenTutorial.URL" xml:space="preserve">
     <value>https://www.youtube.com/shorts/dUNxZWk7e2w</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="More.OpenVideo.URL" xml:space="preserve">
     <value>https://www.youtube.com/watch?v=TDPHDW3JMRU</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="More.Title" xml:space="preserve">
     <value>More about Left/Right</value>
@@ -406,6 +415,7 @@ All experience hath shown that mankind are more disposed to suffer while evils a
   </data>
   <data name="Profile.Accounts.Github.ID" xml:space="preserve">
     <value>kurema</value>
+    <comment>@Invariant</comment>
   </data>
   <data name="Profile.Bio" xml:space="preserve">
     <value>Bio</value>

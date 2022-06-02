@@ -217,10 +217,13 @@
   <data name="Profile.Title" xml:space="preserve">
     <value>Profil</value>
   </data>
-  <data name="Config.Menu.About.WhatsNew.Title" xml:space="preserve">
+  <data name="Config.Menu.About.WhatsNew.Desc" xml:space="preserve">
     <value>Ce este nou în această versiune</value>
   </data>
   <data name="More.Search.Word" xml:space="preserve">
     <value>Căutare</value>
+  </data>
+  <data name="Config.Menu.About.WhatsNew.Title" xml:space="preserve">
+    <value>Ce este nou</value>
   </data>
 </root>

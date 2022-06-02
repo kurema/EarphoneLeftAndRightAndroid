@@ -171,18 +171,18 @@ namespace EarphoneLeftAndRight.Resx {
         /// <summary>
         ///   What&apos;s new in this version に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string Config_Menu_About_WhatsNew_Title {
+        internal static string Config_Menu_About_WhatsNew_Desc {
             get {
-                return ResourceManager.GetString("Config.Menu.About.WhatsNew.Title", resourceCulture);
+                return ResourceManager.GetString("Config.Menu.About.WhatsNew.Desc", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   https://github.com/kurema/EarphoneLeftAndRightAndroid/releases/latest に類似しているローカライズされた文字列を検索します。
+        ///   What&apos;s new に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string Config_Menu_About_WhatsNew_Url {
+        internal static string Config_Menu_About_WhatsNew_Title {
             get {
-                return ResourceManager.GetString("Config.Menu.About.WhatsNew.Url", resourceCulture);
+                return ResourceManager.GetString("Config.Menu.About.WhatsNew.Title", resourceCulture);
             }
         }
         

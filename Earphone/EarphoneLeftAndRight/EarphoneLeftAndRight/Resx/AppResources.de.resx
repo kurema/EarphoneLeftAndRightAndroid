@@ -223,10 +223,13 @@
   <data name="Dict.WebDic.Right.Url" xml:space="preserve">
     <value>https://de.thefreedictionary.com/Rechts</value>
   </data>
-  <data name="Config.Menu.About.WhatsNew.Title" xml:space="preserve">
+  <data name="Config.Menu.About.WhatsNew.Desc" xml:space="preserve">
     <value>Was ist neu in dieser Version</value>
   </data>
   <data name="More.Search.Word" xml:space="preserve">
     <value>Suche</value>
+  </data>
+  <data name="Config.Menu.About.WhatsNew.Title" xml:space="preserve">
+    <value>Was gibt es Neues?</value>
   </data>
 </root>

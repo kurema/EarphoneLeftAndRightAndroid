@@ -448,14 +448,13 @@ All experience hath shown that mankind are more disposed to suffer while evils a
     <value>en-US</value>
     <comment>@Invariant</comment>
   </data>
-  <data name="Config.Menu.About.WhatsNew.Title" xml:space="preserve">
+  <data name="Config.Menu.About.WhatsNew.Desc" xml:space="preserve">
     <value>What's new in this version</value>
   </data>
   <data name="More.Search.Word" xml:space="preserve">
     <value>Search</value>
   </data>
-  <data name="Config.Menu.About.WhatsNew.Url" xml:space="preserve">
-    <value>https://github.com/kurema/EarphoneLeftAndRightAndroid/releases/latest</value>
-    <comment>@Invariant</comment>
+  <data name="Config.Menu.About.WhatsNew.Title" xml:space="preserve">
+    <value>What's new</value>
   </data>
 </root>

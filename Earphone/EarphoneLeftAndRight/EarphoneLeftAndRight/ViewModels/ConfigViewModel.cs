@@ -93,6 +93,13 @@ namespace EarphoneLeftAndRight.ViewModels
                                                 await Xamarin.Essentials.Launcher.OpenAsync("https://play.google.com/store/apps/details?id=com.github.kurema.earphoneleftandright");
                                             }
                                         },
+                                        new SettingItem(AppResources.Config_Menu_About_WhatsNew_Title,AppResources.Config_Menu_About_WhatsNew_Desc)
+                                        {
+                                            Action=async _ =>
+                                            {
+                                                await Xamarin.Essentials.Launcher.OpenAsync("https://github.com/kurema/EarphoneLeftAndRightAndroid/releases/latest");
+                                            }
+                                        }
                                     },
                                     new SettingItems(AppResources.Config_Menu_OtherApps_Title)
                                     {

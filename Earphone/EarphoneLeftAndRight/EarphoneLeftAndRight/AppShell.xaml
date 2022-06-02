@@ -43,7 +43,7 @@
                 <FontImageSource FontFamily="Material" Glyph="&#xe873;" />
             </ShellContent.Icon>
         </ShellContent>
-        <ShellContent Title="{x:Static r:AppResources.Config_Title}" Route="SettingPage" ContentTemplate="{DataTemplate local:ConfigPage}" >
+        <ShellContent Title="{x:Static r:AppResources.Config_Title}" Route="ConfigPage" ContentTemplate="{DataTemplate local:ConfigPage}" >
             <ShellContent.Icon>
                 <FontImageSource FontFamily="Material" Glyph="&#xe88e;" />
             </ShellContent.Icon>

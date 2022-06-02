@@ -30,7 +30,6 @@ namespace EarphoneLeftAndRight.Droid
             base.OnClick();
 
             Manager.Tts.StopIfSpeaking();
-
             await Manager.Tts.SpeakLeft();
             await Manager.Tts.SpeakRight();
         }

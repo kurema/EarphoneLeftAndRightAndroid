@@ -169,6 +169,24 @@ namespace EarphoneLeftAndRight.Resx {
         }
         
         /// <summary>
+        ///   What&apos;s new in this version に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Config_Menu_About_WhatsNew_Title {
+            get {
+                return ResourceManager.GetString("Config.Menu.About.WhatsNew.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   https://github.com/kurema/EarphoneLeftAndRightAndroid/releases/latest に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Config_Menu_About_WhatsNew_Url {
+            get {
+                return ResourceManager.GetString("Config.Menu.About.WhatsNew.Url", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   My first Xamarin Forms app. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Config_Menu_OtherApps_BDManager_Desc {
@@ -416,6 +434,15 @@ namespace EarphoneLeftAndRight.Resx {
         internal static string More_OpenVideo_URL {
             get {
                 return ResourceManager.GetString("More.OpenVideo.URL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Search に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string More_Search_Word {
+            get {
+                return ResourceManager.GetString("More.Search.Word", resourceCulture);
             }
         }
         

@@ -20,8 +20,6 @@ namespace EarphoneLeftAndRight.Droid
         //https://docs.microsoft.com/xamarin/android/user-interface/splash-screen
         public override void OnCreate(Bundle savedInstanceState, PersistableBundle persistentState)
         {
-            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-
             base.OnCreate(savedInstanceState, persistentState);
         }
 

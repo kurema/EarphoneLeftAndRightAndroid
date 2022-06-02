@@ -22,8 +22,16 @@ You can figure out which earbuds is left or right, in the App and on the Quick S
   * Widget
 * Show definitions of left/right.
 * Support
-  * 96 language (voice and title).
   * Dark theme (Android 10+)
+  * Many languages
+
+## Translations
+| # of languages | Support | Path |
+| -- | -- | -- |
+| 66 | Only title and voice | [EarphoneLeftAndRight.Android/Resources](Earphone/EarphoneLeftAndRight/EarphoneLeftAndRight.Android/Resources) |
+| 28 | + Almost all UI | [EarphoneLeftAndRight/Resx](Earphone/EarphoneLeftAndRight/EarphoneLeftAndRight/Resx) |
+| 2 | + Dictionary | [EarphoneLeftAndRight/Resx](Earphone/EarphoneLeftAndRight/EarphoneLeftAndRight/Resx) |
+
 
 ## Introduction / Tutorial
 [![YouTube](https://img.youtube.com/vi/TDPHDW3JMRU/0.jpg)](https://www.youtube.com/watch?v=TDPHDW3JMRU)

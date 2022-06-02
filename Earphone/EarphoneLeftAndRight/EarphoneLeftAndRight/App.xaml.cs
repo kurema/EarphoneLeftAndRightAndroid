@@ -19,7 +19,7 @@ namespace EarphoneLeftAndRight
             MainPage = new AppShell();
         }
 
-        private async void AppActions_OnAppAction(object sender, Xamarin.Essentials.AppActionEventArgs e)
+        private void AppActions_OnAppAction(object sender, Xamarin.Essentials.AppActionEventArgs e)
         {
             //https://docs.microsoft.com/ja-jp/xamarin/essentials/app-actions?tabs=android
 
@@ -29,36 +29,38 @@ namespace EarphoneLeftAndRight
                 return;
             }
 
-            var tts = DependencyService.Get<Dependency.ITextToSpeech>();
-
-            switch (e.AppAction.Id)
+            Xamarin.Essentials.MainThread.BeginInvokeOnMainThread(async () =>
             {
-                case "play_voice_lr":
-                    await Shell.Current.GoToAsync($"///{nameof(Views.PlayPage)}");
-                    await tts.Clear();
-                    await tts.SpeakLeft();
-                    await tts.SpeakRight();
-                    break;
-                case "play_voice_left":
-                    await Shell.Current.GoToAsync($"///{nameof(Views.PlayPage)}");
-                    await tts.Clear();
-                    await tts.SpeakLeft();
-                    break;
-                case "play_voice_right":
-                    await Shell.Current.GoToAsync($"///{nameof(Views.PlayPage)}");
-                    await tts.Clear();
-                    await tts.SpeakRight();
-                    break;
-                case appActionIdOpen + nameof(Views.DictionaryTabbed):
-                    await Shell.Current.GoToAsync($"///{nameof(Views.DictionaryTabbed)}");
-                    break;
-                case appActionIdOpen + nameof(Views.PlayPage):
-                    await Shell.Current.GoToAsync($"///{nameof(Views.PlayPage)}");
-                    break;
-                case appActionIdOpen + nameof(Views.ConfigPage):
-                    await Shell.Current.GoToAsync($"///{nameof(Views.ConfigPage)}");
-                    break;
-            }
+                var tts = DependencyService.Get<Dependency.ITextToSpeech>();
+                switch (e.AppAction.Id)
+                {
+                    case "play_voice_lr":
+                        await Shell.Current.GoToAsync($"///{nameof(Views.PlayPage)}");
+                        await tts.Clear();
+                        await tts.SpeakLeft();
+                        await tts.SpeakRight();
+                        break;
+                    case "play_voice_left":
+                        await Shell.Current.GoToAsync($"///{nameof(Views.PlayPage)}");
+                        await tts.Clear();
+                        await tts.SpeakLeft();
+                        break;
+                    case "play_voice_right":
+                        await Shell.Current.GoToAsync($"///{nameof(Views.PlayPage)}");
+                        await tts.Clear();
+                        await tts.SpeakRight();
+                        break;
+                    case appActionIdOpen + nameof(Views.DictionaryTabbed):
+                        await Shell.Current.GoToAsync($"///{nameof(Views.DictionaryTabbed)}");
+                        break;
+                    case appActionIdOpen + nameof(Views.PlayPage):
+                        await Shell.Current.GoToAsync($"///{nameof(Views.PlayPage)}");
+                        break;
+                    case appActionIdOpen + nameof(Views.ConfigPage):
+                        await Shell.Current.GoToAsync($"///{nameof(Views.ConfigPage)}");
+                        break;
+                }
+            });
         }
 
         protected override async void OnStart()

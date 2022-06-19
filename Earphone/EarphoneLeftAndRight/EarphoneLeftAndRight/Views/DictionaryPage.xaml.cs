@@ -27,8 +27,8 @@ namespace EarphoneLeftAndRight.Views
 
         public void UpdateHtml()
         {
-            //Operation is too slow so I measured time it takes.
             layoutMain.Children.Clear();//Ticks: 33,828
+            var innnerStack = new StackLayout() { InputTransparent = true };
             {
                 var labels = Helper.Helpers.XhtmlToLabels(Html);
                 var sizeD = Device.GetNamedSize(NamedSize.Body, typeof(Label));
@@ -36,18 +36,12 @@ namespace EarphoneLeftAndRight.Views
                 {
                     item.InputTransparent = true;
                     item.FontSize = sizeD;
-                    layoutMain.Children.Add(item);
+                    innnerStack.Children.Add(item);
                 }
+                layoutMain.Children.Add(innnerStack);
             }
 
-            //{
-            //    var label = new Label()
-            //    {
-            //        TextType = TextType.Html,
-            //        Text = Html,
-            //    };
-            //    layoutMain.Children.Add(label);
-            //}
+            this.InvalidateMeasure();
         }
 
         public static readonly BindableProperty HtmlProperty =
@@ -82,7 +76,8 @@ namespace EarphoneLeftAndRight.Views
             var sizeM = Device.GetNamedSize(NamedSize.Body, typeof(Label));
             var sizeS = sizeM / 1.3;
             var sizeL = sizeM * 1.3;
-            foreach (var item in layoutMain.Children)
+            if (layoutMain.Children.Count == 0 || layoutMain.Children[0] is not StackLayout stack) return;
+            foreach (var item in stack.Children)
             {
                 if (item is not Label l) continue;
                 if (l.FontSize == sizeM)
@@ -103,25 +98,34 @@ namespace EarphoneLeftAndRight.Views
 
         private void PinchGestureRecognizer_PinchUpdated(object sender, PinchGestureUpdatedEventArgs e)
         {
-            double currentSize = layoutMain.Children.OfType<Label>().FirstOrDefault()?.FontSize ?? -1;
-            var scale = (e.Scale - 1) * 5 + 1;
+            //var scale = (e.Scale - 1) * 5 + 1;
+            var scale = e.Scale;
             switch (e.Status)
             {
                 case GestureStatus.Started:
                 case GestureStatus.Running:
+                    {
+                        var lScale = layoutMain.Scale * scale;
+                        lScale = Math.Max(0.1, lScale);
+                        layoutMain.Scale = lScale;
+                    }
+                    return;
                 case GestureStatus.Completed:
                 case GestureStatus.Canceled:
-                    currentSize *= scale;
                     break;
-                default:return;
+                default: return;
             }
 
-            if (currentSize < 0) return;
+            if (layoutMain.Children.Count == 0 || layoutMain.Children[0] is not StackLayout stack) return;
+            double fontSize = stack.Children.OfType<Label>().FirstOrDefault()?.FontSize ?? -1;
+            fontSize *= layoutMain.Scale;
+            layoutMain.Scale = 1.0d;
+            if (fontSize < 0) return;
 
-            foreach (var item in layoutMain.Children)
+            foreach (var item in stack.Children)
             {
                 if (item is not Label l) continue;
-                l.FontSize = currentSize;
+                l.FontSize = fontSize;
             }
         }
     }

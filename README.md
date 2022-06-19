@@ -2,7 +2,7 @@
 [![Releases](https://img.shields.io/github/release/kurema/EarphoneLeftAndRightAndroid.svg)](https://github.com/kurema/EarphoneLeftAndRightAndroid/releases/latest)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/kurema/EarphoneLeftAndRightAndroid/blob/master/LICENSE)
 
-# Stereo Test - Quick Settings Tile
+# Stereo Test Tile
 You can figure out which earbuds is left or right, in the App and on the Quick Settings Tile.  
 
 [<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png"

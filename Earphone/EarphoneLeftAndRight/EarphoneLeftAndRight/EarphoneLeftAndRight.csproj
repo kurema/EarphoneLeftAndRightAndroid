@@ -54,6 +54,9 @@
 			<AutoGen>True</AutoGen>
 			<DependentUpon>AppResources.resx</DependentUpon>
 		</Compile>
+		<Compile Update="Views\BeepTabbed.xaml.cs">
+		  <DependentUpon>BeepTabbed.xaml</DependentUpon>
+		</Compile>
 		<Compile Update="Views\DefinitionGraphicalPage.xaml.cs">
 			<DependentUpon>DefinitionGraphicalPage.xaml</DependentUpon>
 		</Compile>
@@ -66,6 +69,9 @@
 		</EmbeddedResource>
 		<EmbeddedResource Update="Views\AdDefaultView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\BeepTabbed.xaml">
+		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Views\ConfigPage.xaml">
 			<Generator>MSBuild:Compile</Generator>

@@ -226,4 +226,10 @@
   <data name="Config.Menu.About.WhatsNew.Title" xml:space="preserve">
     <value>Co nowego</value>
   </data>
+  <data name="Beep.Title" xml:space="preserve">
+    <value>Beep</value>
+  </data>
+  <data name="Word.Center" xml:space="preserve">
+    <value>Centrum</value>
+  </data>
 </root>

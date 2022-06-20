@@ -232,4 +232,10 @@
   <data name="Config.Menu.About.WhatsNew.Title" xml:space="preserve">
     <value>Was gibt es Neues?</value>
   </data>
+  <data name="Beep.Title" xml:space="preserve">
+    <value>Piep</value>
+  </data>
+  <data name="Word.Center" xml:space="preserve">
+    <value>Zentrum</value>
+  </data>
 </root>

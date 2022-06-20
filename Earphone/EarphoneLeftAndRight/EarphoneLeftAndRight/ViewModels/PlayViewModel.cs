@@ -4,6 +4,8 @@ using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Essentials;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace EarphoneLeftAndRight.ViewModels
 {
@@ -23,6 +25,18 @@ namespace EarphoneLeftAndRight.ViewModels
             OpenSearchCommand = new Command(async a =>
             {
                 await Browser.OpenAsync(string.Format(SearchServiceSelected.Uri, System.Web.HttpUtility.UrlEncode(SearchWord)));
+            });
+            PlayBeepCommand = new Command(async a =>
+            {
+                var nums = a.ToString()?.Split(',').Select(a => double.Parse(a)).ToArray();
+                await Storages.AudioStorage.RegisterSignWave(nums[0], nums[1], nums[2], nums[3]);
+                await Task.Run(async () => Storages.AudioStorage.AudioTest.Play());
+            });
+            PlayBeepShiftCommand = new Command(async a =>
+            {
+                var nums = a.ToString()?.Split(',').Select(a => double.Parse(a)).ToArray();
+                await Storages.AudioStorage.RegisterSignWaveStereoShift(nums[0], nums[1], nums[2] == 0 ? Storages.AudioStorage.ShiftDirection.LeftToRight : Storages.AudioStorage.ShiftDirection.RightToLeft);
+                await Task.Run(() => Storages.AudioStorage.AudioTest.Play());
             });
         }
 
@@ -51,6 +65,9 @@ namespace EarphoneLeftAndRight.ViewModels
         public ICommand SpeakCommand { get; }
         public ICommand OpenDictionaryCommand { get; }
         public ICommand OpenSearchCommand { get; }
+
+        public ICommand PlayBeepCommand { get; }
+        public ICommand PlayBeepShiftCommand { get; }
 
         private string[] _SearchWords;
         public string[] SearchWords => _SearchWords ??= new string[] {

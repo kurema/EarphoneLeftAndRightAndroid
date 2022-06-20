@@ -232,4 +232,10 @@
   <data name="Config.Menu.About.WhatsNew.Title" xml:space="preserve">
     <value>最新动态</value>
   </data>
+  <data name="Beep.Title" xml:space="preserve">
+    <value>哔哔声</value>
+  </data>
+  <data name="Word.Center" xml:space="preserve">
+    <value>中心</value>
+  </data>
 </root>

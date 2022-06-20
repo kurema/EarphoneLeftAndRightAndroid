@@ -226,4 +226,10 @@
   <data name="Config.Menu.About.WhatsNew.Title" xml:space="preserve">
     <value>Kas naujo</value>
   </data>
+  <data name="Beep.Title" xml:space="preserve">
+    <value>Pyptelėjimas</value>
+  </data>
+  <data name="Word.Center" xml:space="preserve">
+    <value>Centras</value>
+  </data>
 </root>

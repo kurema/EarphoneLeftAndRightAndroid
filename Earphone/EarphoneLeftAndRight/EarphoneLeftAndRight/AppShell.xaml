@@ -38,6 +38,11 @@
                 <FontImageSource FontFamily="Material" Glyph="&#xf003;" />
             </ShellContent.Icon>
         </ShellContent>
+        <ShellContent Title="beep" Route="BeepTabbed" ContentTemplate="{DataTemplate local:BeepTabbed}">
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="Material" Glyph="&#xe3a1;" />
+            </ShellContent.Icon>
+        </ShellContent>
         <ShellContent Title="{x:Static r:AppResources.Dict_Header}" Route="DictionaryTabbed" ContentTemplate="{DataTemplate local:DictionaryTabbed}">
             <ShellContent.Icon>
                 <FontImageSource FontFamily="Material" Glyph="&#xe873;" />

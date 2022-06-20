@@ -61,6 +61,15 @@ namespace EarphoneLeftAndRight.Resx {
         }
         
         /// <summary>
+        ///   Beep に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Beep_Title {
+            get {
+                return ResourceManager.GetString("Beep.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Know more about the developer に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Config_Menu_About_Developer_Desc {
@@ -560,6 +569,15 @@ namespace EarphoneLeftAndRight.Resx {
         internal static string Profile_Title {
             get {
                 return ResourceManager.GetString("Profile.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Center に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Word_Center {
+            get {
+                return ResourceManager.GetString("Word.Center", resourceCulture);
             }
         }
     }

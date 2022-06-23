@@ -10,6 +10,21 @@ namespace EarphoneLeftAndRight.ViewModels
     public class BeepFreqViewModel : BaseViewModel
     {
 
+        private bool _Support096kHz = false;
+        public bool Support096kHz { get => _Support096kHz; private set => SetProperty(ref _Support096kHz, value); }
+
+
+        private bool _Support192kHz = false;
+        public bool Support192kHz { get => _Support192kHz; private set => SetProperty(ref _Support192kHz, value); }
+
+        public async void TestSupportHiDef()
+        {
+            await Storages.AudioStorage.RegisterWave(200, 0.01, 0, 0, Storages.AudioStorage.WaveKinds.Square, 96000);
+            Support096kHz = Storages.AudioStorage.AudioTest.ActualSampleRate == 96000;
+            await Storages.AudioStorage.RegisterWave(200, 0.01, 0, 0, Storages.AudioStorage.WaveKinds.Square, 192000);
+            Support192kHz = Storages.AudioStorage.AudioTest.ActualSampleRate == 192000;
+        }
+
         private double _FrequencyMaximum = 20000;
         public double FrequencyMaximum
         {
@@ -92,9 +107,12 @@ namespace EarphoneLeftAndRight.ViewModels
                 int phaseInt = OppositePhase ? -1 : 1;
                 bool uneven = FrequencyRounded % 1 != 0;
                 double duration = uneven ? 2 : 1;
+                int sampleRate = 44100;
+                if (Frequency > 8000 && this.Support096kHz) sampleRate = 96000;
+                if (Frequency > 10000 && Support192kHz) sampleRate = 192000;
                 try
                 {
-                    await Storages.AudioStorage.RegisterWave(this.Frequency, duration, 0.5 - 0.5 * Balance, (0.5 + 0.5 * Balance) * phaseInt, WaveKind);
+                    await Storages.AudioStorage.RegisterWave(this.Frequency, duration, 0.5 - 0.5 * Balance, (0.5 + 0.5 * Balance) * phaseInt, WaveKind,sampleRate);
                     Storages.AudioStorage.AudioTest.SetLoop(-1, uneven);
                     await Task.Run(() => { try { Storages.AudioStorage.AudioTest.Play(); } catch { IsPlaying = false; } });
                     IsPlaying = true;
@@ -118,6 +136,8 @@ namespace EarphoneLeftAndRight.ViewModels
                 var value = double.Parse(arg.ToString());
                 Balance = value;
             });
+
+            TestSupportHiDef();
         }
 
 

@@ -31,16 +31,32 @@ namespace EarphoneLeftAndRight.ViewModels
         }
 
         private double _Frequency = 440;
-        public double Frequency
+        public double FrequencyRounded
         {
             get => _Frequency; set
             {
                 if (value <= 0) return;
                 value = Math.Min(Math.Max(value, FrequencyMinimum), FrequencyMaximum);
-                if (value >= 1000) value = Math.Round(value);
-                else value = Math.Round(value / 0.01) * 0.01;
+                //if (value >= 1000) value = Math.Round(value);
+                //else value = Math.Round(value / 0.1) * 0.1;
+                value = Math.Round(value);
+                if (Math.Abs(value - Frequency) < 1.0) return;
                 SetProperty(ref _Frequency, value);
                 OnPropertyChanged(nameof(FrequencyHumanReadable));
+                OnPropertyChanged(nameof(Frequency));
+            }
+        }
+
+        public double Frequency
+        {
+            get => _Frequency;
+            set
+            {
+                if (value <= 0) return;
+                value = Math.Min(Math.Max(value, FrequencyMinimum), FrequencyMaximum);
+                SetProperty(ref _Frequency, value);
+                OnPropertyChanged(nameof(FrequencyHumanReadable));
+                OnPropertyChanged(nameof(FrequencyRounded));
             }
         }
 
@@ -74,21 +90,26 @@ namespace EarphoneLeftAndRight.ViewModels
             PlayCommand = new Command(async _ =>
             {
                 int phaseInt = OppositePhase ? -1 : 1;
-                bool uneven = Frequency % 1 != 0;
+                bool uneven = FrequencyRounded % 1 != 0;
                 double duration = uneven ? 2 : 1;
                 try
                 {
-                    await Storages.AudioStorage.RegisterSignWave(this.Frequency, duration, 0.5 - 0.5 * Balance, (0.5 + 0.5 * Balance) * phaseInt);
+                    await Storages.AudioStorage.RegisterWave(this.Frequency, duration, 0.5 - 0.5 * Balance, (0.5 + 0.5 * Balance) * phaseInt, WaveKind);
                     Storages.AudioStorage.AudioTest.SetLoop(-1, uneven);
-                    await Task.Run(() => { try { Storages.AudioStorage.AudioTest.Play(); } catch { } });
+                    await Task.Run(() => { try { Storages.AudioStorage.AudioTest.Play(); } catch { IsPlaying = false; } });
+                    IsPlaying = true;
                 }
-                catch { }
-                IsPlaying = true;
+                catch { IsPlaying = false; }
+
             });
 
             StopCommand = new Command(async_ =>
             {
-                Storages.AudioStorage.AudioTest.Stop();
+                try
+                {
+                    Storages.AudioStorage.AudioTest.Stop();
+                }
+                catch { }
                 IsPlaying = false;
             });
 
@@ -118,5 +139,18 @@ namespace EarphoneLeftAndRight.ViewModels
         public ICommand PlayCommand { get; }
         public ICommand StopCommand { get; }
         public ICommand SetBalanceCommand { get; }
+
+
+        private Storages.AudioStorage.WaveKinds _WaveKind = Storages.AudioStorage.WaveKinds.Sine;
+        public Storages.AudioStorage.WaveKinds WaveKind { get => _WaveKind; set => SetProperty(ref _WaveKind, value); }
+
+
+        public Storages.AudioStorage.WaveKinds[] WaveKindCandidates { get; } = new[] {
+            Storages.AudioStorage.WaveKinds.Sine,
+            Storages.AudioStorage.WaveKinds.Square,
+            Storages.AudioStorage.WaveKinds.Sawtooth,
+            Storages.AudioStorage.WaveKinds.Ramp,
+        };
+
     }
 }

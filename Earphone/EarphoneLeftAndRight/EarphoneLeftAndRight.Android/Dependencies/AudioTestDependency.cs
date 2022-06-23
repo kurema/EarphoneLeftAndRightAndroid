@@ -21,7 +21,7 @@ namespace EarphoneLeftAndRight.Droid
         private int niceCuttingFrame;
 
         private AudioTrack audioTrack = null;
-        public async Task Register(Func<int, int, int, double> generator, double duration, int sampleRate = 44100)
+        public async Task Register(Func<int, int, int, (double, bool)> generator, double duration, int sampleRate = 44100)
         {
             //https://white-wheels.hatenadiary.org/entry/20110820/p3
             //https://developer.android.com/reference/android/media/AudioTrack.Builder
@@ -33,12 +33,13 @@ namespace EarphoneLeftAndRight.Droid
             short[] buffer = null;
             while (true)
             {
-                await Task.Run(() => { buffer = GenerateBuffer(generator, duration, sampleRate, 2); });
+                await Task.Run(() => { (buffer, niceCuttingFrame) = GenerateBuffer(generator, duration, sampleRate, 2); });
                 //int bufferSizeInBytes = buffer.Length * 2 * 16 / 8;//bufferSize * Channel * (bit per length) / 8bit
                 int bufferSizeInBytes = buffer.Length * 16 / 8;//bufferSize * (bit per length) / 8bit
                 frames = buffer.Length / 2;
 
-                if (frames <= 2) { niceCuttingFrame = frames; }
+                if (niceCuttingFrame != 0) { }
+                else if (frames <= 2) { niceCuttingFrame = frames; }
                 else
                 {
                     //Repeating in incorrect point makes a small noise.
@@ -90,15 +91,28 @@ namespace EarphoneLeftAndRight.Droid
                 audioTrack.Dispose();
                 audioTrack = null;
             }
-            await audioTrack.WriteAsync(buffer, 0, buffer.Length, WriteMode.NonBlocking);
+            if (Build.VERSION.SdkInt > BuildVersionCodes.Lollipop)
+            {
+                //Following documents says it is supported above 21 inclusive, but it failed. Don't know why.
+                //https://developer.android.com/reference/android/media/AudioTrack#write(float[],%20int,%20int,%20int)
+                await audioTrack.WriteAsync(buffer, 0, buffer.Length, WriteMode.NonBlocking);
+            }
+            else
+            {
+                await audioTrack.WriteAsync(buffer, 0, buffer.Length);
+            }
         }
 
         public void Release()
         {
             if (audioTrack is null) return;
-            audioTrack.Stop();
-            audioTrack.Release();
-            audioTrack.Dispose();
+            try
+            {
+                audioTrack.Stop();
+                audioTrack.Release();
+                audioTrack.Dispose();
+            }
+            catch { }
             audioTrack = null;
             frames = 0;
             niceCuttingFrame = 0;
@@ -109,19 +123,24 @@ namespace EarphoneLeftAndRight.Droid
             audioTrack?.Stop();
         }
 
-        public static short[] GenerateBuffer(Func<int, int, int, double> generator, double duration, int sampleRate, int channelCount)
+        public static (short[], int) GenerateBuffer(Func<int, int, int, (double, bool)> generator, double duration, int sampleRate, int channelCount)
         {
             int samples = (int)(duration * sampleRate);
             var buffer = new short[samples * channelCount];
+            int niceCuttingFrame = 0;
             //It's totally OK to run in parallel.
             Parallel.For(0, samples, (i) =>
             {
+                bool niceCutting = true;
                 for (int channel = 0; channel < channelCount; channel++)
                 {
-                    buffer[i * channelCount + channel] = (short)(generator(i, sampleRate, channel) * short.MaxValue);
+                    var generated = generator(i, sampleRate, channel);
+                    buffer[i * channelCount + channel] = (short)(generated.Item1 * short.MaxValue);
+                    niceCutting = niceCutting && generated.Item2;
                 }
+                if (niceCutting && niceCuttingFrame < i) niceCuttingFrame = i;
             });
-            return buffer;
+            return (buffer, niceCuttingFrame);
         }
 
         public void Play()

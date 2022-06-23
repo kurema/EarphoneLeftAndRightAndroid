@@ -20,23 +20,17 @@
                             <VisualState x:Name="Checked">
                                 <VisualState.Setters>
                                     <Setter Property="BorderColor" Value="Accent"/>
-                                    <!--<Setter TargetName="check" Property="Opacity" Value="1" />-->
                                 </VisualState.Setters>
                             </VisualState>
                             <VisualState x:Name="Unchecked">
                                 <VisualState.Setters>
                                     <Setter Property="BorderColor" Value="Transparent"/>
-                                    <!--<Setter TargetName="check" Property="Opacity" Value="0" />-->
                                 </VisualState.Setters>
                             </VisualState>
                         </VisualStateGroup>
                     </VisualStateGroupList>
                 </VisualStateManager.VisualStateGroups>
                 <Grid Margin="0">
-                    <!--<Grid WidthRequest="18" HeightRequest="18" HorizontalOptions="End" VerticalOptions="Start">
-                        <Ellipse Stroke="Accent" Fill="White" WidthRequest="16" HeightRequest="16" HorizontalOptions="Center" VerticalOptions="Center" />
-                        <Ellipse x:Name="check" Fill="Accent" WidthRequest="8" HeightRequest="8" HorizontalOptions="Center" VerticalOptions="Center" />
-                    </Grid>-->
                     <ContentPresenter Margin="0"/>
                 </Grid>
             </Frame>
@@ -50,7 +44,7 @@
             <StackLayout>
                 <Label FontSize="Large" Text="Frequency" Margin="10"/>
                 <Slider Grid.Column="1" Maximum="{Binding FrequencyMaximum,Converter={x:StaticResource vc_log}}" Minimum="{Binding FrequencyMinimum,Converter={x:StaticResource vc_log}}"
-                        Value="{Binding Frequency,Converter={x:StaticResource vc_log}}" Margin="0,10,0,10"/>
+                        Value="{Binding FrequencyRounded,Converter={x:StaticResource vc_log}}" Margin="0,10,0,10"/>
                 <Grid Margin="10,0,10,10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*" />
@@ -72,7 +66,7 @@
                            Keyboard="Numeric"
                            />
                 </Grid>
-                <Grid>
+                <Grid RadioButtonGroup.GroupName="waveKind" RadioButtonGroup.SelectedValue="{Binding WaveKind}">
                     <Grid.Resources>
                         <Style TargetType="RadioButton">
                             <Setter Property="ControlTemplate" Value="{StaticResource RadioButtonTemplateWaves}"/>
@@ -84,11 +78,7 @@
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
-                    <!--<RadioButton Grid.Column="0" FontFamily="WaveIcons" Content="0"/>
-                    <RadioButton Grid.Column="1" FontFamily="WaveIcons" Content="1"/>
-                    <RadioButton Grid.Column="2" FontFamily="WaveIcons" Content="2"/>
-                    <RadioButton Grid.Column="3" FontFamily="WaveIcons" Content="3"/>-->
-                    <RadioButton Grid.Column="0">
+                    <RadioButton Grid.Column="0" Value="{Binding WaveKindCandidates[0]}" IsChecked="True">
                         <RadioButton.Content>
                             <Image HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                 <Image.Source>
@@ -97,29 +87,29 @@
                             </Image>
                         </RadioButton.Content>
                     </RadioButton>
-                    <RadioButton Grid.Column="1">
+                    <RadioButton Grid.Column="1" Value="{Binding WaveKindCandidates[1]}">
                         <RadioButton.Content>
                             <Image>
                                 <Image.Source>
-                                    <FontImageSource FontFamily="WaveIcons" Glyph="1" Color="{AppThemeBinding Light=Black,Default=Black,Dark=White}"/>
+                                    <FontImageSource FontFamily="WaveIcons" Glyph="3" Color="{AppThemeBinding Light=Black,Default=Black,Dark=White}"/>
                                 </Image.Source>
                             </Image>
                         </RadioButton.Content>
                     </RadioButton>
-                    <RadioButton Grid.Column="2">
+                    <RadioButton Grid.Column="2" Value="{Binding WaveKindCandidates[2]}">
                         <RadioButton.Content>
-                            <Image>
+                            <Image ScaleY="-1">
                                 <Image.Source>
                                     <FontImageSource FontFamily="WaveIcons" Glyph="2" Color="{AppThemeBinding Light=Black,Default=Black,Dark=White}"/>
                                 </Image.Source>
                             </Image>
                         </RadioButton.Content>
                     </RadioButton>
-                    <RadioButton Grid.Column="3">
+                    <RadioButton Grid.Column="3" Value="{Binding WaveKindCandidates[3]}">
                         <RadioButton.Content>
                             <Image>
                                 <Image.Source>
-                                    <FontImageSource FontFamily="WaveIcons" Glyph="3" Color="{AppThemeBinding Light=Black,Default=Black,Dark=White}"/>
+                                    <FontImageSource FontFamily="WaveIcons" Glyph="1" Color="{AppThemeBinding Light=Black,Default=Black,Dark=White}"/>
                                 </Image.Source>
                             </Image>
                         </RadioButton.Content>

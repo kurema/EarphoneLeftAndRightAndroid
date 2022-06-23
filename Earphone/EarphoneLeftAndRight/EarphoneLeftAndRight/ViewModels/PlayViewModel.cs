@@ -31,10 +31,12 @@ namespace EarphoneLeftAndRight.ViewModels
                 try
                 {
                     var nums = a.ToString()?.Split(',').Select(a => double.Parse(a)).ToArray();
-                    await Storages.AudioStorage.RegisterSignWave(nums[0], nums[1], nums[2], nums[3]);
+                    await Storages.AudioStorage.RegisterWave(nums[0], nums[1], nums[2], nums[3]);
                     await Task.Run(() => { try { Storages.AudioStorage.AudioTest.Play(); } catch { } });
                 }
-                catch { }
+                catch (Exception e)
+                {
+                }
             });
             PlayBeepShiftCommand = new Command(async a =>
             {

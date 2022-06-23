@@ -10,6 +10,37 @@
             >
     <TabbedPage.Resources>
         <vc:BooleanToStringValueConverter x:Key="vc_b2c"/>
+        <vc:LogValueConverter x:Key="vc_log"/>
+        <ControlTemplate x:Key="RadioButtonTemplateWaves">
+            <!-- https://docs.microsoft.com/xamarin/xamarin-forms/user-interface/radiobutton#redefine-radiobutton-appearance -->
+            <Frame HasShadow="true" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CheckedStates">
+                            <VisualState x:Name="Checked">
+                                <VisualState.Setters>
+                                    <Setter Property="BorderColor" Value="Accent"/>
+                                    <!--<Setter TargetName="check" Property="Opacity" Value="1" />-->
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Unchecked">
+                                <VisualState.Setters>
+                                    <Setter Property="BorderColor" Value="Transparent"/>
+                                    <!--<Setter TargetName="check" Property="Opacity" Value="0" />-->
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </VisualStateManager.VisualStateGroups>
+                <Grid Margin="0">
+                    <!--<Grid WidthRequest="18" HeightRequest="18" HorizontalOptions="End" VerticalOptions="Start">
+                        <Ellipse Stroke="Accent" Fill="White" WidthRequest="16" HeightRequest="16" HorizontalOptions="Center" VerticalOptions="Center" />
+                        <Ellipse x:Name="check" Fill="Accent" WidthRequest="8" HeightRequest="8" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Grid>-->
+                    <ContentPresenter Margin="0"/>
+                </Grid>
+            </Frame>
+        </ControlTemplate>
     </TabbedPage.Resources>
     <ContentPage Title="Basic">
         <ContentPage.BindingContext>
@@ -18,7 +49,8 @@
         <ScrollView VerticalScrollBarVisibility="Default" Orientation="Vertical">
             <StackLayout>
                 <Label FontSize="Large" Text="Frequency" Margin="10"/>
-                <Slider Grid.Column="1" Maximum="{Binding FrequencyMaximum}" Minimum="{Binding FrequencyMinimum}" Value="{Binding Frequency}" Margin="0,10,0,10"/>
+                <Slider Grid.Column="1" Maximum="{Binding FrequencyMaximum,Converter={x:StaticResource vc_log}}" Minimum="{Binding FrequencyMinimum,Converter={x:StaticResource vc_log}}"
+                        Value="{Binding Frequency,Converter={x:StaticResource vc_log}}" Margin="0,10,0,10"/>
                 <Grid Margin="10,0,10,10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*" />
@@ -40,8 +72,61 @@
                            Keyboard="Numeric"
                            />
                 </Grid>
+                <Grid>
+                    <Grid.Resources>
+                        <Style TargetType="RadioButton">
+                            <Setter Property="ControlTemplate" Value="{StaticResource RadioButtonTemplateWaves}"/>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <!--<RadioButton Grid.Column="0" FontFamily="WaveIcons" Content="0"/>
+                    <RadioButton Grid.Column="1" FontFamily="WaveIcons" Content="1"/>
+                    <RadioButton Grid.Column="2" FontFamily="WaveIcons" Content="2"/>
+                    <RadioButton Grid.Column="3" FontFamily="WaveIcons" Content="3"/>-->
+                    <RadioButton Grid.Column="0">
+                        <RadioButton.Content>
+                            <Image HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <Image.Source>
+                                    <FontImageSource FontFamily="WaveIcons" Glyph="0" Color="{AppThemeBinding Light=Black,Default=Black,Dark=White}" />
+                                </Image.Source>
+                            </Image>
+                        </RadioButton.Content>
+                    </RadioButton>
+                    <RadioButton Grid.Column="1">
+                        <RadioButton.Content>
+                            <Image>
+                                <Image.Source>
+                                    <FontImageSource FontFamily="WaveIcons" Glyph="1" Color="{AppThemeBinding Light=Black,Default=Black,Dark=White}"/>
+                                </Image.Source>
+                            </Image>
+                        </RadioButton.Content>
+                    </RadioButton>
+                    <RadioButton Grid.Column="2">
+                        <RadioButton.Content>
+                            <Image>
+                                <Image.Source>
+                                    <FontImageSource FontFamily="WaveIcons" Glyph="2" Color="{AppThemeBinding Light=Black,Default=Black,Dark=White}"/>
+                                </Image.Source>
+                            </Image>
+                        </RadioButton.Content>
+                    </RadioButton>
+                    <RadioButton Grid.Column="3">
+                        <RadioButton.Content>
+                            <Image>
+                                <Image.Source>
+                                    <FontImageSource FontFamily="WaveIcons" Glyph="3" Color="{AppThemeBinding Light=Black,Default=Black,Dark=White}"/>
+                                </Image.Source>
+                            </Image>
+                        </RadioButton.Content>
+                    </RadioButton>
+                </Grid>
                 <Label FontSize="Large" Text="Balance" Margin="10"/>
-                <Slider Minimum="-1" Maximum="1" Value="{Binding Balance}" Margin="10"/>
+                <Slider Minimum="-1" Maximum="1" Value="{Binding Balance}" Margin="0,10,0,10"/>
                 <Grid Margin="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*" />
@@ -52,7 +137,12 @@
                     <Button Grid.Column="1" Text="{x:Static r:AppResources.Word_Center}" Command="{Binding SetBalanceCommand}" CommandParameter="0" />
                     <Button Grid.Column="2" Text="{x:Static r:LocalResources.Right}" Command="{Binding SetBalanceCommand}" CommandParameter="1" />
                 </Grid>
-                <Button Text="Play" Margin="10" Command="{Binding PlayCommand}" />
+                <StackLayout Orientation="Horizontal" Margin="10">
+                    <CheckBox IsChecked="{Binding OppositePhase}" />
+                    <Label Text="Opposite phase" VerticalOptions="Center" />
+                </StackLayout>
+                <Button Text="Play" Margin="10" Command="{Binding PlayCommand}" IsVisible="{Binding IsPlaying,Converter={x:StaticResource vc_b2c},ConverterParameter=False:True}" />
+                <Button Text="Stop" Margin="10" Command="{Binding StopCommand}" IsVisible="{Binding IsPlaying}" />
             </StackLayout>
         </ScrollView>
     </ContentPage>

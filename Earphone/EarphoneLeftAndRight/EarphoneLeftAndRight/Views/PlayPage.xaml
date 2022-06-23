@@ -56,10 +56,10 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <Button Grid.Column="0" Text="{x:Static r:LocalResources.Left}" Command="{Binding PlayBeepCommand}" CommandParameter="800,1,1,0"/>
-                        <Button Grid.Column="1" Grid.ColumnSpan="2" Text="{x:Static r:AppResources.Word_Center}" Command="{Binding PlayBeepCommand}" CommandParameter="800,1,1,1"/>
-                        <Button Grid.Column="3" Text="{x:Static r:LocalResources.Right}" Command="{Binding PlayBeepCommand}" CommandParameter="800,1,0,1"/>
-                        <Button Grid.ColumnSpan="2"  Grid.Column="0" Grid.Row="1" Command="{Binding PlayBeepShiftCommand}" CommandParameter="800,3,0" >
+                        <Button Grid.Column="0" Text="{x:Static r:LocalResources.Left}" Command="{Binding PlayBeepCommand}" CommandParameter="440,1,1,0"/>
+                        <Button Grid.Column="1" Grid.ColumnSpan="2" Text="{x:Static r:AppResources.Word_Center}" Command="{Binding PlayBeepCommand}" CommandParameter="440,1,1,1"/>
+                        <Button Grid.Column="3" Text="{x:Static r:LocalResources.Right}" Command="{Binding PlayBeepCommand}" CommandParameter="440,1,0,1"/>
+                        <Button Grid.ColumnSpan="2"  Grid.Column="0" Grid.Row="1" Command="{Binding PlayBeepShiftCommand}" CommandParameter="440,3,0" >
                             <Button.Text>
                                 <MultiBinding StringFormat="{}{0} → {1}" >
                                     <Binding Source="{x:Static r:LocalResources.Left}"/>
@@ -67,7 +67,7 @@
                                 </MultiBinding>
                             </Button.Text>
                         </Button>
-                        <Button Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="1" Command="{Binding PlayBeepShiftCommand}" CommandParameter="800,3,1" >
+                        <Button Grid.ColumnSpan="2" Grid.Column="2" Grid.Row="1" Command="{Binding PlayBeepShiftCommand}" CommandParameter="440,3,1" >
                             <Button.Text>
                                 <MultiBinding StringFormat="{}{0} ← {1}" >
                                     <Binding Source="{x:Static r:LocalResources.Left}"/>

@@ -28,15 +28,23 @@ namespace EarphoneLeftAndRight.ViewModels
             });
             PlayBeepCommand = new Command(async a =>
             {
-                var nums = a.ToString()?.Split(',').Select(a => double.Parse(a)).ToArray();
-                await Storages.AudioStorage.RegisterSignWave(nums[0], nums[1], nums[2], nums[3]);
-                await Task.Run(async () => Storages.AudioStorage.AudioTest.Play());
+                try
+                {
+                    var nums = a.ToString()?.Split(',').Select(a => double.Parse(a)).ToArray();
+                    await Storages.AudioStorage.RegisterSignWave(nums[0], nums[1], nums[2], nums[3]);
+                    await Task.Run(() => { try { Storages.AudioStorage.AudioTest.Play(); } catch { } });
+                }
+                catch { }
             });
             PlayBeepShiftCommand = new Command(async a =>
             {
-                var nums = a.ToString()?.Split(',').Select(a => double.Parse(a)).ToArray();
-                await Storages.AudioStorage.RegisterSignWaveStereoShift(nums[0], nums[1], nums[2] == 0 ? Storages.AudioStorage.ShiftDirection.LeftToRight : Storages.AudioStorage.ShiftDirection.RightToLeft);
-                await Task.Run(() => Storages.AudioStorage.AudioTest.Play());
+                try
+                {
+                    var nums = a.ToString()?.Split(',').Select(a => double.Parse(a)).ToArray();
+                    await Storages.AudioStorage.RegisterSignWaveStereoShift(nums[0], nums[1], nums[2] == 0 ? Storages.AudioStorage.ShiftDirection.LeftToRight : Storages.AudioStorage.ShiftDirection.RightToLeft);
+                    await Task.Run(() => { try { Storages.AudioStorage.AudioTest.Play(); } catch { } });
+                }
+                catch { }
             });
         }
 

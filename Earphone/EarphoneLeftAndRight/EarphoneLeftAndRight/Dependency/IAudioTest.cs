@@ -13,4 +13,5 @@ public interface IAudioTest
     void Stop();
     void Play();
     void Release();
+    void SetLoop(int count = 1, bool niceCutting = false);
 }

@@ -8,6 +8,7 @@
 
 	<ItemGroup>
 		<None Remove="Fonts\MaterialIcons-Regular.ttf" />
+		<None Remove="Fonts\WaveIcons.ttf" />
 		<None Remove="Licenses\CsvHelper.txt" />
 		<None Remove="Licenses\EarphoneLeftAndRight.txt" />
 		<None Remove="Licenses\Material Icons.txt" />
@@ -24,6 +25,7 @@
 
 	<ItemGroup>
 		<EmbeddedResource Include="Fonts\MaterialIcons-Regular.ttf" />
+		<EmbeddedResource Include="Fonts\WaveIcons.ttf" />
 		<EmbeddedResource Include="Licenses\CsvHelper.txt" />
 		<EmbeddedResource Include="Licenses\EarphoneLeftAndRight.txt" />
 		<EmbeddedResource Include="Licenses\Material Icons.txt" />

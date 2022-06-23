@@ -277,4 +277,34 @@ namespace EarphoneLeftAndRight.ValueConverters
             throw new NotImplementedException();
         }
     }
+
+    public class LogValueConverter : Xamarin.Forms.IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (!double.TryParse(value.ToString(), out double d)) return 0;
+            return Math.Log(d);
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (!double.TryParse(value.ToString(), out double d)) return 0;
+            return Math.Pow(Math.E, d);
+        }
+    }
+
+    public class RoundBackValueConverter : Xamarin.Forms.IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return value;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (!double.TryParse(value.ToString(), out double d1)) return 0;
+            if (!double.TryParse(parameter.ToString(), out double d2)) return 0;
+            return Math.Floor(d1 / d2) * d2;
+        }
+    }
 }

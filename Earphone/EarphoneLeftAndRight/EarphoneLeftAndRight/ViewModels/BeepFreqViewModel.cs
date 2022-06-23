@@ -13,9 +13,13 @@ namespace EarphoneLeftAndRight.ViewModels
         private bool _Support096kHz = false;
         public bool Support096kHz { get => _Support096kHz; private set => SetProperty(ref _Support096kHz, value); }
 
-
         private bool _Support192kHz = false;
         public bool Support192kHz { get => _Support192kHz; private set => SetProperty(ref _Support192kHz, value); }
+
+
+        private bool _IsPianoVisible = true;
+        public bool IsPianoVisible { get => _IsPianoVisible; set => SetProperty(ref _IsPianoVisible, value); }
+
 
         public async void TestSupportHiDef()
         {
@@ -94,12 +98,18 @@ namespace EarphoneLeftAndRight.ViewModels
         {
             AddFrequencyCommand = new Command((arg) =>
             {
-                if (!double.TryParse(arg.ToString(), out double value)) return;
+                if (!double.TryParse(arg?.ToString(), out double value)) return;
                 var freq = Frequency;
                 double scale = 1.0;
                 if (freq < 1000) scale = 1.0;
                 else scale = Math.Round(Math.Pow(10, Math.Floor(Math.Log10(Frequency)) - 3));
                 Frequency = Math.Round(freq / scale) * scale + scale * value;
+            });
+
+            MultiplyFrequencyCommand = new Command(arg =>
+            {
+                if (!double.TryParse(arg?.ToString(), out double value)) return;
+                Frequency *= value;
             });
 
             PlayCommand = new Command(async _ =>
@@ -112,7 +122,7 @@ namespace EarphoneLeftAndRight.ViewModels
                 if (Frequency > 10000 && Support192kHz) sampleRate = 192000;
                 try
                 {
-                    await Storages.AudioStorage.RegisterWave(this.Frequency, duration, 0.5 - 0.5 * Balance, (0.5 + 0.5 * Balance) * phaseInt, WaveKind,sampleRate);
+                    await Storages.AudioStorage.RegisterWave(this.Frequency, duration, 0.5 - 0.5 * Balance, (0.5 + 0.5 * Balance) * phaseInt, WaveKind, sampleRate);
                     Storages.AudioStorage.AudioTest.SetLoop(-1, uneven);
                     await Task.Run(() => { try { Storages.AudioStorage.AudioTest.Play(); } catch { IsPlaying = false; } });
                     IsPlaying = true;
@@ -137,6 +147,14 @@ namespace EarphoneLeftAndRight.ViewModels
                 Balance = value;
             });
 
+            SetPianoVisibleCommand = new Command(arg =>
+            {
+                var key = arg?.ToString()?.ToUpperInvariant();
+                if (key == "TRUE") this.IsPianoVisible = true;
+                else if (key == "TOGGLE") IsPianoVisible = !IsPianoVisible;
+                else IsPianoVisible = false;
+            });
+
             TestSupportHiDef();
         }
 
@@ -156,9 +174,11 @@ namespace EarphoneLeftAndRight.ViewModels
         }
 
         public ICommand AddFrequencyCommand { get; }
+        public ICommand MultiplyFrequencyCommand { get; }
         public ICommand PlayCommand { get; }
         public ICommand StopCommand { get; }
         public ICommand SetBalanceCommand { get; }
+        public ICommand SetPianoVisibleCommand { get; }
 
 
         private Storages.AudioStorage.WaveKinds _WaveKind = Storages.AudioStorage.WaveKinds.Sine;

@@ -93,6 +93,9 @@
 		<EmbeddedResource Update="Views\LicenseInfoPage.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</EmbeddedResource>
+		<EmbeddedResource Update="Views\PianoView.xaml">
+		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
 		<EmbeddedResource Update="Views\PlayPage.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>

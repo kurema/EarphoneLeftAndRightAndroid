@@ -76,7 +76,7 @@ namespace EarphoneLeftAndRight.Storages
                 case WaveKinds.Sawtooth:
                     await RegisterWave(frequency, (sample, actualSampleRate, channel) =>
                     {
-                        double p1 = (sample * frequency ) % actualSampleRate;
+                        double p1 = (sample * frequency) % actualSampleRate;
                         double p2 = p1 / actualSampleRate;
                         return (amplifications[channel] * (-1 + 2 * p2), (int)p1 == 0);
                     }, duration, ampLeft, ampRight, sampleRate);
@@ -86,7 +86,14 @@ namespace EarphoneLeftAndRight.Storages
                     {
                         double p1 = (sample * frequency) % actualSampleRate;
                         double p2 = p1 / actualSampleRate;
-                        return (amplifications[channel] * ((p2 < 0.5 ? p2 * 4 - 1 : 3 - p2 * 4)), (int)p1 == 0);
+
+                        //Sample 0 must be 0 for niceCuttingFrame.
+                        return (amplifications[channel] * (p2 switch
+                        {
+                            < 0.25 => -p2 * 4,
+                            < 0.75 => -2 + p2 * 4,
+                            _ => -p2 * 4 + 4
+                        }), (int)p1 == 0);
                     }, duration, ampLeft, ampRight, sampleRate);
                     break;
             }

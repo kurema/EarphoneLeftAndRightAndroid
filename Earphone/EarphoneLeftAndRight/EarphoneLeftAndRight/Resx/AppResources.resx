@@ -463,4 +463,18 @@ All experience hath shown that mankind are more disposed to suffer while evils a
   <data name="Word.Center" xml:space="preserve">
     <value>Center</value>
   </data>
+  <data name="Sound.Title" xml:space="preserve">
+    <value>Sound</value>
+  </data>
+  <data name="Sound.Tune.Title" xml:space="preserve">
+    <value>Tune</value>
+  </data>
+  <data name="Helper.Semitone.Main" xml:space="preserve">
+    <value>C,C#,D,D#,E,F,F#,G,G#,A,A#,B</value>
+    <comment>@Invariant</comment>
+  </data>
+  <data name="Helper.Semitone.Alt" xml:space="preserve">
+    <value>NULL</value>
+    <comment>@Invariant</comment>
+  </data>
 </root>

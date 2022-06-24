@@ -357,6 +357,24 @@ namespace EarphoneLeftAndRight.Resx {
         }
         
         /// <summary>
+        ///   NULL に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Helper_Semitone_Alt {
+            get {
+                return ResourceManager.GetString("Helper.Semitone.Alt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   C,C#,D,D#,E,F,F#,G,G#,A,A#,B に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Helper_Semitone_Main {
+            get {
+                return ResourceManager.GetString("Helper.Semitone.Main", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Detail に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string License_DetailPage {
@@ -569,6 +587,24 @@ namespace EarphoneLeftAndRight.Resx {
         internal static string Profile_Title {
             get {
                 return ResourceManager.GetString("Profile.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sound に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Sound_Title {
+            get {
+                return ResourceManager.GetString("Sound.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Tune に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Sound_Tune_Title {
+            get {
+                return ResourceManager.GetString("Sound.Tune.Title", resourceCulture);
             }
         }
         

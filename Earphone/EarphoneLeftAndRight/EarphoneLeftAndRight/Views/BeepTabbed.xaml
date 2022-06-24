@@ -7,6 +7,7 @@
             xmlns:local="clr-namespace:EarphoneLeftAndRight.Views"
              x:Class="EarphoneLeftAndRight.Views.BeepTabbed"
             BarBackgroundColor="{AppThemeBinding Default={StaticResource PrimaryLight},Light={StaticResource PrimaryLight},Dark={StaticResource PrimaryDark}}"
+            Title="{x:Static r:AppResources.Sound_Title}"
             >
     <TabbedPage.Resources>
         <vc:BooleanToStringValueConverter x:Key="vc_b2c"/>
@@ -36,7 +37,7 @@
             </Frame>
         </ControlTemplate>
     </TabbedPage.Resources>
-    <ContentPage Title="Basic">
+    <ContentPage Title="Basic" BackgroundColor="{AppThemeBinding Default=White,Light=White,Dark=Black}">
         <ContentPage.ToolbarItems>
             <!-- not working -->
             <!-- https://github.com/xamarin/Xamarin.Forms/issues/7351 -->
@@ -78,34 +79,20 @@
                            Text="{Binding Frequency}"
                            Keyboard="Numeric"
                            />
-                    
-                    <Button Grid.Column="1" Grid.Row="1" Text="8vb" Command="{Binding MultiplyFrequencyCommand}" CommandParameter="0.5" />
-                    <Button Grid.Column="3" Grid.Row="1" Text="8va" Command="{Binding MultiplyFrequencyCommand}" CommandParameter="2.0" />
+
+                    <Button Grid.Column="1" Grid.Row="1" Text="-" Command="{Binding MultiplyFrequencyCommand}" CommandParameter="-1" />
+                    <Button Grid.Column="0" Grid.Row="1" Text="8vb" Command="{Binding MultiplyFrequencyCommand}" CommandParameter="-12" />
+                    <Button Grid.Column="4" Grid.Row="1" Text="8va" Command="{Binding MultiplyFrequencyCommand}" CommandParameter="+12" />
+                    <Button Grid.Column="3" Grid.Row="1" Text="+" Command="{Binding MultiplyFrequencyCommand}" CommandParameter="+1"/>
+                    <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="2">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_ChangeLocalizationMode" />
+                        </StackLayout.GestureRecognizers>
+                        <Label Text="{Binding FrequencyName}" HorizontalOptions="Center" InputTransparent="True"/>
+                        <Label Text="{Binding FrequencyNameCent}" HorizontalOptions="Center" InputTransparent="True"/>
+                    </StackLayout>
                 </Grid>
-                <!--<Grid Margin="10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                    </Grid.ColumnDefinitions>
-                    --><!--<ImageButton Grid.Column="4" BackgroundColor="Transparent" VerticalOptions="FillAndExpand" IsVisible="{Binding IsPianoVisible,Converter={StaticResource vc_b2c},ConverterParameter=False:True}"
-                                 Command="{Binding SetPianoVisibleCommand}" CommandParameter="True"
-                                 >
-                        <ImageButton.Source>
-                            <FontImageSource FontFamily="Material" Glyph="&#xe520;" />
-                        </ImageButton.Source>
-                    </ImageButton>
-                    <ImageButton Grid.Column="4" BackgroundColor="Transparent" VerticalOptions="FillAndExpand" IsVisible="{Binding IsPianoVisible}"
-                                 Command="{Binding SetPianoVisibleCommand}" CommandParameter="False"
-                                 >
-                        <ImageButton.Source>
-                            <FontImageSource FontFamily="Material" Glyph="&#xe521;" />
-                        </ImageButton.Source>
-                    </ImageButton>--><!--
-                </Grid>-->
-                <local:PianoView KeyWidth="40" HeightRequest="90" IsVisible="{Binding IsPianoVisible}"/>
+                <local:PianoView KeyWidth="40" HeightRequest="90" IsVisible="{Binding IsPianoVisible}" KeyTapped="PianoView_KeyTapped"/>
                 <Grid RadioButtonGroup.GroupName="waveKind" RadioButtonGroup.SelectedValue="{Binding WaveKind}">
                     <Grid.Resources>
                         <Style TargetType="RadioButton">

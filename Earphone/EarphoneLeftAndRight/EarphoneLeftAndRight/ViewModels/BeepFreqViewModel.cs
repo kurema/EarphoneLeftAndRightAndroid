@@ -63,6 +63,8 @@ namespace EarphoneLeftAndRight.ViewModels
                 SetProperty(ref _Frequency, value);
                 OnPropertyChanged(nameof(FrequencyHumanReadable));
                 OnPropertyChanged(nameof(Frequency));
+                OnPropertyChanged(nameof(FrequencyName));
+                OnPropertyChanged(nameof(FrequencyNameCent));
             }
         }
 
@@ -76,6 +78,8 @@ namespace EarphoneLeftAndRight.ViewModels
                 SetProperty(ref _Frequency, value);
                 OnPropertyChanged(nameof(FrequencyHumanReadable));
                 OnPropertyChanged(nameof(FrequencyRounded));
+                OnPropertyChanged(nameof(FrequencyName));
+                OnPropertyChanged(nameof(FrequencyNameCent));
             }
         }
 
@@ -90,6 +94,33 @@ namespace EarphoneLeftAndRight.ViewModels
                 else return $"{freq:0.#} kHz";
             }
         }
+
+        public string FrequencyName
+        {
+            get
+            {
+                return Helper.Helpers.FreqConverters.HzToLocalized(Frequency, SemitoneLocalizeMode).semitone;
+            }
+        }
+
+        public string FrequencyNameCent
+        {
+            get
+            {
+                return Helper.Helpers.FreqConverters.HzToLocalized(Frequency, this.SemitoneLocalizeMode).cent;
+            }
+        }
+
+
+        private Helper.Helpers.FreqConverters.SemitoneLocalizeModes _SemitoneLocalizeMode;
+        public Helper.Helpers.FreqConverters.SemitoneLocalizeModes SemitoneLocalizeMode { get => _SemitoneLocalizeMode; set
+            {
+                SetProperty(ref _SemitoneLocalizeMode, value);
+                OnPropertyChanged(nameof(FrequencyName));
+                OnPropertyChanged(nameof(FrequencyNameCent));
+            }
+        }
+
 
         private bool _OppositePhase;
         public bool OppositePhase { get => _OppositePhase; set => SetProperty(ref _OppositePhase, value); }
@@ -109,7 +140,7 @@ namespace EarphoneLeftAndRight.ViewModels
             MultiplyFrequencyCommand = new Command(arg =>
             {
                 if (!double.TryParse(arg?.ToString(), out double value)) return;
-                Frequency *= value;
+                Frequency *= Math.Pow(2.0, value / 12.0);
             });
 
             PlayCommand = new Command(async _ =>

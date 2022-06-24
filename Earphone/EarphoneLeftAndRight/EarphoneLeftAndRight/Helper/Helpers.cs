@@ -208,5 +208,75 @@ namespace EarphoneLeftAndRight.Helper
                 return result.ToArray();
             }
         }
+
+
+        public static class FreqConverters
+        {
+
+            public static double HzToNoteNumber(double hz)
+            {
+                return Math.Log(hz / 440, 2) * 12 + 69;
+            }
+
+            public static double NoteNumberToHz(double noteNumber)
+            {
+                return Math.Pow(2.0, (noteNumber - 69) / 12.0) * 440;
+            }
+
+            public static (int octave, int semitone, double cent) HzToOctave(double hz)
+            {
+                var note = HzToNoteNumber(hz) - 11.5;
+                var oct = (int)Math.Floor(note / 12.0);
+                return (oct, (int)Math.Floor(note - oct * 12), ((note % 1) + 1) % 1 * 100 - 50);
+            }
+
+            public enum SemitoneLocalizeModes
+            {
+                Both, International, Local, LocalAlt
+            }
+
+            public const string SemitoneInternational = "C,C#,D,D#,E,F,F#,G,G#,A,A#,B";
+
+            public static bool SemitoneLocalizationSupported(string text) => text != SemitoneInternational && text != "NULL";
+
+            public static (string semitone, string cent) HzToLocalized(double hz, SemitoneLocalizeModes mode)
+            {
+                //ToDo: Support mode! (After localization is done)
+                var (oct, semi, cent) = HzToOctave(hz);
+                string[] names = SemitoneInternational.Split(',');
+                string centText = "{0} cent";
+                string semitone = "";
+                switch (mode)
+                {
+                    case SemitoneLocalizeModes.Both:
+                        if (SemitoneLocalizationSupported(Resx.AppResources.Helper_Semitone_Main))
+                        {
+                            string[] namesLocal = Resx.AppResources.Helper_Semitone_Main.Split(',');
+                            semitone = $"{names[semi]}{oct} / {namesLocal[semi]}{oct}";
+                        }
+                        else
+                        {
+                            semitone = $"{names[semi]}{oct}";
+                        }
+                        break;
+                    case SemitoneLocalizeModes.International:
+                        semitone = $"{names[semi]}{oct}";
+                        break;
+                    case SemitoneLocalizeModes.Local:
+                        {
+                            string[] namesLocal = Resx.AppResources.Helper_Semitone_Main.Split(',');
+                            if (namesLocal.Length >= 12) semitone = $"{namesLocal[semi]}{oct}"; else semitone = $"{names[semi]}{oct}";
+                        }
+                        break;
+                    case SemitoneLocalizeModes.LocalAlt:
+                        {
+                            string[] namesLocal = Resx.AppResources.Helper_Semitone_Alt.Split(',');
+                            if (namesLocal.Length >= 12) semitone = $"{namesLocal[semi]}{oct}"; else semitone = $"{names[semi]}{oct}";
+                        }
+                        break;
+                }
+                return ($"{semitone}", string.Format(centText, Math.Round(cent).ToString("+#;-#;+0;")));
+            }
+        }
     }
 }

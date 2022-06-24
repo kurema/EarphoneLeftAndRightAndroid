@@ -346,4 +346,10 @@
   <data name="Word.Center" xml:space="preserve">
     <value>中央</value>
   </data>
+  <data name="Helper.Semitone.Main" xml:space="preserve">
+    <value>ド,ド#,レ,レ#,ミ,ファ,ファ#,ソ,ソ#,ラ,ラ#,シ</value>
+  </data>
+  <data name="Helper.Semitone.Alt" xml:space="preserve">
+    <value>ハ,嬰ハ,ニ,嬰ニ,ホ,ヘ,嬰ヘ,ト,嬰ト,イ,嬰イ,ロ</value>
+  </data>
 </root>

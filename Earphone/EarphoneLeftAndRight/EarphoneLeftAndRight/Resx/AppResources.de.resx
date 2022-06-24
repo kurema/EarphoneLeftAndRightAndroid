@@ -238,4 +238,7 @@
   <data name="Word.Center" xml:space="preserve">
     <value>Zentrum</value>
   </data>
+  <data name="Helper.Semitone.Main" xml:space="preserve">
+    <value>C,C#,D,D#,E,F,F#,G,G#,A,A#,H</value>
+  </data>
 </root>

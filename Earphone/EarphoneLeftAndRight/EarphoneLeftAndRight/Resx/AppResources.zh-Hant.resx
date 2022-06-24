@@ -232,4 +232,10 @@
   <data name="Word.Center" xml:space="preserve">
     <value>中心</value>
   </data>
+  <data name="Helper.Semitone.Main" xml:space="preserve">
+    <value>C,升C,D,升D,E,F,升F,G,升G,A,升A,B</value>
+  </data>
+  <data name="Helper.Semitone.Alt" xml:space="preserve">
+    <value>黃鐘,大呂,太簇,夾鐘,姑洗,仲呂,蕤賓,林鐘,夷則,南呂,無射,應鐘</value>
+  </data>
 </root>

@@ -238,4 +238,10 @@
   <data name="Word.Center" xml:space="preserve">
     <value>中心</value>
   </data>
+  <data name="Helper.Semitone.Main" xml:space="preserve">
+    <value>C,升C,D,升D,E,F,升F,G,升G,A,升A,B</value>
+  </data>
+  <data name="Helper.Semitone.Alt" xml:space="preserve">
+    <value>黄钟,大吕,太簇,夹钟,姑洗,仲吕,蕤宾,林钟,夷则,南吕,无射,应钟</value>
+  </data>
 </root>

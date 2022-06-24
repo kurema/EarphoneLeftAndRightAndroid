@@ -53,8 +53,9 @@ namespace EarphoneLeftAndRight.Views
                     Grid.SetRowSpan(whiteKey, 2);
                     Grid.SetColumn(whiteKey, i * 2);
                     {
+                        int keyCountCurrent = keyCount;
                         var gr = new TapGestureRecognizer();
-                        gr.Tapped += (_, _) => this.KeyTapped?.Invoke(this, new KeyTappedEventArgs(keyCount));
+                        gr.Tapped += (_, _) => this.KeyTapped?.Invoke(this, new KeyTappedEventArgs(keyCountCurrent));
                         whiteKey.GestureRecognizers.Add(gr);
                     }
                     pianoGrid.Children.Add(whiteKey);
@@ -67,8 +68,9 @@ namespace EarphoneLeftAndRight.Views
                     if (i + 1 < count) Grid.SetColumnSpan(blackKey, 2);
                     blackKeys.Add(blackKey);
                     {
+                        int keyCountCurrent = keyCount;
                         var gr = new TapGestureRecognizer();
-                        gr.Tapped += (_, _) => this.KeyTapped?.Invoke(this, new KeyTappedEventArgs(keyCount));
+                        gr.Tapped += (_, _) => this.KeyTapped?.Invoke(this, new KeyTappedEventArgs(keyCountCurrent));
                         blackKey.GestureRecognizers.Add(gr);
                     }
                     keyCount++;

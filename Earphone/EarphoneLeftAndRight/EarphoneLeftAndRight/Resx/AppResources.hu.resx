@@ -253,4 +253,11 @@
   <data name="Sound.Tune.OppositePhase" xml:space="preserve">
     <value>Fázisellenes</value>
   </data>
+  <data name="Helper.Semitone.Cent" xml:space="preserve">
+    <value>{0} cent</value>
+  </data>
+  <data name="Helper.Semitone.Cent.Sample" xml:space="preserve">
+    <value>Egy cent egy félhanghoz képest.
+2 cent egy félhanghoz képest.</value>
+  </data>
 </root>

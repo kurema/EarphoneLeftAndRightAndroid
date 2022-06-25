@@ -253,4 +253,11 @@
   <data name="Sound.Tune.OppositePhase" xml:space="preserve">
     <value>Tegenfase</value>
   </data>
+  <data name="Helper.Semitone.Cent" xml:space="preserve">
+    <value>{0} cent</value>
+  </data>
+  <data name="Helper.Semitone.Cent.Sample" xml:space="preserve">
+    <value>Eén cent vergeleken met een halve toon.
+2 cent ten opzichte van een halve toon.</value>
+  </data>
 </root>

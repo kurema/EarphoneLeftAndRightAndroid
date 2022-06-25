@@ -265,4 +265,11 @@
   <data name="Sound.Tune.OppositePhase" xml:space="preserve">
     <value>反相</value>
   </data>
+  <data name="Helper.Semitone.Cent" xml:space="preserve">
+    <value>{0} 音分</value>
+  </data>
+  <data name="Helper.Semitone.Cent.Sample" xml:space="preserve">
+    <value>1分钱与一个半音相比。
+2分钱与一个半音相比。</value>
+  </data>
 </root>

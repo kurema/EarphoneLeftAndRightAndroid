@@ -20,6 +20,10 @@ namespace EarphoneLeftAndRight.ViewModels
         private bool _IsPianoVisible = true;
         public bool IsPianoVisible { get => _IsPianoVisible; set => SetProperty(ref _IsPianoVisible, value); }
 
+        public string LocalizedCentP0 => Helper.FreqConverters.LocalizeCent(0, this.SemitoneLocalizeMode);
+        public string LocalizedCentP1 => Helper.FreqConverters.LocalizeCent(+1, this.SemitoneLocalizeMode);
+        public string LocalizedCentM1 => Helper.FreqConverters.LocalizeCent(-1, this.SemitoneLocalizeMode);
+
 
         public async void TestSupportHiDef()
         {
@@ -99,7 +103,7 @@ namespace EarphoneLeftAndRight.ViewModels
         {
             get
             {
-                return Helper.Helpers.FreqConverters.HzToLocalized(Frequency, SemitoneLocalizeMode).semitone;
+                return Helper.FreqConverters.HzToLocalizedEqualTemperament(Frequency, SemitoneLocalizeMode).semitone;
             }
         }
 
@@ -107,17 +111,25 @@ namespace EarphoneLeftAndRight.ViewModels
         {
             get
             {
-                return Helper.Helpers.FreqConverters.HzToLocalized(Frequency, this.SemitoneLocalizeMode).cent;
+                return Helper.FreqConverters.HzToLocalizedEqualTemperament(Frequency, this.SemitoneLocalizeMode).cent;
             }
         }
 
 
-        private Helper.Helpers.FreqConverters.SemitoneLocalizeModes _SemitoneLocalizeMode;
-        public Helper.Helpers.FreqConverters.SemitoneLocalizeModes SemitoneLocalizeMode { get => _SemitoneLocalizeMode; set
+        private bool _JustIntonation = false;
+        public bool JustIntonation { get => _JustIntonation; set => SetProperty(ref _JustIntonation, value); }
+
+        private Helper.FreqConverters.SemitoneLocalizeModes _SemitoneLocalizeMode;
+        public Helper.FreqConverters.SemitoneLocalizeModes SemitoneLocalizeMode
+        {
+            get => _SemitoneLocalizeMode; set
             {
                 SetProperty(ref _SemitoneLocalizeMode, value);
                 OnPropertyChanged(nameof(FrequencyName));
                 OnPropertyChanged(nameof(FrequencyNameCent));
+                OnPropertyChanged(nameof(LocalizedCentP0));
+                OnPropertyChanged(nameof(LocalizedCentP1));
+                OnPropertyChanged(nameof(LocalizedCentM1));
             }
         }
 
@@ -178,6 +190,13 @@ namespace EarphoneLeftAndRight.ViewModels
                 Balance = value;
             });
 
+            SetCentCommand = new Command(arg =>
+            {
+                double value;
+                if (!double.TryParse(arg.ToString(), out value)) value = 0;
+                this.Frequency = Helper.FreqConverters.NoteNumberToHzEqualTemperament(Math.Round(Helper.FreqConverters.HzToNoteNumberEqualTemperament(Frequency)) + (value / 100));
+            });
+
             SetPianoVisibleCommand = new Command(arg =>
             {
                 var key = arg?.ToString()?.ToUpperInvariant();
@@ -210,7 +229,7 @@ namespace EarphoneLeftAndRight.ViewModels
         public ICommand StopCommand { get; }
         public ICommand SetBalanceCommand { get; }
         public ICommand SetPianoVisibleCommand { get; }
-
+        public ICommand SetCentCommand { get; }
 
         private Storages.AudioStorage.WaveKinds _WaveKind = Storages.AudioStorage.WaveKinds.Sine;
         public Storages.AudioStorage.WaveKinds WaveKind { get => _WaveKind; set => SetProperty(ref _WaveKind, value); }

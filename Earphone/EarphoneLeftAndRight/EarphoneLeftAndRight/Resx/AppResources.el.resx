@@ -253,4 +253,11 @@
   <data name="Sound.Tune.OppositePhase" xml:space="preserve">
     <value>Αντιφάσεις</value>
   </data>
+  <data name="Helper.Semitone.Cent" xml:space="preserve">
+    <value>{0} σεντ</value>
+  </data>
+  <data name="Helper.Semitone.Cent.Sample" xml:space="preserve">
+    <value>Ένα σεντ σε σύγκριση με ένα ημιτόνιο.
+2 λεπτά σε σύγκριση με ένα ημιτόνιο.</value>
+  </data>
 </root>

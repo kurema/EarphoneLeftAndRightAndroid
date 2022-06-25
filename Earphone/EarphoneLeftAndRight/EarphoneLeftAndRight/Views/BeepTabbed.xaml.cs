@@ -21,31 +21,31 @@ namespace EarphoneLeftAndRight.Views
         {
             if (sender is not Views.PianoView piano) return;
             if (piano.BindingContext is not ViewModels.BeepFreqViewModel vm) return;
-            vm.Frequency = Helper.Helpers.FreqConverters.NoteNumberToHz(Math.Floor((Helper.Helpers.FreqConverters.HzToNoteNumber(vm.Frequency) + 0.5) / 12) * 12.0 + args.PressedKey);
+            vm.Frequency = Helper.FreqConverters.NoteNumberToHzEqualTemperament(Math.Floor((Helper.FreqConverters.HzToNoteNumberEqualTemperament(vm.Frequency) + 0.5) / 12) * 12.0 + args.PressedKey);
         }
 
         private void TapGestureRecognizer_Tapped_ChangeLocalizationMode(object sender, EventArgs e)
         {
             if ((sender as BindableObject)?.BindingContext is not ViewModels.BeepFreqViewModel vm) return;
-            bool locSupported = Helper.Helpers.FreqConverters.SemitoneLocalizationSupported(Resx.AppResources.Helper_Semitone_Main);
-            bool locAltSupported = Helper.Helpers.FreqConverters.SemitoneLocalizationSupported(Resx.AppResources.Helper_Semitone_Alt);
+            bool locSupported = Helper.FreqConverters.SemitoneLocalizationSupported(Resx.AppResources.Helper_Semitone_Main);
+            bool locAltSupported = Helper.FreqConverters.SemitoneLocalizationSupported(Resx.AppResources.Helper_Semitone_Alt);
 
             switch (vm.SemitoneLocalizeMode)
             {
-                case Helper.Helpers.FreqConverters.SemitoneLocalizeModes.Both:
-                    vm.SemitoneLocalizeMode = Helper.Helpers.FreqConverters.SemitoneLocalizeModes.International;
+                case Helper.FreqConverters.SemitoneLocalizeModes.Both:
+                    vm.SemitoneLocalizeMode = Helper.FreqConverters.SemitoneLocalizeModes.International;
                     break;
-                case Helper.Helpers.FreqConverters.SemitoneLocalizeModes.International:
-                    if (locSupported) vm.SemitoneLocalizeMode = Helper.Helpers.FreqConverters.SemitoneLocalizeModes.Local;
-                    else vm.SemitoneLocalizeMode = Helper.Helpers.FreqConverters.SemitoneLocalizeModes.Both;
+                case Helper.FreqConverters.SemitoneLocalizeModes.International:
+                    if (locSupported) vm.SemitoneLocalizeMode = Helper.FreqConverters.SemitoneLocalizeModes.Local;
+                    else vm.SemitoneLocalizeMode = Helper.FreqConverters.SemitoneLocalizeModes.Both;
                     break;
-                case Helper.Helpers.FreqConverters.SemitoneLocalizeModes.Local:
-                    if (locAltSupported) vm.SemitoneLocalizeMode = Helper.Helpers.FreqConverters.SemitoneLocalizeModes.LocalAlt;
-                    else vm.SemitoneLocalizeMode = Helper.Helpers.FreqConverters.SemitoneLocalizeModes.Both;
+                case Helper.FreqConverters.SemitoneLocalizeModes.Local:
+                    if (locAltSupported) vm.SemitoneLocalizeMode = Helper.FreqConverters.SemitoneLocalizeModes.LocalAlt;
+                    else vm.SemitoneLocalizeMode = Helper.FreqConverters.SemitoneLocalizeModes.Both;
                     break;
-                case Helper.Helpers.FreqConverters.SemitoneLocalizeModes.LocalAlt:
+                case Helper.FreqConverters.SemitoneLocalizeModes.LocalAlt:
                 default:
-                    vm.SemitoneLocalizeMode = Helper.Helpers.FreqConverters.SemitoneLocalizeModes.Both;
+                    vm.SemitoneLocalizeMode = Helper.FreqConverters.SemitoneLocalizeModes.Both;
                     break;
             }
         }

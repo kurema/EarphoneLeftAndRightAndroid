@@ -28,7 +28,7 @@
     <ContentPage.Content>
         <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <StackLayout>
-                <controls:AdDefaultView HeightRequest="51" HorizontalOptions="Fill"  WidthRequest="320" Grid.Row="0"  />
+                <controls:AdDefaultView HeightRequest="51" HorizontalOptions="Fill"  WidthRequest="320" />
                 <StackLayout Margin="10">
                     <Label Text="{x:Static r:AppResources.Play_StereoTest_Title}" FontSize="Large" />
                     <Grid Margin="10">

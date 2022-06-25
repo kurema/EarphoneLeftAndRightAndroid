@@ -366,6 +366,25 @@ namespace EarphoneLeftAndRight.Resx {
         }
         
         /// <summary>
+        ///   {0} cent(s) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Helper_Semitone_Cent {
+            get {
+                return ResourceManager.GetString("Helper.Semitone.Cent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   One cent compared to a semitone.
+        ///2 cents compared to a semitone. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Helper_Semitone_Cent_Sample {
+            get {
+                return ResourceManager.GetString("Helper.Semitone.Cent.Sample", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   C,C#,D,D#,E,F,F#,G,G#,A,A#,B に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Helper_Semitone_Main {

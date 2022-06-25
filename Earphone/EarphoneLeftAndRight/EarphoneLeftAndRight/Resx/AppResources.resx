@@ -492,4 +492,11 @@ All experience hath shown that mankind are more disposed to suffer while evils a
   <data name="Sound.Tune.OppositePhase" xml:space="preserve">
     <value>Antiphase</value>
   </data>
+  <data name="Helper.Semitone.Cent" xml:space="preserve">
+    <value>{0} cent(s)</value>
+  </data>
+  <data name="Helper.Semitone.Cent.Sample" xml:space="preserve">
+    <value>One cent compared to a semitone.
+2 cents compared to a semitone.</value>
+  </data>
 </root>

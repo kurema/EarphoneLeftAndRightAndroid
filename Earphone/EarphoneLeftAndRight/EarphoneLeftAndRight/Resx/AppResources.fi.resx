@@ -253,4 +253,11 @@
   <data name="Sound.Tune.OppositePhase" xml:space="preserve">
     <value>Vastavaiheinen</value>
   </data>
+  <data name="Helper.Semitone.Cent" xml:space="preserve">
+    <value>{0} sentti(ä)</value>
+  </data>
+  <data name="Helper.Semitone.Cent.Sample" xml:space="preserve">
+    <value>Yksi sentti verrattuna puolisävelaskeliin.
+2 senttiä verrattuna puolisävelaskeliin.</value>
+  </data>
 </root>

@@ -373,4 +373,11 @@
   <data name="Sound.Tune.OppositePhase" xml:space="preserve">
     <value>逆位相</value>
   </data>
+  <data name="Helper.Semitone.Cent" xml:space="preserve">
+    <value>{0} セント</value>
+  </data>
+  <data name="Helper.Semitone.Cent.Sample" xml:space="preserve">
+    <value>1セントは半音と比較。
+半音と比較すると2セント。</value>
+  </data>
 </root>

@@ -37,7 +37,7 @@
             </Frame>
         </ControlTemplate>
     </TabbedPage.Resources>
-    <ContentPage Title="Basic" BackgroundColor="{AppThemeBinding Default=White,Light=White,Dark=Black}">
+    <ContentPage Title="{x:Static r:AppResources.Sound_Tune_Title}" BackgroundColor="{AppThemeBinding Default=White,Light=White,Dark=Black}">
         <ContentPage.ToolbarItems>
             <!-- not working -->
             <!-- https://github.com/xamarin/Xamarin.Forms/issues/7351 -->
@@ -52,7 +52,7 @@
         </ContentPage.BindingContext>
         <ScrollView VerticalScrollBarVisibility="Default" Orientation="Vertical">
             <StackLayout>
-                <Label FontSize="Large" Text="Frequency" Margin="10"/>
+                <Label FontSize="Large" Text="{x:Static r:AppResources.Word_Frequency}" Margin="10"/>
                 <Slider Grid.Column="1" Maximum="{Binding FrequencyMaximum,Converter={x:StaticResource vc_log}}" Minimum="{Binding FrequencyMinimum,Converter={x:StaticResource vc_log}}"
                         Value="{Binding FrequencyRounded,Converter={x:StaticResource vc_log}}" Margin="0,10,0,10"/>
                 <Grid Margin="10,0,10,10">
@@ -84,7 +84,7 @@
                     <Button Grid.Column="0" Grid.Row="1" Text="8vb" Command="{Binding MultiplyFrequencyCommand}" CommandParameter="-12" />
                     <Button Grid.Column="4" Grid.Row="1" Text="8va" Command="{Binding MultiplyFrequencyCommand}" CommandParameter="+12" />
                     <Button Grid.Column="3" Grid.Row="1" Text="+" Command="{Binding MultiplyFrequencyCommand}" CommandParameter="+1"/>
-                    <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="2">
+                    <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Grid.Row="1" Grid.Column="2">
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_ChangeLocalizationMode" />
                         </StackLayout.GestureRecognizers>
@@ -142,7 +142,7 @@
                         </RadioButton.Content>
                     </RadioButton>
                 </Grid>
-                <Label FontSize="Large" Text="Balance" Margin="10"/>
+                <Label FontSize="Large" Text="{x:Static r:AppResources.Word_Balance}" Margin="10"/>
                 <Slider Minimum="-1" Maximum="1" Value="{Binding Balance}" Margin="0,10,0,10"/>
                 <Grid Margin="10">
                     <Grid.ColumnDefinitions>
@@ -155,11 +155,11 @@
                     <Button Grid.Column="2" Text="{x:Static r:LocalResources.Right}" Command="{Binding SetBalanceCommand}" CommandParameter="1" />
                 </Grid>
                 <StackLayout Orientation="Horizontal" Margin="10">
-                    <CheckBox IsChecked="{Binding OppositePhase}" />
-                    <Label Text="Opposite phase" VerticalOptions="Center" />
+                    <CheckBox IsChecked="{Binding OppositePhase}"  VerticalOptions="Center" />
+                    <Label Text="{x:Static r:AppResources.Sound_Tune_OppositePhase}" VerticalOptions="Center" />
                 </StackLayout>
-                <Button Text="Play" Margin="10" Command="{Binding PlayCommand}" IsVisible="{Binding IsPlaying,Converter={x:StaticResource vc_b2c},ConverterParameter=False:True}" />
-                <Button Text="Stop" Margin="10" Command="{Binding StopCommand}" IsVisible="{Binding IsPlaying}" />
+                <Button Text="{x:Static r:AppResources.Word_Play_Sound}" Margin="10" Command="{Binding PlayCommand}" IsVisible="{Binding IsPlaying,Converter={x:StaticResource vc_b2c},ConverterParameter=False:True}" />
+                <Button Text="{x:Static r:AppResources.Word_Stop_Sound}" Margin="10" Command="{Binding StopCommand}" IsVisible="{Binding IsPlaying}" />
             </StackLayout>
         </ScrollView>
     </ContentPage>

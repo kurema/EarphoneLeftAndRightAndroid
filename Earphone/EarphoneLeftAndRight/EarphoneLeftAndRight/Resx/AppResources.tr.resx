@@ -232,4 +232,25 @@
   <data name="Word.Center" xml:space="preserve">
     <value>Merkez</value>
   </data>
+  <data name="Sound.Title" xml:space="preserve">
+    <value>Ses</value>
+  </data>
+  <data name="Word.Frequency" xml:space="preserve">
+    <value>Frekans</value>
+  </data>
+  <data name="Word.Balance" xml:space="preserve">
+    <value>Denge</value>
+  </data>
+  <data name="Word.Play.Sound" xml:space="preserve">
+    <value>Oynat</value>
+  </data>
+  <data name="Word.Stop.Sound" xml:space="preserve">
+    <value>Durdur</value>
+  </data>
+  <data name="Sound.Tune.Title" xml:space="preserve">
+    <value>Ayarlama</value>
+  </data>
+  <data name="Sound.Tune.OppositePhase" xml:space="preserve">
+    <value>Antiphase</value>
+  </data>
 </root>

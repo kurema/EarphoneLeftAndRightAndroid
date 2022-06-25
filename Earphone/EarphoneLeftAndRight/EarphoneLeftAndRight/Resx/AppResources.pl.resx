@@ -232,4 +232,25 @@
   <data name="Word.Center" xml:space="preserve">
     <value>Centrum</value>
   </data>
+  <data name="Sound.Title" xml:space="preserve">
+    <value>Dźwięk</value>
+  </data>
+  <data name="Word.Frequency" xml:space="preserve">
+    <value>Częstotliwość</value>
+  </data>
+  <data name="Word.Balance" xml:space="preserve">
+    <value>Bilans</value>
+  </data>
+  <data name="Word.Play.Sound" xml:space="preserve">
+    <value>Odtwarzanie</value>
+  </data>
+  <data name="Word.Stop.Sound" xml:space="preserve">
+    <value>Zatrzymaj</value>
+  </data>
+  <data name="Sound.Tune.Title" xml:space="preserve">
+    <value>Strojenie</value>
+  </data>
+  <data name="Sound.Tune.OppositePhase" xml:space="preserve">
+    <value>Antyfaza</value>
+  </data>
 </root>

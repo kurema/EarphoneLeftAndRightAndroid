@@ -467,7 +467,7 @@ All experience hath shown that mankind are more disposed to suffer while evils a
     <value>Sound</value>
   </data>
   <data name="Sound.Tune.Title" xml:space="preserve">
-    <value>Tune</value>
+    <value>Tuning</value>
   </data>
   <data name="Helper.Semitone.Main" xml:space="preserve">
     <value>C,C#,D,D#,E,F,F#,G,G#,A,A#,B</value>
@@ -476,5 +476,20 @@ All experience hath shown that mankind are more disposed to suffer while evils a
   <data name="Helper.Semitone.Alt" xml:space="preserve">
     <value>NULL</value>
     <comment>@Invariant</comment>
+  </data>
+  <data name="Word.Frequency" xml:space="preserve">
+    <value>Frequency</value>
+  </data>
+  <data name="Word.Balance" xml:space="preserve">
+    <value>Balance</value>
+  </data>
+  <data name="Word.Play.Sound" xml:space="preserve">
+    <value>Play</value>
+  </data>
+  <data name="Word.Stop.Sound" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="Sound.Tune.OppositePhase" xml:space="preserve">
+    <value>Antiphase</value>
   </data>
 </root>

@@ -241,4 +241,25 @@
   <data name="Helper.Semitone.Main" xml:space="preserve">
     <value>C,C#,D,D#,E,F,F#,G,G#,A,A#,H</value>
   </data>
+  <data name="Sound.Title" xml:space="preserve">
+    <value>Ton</value>
+  </data>
+  <data name="Word.Frequency" xml:space="preserve">
+    <value>Frequenz</value>
+  </data>
+  <data name="Word.Balance" xml:space="preserve">
+    <value>Bilanz</value>
+  </data>
+  <data name="Word.Play.Sound" xml:space="preserve">
+    <value>Abspielen</value>
+  </data>
+  <data name="Word.Stop.Sound" xml:space="preserve">
+    <value>Anhalten</value>
+  </data>
+  <data name="Sound.Tune.Title" xml:space="preserve">
+    <value>Abstimmung</value>
+  </data>
+  <data name="Sound.Tune.OppositePhase" xml:space="preserve">
+    <value>Antiphase</value>
+  </data>
 </root>

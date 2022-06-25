@@ -34,7 +34,7 @@ namespace EarphoneLeftAndRight.ViewModels
                     await Storages.AudioStorage.RegisterWave(nums[0], nums[1], nums[2], nums[3]);
                     await Task.Run(() => { try { Storages.AudioStorage.AudioTest.Play(); } catch { } });
                 }
-                catch (Exception e)
+                catch
                 {
                 }
             });

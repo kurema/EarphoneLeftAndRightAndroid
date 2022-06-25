@@ -600,11 +600,29 @@ namespace EarphoneLeftAndRight.Resx {
         }
         
         /// <summary>
-        ///   Tune に類似しているローカライズされた文字列を検索します。
+        ///   Antiphase に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Sound_Tune_OppositePhase {
+            get {
+                return ResourceManager.GetString("Sound.Tune.OppositePhase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Tuning に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Sound_Tune_Title {
             get {
                 return ResourceManager.GetString("Sound.Tune.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Balance に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Word_Balance {
+            get {
+                return ResourceManager.GetString("Word.Balance", resourceCulture);
             }
         }
         
@@ -614,6 +632,33 @@ namespace EarphoneLeftAndRight.Resx {
         internal static string Word_Center {
             get {
                 return ResourceManager.GetString("Word.Center", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Frequency に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Word_Frequency {
+            get {
+                return ResourceManager.GetString("Word.Frequency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Play に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Word_Play_Sound {
+            get {
+                return ResourceManager.GetString("Word.Play.Sound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Stop に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Word_Stop_Sound {
+            get {
+                return ResourceManager.GetString("Word.Stop.Sound", resourceCulture);
             }
         }
     }

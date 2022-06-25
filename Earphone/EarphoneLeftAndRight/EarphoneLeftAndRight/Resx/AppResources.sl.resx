@@ -232,4 +232,25 @@
   <data name="Word.Center" xml:space="preserve">
     <value>Center</value>
   </data>
+  <data name="Sound.Title" xml:space="preserve">
+    <value>Zvok</value>
+  </data>
+  <data name="Word.Frequency" xml:space="preserve">
+    <value>Frekvenca</value>
+  </data>
+  <data name="Word.Balance" xml:space="preserve">
+    <value>Bilanca</value>
+  </data>
+  <data name="Word.Play.Sound" xml:space="preserve">
+    <value>Predvajanje</value>
+  </data>
+  <data name="Word.Stop.Sound" xml:space="preserve">
+    <value>Ustavite</value>
+  </data>
+  <data name="Sound.Tune.Title" xml:space="preserve">
+    <value>Uglaševanje</value>
+  </data>
+  <data name="Sound.Tune.OppositePhase" xml:space="preserve">
+    <value>Antifaza</value>
+  </data>
 </root>

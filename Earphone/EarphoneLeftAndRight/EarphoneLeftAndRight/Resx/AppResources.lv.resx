@@ -232,4 +232,25 @@
   <data name="Word.Center" xml:space="preserve">
     <value>Centrs</value>
   </data>
+  <data name="Sound.Title" xml:space="preserve">
+    <value>Skaņa</value>
+  </data>
+  <data name="Word.Frequency" xml:space="preserve">
+    <value>Biežums</value>
+  </data>
+  <data name="Word.Balance" xml:space="preserve">
+    <value>Līdzsvars</value>
+  </data>
+  <data name="Word.Play.Sound" xml:space="preserve">
+    <value>Atskaņot</value>
+  </data>
+  <data name="Word.Stop.Sound" xml:space="preserve">
+    <value>Apstādināt</value>
+  </data>
+  <data name="Sound.Tune.Title" xml:space="preserve">
+    <value>Tuning</value>
+  </data>
+  <data name="Sound.Tune.OppositePhase" xml:space="preserve">
+    <value>Antifāze</value>
+  </data>
 </root>

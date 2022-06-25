@@ -352,4 +352,25 @@
   <data name="Helper.Semitone.Alt" xml:space="preserve">
     <value>ハ,嬰ハ,ニ,嬰ニ,ホ,ヘ,嬰ヘ,ト,嬰ト,イ,嬰イ,ロ</value>
   </data>
+  <data name="Sound.Title" xml:space="preserve">
+    <value>サウンド</value>
+  </data>
+  <data name="Sound.Tune.Title" xml:space="preserve">
+    <value>チューニング</value>
+  </data>
+  <data name="Word.Frequency" xml:space="preserve">
+    <value>周波数</value>
+  </data>
+  <data name="Word.Balance" xml:space="preserve">
+    <value>バランス</value>
+  </data>
+  <data name="Word.Play.Sound" xml:space="preserve">
+    <value>再生</value>
+  </data>
+  <data name="Word.Stop.Sound" xml:space="preserve">
+    <value>停止</value>
+  </data>
+  <data name="Sound.Tune.OppositePhase" xml:space="preserve">
+    <value>逆位相</value>
+  </data>
 </root>

@@ -232,4 +232,25 @@
   <data name="Word.Center" xml:space="preserve">
     <value>Pusat</value>
   </data>
+  <data name="Sound.Title" xml:space="preserve">
+    <value>Suara</value>
+  </data>
+  <data name="Word.Frequency" xml:space="preserve">
+    <value>Frekuensi</value>
+  </data>
+  <data name="Word.Balance" xml:space="preserve">
+    <value>Keseimbangan</value>
+  </data>
+  <data name="Word.Play.Sound" xml:space="preserve">
+    <value>Memainkan</value>
+  </data>
+  <data name="Word.Stop.Sound" xml:space="preserve">
+    <value>Hentikan</value>
+  </data>
+  <data name="Sound.Tune.Title" xml:space="preserve">
+    <value>Penyetelan</value>
+  </data>
+  <data name="Sound.Tune.OppositePhase" xml:space="preserve">
+    <value>Antiphase</value>
+  </data>
 </root>

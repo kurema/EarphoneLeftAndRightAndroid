@@ -238,4 +238,25 @@
   <data name="Helper.Semitone.Alt" xml:space="preserve">
     <value>黃鐘,大呂,太簇,夾鐘,姑洗,仲呂,蕤賓,林鐘,夷則,南呂,無射,應鐘</value>
   </data>
+  <data name="Sound.Title" xml:space="preserve">
+    <value>声音</value>
+  </data>
+  <data name="Word.Frequency" xml:space="preserve">
+    <value>頻率</value>
+  </data>
+  <data name="Word.Balance" xml:space="preserve">
+    <value>平衡</value>
+  </data>
+  <data name="Word.Play.Sound" xml:space="preserve">
+    <value>播放</value>
+  </data>
+  <data name="Word.Stop.Sound" xml:space="preserve">
+    <value>停止</value>
+  </data>
+  <data name="Sound.Tune.Title" xml:space="preserve">
+    <value>调音</value>
+  </data>
+  <data name="Sound.Tune.OppositePhase" xml:space="preserve">
+    <value>反相</value>
+  </data>
 </root>

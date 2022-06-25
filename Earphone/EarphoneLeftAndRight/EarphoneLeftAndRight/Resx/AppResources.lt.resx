@@ -232,4 +232,25 @@
   <data name="Word.Center" xml:space="preserve">
     <value>Centras</value>
   </data>
+  <data name="Sound.Title" xml:space="preserve">
+    <value>Garsas</value>
+  </data>
+  <data name="Word.Frequency" xml:space="preserve">
+    <value>Dažnis</value>
+  </data>
+  <data name="Word.Balance" xml:space="preserve">
+    <value>Balansas</value>
+  </data>
+  <data name="Word.Play.Sound" xml:space="preserve">
+    <value>Groti</value>
+  </data>
+  <data name="Word.Stop.Sound" xml:space="preserve">
+    <value>Sustabdyti</value>
+  </data>
+  <data name="Sound.Tune.Title" xml:space="preserve">
+    <value>Tuning</value>
+  </data>
+  <data name="Sound.Tune.OppositePhase" xml:space="preserve">
+    <value>Antifazė</value>
+  </data>
 </root>

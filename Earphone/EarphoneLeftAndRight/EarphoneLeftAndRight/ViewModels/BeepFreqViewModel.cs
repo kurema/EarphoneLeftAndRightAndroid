@@ -24,6 +24,7 @@ namespace EarphoneLeftAndRight.ViewModels
         public string LocalizedCentP1 => Helper.FreqConverters.LocalizeCent(+1, this.SemitoneLocalizeMode);
         public string LocalizedCentM1 => Helper.FreqConverters.LocalizeCent(-1, this.SemitoneLocalizeMode);
 
+        private DateTime LastPlayed = new DateTime(2000, 1, 1);
 
         public async void TestSupportHiDef()
         {
@@ -63,12 +64,15 @@ namespace EarphoneLeftAndRight.ViewModels
                 //if (value >= 1000) value = Math.Round(value);
                 //else value = Math.Round(value / 0.1) * 0.1;
                 value = Math.Round(value);
+                if (Math.Round(Frequency) == value) return;
                 if (Math.Abs(value - Frequency) < 1.0) return;
+                if (_Frequency == value) return;
                 SetProperty(ref _Frequency, value);
                 OnPropertyChanged(nameof(FrequencyHumanReadable));
                 OnPropertyChanged(nameof(Frequency));
                 OnPropertyChanged(nameof(FrequencyName));
                 OnPropertyChanged(nameof(FrequencyNameCent));
+                ReplayIfNeeded();
             }
         }
 
@@ -79,11 +83,13 @@ namespace EarphoneLeftAndRight.ViewModels
             {
                 if (value <= 0) return;
                 value = Math.Min(Math.Max(value, FrequencyMinimum), FrequencyMaximum);
+                if (Frequency == value) return;
                 SetProperty(ref _Frequency, value);
                 OnPropertyChanged(nameof(FrequencyHumanReadable));
                 OnPropertyChanged(nameof(FrequencyRounded));
                 OnPropertyChanged(nameof(FrequencyName));
                 OnPropertyChanged(nameof(FrequencyNameCent));
+                ReplayIfNeeded();
             }
         }
 
@@ -92,7 +98,7 @@ namespace EarphoneLeftAndRight.ViewModels
             get
             {
                 var freq = Frequency;
-                if (freq < 1000) return $"{freq:F0} Hz";
+                if (freq < 1000) return $"{freq:0.#} Hz";
                 else if (freq < 10000) return $"{freq / 1000:0.###} kHz";
                 else if (freq < 100000) return $"{freq / 1000:0.##} kHz";
                 else return $"{freq:0.#} kHz";
@@ -103,7 +109,7 @@ namespace EarphoneLeftAndRight.ViewModels
         {
             get
             {
-                return Helper.FreqConverters.HzToLocalizedEqualTemperament(Frequency, SemitoneLocalizeMode).semitone;
+                return Helper.FreqConverters.HzToLocalized(Frequency, SemitoneLocalizeMode, JustIntonation).semitone;
             }
         }
 
@@ -111,13 +117,21 @@ namespace EarphoneLeftAndRight.ViewModels
         {
             get
             {
-                return Helper.FreqConverters.HzToLocalizedEqualTemperament(Frequency, this.SemitoneLocalizeMode).cent;
+                return Helper.FreqConverters.HzToLocalized(Frequency, SemitoneLocalizeMode, JustIntonation).cent;
             }
         }
 
 
         private bool _JustIntonation = false;
-        public bool JustIntonation { get => _JustIntonation; set => SetProperty(ref _JustIntonation, value); }
+        public bool JustIntonation
+        {
+            get => _JustIntonation; set
+            {
+                SetProperty(ref _JustIntonation, value);
+                OnPropertyChanged(nameof(FrequencyName));
+                OnPropertyChanged(nameof(FrequencyNameCent));
+            }
+        }
 
         private Helper.FreqConverters.SemitoneLocalizeModes _SemitoneLocalizeMode;
         public Helper.FreqConverters.SemitoneLocalizeModes SemitoneLocalizeMode
@@ -152,36 +166,26 @@ namespace EarphoneLeftAndRight.ViewModels
             MultiplyFrequencyCommand = new Command(arg =>
             {
                 if (!double.TryParse(arg?.ToString(), out double value)) return;
-                Frequency *= Math.Pow(2.0, value / 12.0);
+                if (JustIntonation)
+                {
+                    var (a, b, c, _) = Helper.FreqConverters.HzToOctaveJustIntonation(Frequency);
+                    var ab = a * 12 + b + (int)Math.Truncate(value);
+                    this.Frequency = Helper.FreqConverters.OctaveToHzJustIntonation((int)Math.Floor(ab / 12.0), ab % 12, c + (value - Math.Truncate(value)) * 100);
+                }
+                else
+                {
+                    Frequency *= Math.Pow(2.0, value / 12.0);
+                }
             });
 
             PlayCommand = new Command(async _ =>
             {
-                int phaseInt = OppositePhase ? -1 : 1;
-                bool uneven = FrequencyRounded % 1 != 0;
-                double duration = uneven ? 2 : 1;
-                int sampleRate = 44100;
-                if (Frequency > 8000 && this.Support096kHz) sampleRate = 96000;
-                if (Frequency > 10000 && Support192kHz) sampleRate = 192000;
-                try
-                {
-                    await Storages.AudioStorage.RegisterWave(this.Frequency, duration, 0.5 - 0.5 * Balance, (0.5 + 0.5 * Balance) * phaseInt, WaveKind, sampleRate);
-                    Storages.AudioStorage.AudioTest.SetLoop(-1, uneven);
-                    await Task.Run(() => { try { Storages.AudioStorage.AudioTest.Play(); } catch { IsPlaying = false; } });
-                    IsPlaying = true;
-                }
-                catch { IsPlaying = false; }
-
+                await Play();
             });
 
             StopCommand = new Command(async_ =>
             {
-                try
-                {
-                    Storages.AudioStorage.AudioTest.Stop();
-                }
-                catch { }
-                IsPlaying = false;
+                Stop();
             });
 
             SetBalanceCommand = new Command(arg =>
@@ -194,7 +198,15 @@ namespace EarphoneLeftAndRight.ViewModels
             {
                 double value;
                 if (!double.TryParse(arg.ToString(), out value)) value = 0;
-                this.Frequency = Helper.FreqConverters.NoteNumberToHzEqualTemperament(Math.Round(Helper.FreqConverters.HzToNoteNumberEqualTemperament(Frequency)) + (value / 100));
+                if (JustIntonation)
+                {
+                    var (a, b, _, _) = Helper.FreqConverters.HzToOctaveJustIntonation(Frequency);
+                    this.Frequency = Helper.FreqConverters.OctaveToHzJustIntonation(a, b, value);
+                }
+                else
+                {
+                    this.Frequency = Helper.FreqConverters.NoteNumberToHzEqualTemperament(Math.Round(Helper.FreqConverters.HzToNoteNumberEqualTemperament(Frequency)) + (value / 100));
+                }
             });
 
             SetPianoVisibleCommand = new Command(arg =>
@@ -208,8 +220,47 @@ namespace EarphoneLeftAndRight.ViewModels
             TestSupportHiDef();
         }
 
+        public async Task Play()
+        {
+            LastPlayed = DateTime.Now;
+            int phaseInt = OppositePhase ? -1 : 1;
+            bool uneven = Frequency % 1 != 0;
+            double duration = uneven ? 2 : 1;
+            int sampleRate = 44100;
+            if (Frequency > 8000 && this.Support096kHz) sampleRate = 96000;
+            if (Frequency > 10000 && Support192kHz) sampleRate = 192000;
+            try
+            {
+                await Storages.AudioStorage.RegisterWave(this.Frequency, duration, 0.5 - 0.5 * Balance, (0.5 + 0.5 * Balance) * phaseInt, WaveKind, sampleRate);
+                Storages.AudioStorage.AudioTest.SetLoop(-1, uneven);
+                await Task.Run(() => { try { Storages.AudioStorage.AudioTest.Play(); } catch { IsPlaying = false; } });
+                IsPlaying = true;
+            }
+            catch { IsPlaying = false; }
+        }
 
-        private bool _IsPlaying;
+        public void Stop()
+        {
+            try
+            {
+                Storages.AudioStorage.AudioTest.Stop();
+            }
+            catch { }
+            IsPlaying = false;
+        }
+
+        public async void ReplayIfNeeded()
+        {
+            if (!IsPlaying) return;
+            if ((DateTime.Now - LastPlayed).TotalSeconds < 0.1) return;
+
+            {
+                Stop();
+                await Play();
+            }
+        }
+
+        private bool _IsPlaying = false;
         public bool IsPlaying { get => _IsPlaying; set => SetProperty(ref _IsPlaying, value); }
 
 
@@ -219,7 +270,9 @@ namespace EarphoneLeftAndRight.ViewModels
             get => _Balance; set
             {
                 if (Balance > 1 || Balance < -1) return;
+                if (Balance == value) return;
                 SetProperty(ref _Balance, value);
+                ReplayIfNeeded();
             }
         }
 
@@ -232,7 +285,14 @@ namespace EarphoneLeftAndRight.ViewModels
         public ICommand SetCentCommand { get; }
 
         private Storages.AudioStorage.WaveKinds _WaveKind = Storages.AudioStorage.WaveKinds.Sine;
-        public Storages.AudioStorage.WaveKinds WaveKind { get => _WaveKind; set => SetProperty(ref _WaveKind, value); }
+        public Storages.AudioStorage.WaveKinds WaveKind
+        {
+            get => _WaveKind; set
+            {
+                SetProperty(ref _WaveKind, value);
+                ReplayIfNeeded();
+            }
+        }
 
 
         public Storages.AudioStorage.WaveKinds[] WaveKindCandidates { get; } = new[] {

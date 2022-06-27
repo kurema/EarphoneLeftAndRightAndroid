@@ -272,4 +272,7 @@
     <value>1分钱与一个半音相比。
 2分钱与一个半音相比。</value>
   </data>
+  <data name="Sound.Tune.JustIntonation" xml:space="preserve">
+    <value>纯律</value>
+  </data>
 </root>

@@ -269,4 +269,7 @@
     <value>Ein Cent im Vergleich zu einem Halbton.
 2 Cents im Vergleich zu einem Halbton.</value>
   </data>
+  <data name="Sound.Tune.JustIntonation" xml:space="preserve">
+    <value>Reine Stimmung</value>
+  </data>
 </root>

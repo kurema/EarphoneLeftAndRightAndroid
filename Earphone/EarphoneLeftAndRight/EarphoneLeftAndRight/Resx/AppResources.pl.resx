@@ -260,4 +260,7 @@
     <value>Jeden cent w stosunku do półtonu.
 2 centy w stosunku do półtonu.</value>
   </data>
+  <data name="Sound.Tune.JustIntonation" xml:space="preserve">
+    <value>Właściwa intonacja</value>
+  </data>
 </root>

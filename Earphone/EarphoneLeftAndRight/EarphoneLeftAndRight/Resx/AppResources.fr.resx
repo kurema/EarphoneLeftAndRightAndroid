@@ -269,4 +269,7 @@
     <value>Un centime par rapport à un demi-ton.
 2 centimes par rapport à un demi-ton.</value>
   </data>
+  <data name="Sound.Tune.JustIntonation" xml:space="preserve">
+    <value>Intonation juste</value>
+  </data>
 </root>

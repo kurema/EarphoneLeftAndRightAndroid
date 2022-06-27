@@ -260,4 +260,7 @@
     <value>Üks sent võrreldes pooltooniga.
 2 senti võrreldes pooltooniga.</value>
   </data>
+  <data name="Sound.Tune.JustIntonation" xml:space="preserve">
+    <value>Lihtsalt intonatsioon</value>
+  </data>
 </root>

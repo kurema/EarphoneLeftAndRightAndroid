@@ -260,4 +260,7 @@
     <value>En cent i forhold til en halv tone.
 2 cent i forhold til en halv tone.</value>
   </data>
+  <data name="Sound.Tune.JustIntonation" xml:space="preserve">
+    <value>Ren stemning</value>
+  </data>
 </root>

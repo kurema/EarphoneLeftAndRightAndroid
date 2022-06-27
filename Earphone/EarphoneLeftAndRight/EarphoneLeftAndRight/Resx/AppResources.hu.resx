@@ -260,4 +260,7 @@
     <value>Egy cent egy félhanghoz képest.
 2 cent egy félhanghoz képest.</value>
   </data>
+  <data name="Sound.Tune.JustIntonation" xml:space="preserve">
+    <value>Csak intonáció</value>
+  </data>
 </root>

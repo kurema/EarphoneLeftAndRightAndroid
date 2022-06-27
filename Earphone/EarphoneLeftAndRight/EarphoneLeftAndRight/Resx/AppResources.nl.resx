@@ -260,4 +260,7 @@
     <value>Eén cent vergeleken met een halve toon.
 2 cent ten opzichte van een halve toon.</value>
   </data>
+  <data name="Sound.Tune.JustIntonation" xml:space="preserve">
+    <value>Reine stemming</value>
+  </data>
 </root>

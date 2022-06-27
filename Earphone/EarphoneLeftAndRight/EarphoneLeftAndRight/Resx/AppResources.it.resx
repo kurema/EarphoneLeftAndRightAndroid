@@ -263,4 +263,7 @@
     <value>Un centesimo rispetto a un semitono.
 2 centesimi rispetto a un semitono.</value>
   </data>
+  <data name="Sound.Tune.JustIntonation" xml:space="preserve">
+    <value>Intonazione giusta</value>
+  </data>
 </root>

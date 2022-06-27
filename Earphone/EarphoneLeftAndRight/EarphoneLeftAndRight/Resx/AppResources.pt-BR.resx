@@ -260,4 +260,7 @@
     <value>Um cêntimo em comparação com um semitom.
 2 cêntimos em comparação com um semitom.</value>
   </data>
+  <data name="Sound.Tune.JustIntonation" xml:space="preserve">
+    <value>Entonação justa</value>
+  </data>
 </root>

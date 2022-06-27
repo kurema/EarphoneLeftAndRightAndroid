@@ -260,4 +260,7 @@
     <value>Satu sen dibandingkan dengan semitone.
 2 sen dibandingkan dengan semitone.</value>
   </data>
+  <data name="Sound.Tune.JustIntonation" xml:space="preserve">
+    <value>Hanya intonasi</value>
+  </data>
 </root>

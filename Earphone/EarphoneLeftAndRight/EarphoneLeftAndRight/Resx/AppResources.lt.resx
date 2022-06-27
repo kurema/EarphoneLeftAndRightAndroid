@@ -260,4 +260,7 @@
     <value>Vienas centas, palyginti su pustoniu.
 2 centai, palyginti su pustoniu.</value>
   </data>
+  <data name="Sound.Tune.JustIntonation" xml:space="preserve">
+    <value>Natūralioji darna</value>
+  </data>
 </root>

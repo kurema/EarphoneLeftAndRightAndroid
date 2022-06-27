@@ -380,4 +380,7 @@
     <value>1セントは半音と比較。
 半音と比較すると2セント。</value>
   </data>
+  <data name="Sound.Tune.JustIntonation" xml:space="preserve">
+    <value>純正律</value>
+  </data>
 </root>

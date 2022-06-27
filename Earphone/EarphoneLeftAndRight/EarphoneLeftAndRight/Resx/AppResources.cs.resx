@@ -260,4 +260,7 @@
     <value>Jeden cent v porovnání s půltónem.
 2 centy v porovnání s půltónem.</value>
   </data>
+  <data name="Sound.Tune.JustIntonation" xml:space="preserve">
+    <value>Didymické ladění</value>
+  </data>
 </root>

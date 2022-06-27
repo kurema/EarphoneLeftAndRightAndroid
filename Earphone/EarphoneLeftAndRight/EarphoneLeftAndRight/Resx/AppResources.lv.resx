@@ -260,4 +260,7 @@
     <value>Viens cents salīdzinājumā ar pustoni.
 2 centus, salīdzinot ar pustoni.</value>
   </data>
+  <data name="Sound.Tune.JustIntonation" xml:space="preserve">
+    <value>Tikai intonācija</value>
+  </data>
 </root>

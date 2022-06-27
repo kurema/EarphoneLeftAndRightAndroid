@@ -260,4 +260,7 @@
     <value>Un cent în comparație cu un semiton.
 2 cenți în comparație cu un semiton.</value>
   </data>
+  <data name="Sound.Tune.JustIntonation" xml:space="preserve">
+    <value>Doar intonație</value>
+  </data>
 </root>

@@ -260,4 +260,7 @@
     <value>Един цент в сравнение с един полутон.
 2 цента в сравнение с един полутон.</value>
   </data>
+  <data name="Sound.Tune.JustIntonation" xml:space="preserve">
+    <value>Точна интонация</value>
+  </data>
 </root>

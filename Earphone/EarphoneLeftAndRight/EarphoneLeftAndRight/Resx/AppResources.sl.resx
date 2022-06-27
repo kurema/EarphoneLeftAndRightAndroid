@@ -260,4 +260,7 @@
     <value>En cent v primerjavi s poltonom.
 2 centa v primerjavi s poltonom.</value>
   </data>
+  <data name="Sound.Tune.JustIntonation" xml:space="preserve">
+    <value>Pravična intonacija</value>
+  </data>
 </root>

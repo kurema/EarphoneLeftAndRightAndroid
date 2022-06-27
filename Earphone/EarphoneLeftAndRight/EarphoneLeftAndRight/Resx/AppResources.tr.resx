@@ -260,4 +260,7 @@
     <value>Yarım tonla karşılaştırıldığında bir sent.
 Bir yarım tonla karşılaştırıldığında 2 sent.</value>
   </data>
+  <data name="Sound.Tune.JustIntonation" xml:space="preserve">
+    <value>Sadece tonlama</value>
+  </data>
 </root>

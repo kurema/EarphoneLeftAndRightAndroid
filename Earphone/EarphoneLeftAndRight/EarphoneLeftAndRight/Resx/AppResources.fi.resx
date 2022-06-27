@@ -260,4 +260,7 @@
     <value>Yksi sentti verrattuna puolisävelaskeliin.
 2 senttiä verrattuna puolisävelaskeliin.</value>
   </data>
+  <data name="Sound.Tune.JustIntonation" xml:space="preserve">
+    <value>Oikea intonaatio</value>
+  </data>
 </root>

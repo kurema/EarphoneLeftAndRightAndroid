@@ -263,4 +263,7 @@
     <value>Un céntimo comparado con un semitono.
 2 céntimos comparados con un semitono.</value>
   </data>
+  <data name="Sound.Tune.JustIntonation" xml:space="preserve">
+    <value>Temperamento justo</value>
+  </data>
 </root>

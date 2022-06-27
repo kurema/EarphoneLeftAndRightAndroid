@@ -619,6 +619,15 @@ namespace EarphoneLeftAndRight.Resx {
         }
         
         /// <summary>
+        ///   Just intonation に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Sound_Tune_JustIntonation {
+            get {
+                return ResourceManager.GetString("Sound.Tune.JustIntonation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Antiphase に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Sound_Tune_OppositePhase {

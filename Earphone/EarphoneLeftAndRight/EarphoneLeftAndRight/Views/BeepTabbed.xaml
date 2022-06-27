@@ -95,9 +95,11 @@
                         <Label Text="{Binding FrequencyNameCent}" HorizontalOptions="Center" InputTransparent="True"/>
                     </StackLayout>
 
-                    <Button Grid.ColumnSpan="2" Grid.Row="2" Text="{Binding LocalizedCentM1}" Command="{Binding MultiplyFrequencyCommand}" CommandParameter="-0.01"/>
+                    <Button Grid.Column="0" Grid.Row="2" Text="-10" Command="{Binding MultiplyFrequencyCommand}" CommandParameter="-0.10"/>
+                    <Button Grid.Column="1" Grid.Row="2" Text="-1" Command="{Binding MultiplyFrequencyCommand}" CommandParameter="-0.01"/>
                     <Button Grid.Column="2" Grid.Row="2" Text="{Binding LocalizedCentP0}" Command="{Binding SetCentCommand}" CommandParameter="0"/>
-                    <Button Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="2" Text="{Binding LocalizedCentP1}" Command="{Binding MultiplyFrequencyCommand}" CommandParameter="+0.01"/>
+                    <Button Grid.Column="3" Grid.Row="2" Text="+1" Command="{Binding MultiplyFrequencyCommand}" CommandParameter="+0.01"/>
+                    <Button Grid.Column="4" Grid.Row="2" Text="+10" Command="{Binding MultiplyFrequencyCommand}" CommandParameter="+0.10"/>
                 </Grid>
                 <local:PianoView KeyWidth="40" HeightRequest="90" IsVisible="{Binding IsPianoVisible}" KeyTapped="PianoView_KeyTapped"/>
                 <Grid RadioButtonGroup.GroupName="waveKind" RadioButtonGroup.SelectedValue="{Binding WaveKind}">
@@ -166,7 +168,7 @@
                         <CheckBox IsChecked="{Binding OppositePhase}"  VerticalOptions="Center" />
                         <Label Text="{x:Static r:AppResources.Sound_Tune_OppositePhase}" VerticalOptions="Center" />
                         <CheckBox IsChecked="{Binding JustIntonation}" VerticalOptions="Center" />
-                        <Label Text="Just intonation" VerticalOptions="Center" />
+                        <Label Text="{x:Static r:AppResources.Sound_Tune_JustIntonation}" VerticalOptions="Center" />
                     </StackLayout>
                 </ScrollView>
                 <Button Text="{x:Static r:AppResources.Word_Play_Sound}" Margin="10" Command="{Binding PlayCommand}" IsVisible="{Binding IsPlaying,Converter={x:StaticResource vc_b2c},ConverterParameter=False:True}" />

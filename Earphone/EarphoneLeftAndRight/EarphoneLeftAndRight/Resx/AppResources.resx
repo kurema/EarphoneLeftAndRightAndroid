@@ -499,4 +499,7 @@ All experience hath shown that mankind are more disposed to suffer while evils a
     <value>One cent compared to a semitone.
 2 cents compared to a semitone.</value>
   </data>
+  <data name="Sound.Tune.JustIntonation" xml:space="preserve">
+    <value>Just intonation</value>
+  </data>
 </root>

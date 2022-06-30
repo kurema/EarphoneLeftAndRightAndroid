@@ -20,6 +20,8 @@ namespace EarphoneLeftAndRight.Droid
         private int frames;
         private int niceCuttingFrame;
 
+        private System.Threading.SemaphoreSlim Semaphore = new System.Threading.SemaphoreSlim(1, 1);
+
         private AudioTrack audioTrack = null;
         public async Task Register(Func<int, int, int, (double, bool)> generator, double duration, int sampleRate = 44100)
         {
@@ -28,78 +30,87 @@ namespace EarphoneLeftAndRight.Droid
             //https://akira-watson.com/android/audiotrack.html
             //https://qiita.com/takahamarn/items/e375a6a3ed806185e540
 
-            Release();
 
-            short[] buffer = null;
-            while (true)
+            await Semaphore.WaitAsync();
+            try
             {
-                await Task.Run(() => { (buffer, niceCuttingFrame) = GenerateBuffer(generator, duration, sampleRate, 2); });
-                //int bufferSizeInBytes = buffer.Length * 2 * 16 / 8;//bufferSize * Channel * (bit per length) / 8bit
-                int bufferSizeInBytes = buffer.Length * 16 / 8;//bufferSize * (bit per length) / 8bit
-                frames = buffer.Length / 2;
+                Release();
 
-                if (niceCuttingFrame != 0) { }
-                else if (frames <= 2) { niceCuttingFrame = frames; }
-                else
+                short[] buffer = null;
+                while (true)
                 {
-                    //Repeating in incorrect point makes a small noise.
-                    //This cut in nice frame, which is 0 and sign of differential is same.
-                    int sl = buffer[2] - buffer[0];
-                    int sr = buffer[3] - buffer[1];
+                    await Task.Run(() => { (buffer, niceCuttingFrame) = GenerateBuffer(generator, duration, sampleRate, 2); });
+                    //int bufferSizeInBytes = buffer.Length * 2 * 16 / 8;//bufferSize * Channel * (bit per length) / 8bit
+                    int bufferSizeInBytes = buffer.Length * 16 / 8;//bufferSize * (bit per length) / 8bit
+                    frames = buffer.Length / 2;
 
-                    int min = int.MaxValue;
-                    int currentNice = frames;
-                    for (int i = frames / 2; i < frames; i++)
+                    if (niceCuttingFrame != 0) { }
+                    else if (frames <= 2) { niceCuttingFrame = frames; }
+                    else
                     {
-                        var minC = Math.Abs(buffer[i * 2]) + Math.Abs(buffer[i * 2 + 1]);
-                        if (minC <= min && (buffer[i * 2] - buffer[i * 2 - 2]) * sl > 0 && (buffer[i * 2 + 1] - buffer[i * 2 - 1]) * sr > 0)
-                        {
-                            currentNice = i;
-                            min = minC;
-                        }
-                    }
-                    niceCuttingFrame = currentNice;
-                }
+                        //Repeating in incorrect point makes a small noise.
+                        //This cut in nice frame, which is 0 and sign of differential is same.
+                        int sl = buffer[2] - buffer[0];
+                        int sr = buffer[3] - buffer[1];
 
-                if (Build.VERSION.SdkInt >= BuildVersionCodes.M)
+                        int min = int.MaxValue;
+                        int currentNice = frames;
+                        for (int i = frames / 2; i < frames; i++)
+                        {
+                            var minC = Math.Abs(buffer[i * 2]) + Math.Abs(buffer[i * 2 + 1]);
+                            if (minC <= min && (buffer[i * 2] - buffer[i * 2 - 2]) * sl > 0 && (buffer[i * 2 + 1] - buffer[i * 2 - 1]) * sr > 0)
+                            {
+                                currentNice = i;
+                                min = minC;
+                            }
+                        }
+                        niceCuttingFrame = currentNice;
+                    }
+
+                    if (Build.VERSION.SdkInt >= BuildVersionCodes.M)
+                    {
+                        audioTrack = new AudioTrack.Builder()
+                            .SetAudioAttributes(new AudioAttributes.Builder()
+                            .SetUsage(AudioUsageKind.Media)
+                            .SetContentType(AudioContentType.Music)
+                            .Build()
+                            )
+                            .SetAudioFormat(new AudioFormat.Builder()
+                            .SetEncoding(Android.Media.Encoding.Pcm16bit)
+                            .SetSampleRate(sampleRate)
+                            .SetChannelMask(ChannelOut.Stereo)
+                            .Build()
+                            )
+                            .SetBufferSizeInBytes(bufferSizeInBytes)
+                            .SetTransferMode(AudioTrackMode.Static)
+                            .Build();
+                    }
+                    else
+                    {
+#pragma warning disable CS0618 // 型またはメンバーが旧型式です
+                        audioTrack = new AudioTrack(Stream.Music, sampleRate, ChannelConfiguration.Stereo, Android.Media.Encoding.Pcm16bit, bufferSizeInBytes, AudioTrackMode.Static);
+#pragma warning restore CS0618 // 型またはメンバーが旧型式です
+                    }
+                    if (sampleRate == ActualSampleRate) break;
+                    sampleRate = ActualSampleRate;
+                    audioTrack.Release();
+                    audioTrack.Dispose();
+                    audioTrack = null;
+                }
+                if (Build.VERSION.SdkInt > BuildVersionCodes.Lollipop)
                 {
-                    audioTrack = new AudioTrack.Builder()
-                        .SetAudioAttributes(new AudioAttributes.Builder()
-                        .SetUsage(AudioUsageKind.Media)
-                        .SetContentType(AudioContentType.Music)
-                        .Build()
-                        )
-                        .SetAudioFormat(new AudioFormat.Builder()
-                        .SetEncoding(Android.Media.Encoding.Pcm16bit)
-                        .SetSampleRate(sampleRate)
-                        .SetChannelMask(ChannelOut.Stereo)
-                        .Build()
-                        )
-                        .SetBufferSizeInBytes(bufferSizeInBytes)
-                        .SetTransferMode(AudioTrackMode.Static)
-                        .Build();
+                    //Following documents says it is supported above 21 inclusive, but it failed. Don't know why.
+                    //https://developer.android.com/reference/android/media/AudioTrack#write(float[],%20int,%20int,%20int)
+                    await audioTrack.WriteAsync(buffer, 0, buffer.Length, WriteMode.NonBlocking);
                 }
                 else
                 {
-#pragma warning disable CS0618 // 型またはメンバーが旧型式です
-                    audioTrack = new AudioTrack(Stream.Music, sampleRate, ChannelConfiguration.Stereo, Android.Media.Encoding.Pcm16bit, bufferSizeInBytes, AudioTrackMode.Static);
-#pragma warning restore CS0618 // 型またはメンバーが旧型式です
+                    await audioTrack.WriteAsync(buffer, 0, buffer.Length);
                 }
-                if (sampleRate == ActualSampleRate) break;
-                sampleRate = ActualSampleRate;
-                audioTrack.Release();
-                audioTrack.Dispose();
-                audioTrack = null;
             }
-            if (Build.VERSION.SdkInt > BuildVersionCodes.Lollipop)
+            finally
             {
-                //Following documents says it is supported above 21 inclusive, but it failed. Don't know why.
-                //https://developer.android.com/reference/android/media/AudioTrack#write(float[],%20int,%20int,%20int)
-                await audioTrack.WriteAsync(buffer, 0, buffer.Length, WriteMode.NonBlocking);
-            }
-            else
-            {
-                await audioTrack.WriteAsync(buffer, 0, buffer.Length);
+                Semaphore.Release();
             }
         }
 
@@ -143,18 +154,26 @@ namespace EarphoneLeftAndRight.Droid
             return (buffer, niceCuttingFrame);
         }
 
-        public void Play()
+        public async void Play()
         {
-            if (audioTrack is null) return;
-            if (audioTrack.PlayState == PlayState.Playing)
+            await Semaphore.WaitAsync();
+            try
             {
+                if (audioTrack is null) return;
+                if (audioTrack.PlayState == PlayState.Playing)
+                {
+                    audioTrack.Stop();
+                    //audioTrack.Flush();
+                    //audioTrack.ReloadStaticData();
+                }
                 audioTrack.Stop();
-                //audioTrack.Flush();
-                //audioTrack.ReloadStaticData();
+                audioTrack.ReloadStaticData();
+                audioTrack.Play();
             }
-            audioTrack.Stop();
-            audioTrack.ReloadStaticData();
-            audioTrack.Play();
+            finally
+            {
+                Semaphore.Release();
+            }
         }
 
         /// <summary>

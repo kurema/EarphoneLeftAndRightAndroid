@@ -10,12 +10,9 @@ namespace EarphoneLeftAndRight.ViewModels
     public class BeepFreqViewModel : BaseViewModel
     {
 
-        private bool _Support096kHz = false;
-        public bool Support096kHz { get => _Support096kHz; private set => SetProperty(ref _Support096kHz, value); }
+        public bool Support096kHz => Storages.AudioStorage.HiDefSupported096kHz;
 
-        private bool _Support192kHz = false;
-        public bool Support192kHz { get => _Support192kHz; private set => SetProperty(ref _Support192kHz, value); }
-
+        public bool Support192kHz => Storages.AudioStorage.HiDefSupported192kHz;
 
         private bool _IsPianoVisible = true;
         public bool IsPianoVisible { get => _IsPianoVisible; set => SetProperty(ref _IsPianoVisible, value); }
@@ -28,10 +25,7 @@ namespace EarphoneLeftAndRight.ViewModels
 
         public async void TestSupportHiDef()
         {
-            await Storages.AudioStorage.RegisterWave(200, 0.01, 0, 0, Storages.AudioStorage.WaveKinds.Square, 96000);
-            Support096kHz = Storages.AudioStorage.AudioTest.ActualSampleRate == 96000;
-            await Storages.AudioStorage.RegisterWave(200, 0.01, 0, 0, Storages.AudioStorage.WaveKinds.Square, 192000);
-            Support192kHz = Storages.AudioStorage.AudioTest.ActualSampleRate == 192000;
+            await Storages.AudioStorage.TestSupportHiDef();
         }
 
         private double _FrequencyMaximum = 20000;
@@ -149,7 +143,14 @@ namespace EarphoneLeftAndRight.ViewModels
 
 
         private bool _OppositePhase;
-        public bool OppositePhase { get => _OppositePhase; set => SetProperty(ref _OppositePhase, value); }
+        public bool OppositePhase
+        {
+            get => _OppositePhase; set
+            {
+                SetProperty(ref _OppositePhase, value);
+                ReplayIfNeeded();
+            }
+        }
 
         public BeepFreqViewModel()
         {

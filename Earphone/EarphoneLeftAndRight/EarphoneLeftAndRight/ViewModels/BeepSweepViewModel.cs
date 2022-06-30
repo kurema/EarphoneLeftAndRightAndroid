@@ -1,0 +1,57 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
+using System.Threading.Tasks;
+
+namespace EarphoneLeftAndRight.ViewModels;
+
+public class BeepSweepViewModel : BaseViewModel
+{
+
+    private double _Duration = 10.0;
+    public double Duration { get => _Duration; set => SetProperty(ref _Duration, value); }
+
+
+    private double _FrequencyStart = 20.0;
+    public double FrequencyStart { get => _FrequencyStart; set => SetProperty(ref _FrequencyStart, value); }
+
+
+    private double _FrequencyEnd = 20000.0;
+    public double FrequencyEnd { get => _FrequencyEnd; set => SetProperty(ref _FrequencyEnd, value); }
+
+
+    private double _FrequencyMinimum = 20.0;
+    public double FrequencyMinimum { get => _FrequencyMinimum; set => SetProperty(ref _FrequencyMinimum, value); }
+
+
+    private double _FrequencyMaximum = 20000.0;
+    public double FrequencyMaximum { get => _FrequencyMaximum; set => SetProperty(ref _FrequencyMaximum, value); }
+
+
+    private bool _EachChannel = false;
+    public bool EachChannel { get => _EachChannel; set => SetProperty(ref _EachChannel, value); }
+
+
+    private bool _Exponential = true;
+    public bool Exponential { get => _Exponential; set => SetProperty(ref _Exponential, value); }
+
+
+    private bool _Semitone = false;
+
+    public BeepSweepViewModel()
+    {
+        PlayCommand = new Command(async () =>
+        {
+            await Storages.AudioStorage.TestSupportHiDef();
+            await Storages.AudioStorage.RegisterSweepAsync(this.FrequencyStart, FrequencyEnd, this.Exponential, this.Duration, 0.5, EachChannel ? Storages.AudioStorage.SweepChanneldOrder.LeftThenRight : Storages.AudioStorage.SweepChanneldOrder.Both
+                , Storages.AudioStorage.HiDefSupported192kHz ? 192000 : (Storages.AudioStorage.HiDefSupported096kHz ? 96000 : 44100));
+            await Task.Run(() => Storages.AudioStorage.AudioTest.Play());
+        });
+    }
+
+    public bool Semitone { get => _Semitone; set => SetProperty(ref _Semitone, value); }
+
+    public ICommand PlayCommand { get; }
+}

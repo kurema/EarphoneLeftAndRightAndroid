@@ -58,7 +58,6 @@
             </Grid.RowDefinitions>
             <ScrollView VerticalScrollBarVisibility="Default" Orientation="Vertical">
                 <StackLayout>
-                    <local:AdDefaultView HeightRequest="51" HorizontalOptions="Fill"  WidthRequest="320" />
                     <Label FontSize="Large" Text="{x:Static r:AppResources.Word_Frequency}" Margin="10"/>
                     <Slider Grid.Column="1" Maximum="{Binding FrequencyMaximum,Converter={x:StaticResource vc_log}}" Minimum="{Binding FrequencyMinimum,Converter={x:StaticResource vc_log}}"
                         Value="{Binding FrequencyRounded,Converter={x:StaticResource vc_log}}" Margin="0,10,0,10"/>
@@ -176,6 +175,7 @@
                             <Label Text="{x:Static r:AppResources.Sound_Tune_JustIntonation}" VerticalOptions="Center" />
                         </StackLayout>
                     </ScrollView>
+                    <local:AdDefaultView HeightRequest="51" HorizontalOptions="Fill"  WidthRequest="320" />
                 </StackLayout>
             </ScrollView>
             <Button Grid.Row="1" Margin="0" Text="{x:Static r:AppResources.Word_Play_Sound}" Command="{Binding PlayCommand}" IsVisible="{Binding IsPlaying,Converter={x:StaticResource vc_b2c},ConverterParameter=False:True}" />
@@ -186,9 +186,37 @@
         <ContentPage.BindingContext>
             <vm:BeepSweepViewModel />
         </ContentPage.BindingContext>
-        <Grid RowDefinitions="*,Auto" ColumnSpacing="0" RowSpacing="0">
-            <ScrollView>
+        <Grid RowDefinitions="Auto,*,Auto" ColumnSpacing="0" RowSpacing="0">
+            <Grid BackgroundColor="#9cb04a" ColumnDefinitions="*,Auto" RowSpacing="0" ColumnSpacing="0">
+                <Label Grid.ColumnSpan="2" x:Name="labelHz" HorizontalOptions="Center" VerticalOptions="Center" FontSize="60" Text="---.---" FontFamily="DSEG" TextColor="#AA000000"
+                       Margin="0,10" LineHeight="0" />
+                <Grid Grid.Column="1" RowDefinitions="*,*" VerticalOptions="FillAndExpand">
+                    <Label Grid.Row="1" Text="Hz" x:Name="labelHzUnit" FontSize="20" TextColor="#AA000000"  Margin="10,0" VerticalOptions="Center"/>
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End" Margin="10,0">
+                        <Label Text="L" x:Name="labelHzL" Opacity="0.1" TextColor="#AA000000"/>
+                        <Label Text="R" x:Name="labelHzR" Opacity="0.1" TextColor="#AA000000"/>
+                    </StackLayout>
+                </Grid>
+            </Grid>
+            <ScrollView Grid.Row="1">
                 <StackLayout>
+                    <Label FontSize="Large" Text="Frequency" Margin="10"/>
+                    <Grid ColumnDefinitions="1*,Auto,1*" Margin="5,0">
+                        <Grid ColumnDefinitions="*,Auto" Margin="0" ColumnSpacing="0" RowSpacing="0" Grid.Column="0" VerticalOptions="Center">
+                            <Entry Text="{Binding FrequencyStart,Mode=TwoWay}" Keyboard="Numeric" VerticalOptions="Center" />
+                            <Label Grid.Column="1" Text="Hz" VerticalOptions="Center" />
+                        </Grid>
+                        <Label Grid.Column="1" Text="～" VerticalOptions="Center" />
+                        <Grid ColumnDefinitions="*,Auto" Margin="0" ColumnSpacing="0" RowSpacing="0" Grid.Column="2" VerticalOptions="Center">
+                            <Entry Text="{Binding FrequencyEnd,Mode=TwoWay}" Keyboard="Numeric" VerticalOptions="Center" />
+                            <Label Grid.Column="1" Text="Hz" VerticalOptions="Center" />
+                        </Grid>
+                    </Grid>
+                    <Grid ColumnDefinitions="1*,1*,1*">
+                        <Button Grid.Column="0" Text="Default" Command="{Binding SetFrequencyCommand}" CommandParameter="20:20000" />
+                        <Button Grid.Column="1" Text="Maximum" Command="{Binding SetFrequencyMaxCommand}" />
+                        <Button Grid.Column="2" Text="Invert" Command="{Binding SetFrequencyInvertCommand}" />
+                    </Grid>
                     <Label FontSize="Large" Text="Duration" Margin="10"/>
                     <Slider Margin="0,10,0,10" Value="{Binding Duration}" Maximum="30.0"/>
                     <ScrollView Orientation="Horizontal">
@@ -199,9 +227,10 @@
                             <Label Text="Each channel" VerticalOptions="Center" />
                         </StackLayout>
                     </ScrollView>
+                    <local:AdDefaultView HeightRequest="51" HorizontalOptions="Fill"  WidthRequest="320" />
                 </StackLayout>
             </ScrollView>
-            <Button Grid.Row="1" Margin="0" Text="{x:Static r:AppResources.Word_Play_Sound}" Command="{Binding PlayCommand}" />
+            <Button Grid.Row="2" Margin="0" Text="{x:Static r:AppResources.Word_Play_Sound}" Clicked="Button_Clicked" />
         </Grid>
     </ContentPage>
 </TabbedPage>

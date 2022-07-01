@@ -59,11 +59,19 @@ namespace EarphoneLeftAndRight.Storages
         public static async Task TestSupportHiDef()
         {
             if (HiDefTested) return;
-            await RegisterWave(200, 0.01, 0, 0, Storages.AudioStorage.WaveKinds.Square, 96000);
-            HiDefSupported096kHz = AudioTest.ActualSampleRate == 96000;
-            await RegisterWave(200, 0.01, 0, 0, Storages.AudioStorage.WaveKinds.Square, 192000);
-            HiDefSupported192kHz = AudioTest.ActualSampleRate == 192000;
-            HiDefTested = true;
+            try
+            {
+                await RegisterWave(200, 0.01, 0, 0, Storages.AudioStorage.WaveKinds.Square, 96000);
+                HiDefSupported096kHz = AudioTest.ActualSampleRate == 96000;
+                await RegisterWave(200, 0.01, 0, 0, Storages.AudioStorage.WaveKinds.Square, 192000);
+                HiDefSupported192kHz = AudioTest.ActualSampleRate == 192000;
+                HiDefTested = true;
+            }
+            catch
+            {
+                HiDefSupported096kHz = false;
+                HiDefSupported192kHz = false;
+            }
         }
 
         public enum SweepChanneldOrder
@@ -126,7 +134,7 @@ namespace EarphoneLeftAndRight.Storages
                             bool isFirst = t < duration;
                             t = isFirst ? t : t - duration;
                             return ((isFirst ^ leftStart ^ (channel == 0) ? amp : 0) * Math.Sin(Math.PI * 2 * (freqFrom * t + freqDif * t * t / 2.0)), false);
-                        }, duration*2, sampleRate);
+                        }, duration * 2, sampleRate);
 
                     }
                     break;

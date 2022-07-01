@@ -21,7 +21,7 @@ namespace EarphoneLeftAndRight.ViewModels
         public string LocalizedCentP1 => Helper.FreqConverters.LocalizeCent(+1, this.SemitoneLocalizeMode);
         public string LocalizedCentM1 => Helper.FreqConverters.LocalizeCent(-1, this.SemitoneLocalizeMode);
 
-        private DateTime LastPlayed = new DateTime(2000, 1, 1);
+        private DateTime LastPlayed = new(2000, 1, 1);
 
         public async void TestSupportHiDef()
         {
@@ -91,11 +91,7 @@ namespace EarphoneLeftAndRight.ViewModels
         {
             get
             {
-                var freq = Frequency;
-                if (freq < 1000) return $"{freq:0.#} Hz";
-                else if (freq < 10000) return $"{freq / 1000:0.###} kHz";
-                else if (freq < 100000) return $"{freq / 1000:0.##} kHz";
-                else return $"{freq:0.#} kHz";
+                return Helper.Helpers.FormatFrequencyToHumanReadable(Frequency);
             }
         }
 
@@ -191,14 +187,13 @@ namespace EarphoneLeftAndRight.ViewModels
 
             SetBalanceCommand = new Command(arg =>
             {
-                var value = double.Parse(arg.ToString());
+                var value = double.Parse(arg.ToString(), System.Globalization.CultureInfo.InvariantCulture);
                 Balance = value;
             });
 
             SetCentCommand = new Command(arg =>
             {
-                double value;
-                if (!double.TryParse(arg.ToString(), out value)) value = 0;
+                if (!double.TryParse(arg.ToString(), out double value)) value = 0;
                 if (JustIntonation)
                 {
                     var (a, b, _, _) = Helper.FreqConverters.HzToOctaveJustIntonation(Frequency);

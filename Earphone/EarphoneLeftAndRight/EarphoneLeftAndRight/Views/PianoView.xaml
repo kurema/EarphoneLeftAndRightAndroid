@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EarphoneLeftAndRight.Views.PianoView">
     <ContentView.Content>
-        <Grid x:Name="pianoGrid" RowSpacing="0" ColumnSpacing="1">
+        <Grid x:Name="pianoGrid" RowSpacing="0" ColumnSpacing="1" BackgroundColor="Black" Padding="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>

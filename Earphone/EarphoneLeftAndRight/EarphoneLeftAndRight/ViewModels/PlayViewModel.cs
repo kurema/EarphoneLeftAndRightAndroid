@@ -14,7 +14,6 @@ namespace EarphoneLeftAndRight.ViewModels
 
         public PlayViewModel()
         {
-
             Title = Resx.AppResources.Play_Title;
             OpenWebCommand = new Command(async a => await Browser.OpenAsync(a.ToString()));
             SpeakCommand = new Command(Speak);
@@ -30,7 +29,7 @@ namespace EarphoneLeftAndRight.ViewModels
             {
                 try
                 {
-                    var nums = a.ToString()?.Split(',').Select(a => double.Parse(a)).ToArray();
+                    var nums = a.ToString()?.Split(',').Select(a => double.Parse(a, System.Globalization.CultureInfo.InvariantCulture)).ToArray();
                     await Storages.AudioStorage.RegisterWave(nums[0], nums[1], nums[2], nums[3]);
                     await Task.Run(() => { try { Storages.AudioStorage.AudioTest.Play(); } catch { } });
                 }
@@ -42,7 +41,7 @@ namespace EarphoneLeftAndRight.ViewModels
             {
                 try
                 {
-                    var nums = a.ToString()?.Split(',').Select(a => double.Parse(a)).ToArray();
+                    var nums = a.ToString()?.Split(',').Select(a => double.Parse(a, System.Globalization.CultureInfo.InvariantCulture)).ToArray();
                     await Storages.AudioStorage.RegisterSignWaveStereoShift(nums[0], nums[1], nums[2] == 0 ? Storages.AudioStorage.ShiftDirection.LeftToRight : Storages.AudioStorage.ShiftDirection.RightToLeft);
                     await Task.Run(() => { try { Storages.AudioStorage.AudioTest.Play(); } catch { } });
                 }

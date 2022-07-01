@@ -7,9 +7,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<None Remove="Fonts\DSEG7Modern-Regular.ttf" />
 		<None Remove="Fonts\MaterialIcons-Regular.ttf" />
 		<None Remove="Fonts\WaveIcons.ttf" />
 		<None Remove="Licenses\CsvHelper.txt" />
+		<None Remove="Licenses\DSEG.txt" />
 		<None Remove="Licenses\EarphoneLeftAndRight.txt" />
 		<None Remove="Licenses\Material Icons.txt" />
 		<None Remove="Licenses\NETStandard.Library.txt" />
@@ -24,9 +26,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<EmbeddedResource Include="Fonts\DSEG7Modern-Regular.ttf" />
 		<EmbeddedResource Include="Fonts\MaterialIcons-Regular.ttf" />
 		<EmbeddedResource Include="Fonts\WaveIcons.ttf" />
 		<EmbeddedResource Include="Licenses\CsvHelper.txt" />
+		<EmbeddedResource Include="Licenses\DSEG.txt" />
 		<EmbeddedResource Include="Licenses\EarphoneLeftAndRight.txt" />
 		<EmbeddedResource Include="Licenses\Material Icons.txt" />
 		<EmbeddedResource Include="Licenses\NETStandard.Library.txt" />

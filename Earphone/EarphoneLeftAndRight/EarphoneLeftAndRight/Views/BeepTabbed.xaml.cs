@@ -68,5 +68,40 @@ namespace EarphoneLeftAndRight.Views
                     break;
             }
         }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            (string number, string unit) format(double hz)
+            {
+                if (hz < 10) return ($"__{hz:0.000}", "Hz");
+                else if (hz < 100) return ($"_{hz:0.000}", "Hz");
+                else if (hz < 1000) return ($"{hz:0.000}", "Hz");
+                else if (hz < 10000) return ($"__{hz / 1000:0.000}", "kHz");
+                else if (hz < 100000) return ($"_{hz / 1000:0.000}", "kHz");
+                else if (hz < 1000000) return ($"{hz / 1000:0.000}", "kHz");
+                else return ($"  {hz / 1000000:0.#}", "MHz");
+            }
+
+            var vm = (sender as Button)?.BindingContext as ViewModels.BeepSweepViewModel;
+            vm.PlayCommand?.Execute(null);
+            var prov = vm.GetCurrentHzProvider();
+            new Animation((t) =>
+            {
+                if (Storages.AudioStorage.AudioTest is null) return;
+                var pos = Storages.AudioStorage.AudioTest.CurrentPosition;
+                var (n, u) = format(prov.SecondsToHz(pos));
+                labelHz.Text = n;
+                labelHzUnit.Text = u;
+                labelHzL.Opacity = prov.EachChannel && pos < prov.Duration ? 1 : 0.1;
+                labelHzR.Opacity = prov.EachChannel && pos >= prov.Duration ? 1 : 0.1;
+            }, 0, prov.Duration)
+                .Commit(this, "DisplayHzAnimation", 16, (uint)(prov.ActualDuration * 1000), finished: (_, _) =>
+                {
+                    labelHz.Text = "---.---";
+                    labelHzUnit.Text = "Hz";
+                    labelHzL.Opacity = 0.1;
+                    labelHzR.Opacity = 0.1;
+                });
+        }
     }
 }

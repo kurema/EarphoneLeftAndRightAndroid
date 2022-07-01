@@ -11,7 +11,7 @@ namespace EarphoneLeftAndRight.Storages
 {
     public class LicenseStorage
     {
-        public static ObservableCollection<License.ILicenseEntry> NugetDatas { get => nugetDatas = nugetDatas ?? GetNugetDatasTotal(); private set => nugetDatas = value; }
+        public static ObservableCollection<License.ILicenseEntry> NugetDatas { get => nugetDatas ??= GetNugetDatasTotal(); private set => nugetDatas = value; }
         public static bool IsLicenseTextLoaded = false;
         private static ObservableCollection<License.ILicenseEntry> nugetDatas;
 
@@ -28,7 +28,8 @@ namespace EarphoneLeftAndRight.Storages
 
         public static License.NormalLicense[] AdditonalLicense => new License.NormalLicense[]
         {
-            new License.NormalLicense(){Name="Material Icons",LicenseUrl="https://www.apache.org/licenses/LICENSE-2.0.html",ProjectName=nameof(EarphoneLeftAndRight),Version="4.0.0", ProjectUrl="https://material.io/", LicenseText="Apache License, Version 2.0"}
+            new License.NormalLicense(){Name="Material Icons",LicenseUrl="https://www.apache.org/licenses/LICENSE-2.0.html",ProjectName=nameof(EarphoneLeftAndRight),Version="4.0.0", ProjectUrl="https://material.io/", LicenseText="Apache License, Version 2.0"},
+            new License.NormalLicense(){Name="DSEG",LicenseUrl="https://github.com/keshikan/DSEG/blob/master/DSEG-LICENSE.txt",ProjectName=nameof(EarphoneLeftAndRight),Version="0.46",ProjectUrl="https://github.com/keshikan/DSEG",LicenseText="SIL Open Font License 1.1\nCopyright (c) 2020, keshikan (https://www.keshikan.net),\nwith Reserved Font Name \"DSEG\"."}
         };
 
         public static ObservableCollection<License.NugetData> GetNugetDatasCsv()
@@ -36,10 +37,8 @@ namespace EarphoneLeftAndRight.Storages
             ObservableCollection<License.NugetData> nugets;
             try
             {
-                using (var sr = new System.IO.StreamReader(typeof(LicenseStorage).Assembly.GetManifestResourceStream(nameof(EarphoneLeftAndRight) + ".Licenses.nuget.csv")))
-                {
-                    nugets = License.GetNugetData(sr);
-                }
+                using var sr = new System.IO.StreamReader(typeof(LicenseStorage).Assembly.GetManifestResourceStream(nameof(EarphoneLeftAndRight) + ".Licenses.nuget.csv"));
+                nugets = License.GetNugetData(sr);
             }
             catch
             {
@@ -70,10 +69,8 @@ namespace EarphoneLeftAndRight.Storages
         {
             try
             {
-                using (var sr = new System.IO.StreamReader(typeof(LicenseStorage).Assembly.GetManifestResourceStream(nameof(EarphoneLeftAndRight) + ".Licenses." + name + ".txt")))
-                {
-                    return await sr.ReadToEndAsync();
-                }
+                using var sr = new System.IO.StreamReader(typeof(LicenseStorage).Assembly.GetManifestResourceStream(nameof(EarphoneLeftAndRight) + ".Licenses." + name + ".txt"));
+                return await sr.ReadToEndAsync();
             }
             catch { }
             return "";

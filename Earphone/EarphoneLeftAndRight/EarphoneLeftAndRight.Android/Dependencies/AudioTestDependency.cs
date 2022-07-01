@@ -20,9 +20,28 @@ namespace EarphoneLeftAndRight.Droid
         private int frames;
         private int niceCuttingFrame;
 
-        private System.Threading.SemaphoreSlim Semaphore = new System.Threading.SemaphoreSlim(1, 1);
+        private readonly System.Threading.SemaphoreSlim Semaphore = new System.Threading.SemaphoreSlim(1, 1);
 
         private AudioTrack audioTrack = null;
+
+        public double CurrentPosition
+        {
+            get
+            {
+                if (audioTrack is null) return 0;
+                if (audioTrack.State == AudioTrackState.Uninitialized) return 0;
+                try
+                {
+                    return (double)audioTrack.PlaybackHeadPosition / audioTrack.SampleRate;
+                }
+                catch
+                {
+                    return 0;
+                }
+            }
+        }
+
+
         public async Task Register(Func<int, int, int, (double, bool)> generator, double duration, int sampleRate = 44100)
         {
             //https://white-wheels.hatenadiary.org/entry/20110820/p3
@@ -117,6 +136,7 @@ namespace EarphoneLeftAndRight.Droid
         public void Release()
         {
             if (audioTrack is null) return;
+            if (audioTrack.State == AudioTrackState.Uninitialized) return;
             try
             {
                 audioTrack.Stop();
@@ -131,6 +151,8 @@ namespace EarphoneLeftAndRight.Droid
 
         public void Stop()
         {
+            if (audioTrack is null) return;
+            if (audioTrack.State == AudioTrackState.Uninitialized) return;
             audioTrack?.Stop();
         }
 
@@ -160,12 +182,7 @@ namespace EarphoneLeftAndRight.Droid
             try
             {
                 if (audioTrack is null) return;
-                if (audioTrack.PlayState == PlayState.Playing)
-                {
-                    audioTrack.Stop();
-                    //audioTrack.Flush();
-                    //audioTrack.ReloadStaticData();
-                }
+                if (audioTrack.State == AudioTrackState.Uninitialized) return;
                 audioTrack.Stop();
                 audioTrack.ReloadStaticData();
                 audioTrack.Play();

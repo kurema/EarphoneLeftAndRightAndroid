@@ -202,5 +202,14 @@ namespace EarphoneLeftAndRight.Helper
 
             return result.ToArray();
         }
+
+        public static string FormatFrequencyToHumanReadable(double hz)
+        {
+            var freq = hz;
+            if (freq < 1000) return $"{freq:0.#} Hz";
+            else if (freq < 10000) return $"{freq / 1000:0.###} kHz";
+            else if (freq < 100000) return $"{freq / 1000:0.##} kHz";
+            else return $"{freq:0.#} kHz";
+        }
     }
 }

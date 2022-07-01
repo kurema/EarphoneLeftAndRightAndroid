@@ -6,3 +6,4 @@ using Xamarin.Forms;
 [assembly: NeutralResourcesLanguage("en-US")]
 [assembly: ExportFont("MaterialIcons-Regular.ttf",Alias ="Material")]
 [assembly: ExportFont("WaveIcons.ttf", Alias = "WaveIcons")]
+[assembly: ExportFont("DSEG7Modern-Regular.ttf", Alias = "DSEG")]

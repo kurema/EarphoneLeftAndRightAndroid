@@ -35,12 +35,12 @@ namespace EarphoneLeftAndRight.ViewModels
             foreach (var item in items) Items.Add(item);
         }
 
-        private INavigation _Navigation;
-        public INavigation Navigation { get => _Navigation; set => SetProperty(ref _Navigation, value); }
+        private INavigation? _Navigation;
+        public INavigation? Navigation { get => _Navigation; set => SetProperty(ref _Navigation, value); }
 
 
-        private string _ItemsId;
-        public string ItemsId
+        private string? _ItemsId;
+        public string? ItemsId
         {
             get => _ItemsId;
             set
@@ -66,6 +66,7 @@ namespace EarphoneLeftAndRight.ViewModels
                                         new SettingItem(AppResources.Config_Menu_About_LicenseApp_Title, AppResources.Config_Menu_About_LicenseApp_Desc){
                                             Action = async (a) =>
                                             {
+                                                if(Navigation is null) return;
                                                 await Navigation.PushAsync(new Views.LicenseInfoPage(new Models.License.NormalLicense(){
                                                     LicenseText =await Storages.LicenseStorage.LoadLicenseText(nameof(EarphoneLeftAndRight))
                                                     ,Name=nameof(EarphoneLeftAndRight)
@@ -134,11 +135,14 @@ namespace EarphoneLeftAndRight.ViewModels
                 var datas = Storages.LicenseStorage.NugetDatas;
                 foreach (var item in datas)
                 {
+                    if (item is null) continue;
+                    if (item.ProjectName is null) continue;
                     if (!licenseChildrenDic.ContainsKey(item.ProjectName)) licenseChildrenDic.Add(item.ProjectName, new List<SettingItem>());
-                    licenseChildrenDic[item.ProjectName].Add(new SettingItem(item.Name, item.Version)
+                    licenseChildrenDic[item.ProjectName].Add(new SettingItem(item.Name ?? item.ProjectName, item.Version ?? string.Empty)
                     {
                         Action = async (a) =>
                         {
+                            if (viewModel.Navigation is null) return;
                             await viewModel.Navigation.PushAsync(new Views.LicenseInfoPage(item));
                         }
                     });
@@ -164,10 +168,10 @@ namespace EarphoneLeftAndRight.ViewModels
     {
         private string text = string.Empty;
         public string Text { get => text; set => SetProperty(ref text, value); }
-        private string detail;
-        public string Detail { get => detail ?? DetailFunc?.Invoke(this) ?? ""; set => SetProperty(ref detail, value); }
-        private Func<SettingItem, string> detailFunc;
-        public Func<SettingItem, string> DetailFunc { get => detailFunc; set { SetProperty(ref detailFunc, value); OnPropertyChanged(nameof(Detail)); } }
+        private string? detail;
+        public string Detail { get => detail ?? DetailFunc?.Invoke(this) ?? string.Empty; set => SetProperty(ref detail, value); }
+        private Func<SettingItem, string>? detailFunc;
+        public Func<SettingItem, string>? DetailFunc { get => detailFunc; set { SetProperty(ref detailFunc, value); OnPropertyChanged(nameof(Detail)); } }
 
         public bool BoolSetting { get => boolValue != null; }
         private bool? boolValue = null;
@@ -179,13 +183,13 @@ namespace EarphoneLeftAndRight.ViewModels
                 //Note: そんなん分からん。再現しづらいから気を付けよう。
                 if (boolValue == null)
                     return;
-                SetProperty(ref boolValue, value); OnPropertyChanged(nameof(Detail)); Action(this);
+                SetProperty(ref boolValue, value); OnPropertyChanged(nameof(Detail)); Action?.Invoke(this);
             }
         }
-        private Func<SettingItem, Task> action;
-        public Func<SettingItem, Task> Action { get => action; set => SetProperty(ref action, value); }
-        private ObservableCollection<SettingItems> children;
-        public ObservableCollection<SettingItems> Children { get => children; set => SetProperty(ref children, value); }
+        private Func<SettingItem, Task>? action;
+        public Func<SettingItem, Task>? Action { get => action; set => SetProperty(ref action, value); }
+        private ObservableCollection<SettingItems>? children;
+        public ObservableCollection<SettingItems>? Children { get => children; set => SetProperty(ref children, value); }
 
         public SettingItem(string Text, Func<SettingItem, string> Detail, bool? SwitchStatus = null)
         {

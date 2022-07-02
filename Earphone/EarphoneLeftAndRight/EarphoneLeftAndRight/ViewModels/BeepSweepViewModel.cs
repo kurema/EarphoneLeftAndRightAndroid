@@ -69,6 +69,7 @@ public class BeepSweepViewModel : BaseViewModel
         SetFrequencyCommand = new Command((arg) =>
         {
             var args = arg?.ToString()?.Split(':')?.Select(a => double.Parse(a, System.Globalization.CultureInfo.InvariantCulture)).ToArray();
+            if (args is null || args.Length < 2) return;
             if (args[0] >= 0) FrequencyStart = args[0];
             if (args[1] >= 0) FrequencyEnd = args[1];
         });

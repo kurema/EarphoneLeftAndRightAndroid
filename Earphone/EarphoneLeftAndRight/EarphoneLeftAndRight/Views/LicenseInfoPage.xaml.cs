@@ -9,15 +9,15 @@ using Xamarin.Forms.Xaml;
 
 namespace EarphoneLeftAndRight.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class LicenseInfoPage : ContentPage
-	{
-        Models.License.ILicenseEntry Model => this.BindingContext as Models.License.ILicenseEntry;
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class LicenseInfoPage : ContentPage
+    {
+        Models.License.ILicenseEntry? Model => this.BindingContext as Models.License.ILicenseEntry;
 
-        public LicenseInfoPage ()
-		{
-			InitializeComponent ();
-		}
+        public LicenseInfoPage()
+        {
+            InitializeComponent();
+        }
 
         public LicenseInfoPage(Models.License.ILicenseEntry entry)
         {
@@ -30,7 +30,7 @@ namespace EarphoneLeftAndRight.Views
         {
             try
             {
-                await Xamarin.Essentials.Browser.OpenAsync(new Uri(Model.ProjectUrl));
+                if (Model is not null) await Xamarin.Essentials.Browser.OpenAsync(new Uri(Model.ProjectUrl));
             }
             catch { }
         }
@@ -39,7 +39,7 @@ namespace EarphoneLeftAndRight.Views
         {
             try
             {
-                await Xamarin.Essentials.Browser.OpenAsync(new Uri(Model.LicenseUrl));
+                if (Model is not null) await Xamarin.Essentials.Browser.OpenAsync(new Uri(Model.LicenseUrl));
             }
             catch { }
         }

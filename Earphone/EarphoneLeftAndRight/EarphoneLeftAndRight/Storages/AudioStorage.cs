@@ -8,7 +8,7 @@ namespace EarphoneLeftAndRight.Storages
 {
     public static class AudioStorage
     {
-        private static Dependency.IAudioTest _AudioTest;
+        private static Dependency.IAudioTest? _AudioTest;
         public static Dependency.IAudioTest AudioTest { get => _AudioTest ??= DependencyService.Get<Dependency.IAudioTest>(); }
 
 

@@ -66,7 +66,7 @@ namespace EarphoneLeftAndRight.Helper
         }
 
         public const string SemitoneInternational = "C,C#,D,D#,E,F,F#,G,G#,A,A#,B";
-        private static double[] _JustIntonationTablesMiddle;
+        private static double[]? _JustIntonationTablesMiddle;
         public static double[] JustIntonationTablesMiddle
         {
             get
@@ -82,7 +82,7 @@ namespace EarphoneLeftAndRight.Helper
             }
         }
 
-        private static double[] _JustIntonationTables;
+        private static double[]? _JustIntonationTables;
         public static double[] JustIntonationTables => _JustIntonationTables ??= new double[]
         {
             //http://www.enjoy.ne.jp/~k-ichikawa/junseiritsu2.html : A# may be wrong.
@@ -125,16 +125,11 @@ namespace EarphoneLeftAndRight.Helper
                     return string.Format(text, round.ToString(Format));
                 }
             }
-            switch (mode)
+            return mode switch
             {
-                case SemitoneLocalizeModes.Both:
-                case SemitoneLocalizeModes.International:
-                default:
-                    return convertCent(cent, CentInternational);
-                case SemitoneLocalizeModes.Local:
-                case SemitoneLocalizeModes.LocalAlt:
-                    return convertCent(cent, Resx.AppResources.Helper_Semitone_Cent);
-            }
+                SemitoneLocalizeModes.Local or SemitoneLocalizeModes.LocalAlt => convertCent(cent, Resx.AppResources.Helper_Semitone_Cent),
+                _ => convertCent(cent, CentInternational),
+            };
         }
 
         public static (string semitone, string cent) HzToLocalized(double hz, SemitoneLocalizeModes mode, bool justIntonation = false)

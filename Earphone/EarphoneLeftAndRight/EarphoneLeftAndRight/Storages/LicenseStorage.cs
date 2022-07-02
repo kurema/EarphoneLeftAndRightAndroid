@@ -13,7 +13,7 @@ namespace EarphoneLeftAndRight.Storages
     {
         public static ObservableCollection<License.ILicenseEntry> NugetDatas { get => nugetDatas ??= GetNugetDatasTotal(); private set => nugetDatas = value; }
         public static bool IsLicenseTextLoaded = false;
-        private static ObservableCollection<License.ILicenseEntry> nugetDatas;
+        private static ObservableCollection<License.ILicenseEntry>? nugetDatas;
 
         public static ObservableCollection<License.ILicenseEntry> GetNugetDatasTotal()
         {
@@ -52,6 +52,7 @@ namespace EarphoneLeftAndRight.Storages
             var nugets = NugetDatas;
             foreach (var item in nugets)
             {
+                if (item.Name is null) continue;
                 try
                 {
                     item.LicenseText = await LoadLicenseText(item.Name);

@@ -29,8 +29,8 @@ namespace EarphoneLeftAndRight.ViewModels
 
         public ICommand ShellGoToCommand { get; }
 
-        private DictionaryViewModel _SelectedItem;
-        public DictionaryViewModel SelectedItem
+        private DictionaryViewModel? _SelectedItem;
+        public DictionaryViewModel? SelectedItem
         {
             get => _SelectedItem;
             set
@@ -42,11 +42,11 @@ namespace EarphoneLeftAndRight.ViewModels
 
         public string SelectedItemId
         {
-            get => SelectedItem?.Id ?? "";
+            get => SelectedItem?.Id ?? string.Empty;
             set
             {
                 var result = Items?.FirstOrDefault(a => a.Id == value);
-                if (!(result is null))
+                if (result is not null)
                 {
                     SelectedItem = result;
                 }

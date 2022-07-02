@@ -11,7 +11,7 @@ namespace EarphoneLeftAndRight.ValueConverters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             string text;
-            if (parameter == null || !(parameter is string)) text = "Null:Not Null";
+            if (parameter == null || parameter is not string) text = "Null:Not Null";
             else text = (string)parameter;
             var texts = text.Split(':', (char)2);
             return value==null?texts[0]:texts[1];
@@ -28,10 +28,10 @@ namespace EarphoneLeftAndRight.ValueConverters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             string text;
-            if (parameter == null || !(parameter is string)) text = "Null:Not Null";
+            if (parameter == null || parameter is not string) text = "Null:Not Null";
             else text = (string)parameter;
             var texts = text.Split(':', (char)2);
-            return value == null ? texts[0] : (value is string && string.IsNullOrEmpty((string)value) ? texts[0]: texts[1]);
+            return value == null ? texts[0] : (value is string s && string.IsNullOrEmpty(s) ? texts[0]: texts[1]);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -45,8 +45,8 @@ namespace EarphoneLeftAndRight.ValueConverters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var args = (parameter?.ToString() ?? "True:False").Split(':');
-            if (!(value is System.Collections.IEnumerable enu)) return "";
-            foreach(var item in enu)
+            if (value is not System.Collections.IEnumerable enu) return "";
+            foreach(var _ in enu)
             {
                 return args[0];
             }
@@ -63,11 +63,11 @@ namespace EarphoneLeftAndRight.ValueConverters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value == null || !(value is TimeSpan))
+            if (value == null || value is not TimeSpan)
             {
                 return "";
             }
-            if (parameter == null || !(parameter is string)) return ((TimeSpan)value).ToString();
+            if (parameter == null || parameter is not string) return ((TimeSpan)value).ToString();
             else return FormatTimeSpan((TimeSpan)value, (string)parameter);
             
         }
@@ -123,11 +123,11 @@ namespace EarphoneLeftAndRight.ValueConverters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             string text;
-            if (parameter == null || !(parameter is string)) text = "#00FFFFFF:#00FFFFFF:#00FFFFFF";
+            if (parameter == null || parameter is not string) text = "#00FFFFFF:#00FFFFFF:#00FFFFFF";
             else text = (string)parameter;
             var texts = text.Split(':');
 
-            if (value == null || !(value is bool))
+            if (value == null || value is not bool)
             {
                 return Xamarin.Forms.Color.FromHex(texts[2]);
             }
@@ -230,18 +230,18 @@ namespace EarphoneLeftAndRight.ValueConverters
 
     public class BooleanNotValueConverter : Xamarin.Forms.IValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public object? Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value == null || !(value is bool))
+            if (value == null || value is not bool)
             {
                 return null;
             }
             return !((bool)value);
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        public object? ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value == null || !(value is bool))
+            if (value == null || value is not bool)
             {
                 return null;
             }
@@ -254,11 +254,11 @@ namespace EarphoneLeftAndRight.ValueConverters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             string text;
-            if (parameter == null || !(parameter is string)) text = "::";
+            if (parameter == null || parameter is not string) text = "::";
             else text = (string)parameter;
             var texts = text.Split(':');
 
-            if (value == null || !(value is bool))
+            if (value == null || value is not bool)
             {
                 return texts[2];
             }

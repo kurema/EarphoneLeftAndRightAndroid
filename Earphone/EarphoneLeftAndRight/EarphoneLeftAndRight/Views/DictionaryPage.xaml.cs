@@ -59,7 +59,8 @@ namespace EarphoneLeftAndRight.Views
         public static readonly BindableProperty DictionaryNameProperty =
             BindableProperty.Create(nameof(DictionaryName), typeof(string), typeof(DictionaryPage), "", BindingMode.OneWay, propertyChanged: (bindable, oldValue, newValue) =>
             {
-                (bindable as DictionaryPage).DictionaryName = newValue.ToString();
+                if (bindable is not DictionaryPage dp) return;
+                dp.DictionaryName = newValue.ToString();
             });
 
         public ICommand OpenWebDictionaryCommand

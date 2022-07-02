@@ -67,7 +67,7 @@ namespace EarphoneLeftAndRight
         {
             try
             {
-                string icon = Device.RuntimePlatform switch
+                string? icon = Device.RuntimePlatform switch
                 {
                     Device.Android => "@mipmap/icon",
                     _ => null,

@@ -28,7 +28,9 @@ namespace EarphoneLeftAndRight.Droid
             //base.OnUpdate(context, appWidgetManager, appWidgetIds);
         }
 
+#pragma warning disable IDE0060 // 未使用のパラメーターを削除します
         RemoteViews BuildRemoteViews(Context context, int[] appWidgetIds)
+#pragma warning restore IDE0060 // 未使用のパラメーターを削除します
         {
             var widgetView = new RemoteViews(context.PackageName, Resource.Layout.app_widget);
             var intent = new Intent(context, typeof(AppWidget));

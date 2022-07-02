@@ -20,7 +20,7 @@ namespace EarphoneLeftAndRight.Views
         }
 
         public delegate void KeyTappedEventHandler(object sender, KeyTappedEventArgs args);
-        public event KeyTappedEventHandler KeyTapped;
+        public event KeyTappedEventHandler? KeyTapped;
 
         public class KeyTappedEventArgs : EventArgs
         {

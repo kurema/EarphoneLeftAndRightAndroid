@@ -40,10 +40,9 @@ namespace EarphoneLeftAndRight.Views
             if (Pushing) return;
             ((ListView)sender).SelectedItem = null;
 
-            SettingItem item;
-            if ((item = e.SelectedItem as SettingItem) == null) { return; }
+            if (e.SelectedItem is not SettingItem item) { return; }
             Pushing = true;
-            if (item.Action != null) await item.Action?.Invoke(item);
+            if (item.Action is not null) await item.Action.Invoke(item);
             if (item.BoolSetting) item.BoolValue = !item.BoolValue;
             if (item.Children != null)
             {

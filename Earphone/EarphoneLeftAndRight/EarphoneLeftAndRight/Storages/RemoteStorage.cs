@@ -14,15 +14,15 @@ namespace EarphoneLeftAndRight.Storages
 {
     public static class RemoteStorage
     {
-        public static author AuthorInformation { get; private set; }
-        public static string AuthorInformationPath { get; set; } = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "AuthorInformation.xml");
+        public static author? AuthorInformation { get; private set; }
+        public static string AuthorInformationPath { get; set; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "AuthorInformation.xml");
         public static string AuthorInformationUrl => "https://kurema.github.io/api/impress/author.xml";
 
-        public static async Task<T> LoadLocalData<T>(string path)
+        public static async Task<T?> LoadLocalData<T>(string path)
         {
-            if (!System.IO.File.Exists(path))
+            if (!File.Exists(path))
             {
-                return default(T);
+                return default;
             }
             try
             {
@@ -30,7 +30,7 @@ namespace EarphoneLeftAndRight.Storages
             }
             catch
             {
-                return default(T);
+                return default;
             }
         }
 
@@ -40,71 +40,65 @@ namespace EarphoneLeftAndRight.Storages
             OnUpdated();
         }
 
-        public static async Task<T> LoadRemoteData<T>(string url,string localPath)
+        public static async Task<T?> LoadRemoteData<T>(string url, string localPath)
         {
-            using (System.Net.WebClient wc = new System.Net.WebClient())
+            using System.Net.WebClient wc = new();
+            wc.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
+            var client = new System.Net.Http.HttpClient();
+            try
             {
-                wc.CachePolicy = new System.Net.Cache.RequestCachePolicy(System.Net.Cache.RequestCacheLevel.NoCacheNoStore);
-                var client = new System.Net.Http.HttpClient();
-                try
+                var str = await client.GetStringAsync(url);
+                var result = await DeserializeAsync<T>(new StringReader(str));
+                if (File.Exists(localPath)) File.Delete(localPath);
+                using (var sw = new StreamWriter(localPath))
                 {
-                    var str = await client.GetStringAsync(url);
-                    var result = await DeserializeAsync<T>(new System.IO.StringReader(str));
-                    if (System.IO.File.Exists(localPath)) System.IO.File.Delete(localPath);
-                    using(var sw=new System.IO.StreamWriter(localPath))
-                    {
-                        await sw.WriteAsync(str);
-                    }
-                    return result;
+                    await sw.WriteAsync(str);
                 }
-                catch
-                {
-                    return default(T);
-                }
+                return result;
+            }
+            catch
+            {
+                return default;
             }
         }
 
-        public static event EventHandler Updated;
+        public static event EventHandler? Updated;
         public static void OnUpdated()
         {
             Updated?.Invoke(null, new EventArgs());
         }
 
-        public static string GetStringByMultilingal(IEnumerable<multilingalEntry> entry, System.Globalization.CultureInfo culture = null)
+        public static string? GetStringByMultilingal(IEnumerable<multilingalEntry>? entry, System.Globalization.CultureInfo? culture = null)
         {
             if (entry == null || entry.Count() == 0) return null;
-            culture = culture ?? System.Globalization.CultureInfo.CurrentCulture;
+            culture ??= System.Globalization.CultureInfo.CurrentCulture;
             var w = entry.Where((e) => e.language == culture.Name || e.language == culture.Parent.Name);
             if (w.Count() > 0) { return w.First().Value; } else { return null; }
         }
 
 
-        public static async Task<T> DeserializeAsync<T>(string path)
+        public static async Task<T?> DeserializeAsync<T>(string path)
         {
             try
             {
-                using (var sr = new StreamReader(path))
-                {
-                    return await DeserializeAsync<T>(sr);
-                }
+                using var sr = new StreamReader(path);
+                return await DeserializeAsync<T?>(sr);
             }
             finally
             {
             }
         }
 
-        static System.Threading.SemaphoreSlim semaphore = new System.Threading.SemaphoreSlim(1, 1);
+        static readonly System.Threading.SemaphoreSlim semaphore = new(1, 1);
 
-        public static async Task<T> DeserializeAsync<T>(TextReader sr)
+        public static async Task<T?> DeserializeAsync<T>(TextReader sr)
         {
             await semaphore.WaitAsync();
             try
             {
                 var xs = new XmlSerializer(typeof(T));
-                using (var xr = XmlReader.Create(sr, new XmlReaderSettings() { CheckCharacters = false }))
-                {
-                    return await Task.Run<T>(() => { try { return (T)xs.Deserialize(xr); } catch { return default; } });
-                }
+                using var xr = XmlReader.Create(sr, new XmlReaderSettings() { CheckCharacters = false });
+                return await Task.Run<T>(() => { try { return (T)xs.Deserialize(xr); } catch { return default!; } });
             }
             finally
             {

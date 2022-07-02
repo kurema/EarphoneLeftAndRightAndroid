@@ -41,8 +41,8 @@ namespace EarphoneLeftAndRight.Droid
             var tts = Manager.Tts.Content;
             await Manager.Tts.WaitReadyAsync();
             var lang = tts.IsLanguageAvailable(jLoc) >= Android.Speech.Tts.LanguageAvailableResult.Available ? jLoc : null;
-            lang = lang ?? (tts.IsLanguageAvailable(Java.Util.Locale.English) >= Android.Speech.Tts.LanguageAvailableResult.Available ? Java.Util.Locale.English : null);
-            lang = lang ?? tts.DefaultVoice?.Locale;
+            lang ??= (tts.IsLanguageAvailable(Java.Util.Locale.English) >= Android.Speech.Tts.LanguageAvailableResult.Available ? Java.Util.Locale.English : null);
+            lang ??= tts.DefaultVoice?.Locale;
             if (lang is null) return false;
             await Manager.Tts.SpeakWithPan(text, pan, jLoc);
             return true;

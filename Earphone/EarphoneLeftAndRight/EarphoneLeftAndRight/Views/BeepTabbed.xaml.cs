@@ -71,7 +71,7 @@ namespace EarphoneLeftAndRight.Views
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            (string number, string unit) format(double hz)
+            static (string number, string unit) format(double hz)
             {
                 if (hz < 10) return ($"__{hz:0.000}", "Hz");
                 else if (hz < 100) return ($"_{hz:0.000}", "Hz");
@@ -82,7 +82,7 @@ namespace EarphoneLeftAndRight.Views
                 else return ($"  {hz / 1000000:0.#}", "MHz");
             }
 
-            var vm = (sender as Button)?.BindingContext as ViewModels.BeepSweepViewModel;
+            if ((sender as Button)?.BindingContext is not ViewModels.BeepSweepViewModel vm) return;
             vm.PlayCommand?.Execute(null);
             var prov = vm.GetCurrentHzProvider();
             new Animation((t) =>

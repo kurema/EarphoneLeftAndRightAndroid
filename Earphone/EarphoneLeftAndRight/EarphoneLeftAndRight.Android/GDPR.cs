@@ -147,7 +147,7 @@ namespace EarphoneLeftAndRight.Droid
                 a(f);
             }
 
-            private Action<Xamarin.Google.UserMesssagingPlatform.FormError> a = null;
+            private readonly Action<Xamarin.Google.UserMesssagingPlatform.FormError> a = null;
         }
 
         public class GoogleUMPConsentUpdateFailureListener : Java.Lang.Object,
@@ -163,7 +163,7 @@ namespace EarphoneLeftAndRight.Droid
                 a(f);
             }
 
-            private Action<Xamarin.Google.UserMesssagingPlatform.FormError> a = null;
+            private readonly Action<Xamarin.Google.UserMesssagingPlatform.FormError> a = null;
         }
 
         public class GoogleUMPConsentUpdateSuccessListener : Java.Lang.Object,
@@ -179,7 +179,7 @@ namespace EarphoneLeftAndRight.Droid
                 a();
             }
 
-            private Action a = null;
+            private readonly Action a = null;
         }
 
         public class GoogleUMPFormLoadFailureListener : Java.Lang.Object,
@@ -196,7 +196,7 @@ namespace EarphoneLeftAndRight.Droid
                 a(e);
             }
 
-            private Action<Xamarin.Google.UserMesssagingPlatform.FormError> a = null;
+            private readonly Action<Xamarin.Google.UserMesssagingPlatform.FormError> a = null;
         }
 
         public class GoogleUMPFormLoadSuccessListener : Java.Lang.Object,
@@ -214,7 +214,7 @@ namespace EarphoneLeftAndRight.Droid
                 a(f);
             }
 
-            private Action<Xamarin.Google.UserMesssagingPlatform.IConsentForm> a = null;
+            private readonly Action<Xamarin.Google.UserMesssagingPlatform.IConsentForm> a = null;
         }
 
     }

@@ -37,40 +37,40 @@ namespace EarphoneLeftAndRight.Models
 
         public interface ILicenseEntry
         {
-            string ProjectName { get; }
-            string Name { get; }
-            string Version { get; }
-            string LicenseUrl { get; }
-            string LicenseText { get; set; }
-            string ProjectUrl { get; }
+            string? ProjectName { get; }
+            string? Name { get; }
+            string? Version { get; }
+            string? LicenseUrl { get; }
+            string? LicenseText { get; set; }
+            string? ProjectUrl { get; }
         }
 
         public class NormalLicense : ILicenseEntry
         {
-            public string ProjectName { get; set; }
-            public string Name { get; set; }
-            public string Version { get; set; }
-            public string LicenseUrl { get; set; }
-            public string LicenseText { get; set; }
-            public string ProjectUrl { get; set; }
+            public string? ProjectName { get; set; }
+            public string? Name { get; set; }
+            public string? Version { get; set; }
+            public string? LicenseUrl { get; set; }
+            public string? LicenseText { get; set; }
+            public string? ProjectUrl { get; set; }
         }
 
         public class NugetData:ILicenseEntry
         {
             [Name("ProjectName")]
-            public string ProjectName { get; set; }
+            public string? ProjectName { get; set; }
             [Name("Id")]
-            public string Id { get; set; }
+            public string? Id { get; set; }
             [Name("Version")]
-            public string Version { get; set; }
+            public string? Version { get; set; }
             [Name("AllVersions")]
             public bool AllVersions { get; set; }
             [Name("LicenseUrl")]
-            public string LicenseUrl { get; set; }
+            public string? LicenseUrl { get; set; }
             [Ignore]
-            public string LicenseText { get; set; }
+            public string? LicenseText { get; set; }
             [Ignore]
-            public string Name => Id;
+            public string? Name => Id;
             [Ignore]
             public string ProjectUrl => "https://www.nuget.org/packages/" + Id;
         }

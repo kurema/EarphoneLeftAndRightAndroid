@@ -30,6 +30,7 @@ namespace EarphoneLeftAndRight.ViewModels
                 try
                 {
                     var nums = a.ToString()?.Split(',').Select(a => double.Parse(a, System.Globalization.CultureInfo.InvariantCulture)).ToArray();
+                    if (nums is null || nums.Length < 4) return;
                     await Storages.AudioStorage.RegisterWave(nums[0], nums[1], nums[2], nums[3]);
                     await Task.Run(() => { try { Storages.AudioStorage.AudioTest.Play(); } catch { } });
                 }
@@ -42,6 +43,7 @@ namespace EarphoneLeftAndRight.ViewModels
                 try
                 {
                     var nums = a.ToString()?.Split(',').Select(a => double.Parse(a, System.Globalization.CultureInfo.InvariantCulture)).ToArray();
+                    if (nums is null || nums.Length < 3) return;
                     await Storages.AudioStorage.RegisterSignWaveStereoShift(nums[0], nums[1], nums[2] == 0 ? Storages.AudioStorage.ShiftDirection.LeftToRight : Storages.AudioStorage.ShiftDirection.RightToLeft);
                     await Task.Run(() => { try { Storages.AudioStorage.AudioTest.Play(); } catch { } });
                 }
@@ -78,7 +80,7 @@ namespace EarphoneLeftAndRight.ViewModels
         public ICommand PlayBeepCommand { get; }
         public ICommand PlayBeepShiftCommand { get; }
 
-        private string[] _SearchWords;
+        private string[]? _SearchWords;
         public string[] SearchWords => _SearchWords ??= new string[] {
             Resx.AppResources.Play_StereoTest_Title,
             Resx.LocalResources.LeftRight,
@@ -90,14 +92,14 @@ namespace EarphoneLeftAndRight.ViewModels
             Resx.AppResources.Profile_Accounts_Github_ID,
         };
 
-        private string _SearchWord = null;
+        private string? _SearchWord = null;
         public string SearchWord { get => _SearchWord ?? SearchWords[0]; set => SetProperty(ref _SearchWord, value); }
 
 
-        private SearchService _SearchServiceSelected = null;
+        private SearchService? _SearchServiceSelected = null;
         public SearchService SearchServiceSelected { get => _SearchServiceSelected ?? SearchServices[0]; set => SetProperty(ref _SearchServiceSelected, value); }
 
-        private SearchService[] _SearchServices;
+        private SearchService[]? _SearchServices;
         public SearchService[] SearchServices => _SearchServices ??= new SearchService[]
         {
             new SearchService("Google","https://www.google.com/search?q={0}"),

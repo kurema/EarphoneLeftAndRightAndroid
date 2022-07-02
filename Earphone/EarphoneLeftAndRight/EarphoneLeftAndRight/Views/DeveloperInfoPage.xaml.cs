@@ -26,7 +26,7 @@ namespace EarphoneLeftAndRight.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DeveloperInfoPage : ContentPage
     {
-        public DeveloperInfoViewModel Model => this.BindingContext as DeveloperInfoViewModel;
+        public DeveloperInfoViewModel? Model => this.BindingContext as DeveloperInfoViewModel;
 
         public DeveloperInfoPage()
         {
@@ -36,7 +36,7 @@ namespace EarphoneLeftAndRight.Views
 
             DeveloperInfoViewModel model;
             this.BindingContext = model = new DeveloperInfoViewModel(Navigation);
-            this.Model.PropertyChanged += (s, e) => LinksUpdate();
+            if (Model is not null) this.Model.PropertyChanged += (s, e) => LinksUpdate();
             RemoteStorage.Updated += (s, e) => { LinksUpdate(); };
 
             {
@@ -61,15 +61,16 @@ namespace EarphoneLeftAndRight.Views
             {
                 var github = new Octokit.GitHubClient(new Octokit.ProductHeaderValue(nameof(EarphoneLeftAndRight)));
                 var user = await github.User.Get(AppResources.Profile_Accounts_Github_ID);
-                Model.GithubUser = new GithubUserViewModel(user);
+                if (Model is not null) Model.GithubUser = new GithubUserViewModel(user);
             }
             catch { }
         }
 
-        public void AddGithubInfo(string source, string Header, string command = null, string commandParameter = null)
+        public void AddGithubInfo(string source, string Header, string? command = null, string? commandParameter = null)
         {
             var cnt = GithubGrid.ColumnDefinitions?.Count() ?? 0;
 
+            if (GithubGrid.ColumnDefinitions is null) GithubGrid.ColumnDefinitions = new ColumnDefinitionCollection();
             GithubGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
             var sl = new StackLayout();
             if (command != null)
@@ -132,17 +133,21 @@ namespace EarphoneLeftAndRight.Views
                 stack.GestureRecognizers.Add(new ClickGestureRecognizer() { Command = command });
             }
             {
-                var label = new Label();
-                label.Text = title;
+                var label = new Label
+                {
+                    Text = title
+                };
                 stack.Children.Add(label);
             }
             {
-                var label = new Label();
-                label.Text = detail;
-                //label.VerticalTextAlignment = TextAlignment.End;
-                //label.VerticalOptions = LayoutOptions.EndAndExpand;
-                label.TextColor = Application.Current.RequestedTheme == OSAppTheme.Dark ? new Color(1, 1, 1, 0.5) : new Color(0, 0, 0, 0.5);
-                label.LineBreakMode = LineBreakMode.TailTruncation;
+                var label = new Label
+                {
+                    Text = detail,
+                    //label.VerticalTextAlignment = TextAlignment.End;
+                    //label.VerticalOptions = LayoutOptions.EndAndExpand;
+                    TextColor = Application.Current.RequestedTheme == OSAppTheme.Dark ? new Color(1, 1, 1, 0.5) : new Color(0, 0, 0, 0.5),
+                    LineBreakMode = LineBreakMode.TailTruncation
+                };
                 stack.Children.Add(label);
             }
             Links.Children.Add(stack);
@@ -150,16 +155,16 @@ namespace EarphoneLeftAndRight.Views
 
         public class DeveloperInfoViewModel : ViewModels.BaseViewModel
         {
-            private GithubUserViewModel _GithubUser;
-            public GithubUserViewModel GithubUser { get => _GithubUser; set => SetProperty(ref _GithubUser, value); }
+            private GithubUserViewModel? _GithubUser;
+            public GithubUserViewModel? GithubUser { get => _GithubUser; set => SetProperty(ref _GithubUser, value); }
 
-            private AuthorInformationViewModel authorInformation;
-            public AuthorInformationViewModel AuthorInformation { get => authorInformation = authorInformation ?? (RemoteStorage.AuthorInformation != null ? new AuthorInformationViewModel(RemoteStorage.AuthorInformation, navigation) : null); }
+            private AuthorInformationViewModel? authorInformation;
+            public AuthorInformationViewModel? AuthorInformation { get => authorInformation ??= (RemoteStorage.AuthorInformation != null ? new AuthorInformationViewModel(RemoteStorage.AuthorInformation, navigation) : null); }
 
             public void AuthorInformationUpdated() => OnPropertyChanged(nameof(AuthorInformation));
 
-            private ICommand openUriCommand;
-            public ICommand OpenUriCommand => openUriCommand = openUriCommand ?? new Command(
+            private ICommand? openUriCommand;
+            public ICommand OpenUriCommand => openUriCommand ??= new Command(
                 async (o) =>
                 {
                     try
@@ -170,7 +175,7 @@ namespace EarphoneLeftAndRight.Views
                 });
 
 
-            private INavigation navigation;
+            private readonly INavigation navigation;
 
             public DeveloperInfoViewModel(INavigation navigation)
             {
@@ -182,7 +187,7 @@ namespace EarphoneLeftAndRight.Views
 
         public class GithubUserViewModel
         {
-            private Octokit.User user;
+            private readonly Octokit.User user;
 
             public int Repos => user.PublicRepos;
             public int Gists => user.PublicGists;
@@ -201,16 +206,16 @@ namespace EarphoneLeftAndRight.Views
 
         public class AuthorInformationViewModel
         {
-            private author author;
+            private readonly author author;
 
             public string Name => author.name;
 
-            private INavigation navigation;
+            private readonly INavigation navigation;
 
             public AuthorInformationViewModel(author author, INavigation navigation) { this.author = author; this.navigation = navigation; }
 
-            private ObservableCollection<Link> links;
-            public ObservableCollection<Link> Links { get => links = links ?? GetLinks(); }
+            private ObservableCollection<Link>? links;
+            public ObservableCollection<Link> Links { get => links ??= GetLinks(); }
 
             public ObservableCollection<Link> GetLinks()
             {
@@ -218,7 +223,8 @@ namespace EarphoneLeftAndRight.Views
                 var result = new ObservableCollection<Link>();
                 foreach (var item in author.links)
                 {
-                    result.Add(new Link(RemoteStorage.GetStringByMultilingal(item?.title?.multilingal) ?? item.title1, item.src));
+                    if (item is null) continue;
+                    result.Add(new Link(RemoteStorage.GetStringByMultilingal(item.title?.multilingal) ?? item.title1, item.src));
                 }
                 return result;
             }
@@ -258,20 +264,23 @@ namespace EarphoneLeftAndRight.Views
             }
 
 
-            private ObservableCollection<Group<LinkDonation>> donations;
-            public ObservableCollection<AuthorInformationViewModel.Group<LinkDonation>> Donations { get => donations = donations ?? GetDonations(); }
+            private ObservableCollection<Group<LinkDonation>>? donations;
+            public ObservableCollection<Group<LinkDonation>> Donations { get => donations ??= GetDonations(); }
 
-            public ObservableCollection<AuthorInformationViewModel.Group<LinkDonation>> GetDonations()
+            public ObservableCollection<Group<LinkDonation>> GetDonations()
             {
                 if (author?.donations == null) return new ObservableCollection<Group<LinkDonation>>();
                 var result = new ObservableCollection<Group<LinkDonation>>();
                 foreach (var gp in author.donations)
                 {
-                    var group = new Group<LinkDonation>();
-                    group.Title = EarphoneLeftAndRight.Storages.RemoteStorage.GetStringByMultilingal(gp?.title?.multilingal) ?? gp.title1;
+                    if (gp is null) continue;
+                    var group = new Group<LinkDonation>
+                    {
+                        Title = RemoteStorage.GetStringByMultilingal(gp.title?.multilingal) ?? gp.title1
+                    };
                     foreach (var item in gp.donation)
                     {
-                        group.Add(new LinkDonation(RemoteStorage.GetStringByMultilingal(item?.title?.multilingal) ?? item.title1, item.src, item.address));
+                        group.Add(new LinkDonation(RemoteStorage.GetStringByMultilingal(item.title?.multilingal) ?? item.title1, item.src, item.address));
                     }
                     result.Add(group);
                 }
@@ -289,8 +298,8 @@ namespace EarphoneLeftAndRight.Views
                     this.Title = title;
                 }
 
-                private ICommand openUriCommand;
-                public ICommand OpenUriCommand => openUriCommand = openUriCommand ?? new Command(
+                private ICommand? openUriCommand;
+                public ICommand OpenUriCommand => openUriCommand ??= new Command(
                     async (o) =>
                     {
                         try
@@ -303,7 +312,7 @@ namespace EarphoneLeftAndRight.Views
 
             public class LinkDonation : Link
             {
-                public string Address { get; set; }
+                public string? Address { get; set; }
 
                 public LinkDonation(string title, string src) : base(title, src) { }
                 public LinkDonation(string title, string src, string Address) : base(title, src) { this.Address = Address; }
@@ -312,11 +321,11 @@ namespace EarphoneLeftAndRight.Views
 
             public class Group<T> : ObservableCollection<T>, INotifyPropertyChanged
             {
-                private string title;
+                private string title = string.Empty;
                 public string Title { get => title; set { title = value; OnPropertyChanged(); } }
 
                 #region INotifyPropertyChanged
-                protected override event PropertyChangedEventHandler PropertyChanged;
+                protected override event PropertyChangedEventHandler? PropertyChanged;
                 protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
                 {
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

@@ -11,8 +11,9 @@ namespace EarphoneLeftAndRight.Helper
 {
     public static partial class Helpers
     {
-        public static string[] XhtmlToStrings(string xml)
+        public static string[] XhtmlToStrings(string? xml)
         {
+            if (xml is null) return new string[0];
             //https://social.msdn.microsoft.com/Forums/en-US/acc75e12-4a66-43bd-805b-986620689ca4/formattedstring-is-killing-my-listview?forum=xamarinforms
             //https://github.com/xamarin/Xamarin.Forms/issues/5087
             //FormattedString is slow.

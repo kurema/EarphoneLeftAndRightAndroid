@@ -152,7 +152,7 @@ namespace EarphoneLeftAndRight.ViewModels
         {
             AddFrequencyCommand = new Command((arg) =>
             {
-                if (!double.TryParse(arg?.ToString(), out double value)) return;
+                if (!double.TryParse(arg?.ToString(), System.Globalization.NumberStyles.Number, System.Globalization.CultureInfo.InvariantCulture, out double value)) return;
                 var freq = Frequency;
                 double scale = 1.0;
                 if (freq < 1000) scale = 1.0;
@@ -162,7 +162,7 @@ namespace EarphoneLeftAndRight.ViewModels
 
             MultiplyFrequencyCommand = new Command(arg =>
             {
-                if (!double.TryParse(arg?.ToString(), out double value)) return;
+                if (!double.TryParse(arg?.ToString(), System.Globalization.NumberStyles.Number, System.Globalization.CultureInfo.InvariantCulture, out double value)) return;
                 if (JustIntonation)
                 {
                     var (a, b, c, _) = Helper.FreqConverters.HzToOctaveJustIntonation(Frequency);
@@ -193,7 +193,7 @@ namespace EarphoneLeftAndRight.ViewModels
 
             SetCentCommand = new Command(arg =>
             {
-                if (!double.TryParse(arg.ToString(), out double value)) value = 0;
+                if (!double.TryParse(arg.ToString(), System.Globalization.NumberStyles.Number, System.Globalization.CultureInfo.InvariantCulture, out double value)) value = 0;
                 if (JustIntonation)
                 {
                     var (a, b, _, _) = Helper.FreqConverters.HzToOctaveJustIntonation(Frequency);

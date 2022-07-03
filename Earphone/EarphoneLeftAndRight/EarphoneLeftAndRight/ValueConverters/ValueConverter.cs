@@ -282,13 +282,13 @@ namespace EarphoneLeftAndRight.ValueConverters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (!double.TryParse(value.ToString(), out double d)) return 0;
+            if (!double.TryParse(value.ToString(), System.Globalization.NumberStyles.Number, System.Globalization.CultureInfo.InvariantCulture, out double d)) return 0;
             return Math.Log(d);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (!double.TryParse(value.ToString(), out double d)) return 0;
+            if (!double.TryParse(value.ToString(), System.Globalization.NumberStyles.Number, System.Globalization.CultureInfo.InvariantCulture, out double d)) return 0;
             return Math.Pow(Math.E, d);
         }
     }
@@ -302,8 +302,8 @@ namespace EarphoneLeftAndRight.ValueConverters
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (!double.TryParse(value.ToString(), out double d1)) return 0;
-            if (!double.TryParse(parameter.ToString(), out double d2)) return 0;
+            if (!double.TryParse(value.ToString(), System.Globalization.NumberStyles.Number, System.Globalization.CultureInfo.InvariantCulture, out double d1)) return 0;
+            if (!double.TryParse(parameter.ToString(), System.Globalization.NumberStyles.Number, System.Globalization.CultureInfo.InvariantCulture, out double d2)) return 0;
             return Math.Floor(d1 / d2) * d2;
         }
     }

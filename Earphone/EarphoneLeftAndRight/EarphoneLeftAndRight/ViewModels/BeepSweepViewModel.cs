@@ -11,7 +11,14 @@ namespace EarphoneLeftAndRight.ViewModels;
 public class BeepSweepViewModel : BaseViewModel
 {
     private double _Duration = 10.0;
-    public double Duration { get => _Duration; set => SetProperty(ref _Duration, value); }
+    public double Duration
+    {
+        get => _Duration; set
+        {
+            if (value < 0.1) return;
+            SetProperty(ref _Duration, value);
+        }
+    }
 
 
     private double _FrequencyStart = 20.0;
@@ -84,6 +91,12 @@ public class BeepSweepViewModel : BaseViewModel
         {
             (FrequencyEnd, FrequencyStart) = (FrequencyStart, FrequencyEnd);
         });
+
+        DurationAddCommand = new Command((arg) =>
+        {
+            if (!double.TryParse(arg.ToString(), System.Globalization.NumberStyles.Number, System.Globalization.CultureInfo.InvariantCulture, out double t)) return;
+            this.Duration += t;
+        });
     }
 
     public bool Semitone { get => _Semitone; set => SetProperty(ref _Semitone, value); }
@@ -92,6 +105,7 @@ public class BeepSweepViewModel : BaseViewModel
     public ICommand SetFrequencyCommand { get; }
     public ICommand SetFrequencyInvertCommand { get; }
     public ICommand SetFrequencyMaxCommand { get; }
+    public ICommand DurationAddCommand { get; }
 
     public CurrentHzProvider GetCurrentHzProvider()
     {

@@ -5,6 +5,7 @@
             xmlns:vc="clr-namespace:EarphoneLeftAndRight.ValueConverters"
              xmlns:r="clr-namespace:EarphoneLeftAndRight.Resx"
             xmlns:local="clr-namespace:EarphoneLeftAndRight.Views"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
             
              x:Class="EarphoneLeftAndRight.Views.BeepTabbed"
             BarBackgroundColor="{AppThemeBinding Default={StaticResource PrimaryLight},Light={StaticResource PrimaryLight},Dark={StaticResource PrimaryDark}}"
@@ -37,6 +38,16 @@
                 </Grid>
             </Frame>
         </ControlTemplate>
+        <Style TargetType="ImageButton" x:Key="FloatingButtonStyle">
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Default=Accent,Light=Accent,Dark=White}" />
+            <Setter Property="CornerRadius" Value="28" />
+            <Setter Property="WidthRequest" Value="56" />
+            <Setter Property="HeightRequest" Value="56" />
+            <Setter Property="HorizontalOptions" Value="End" />
+            <Setter Property="VerticalOptions" Value="End" />
+            <Setter Property="Margin" Value="20" />
+            <Setter Property="Padding" Value="9" />
+        </Style>
     </TabbedPage.Resources>
     <ContentPage Title="{x:Static r:AppResources.Sound_Tune_Title}" BackgroundColor="{AppThemeBinding Default=White,Light=White,Dark=Black}">
         <ContentPage.ToolbarItems>
@@ -52,10 +63,6 @@
             <vm:BeepFreqViewModel />
         </ContentPage.BindingContext>
         <Grid ColumnSpacing="0" RowSpacing="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
             <ScrollView VerticalScrollBarVisibility="Default" Orientation="Vertical">
                 <StackLayout>
                     <Label FontSize="Large" Text="{x:Static r:AppResources.Word_Frequency}" Margin="10"/>
@@ -178,20 +185,32 @@
                     <local:AdDefaultView HeightRequest="51" HorizontalOptions="Fill"  WidthRequest="320" />
                 </StackLayout>
             </ScrollView>
-            <Button Grid.Row="1" Margin="0" Text="{x:Static r:AppResources.Word_Play_Sound}" Command="{Binding PlayCommand}" IsVisible="{Binding IsPlaying,Converter={x:StaticResource vc_b2c},ConverterParameter=False:True}" />
-            <Button Grid.Row="1" Margin="0" Text="{x:Static r:AppResources.Word_Stop_Sound}" Command="{Binding StopCommand}" IsVisible="{Binding IsPlaying}" />
+
+            <ImageButton Style="{StaticResource FloatingButtonStyle}" Command="{Binding PlayCommand}" IsVisible="{Binding IsPlaying,Converter={x:StaticResource vc_b2c},ConverterParameter=False:True}">
+                <ImageButton.Source>
+                    <FontImageSource FontFamily="Material" Glyph="&#xe037;" Color="{AppThemeBinding Default=White,Light=White,Dark=Black}" />
+                </ImageButton.Source>
+            </ImageButton>
+            <ImageButton Style="{StaticResource FloatingButtonStyle}" Command="{Binding StopCommand}" IsVisible="{Binding IsPlaying}">
+                <ImageButton.Source>
+                    <FontImageSource FontFamily="Material" Glyph="&#xe047;" Color="{AppThemeBinding Default=White,Light=White,Dark=Black}" />
+                </ImageButton.Source>
+            </ImageButton>
         </Grid>
     </ContentPage>
     <ContentPage Title="Sweep" BackgroundColor="{AppThemeBinding Default=White,Light=White,Dark=Black}">
         <ContentPage.BindingContext>
             <vm:BeepSweepViewModel />
         </ContentPage.BindingContext>
-        <Grid RowDefinitions="Auto,*,Auto" ColumnSpacing="0" RowSpacing="0">
+        <Grid RowDefinitions="Auto,*" ColumnSpacing="0" RowSpacing="0">
             <Grid BackgroundColor="#9cb04a" ColumnDefinitions="*,Auto" RowSpacing="0" ColumnSpacing="0">
-                <Label Grid.ColumnSpan="2" x:Name="labelHz" HorizontalOptions="Center" VerticalOptions="Center" FontSize="60" Text="---.---" FontFamily="DSEG" TextColor="#AA000000"
+                <Label Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center" FontSize="60" Text="888.888" FontFamily="DSEG" TextColor="#AA000000" Opacity="0.05"
+                       Margin="0,10" LineHeight="0" />
+                <Label Grid.ColumnSpan="2" x:Name="labelHz" HorizontalOptions="Center" VerticalOptions="Center" FontSize="60" Text="!!0.0!!" FontFamily="DSEG" TextColor="#AA000000"
                        Margin="0,10" LineHeight="0" />
                 <Grid Grid.Column="1" RowDefinitions="*,*" VerticalOptions="FillAndExpand">
-                    <Label Grid.Row="1" Text="Hz" x:Name="labelHzUnit" FontSize="20" TextColor="#AA000000"  Margin="10,0" VerticalOptions="Center"/>
+                    <Label Grid.Row="1" Text="kHz" FontSize="20" TextColor="#AA000000"  Margin="10,0" VerticalOptions="Center" Opacity="0.1" HorizontalOptions="End"/>
+                    <Label Grid.Row="1" Text="Hz" x:Name="labelHzUnit" FontSize="20" TextColor="#AA000000"  Margin="10,0" VerticalOptions="Center" HorizontalOptions="End"/>
                     <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End" Margin="10,0">
                         <Label Text="L" x:Name="labelHzL" Opacity="0.1" TextColor="#AA000000"/>
                         <Label Text="R" x:Name="labelHzR" Opacity="0.1" TextColor="#AA000000"/>
@@ -212,16 +231,17 @@
                             <Label Grid.Column="1" Text="Hz" VerticalOptions="Center" />
                         </Grid>
                     </Grid>
-                    <Grid ColumnDefinitions="1*,1*,1*">
-                        <Button Grid.Column="0" Text="Default" Command="{Binding SetFrequencyCommand}" CommandParameter="20:20000" />
+                    <Grid ColumnDefinitions="1*,1*,1*,1*" Margin="10,0">
+                        <Button Grid.Column="0" Text="Default" Command="{Binding SetFrequencyCommand}" CommandParameter="20:20000"/>
                         <Button Grid.Column="1" Text="Maximum" Command="{Binding SetFrequencyMaxCommand}" />
-                        <Button Grid.Column="2" Text="Invert" Command="{Binding SetFrequencyInvertCommand}" />
+                        <Button Grid.Column="2" Text="Basic" Command="{Binding SetFrequencyCommand}" CommandParameter="220:880" />
+                        <Button Grid.Column="3" Text="Invert" Command="{Binding SetFrequencyInvertCommand}" />
                     </Grid>
                     <Label FontSize="Large" Text="Duration" Margin="10"/>
                     <Slider Margin="0,10,0,10" Value="{Binding Duration}" Maximum="30.0"/>
-                    <Grid ColumnDefinitions="1*,1*,1*">
+                    <Grid ColumnDefinitions="1*,1*,1*" Margin="10,0">
                         <Button Grid.Column="0" Text="-1" Command="{Binding DurationAddCommand}" CommandParameter="-1"/>
-                        <Button Grid.Column="2" Text="1" Command="{Binding DurationAddCommand}" CommandParameter="+1"/>
+                        <Button Grid.Column="2" Text="+1" Command="{Binding DurationAddCommand}" CommandParameter="+1"/>
                         <Grid ColumnDefinitions="*,Auto" Grid.Column="1">
                             <Entry Keyboard="Numeric" Text="{Binding Duration}" VerticalOptions="Center" />
                             <Label Grid.Column="1" Text="sec"  VerticalOptions="Center"/>
@@ -233,12 +253,23 @@
                             <Label Text="Exponential" VerticalOptions="Center" />
                             <CheckBox IsChecked="{Binding EachChannel}" VerticalOptions="Center" />
                             <Label Text="Each channel" VerticalOptions="Center" />
+                            <CheckBox IsChecked="{Binding Semitone}" VerticalOptions="Center" />
+                            <Label Text="Semitone" VerticalOptions="Center" />
                         </StackLayout>
                     </ScrollView>
                     <local:AdDefaultView HeightRequest="51" HorizontalOptions="Fill"  WidthRequest="320" />
                 </StackLayout>
             </ScrollView>
-            <Button Grid.Row="2" Margin="0" Text="{x:Static r:AppResources.Word_Play_Sound}" Clicked="Button_Clicked" />
+            <!--<Button Grid.Row="2" Margin="0" Text="{x:Static r:AppResources.Word_Play_Sound}" Clicked="Button_Clicked" />-->
+            <!--
+            I tried to add shadow but did not work. There's other ways but are too complicated.
+            https://docs.microsoft.com/ja-jp/xamarin/xamarin-forms/platform/android/button-padding-shadow
+            -->
+            <ImageButton Grid.RowSpan="2" Clicked="Button_Clicked" Style="{StaticResource FloatingButtonStyle}">
+                <ImageButton.Source>
+                    <FontImageSource FontFamily="Material" Glyph="&#xe037;" Color="{AppThemeBinding Default=White,Light=White,Dark=Black}"/>
+                </ImageButton.Source>
+            </ImageButton>
         </Grid>
     </ContentPage>
 </TabbedPage>

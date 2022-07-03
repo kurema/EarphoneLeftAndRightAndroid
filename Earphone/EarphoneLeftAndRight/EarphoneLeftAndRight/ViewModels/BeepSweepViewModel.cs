@@ -68,8 +68,8 @@ public class BeepSweepViewModel : BaseViewModel
         PlayCommand = new Command(async () =>
         {
             await Storages.AudioStorage.TestSupportHiDef();
-            await Storages.AudioStorage.RegisterSweepAsync(this.FrequencyStart, FrequencyEnd, this.Exponential, this.Duration, 0.5, EachChannel ? Storages.AudioStorage.SweepChanneldOrder.LeftThenRight : Storages.AudioStorage.SweepChanneldOrder.Both
-                , Storages.AudioStorage.HiDefSupported192kHz ? 192000 : (Storages.AudioStorage.HiDefSupported096kHz ? 96000 : 44100));
+            if (Semitone) await Storages.AudioStorage.RegisterSweepSemitoneAsync(this.FrequencyStart, FrequencyEnd, this.Exponential, this.Duration, 0.5, EachChannel ? Storages.AudioStorage.SweepChanneldOrder.LeftThenRight : Storages.AudioStorage.SweepChanneldOrder.Both, Storages.AudioStorage.HiDefSupported192kHz ? 192000 : (Storages.AudioStorage.HiDefSupported096kHz ? 96000 : 44100));
+            else await Storages.AudioStorage.RegisterSweepAsync(this.FrequencyStart, FrequencyEnd, this.Exponential, this.Duration, 0.5, EachChannel ? Storages.AudioStorage.SweepChanneldOrder.LeftThenRight : Storages.AudioStorage.SweepChanneldOrder.Both, Storages.AudioStorage.HiDefSupported192kHz ? 192000 : (Storages.AudioStorage.HiDefSupported096kHz ? 96000 : 44100));
             await Task.Run(() => Storages.AudioStorage.AudioTest.Play());
         });
 
@@ -116,6 +116,7 @@ public class BeepSweepViewModel : BaseViewModel
             FrequencyStart = FrequencyStart,
             Exponential = Exponential,
             EachChannel = EachChannel,
+            Semitone = Semitone
         };
     }
 
@@ -126,22 +127,58 @@ public class BeepSweepViewModel : BaseViewModel
         public double FrequencyEnd { get; set; }
         public bool Exponential { get; set; }
         public bool EachChannel { get; set; }
+        public bool Semitone { get; set; }
 
         public double ActualDuration => EachChannel ? Duration * 2 : Duration;
 
         public double SecondsToHz(double sec)
         {
-            sec %= Duration;
-            if (Exponential)
+            if ((EachChannel && sec > Duration * 2) || ((!EachChannel) && sec > Duration))
             {
-                double slog = Math.Log(FrequencyStart);
-                double elog = Math.Log(FrequencyEnd);
-                double dlog = (elog - slog) / Duration;
-                return Math.Pow(Math.E, slog + dlog * sec);
+                return 0;
+            }
+            sec %= Duration;
+            if (Semitone)
+            {
+                if (Exponential)
+                {
+                    var start = Helper.FreqConverters.HzToNoteNumberEqualTemperament(FrequencyStart);
+                    var end = Helper.FreqConverters.HzToNoteNumberEqualTemperament(FrequencyEnd);
+
+                    if (Math.Floor(start) == Math.Floor(end))
+                    {
+                        return Helper.FreqConverters.NoteNumberToHzEqualTemperament(Math.Floor(start));
+                    }
+                    else if (start > end)
+                    {
+                        start = Math.Floor(start);
+                        end = Math.Ceiling(end);
+                    }
+                    else
+                    {
+                        start = Math.Ceiling(start);
+                        end = Math.Floor(end);
+                    }
+                    return Helper.FreqConverters.NoteNumberToHzEqualTemperament(start + Math.Sign(end - start) * Math.Floor(sec / Duration * (Math.Abs(end - start) + 1)));
+                }
+                else
+                {
+                    return 0;
+                }
             }
             else
             {
-                return FrequencyStart + (FrequencyEnd - FrequencyStart) * sec / Duration;
+                if (Exponential)
+                {
+                    double slog = Math.Log(FrequencyStart);
+                    double elog = Math.Log(FrequencyEnd);
+                    double dlog = (elog - slog) / Duration;
+                    return Math.Pow(Math.E, slog + dlog * sec);
+                }
+                else
+                {
+                    return FrequencyStart + (FrequencyEnd - FrequencyStart) * sec / Duration;
+                }
             }
         }
     }

@@ -44,7 +44,7 @@ namespace EarphoneLeftAndRight.ViewModels
                 {
                     var nums = a.ToString()?.Split(',').Select(a => double.Parse(a, System.Globalization.CultureInfo.InvariantCulture)).ToArray();
                     if (nums is null || nums.Length < 3) return;
-                    await Storages.AudioStorage.RegisterSignWaveStereoShift(nums[0], nums[1], nums[2] == 0 ? Storages.AudioStorage.ShiftDirection.LeftToRight : Storages.AudioStorage.ShiftDirection.RightToLeft);
+                    await Storages.AudioStorage.RegisterSineWaveStereoShift(nums[0], nums[1], nums[2] == 0 ? Storages.AudioStorage.ShiftDirection.LeftToRight : Storages.AudioStorage.ShiftDirection.RightToLeft);
                     await Task.Run(() => { try { Storages.AudioStorage.AudioTest.Play(); } catch { } });
                 }
                 catch { }

@@ -32,7 +32,7 @@
     </Shell.Resources>
 
     <TabBar>
-        <ShellContent Title="{x:Static r:AppResources.Play_Title}" Route="PlayPage" ContentTemplate="{DataTemplate local:PlayPage}">
+        <ShellContent Title="{x:Static r:LocalResources.LeftRight}" Route="PlayPage" ContentTemplate="{DataTemplate local:PlayPage}">
             <ShellContent.Icon>
                 <!-- https://stackoverflow.com/questions/65398993/using-material-design-icons-with-xamarin-forms-what-am-i-missing -->
                 <FontImageSource FontFamily="Material" Glyph="&#xf003;" />

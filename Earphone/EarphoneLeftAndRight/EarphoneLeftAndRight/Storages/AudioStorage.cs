@@ -102,16 +102,21 @@ public static class AudioStorage
             end = Math.Floor(end);
         }
         int noteCounts = (int)Math.Abs(start - end) + 1;
-        double[] noteVirtualDuration = new double[noteCounts];
+        double[] hzTable = new double[noteCounts + 1];
+        for (int i = 0; i <= noteCounts; i++)
+        {
+            hzTable[i] = Helper.FreqConverters.NoteNumberToHzEqualTemperament(i * Math.Sign(end - start) + start);
+        }
         if (exp)
         {
+            double[] noteVirtualDuration = new double[noteCounts];
             double len = duration / noteCounts;
-            double currentTime = 0;
+            double currentTimeVirtual = 0;
             noteVirtualDuration[0] = 0;
             for (int index = 1; index < noteCounts; index++)
             {
-                currentTime += len * 2.0 * Math.PI * Helper.FreqConverters.NoteNumberToHzEqualTemperament((index - 1) * Math.Sign(end - start) + start);
-                noteVirtualDuration[index] = currentTime;
+                currentTimeVirtual += len * 2.0 * Math.PI * hzTable[index - 1];
+                noteVirtualDuration[index] = currentTimeVirtual;
             }
             await AudioTest.Register((sample, actualSampleRate, channel) =>
             {
@@ -126,13 +131,49 @@ public static class AudioStorage
                     SweepChanneldOrder.RightThenLeft => tActual < duration ^ channel == 0 ? amp : 0,
                     _ or SweepChanneldOrder.Both => amp,
                 };
-                return (ampActual * Math.Sin(Math.PI * 2.0 * rem * Helper.FreqConverters.NoteNumberToHzEqualTemperament(nn) + noteVirtualDuration[(int)cnt]), false);
+                return (ampActual * Math.Sin(Math.PI * 2.0 * rem * hzTable[(int)cnt] + noteVirtualDuration[(int)cnt]), false);
             }, duration * channeldOrder switch { SweepChanneldOrder.LeftThenRight or SweepChanneldOrder.RightThenLeft => 2, _ => 1 }, sampleRate);
             return;
         }
         else
         {
-            double secPerHz = duration / (Helper.FreqConverters.NoteNumberToHzEqualTemperament(Math.Max(start, end) + 1) - Helper.FreqConverters.NoteNumberToHzEqualTemperament(Math.Min(start, end)));
+            double secPerHz = duration / Math.Abs(hzTable[^1] - hzTable[0]);
+            double[] noteDuration = new double[noteCounts + 1];
+            double[] noteDurationVirtual = new double[noteCounts + 1];
+            double currentTime = 0;
+            double currentTimeVirtual = 0;
+            noteDuration[0] = 0;
+            noteDurationVirtual[0] = 0;
+
+            for (int i = 0; i < noteCounts; i++)
+            {
+                var len = Math.Abs(hzTable[i + 1] - hzTable[i]) * secPerHz;
+                currentTime += len;
+                noteDuration[i + 1] = currentTime;
+                currentTimeVirtual += len * 2.0 * Math.PI * hzTable[i];
+                noteDurationVirtual[i + 1] = currentTimeVirtual;
+            }
+            await AudioTest.Register((sample, actualSampleRate, channel) =>
+            {
+                double tActual = (double)sample / actualSampleRate;
+                double t = tActual % duration;
+                int cnt = 0;
+                while (cnt < noteCounts)
+                {
+                    if (noteDuration[cnt + 1] > t) break;
+                    cnt++;
+                }
+                double rem = t - noteDuration[cnt];
+                double freq = hzTable[cnt];
+                double ampActual = channeldOrder switch
+                {
+                    SweepChanneldOrder.LeftThenRight => tActual < duration ^ channel == 1 ? amp : 0,
+                    SweepChanneldOrder.RightThenLeft => tActual < duration ^ channel == 0 ? amp : 0,
+                    _ or SweepChanneldOrder.Both => amp,
+                };
+                return (ampActual * Math.Sin(Math.PI * 2.0 * rem * hzTable[cnt] + noteDurationVirtual[cnt]), false);
+            }, duration * channeldOrder switch { SweepChanneldOrder.LeftThenRight or SweepChanneldOrder.RightThenLeft => 2, _ => 1 }, sampleRate);
+            return;
         }
     }
 

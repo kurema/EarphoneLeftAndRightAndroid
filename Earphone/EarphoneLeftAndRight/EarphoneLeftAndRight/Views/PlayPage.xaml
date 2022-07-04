@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="EarphoneLeftAndRight.Views.PlayPage"
              xmlns:r="clr-namespace:EarphoneLeftAndRight.Resx"
-             Title="{x:Static r:AppResources.Play_Title}"
+             Title="{x:Static r:LocalResources.LeftRight}"
              BackgroundColor="{AppThemeBinding Default=White,Light=White,Dark=Black}"
              xmlns:controls="clr-namespace:EarphoneLeftAndRight.Views"
              xmlns:vm="clr-namespace:EarphoneLeftAndRight.ViewModels"

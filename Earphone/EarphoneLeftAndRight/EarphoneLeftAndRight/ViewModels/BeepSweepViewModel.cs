@@ -140,30 +140,41 @@ public class BeepSweepViewModel : BaseViewModel
             sec %= Duration;
             if (Semitone)
             {
-                if (Exponential)
-                {
-                    var start = Helper.FreqConverters.HzToNoteNumberEqualTemperament(FrequencyStart);
-                    var end = Helper.FreqConverters.HzToNoteNumberEqualTemperament(FrequencyEnd);
+                var start = Helper.FreqConverters.HzToNoteNumberEqualTemperament(FrequencyStart);
+                var end = Helper.FreqConverters.HzToNoteNumberEqualTemperament(FrequencyEnd);
 
-                    if (Math.Floor(start) == Math.Floor(end))
-                    {
-                        return Helper.FreqConverters.NoteNumberToHzEqualTemperament(Math.Floor(start));
-                    }
-                    else if (start > end)
-                    {
-                        start = Math.Floor(start);
-                        end = Math.Ceiling(end);
-                    }
-                    else
-                    {
-                        start = Math.Ceiling(start);
-                        end = Math.Floor(end);
-                    }
-                    return Helper.FreqConverters.NoteNumberToHzEqualTemperament(start + Math.Sign(end - start) * Math.Floor(sec / Duration * (Math.Abs(end - start) + 1)));
+                if (Math.Floor(start) == Math.Floor(end))
+                {
+                    return Helper.FreqConverters.NoteNumberToHzEqualTemperament(Math.Floor(start));
+                }
+                else if (start > end)
+                {
+                    start = Math.Floor(start);
+                    end = Math.Ceiling(end);
                 }
                 else
                 {
-                    return 0;
+                    start = Math.Ceiling(start);
+                    end = Math.Floor(end);
+                }
+
+                if (Exponential)
+                {
+                    return Helper.FreqConverters.NoteNumberToHzEqualTemperament(start + Math.Sign(end - start) * Math.Floor(sec / Duration * (Math.Abs(end - start) + 1)));
+                }
+                else if (start < end)
+                {
+                    var hzS = Helper.FreqConverters.NoteNumberToHzEqualTemperament(start);
+                    double hzPerSec = (Helper.FreqConverters.NoteNumberToHzEqualTemperament(end + 1) - hzS) / Duration;
+                    return Helper.FreqConverters.NoteNumberToHzEqualTemperament(Math.Floor(Helper.FreqConverters.HzToNoteNumberEqualTemperament(hzS + hzPerSec * sec)));
+                }
+                else
+                {
+                    if (sec == 0) return Helper.FreqConverters.NoteNumberToHzEqualTemperament(start);
+                    var hzS = Helper.FreqConverters.NoteNumberToHzEqualTemperament(start + 1);
+                    double hzPerSec = (hzS - Helper.FreqConverters.NoteNumberToHzEqualTemperament(end)) / Duration;
+                    return Helper.FreqConverters.NoteNumberToHzEqualTemperament(Math.Floor(Helper.FreqConverters.HzToNoteNumberEqualTemperament(hzS - hzPerSec * sec)));
+
                 }
             }
             else

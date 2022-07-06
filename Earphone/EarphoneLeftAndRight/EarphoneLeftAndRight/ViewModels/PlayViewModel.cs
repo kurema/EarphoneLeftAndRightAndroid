@@ -86,8 +86,11 @@ namespace EarphoneLeftAndRight.ViewModels
             Resx.LocalResources.LeftRight,
             Resx.LocalResources.Left,
             Resx.LocalResources.Right,
-            Resx.AppResources.More_OpenDictionary_Left,
-            Resx.AppResources.More_OpenDictionary_Right,
+            Resx.AppResources.Word_Center,
+            Resx.AppResources.Word_Frequency,
+            Resx.AppResources.Sound_Sweep_Title,
+            //Resx.AppResources.More_OpenDictionary_Left,
+            //Resx.AppResources.More_OpenDictionary_Right,
             Resx.AppResources.More_OpenCompass_Title,
             Resx.AppResources.Profile_Accounts_Github_ID,
         };

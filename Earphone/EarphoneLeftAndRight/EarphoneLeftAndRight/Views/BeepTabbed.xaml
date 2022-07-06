@@ -182,7 +182,7 @@
                             <Label Text="{x:Static r:AppResources.Sound_Tune_JustIntonation}" VerticalOptions="Center" />
                         </StackLayout>
                     </ScrollView>
-                    <local:AdDefaultView HeightRequest="51" HorizontalOptions="Fill"  WidthRequest="320" />
+                    <local:AdDefaultView HeightRequest="51" HorizontalOptions="Fill"  WidthRequest="320" Margin="0,0,0,33" />
                 </StackLayout>
             </ScrollView>
 
@@ -257,7 +257,7 @@
                             <Label Text="{x:Static r:AppResources.Sound_Sweep_Option_Step}" VerticalOptions="Center" />
                         </StackLayout>
                     </ScrollView>
-                    <local:AdDefaultView HeightRequest="51" HorizontalOptions="Fill"  WidthRequest="320" />
+                    <local:AdDefaultView HeightRequest="51" HorizontalOptions="Fill"  WidthRequest="320" Margin="0,0,0,33" />
                 </StackLayout>
             </ScrollView>
             <!--<Button Grid.Row="2" Margin="0" Text="{x:Static r:AppResources.Word_Play_Sound}" Clicked="Button_Clicked" />-->

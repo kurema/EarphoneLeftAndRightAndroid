@@ -100,7 +100,12 @@
                         </Grid.ColumnDefinitions>
                         <Picker ItemsSource="{Binding SearchWords}" SelectedItem="{Binding SearchWord,Mode=TwoWay}" />
                         <Picker ItemsSource="{Binding SearchServices}" Grid.Column="1" ItemDisplayBinding="{Binding Title,Mode=OneWay}" SelectedItem="{Binding SearchServiceSelected,Mode=TwoWay}" />
-                        <Button Text="{x:Static r:AppResources.More_Search_Word}" Command="{Binding OpenSearchCommand}" Grid.Column="2" />
+                        <!--<Button Text="{x:Static r:AppResources.More_Search_Word}" Command="{Binding OpenSearchCommand}" Grid.Column="2" />-->
+                        <Button Grid.Column="2" Command="{Binding OpenSearchCommand}" >
+                            <Button.ImageSource>
+                                <FontImageSource FontFamily="Material" Glyph="&#xe8b6;" />
+                            </Button.ImageSource>
+                        </Button>
                     </Grid>
                 </StackLayout>
             </StackLayout>

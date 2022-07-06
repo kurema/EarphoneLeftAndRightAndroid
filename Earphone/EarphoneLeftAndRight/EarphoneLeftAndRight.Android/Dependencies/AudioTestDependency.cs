@@ -41,7 +41,21 @@ namespace EarphoneLeftAndRight.Droid
             }
         }
 
-        public bool IsPlaying => audioTrack?.PlayState == PlayState.Playing && audioTrack?.State == AudioTrackState.Initialized && audioTrack?.PlaybackHeadPosition != audioTrack?.BufferSizeInFrames;
+        public bool IsPlaying
+        {
+            get
+            {
+                try
+                {
+                    return audioTrack?.PlayState == PlayState.Playing && audioTrack?.State == AudioTrackState.Initialized &&
+                        (Build.VERSION.SdkInt < BuildVersionCodes.N || audioTrack?.PlaybackHeadPosition != audioTrack?.BufferSizeInFrames);
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
 
         public async Task Register(Func<int, int, int, (double, bool)> generator, double duration, int sampleRate = 44100)
         {

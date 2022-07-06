@@ -610,6 +610,105 @@ namespace EarphoneLeftAndRight.Resx {
         }
         
         /// <summary>
+        ///   Basic に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Sound_Sweep_Freq_Basic {
+            get {
+                return ResourceManager.GetString("Sound.Sweep.Freq.Basic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Default に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Sound_Sweep_Freq_Default {
+            get {
+                return ResourceManager.GetString("Sound.Sweep.Freq.Default", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Invert に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Sound_Sweep_Freq_Invert {
+            get {
+                return ResourceManager.GetString("Sound.Sweep.Freq.Invert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Maximum に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Sound_Sweep_Freq_Maximum {
+            get {
+                return ResourceManager.GetString("Sound.Sweep.Freq.Maximum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Exponential に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Sound_Sweep_Option_Exponential {
+            get {
+                return ResourceManager.GetString("Sound.Sweep.Option.Exponential", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Steps に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Sound_Sweep_Option_Step {
+            get {
+                return ResourceManager.GetString("Sound.Sweep.Option.Step", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Steps に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Sound_Sweep_Option_Step_Full {
+            get {
+                return ResourceManager.GetString("Sound.Sweep.Option.Step.Full", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   sec に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Sound_Sweep_Sec {
+            get {
+                return ResourceManager.GetString("Sound.Sweep.Sec", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   25 seconds. 15 sec. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Sound_Sweep_Sec_Full {
+            get {
+                return ResourceManager.GetString("Sound.Sweep.Sec.Full", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sweep に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Sound_Sweep_Title {
+            get {
+                return ResourceManager.GetString("Sound.Sweep.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Frequency sweep / Sine sweep に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Sound_Sweep_Title_Full {
+            get {
+                return ResourceManager.GetString("Sound.Sweep.Title.Full", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sound に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Sound_Title {
@@ -660,6 +759,15 @@ namespace EarphoneLeftAndRight.Resx {
         internal static string Word_Center {
             get {
                 return ResourceManager.GetString("Word.Center", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Duration に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Word_Duration {
+            get {
+                return ResourceManager.GetString("Word.Duration", resourceCulture);
             }
         }
         

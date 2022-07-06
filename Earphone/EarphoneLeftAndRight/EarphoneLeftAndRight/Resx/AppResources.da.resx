@@ -263,4 +263,40 @@
   <data name="Sound.Tune.JustIntonation" xml:space="preserve">
     <value>Ren stemning</value>
   </data>
+  <data name="Sound.Sweep.Freq.Default" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="Sound.Sweep.Freq.Maximum" xml:space="preserve">
+    <value>Maksimum</value>
+  </data>
+  <data name="Sound.Sweep.Freq.Basic" xml:space="preserve">
+    <value>Grundlæggende</value>
+  </data>
+  <data name="Sound.Sweep.Freq.Invert" xml:space="preserve">
+    <value>Inverter</value>
+  </data>
+  <data name="Word.Duration" xml:space="preserve">
+    <value>Varighed</value>
+  </data>
+  <data name="Sound.Sweep.Sec" xml:space="preserve">
+    <value>sek</value>
+  </data>
+  <data name="Sound.Sweep.Option.Exponential" xml:space="preserve">
+    <value>Eksponentiel</value>
+  </data>
+  <data name="Sound.Sweep.Sec.Full" xml:space="preserve">
+    <value>25 sekunder. 15 sekunder.</value>
+  </data>
+  <data name="Sound.Sweep.Option.Step.Full" xml:space="preserve">
+    <value>musikalsk skala</value>
+  </data>
+  <data name="Sound.Sweep.Option.Step" xml:space="preserve">
+    <value>Skala</value>
+  </data>
+  <data name="Sound.Sweep.Title" xml:space="preserve">
+    <value>Frekvenssøgning</value>
+  </data>
+  <data name="Sound.Sweep.Title.Full" xml:space="preserve">
+    <value>Frekvenssøgning / Sinussøgning</value>
+  </data>
 </root>

@@ -263,4 +263,40 @@
   <data name="Sound.Tune.JustIntonation" xml:space="preserve">
     <value>Lihtsalt intonatsioon</value>
   </data>
+  <data name="Sound.Sweep.Freq.Default" xml:space="preserve">
+    <value>Vaikimisi</value>
+  </data>
+  <data name="Sound.Sweep.Freq.Maximum" xml:space="preserve">
+    <value>Maksimaalne</value>
+  </data>
+  <data name="Sound.Sweep.Freq.Basic" xml:space="preserve">
+    <value>Basic</value>
+  </data>
+  <data name="Sound.Sweep.Freq.Invert" xml:space="preserve">
+    <value>Invert</value>
+  </data>
+  <data name="Word.Duration" xml:space="preserve">
+    <value>Kestus</value>
+  </data>
+  <data name="Sound.Sweep.Sec" xml:space="preserve">
+    <value>sek</value>
+  </data>
+  <data name="Sound.Sweep.Option.Exponential" xml:space="preserve">
+    <value>Eksponentsiaalne</value>
+  </data>
+  <data name="Sound.Sweep.Sec.Full" xml:space="preserve">
+    <value>25 sekundit. 15 sek.</value>
+  </data>
+  <data name="Sound.Sweep.Option.Step.Full" xml:space="preserve">
+    <value>muusikaline skaala</value>
+  </data>
+  <data name="Sound.Sweep.Option.Step" xml:space="preserve">
+    <value>Skaala</value>
+  </data>
+  <data name="Sound.Sweep.Title" xml:space="preserve">
+    <value>Sweep</value>
+  </data>
+  <data name="Sound.Sweep.Title.Full" xml:space="preserve">
+    <value>Sageduse pühkimine / Sine sweep</value>
+  </data>
 </root>

@@ -263,4 +263,40 @@
   <data name="Sound.Tune.JustIntonation" xml:space="preserve">
     <value>Właściwa intonacja</value>
   </data>
+  <data name="Sound.Sweep.Freq.Default" xml:space="preserve">
+    <value>Domyślnie</value>
+  </data>
+  <data name="Sound.Sweep.Freq.Maximum" xml:space="preserve">
+    <value>Maksymalnie</value>
+  </data>
+  <data name="Sound.Sweep.Freq.Basic" xml:space="preserve">
+    <value>Podstawowe</value>
+  </data>
+  <data name="Sound.Sweep.Freq.Invert" xml:space="preserve">
+    <value>Odwróć</value>
+  </data>
+  <data name="Word.Duration" xml:space="preserve">
+    <value>Czas trwania</value>
+  </data>
+  <data name="Sound.Sweep.Sec" xml:space="preserve">
+    <value>sek</value>
+  </data>
+  <data name="Sound.Sweep.Option.Exponential" xml:space="preserve">
+    <value>Wykładniczy</value>
+  </data>
+  <data name="Sound.Sweep.Sec.Full" xml:space="preserve">
+    <value>25 sekund. 15 sek.</value>
+  </data>
+  <data name="Sound.Sweep.Option.Step.Full" xml:space="preserve">
+    <value>skala muzyczna</value>
+  </data>
+  <data name="Sound.Sweep.Option.Step" xml:space="preserve">
+    <value>Skala</value>
+  </data>
+  <data name="Sound.Sweep.Title" xml:space="preserve">
+    <value>Przemiatanie</value>
+  </data>
+  <data name="Sound.Sweep.Title.Full" xml:space="preserve">
+    <value>Przemiatanie częstotliwości / przemiatanie sinusoidalne</value>
+  </data>
 </root>

@@ -263,4 +263,40 @@
   <data name="Sound.Tune.JustIntonation" xml:space="preserve">
     <value>Len intonácia</value>
   </data>
+  <data name="Sound.Sweep.Freq.Default" xml:space="preserve">
+    <value>Predvolené nastavenie</value>
+  </data>
+  <data name="Sound.Sweep.Freq.Maximum" xml:space="preserve">
+    <value>Maximum</value>
+  </data>
+  <data name="Sound.Sweep.Freq.Basic" xml:space="preserve">
+    <value>Základné</value>
+  </data>
+  <data name="Sound.Sweep.Freq.Invert" xml:space="preserve">
+    <value>Invertovať</value>
+  </data>
+  <data name="Word.Duration" xml:space="preserve">
+    <value>Trvanie</value>
+  </data>
+  <data name="Sound.Sweep.Sec" xml:space="preserve">
+    <value>sek</value>
+  </data>
+  <data name="Sound.Sweep.Option.Exponential" xml:space="preserve">
+    <value>Exponenciálne</value>
+  </data>
+  <data name="Sound.Sweep.Sec.Full" xml:space="preserve">
+    <value>25 sekúnd. 15 sekúnd.</value>
+  </data>
+  <data name="Sound.Sweep.Option.Step.Full" xml:space="preserve">
+    <value>hudobná stupnica</value>
+  </data>
+  <data name="Sound.Sweep.Option.Step" xml:space="preserve">
+    <value>Stupnica</value>
+  </data>
+  <data name="Sound.Sweep.Title" xml:space="preserve">
+    <value>Posun</value>
+  </data>
+  <data name="Sound.Sweep.Title.Full" xml:space="preserve">
+    <value>Frekvenčný posun / Sínusový posun</value>
+  </data>
 </root>

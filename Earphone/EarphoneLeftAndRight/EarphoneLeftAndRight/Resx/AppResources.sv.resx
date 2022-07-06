@@ -263,4 +263,40 @@
   <data name="Sound.Tune.JustIntonation" xml:space="preserve">
     <value>Ren stämning</value>
   </data>
+  <data name="Sound.Sweep.Freq.Default" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="Sound.Sweep.Freq.Maximum" xml:space="preserve">
+    <value>Maximalt</value>
+  </data>
+  <data name="Sound.Sweep.Freq.Basic" xml:space="preserve">
+    <value>Grundläggande</value>
+  </data>
+  <data name="Sound.Sweep.Freq.Invert" xml:space="preserve">
+    <value>Invertera</value>
+  </data>
+  <data name="Word.Duration" xml:space="preserve">
+    <value>Varaktighet</value>
+  </data>
+  <data name="Sound.Sweep.Sec" xml:space="preserve">
+    <value>sek</value>
+  </data>
+  <data name="Sound.Sweep.Option.Exponential" xml:space="preserve">
+    <value>Exponentiell</value>
+  </data>
+  <data name="Sound.Sweep.Sec.Full" xml:space="preserve">
+    <value>25 sekunder. 15 sekunder.</value>
+  </data>
+  <data name="Sound.Sweep.Option.Step.Full" xml:space="preserve">
+    <value>musikalisk skala</value>
+  </data>
+  <data name="Sound.Sweep.Option.Step" xml:space="preserve">
+    <value>Skala</value>
+  </data>
+  <data name="Sound.Sweep.Title" xml:space="preserve">
+    <value>Frekvenssvep</value>
+  </data>
+  <data name="Sound.Sweep.Title.Full" xml:space="preserve">
+    <value>Frekvenssvep / Sinussvep</value>
+  </data>
 </root>

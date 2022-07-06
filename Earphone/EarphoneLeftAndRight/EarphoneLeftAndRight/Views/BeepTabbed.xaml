@@ -198,7 +198,7 @@
             </ImageButton>
         </Grid>
     </ContentPage>
-    <ContentPage Title="Sweep" BackgroundColor="{AppThemeBinding Default=White,Light=White,Dark=Black}">
+    <ContentPage Title="{x:Static r:AppResources.Sound_Sweep_Title}" BackgroundColor="{AppThemeBinding Default=White,Light=White,Dark=Black}">
         <ContentPage.BindingContext>
             <vm:BeepSweepViewModel />
         </ContentPage.BindingContext>
@@ -219,7 +219,7 @@
             </Grid>
             <ScrollView Grid.Row="1">
                 <StackLayout>
-                    <Label FontSize="Large" Text="Frequency" Margin="10"/>
+                    <Label FontSize="Large" Text="{x:Static r:AppResources.Word_Frequency}" Margin="10"/>
                     <Grid ColumnDefinitions="1*,Auto,1*" Margin="5,0">
                         <Grid ColumnDefinitions="*,Auto" Margin="0" ColumnSpacing="0" RowSpacing="0" Grid.Column="0" VerticalOptions="Center">
                             <Entry Text="{Binding FrequencyStart,Mode=TwoWay}" Keyboard="Numeric" VerticalOptions="Center" />
@@ -232,29 +232,29 @@
                         </Grid>
                     </Grid>
                     <Grid ColumnDefinitions="1*,1*,1*,1*" Margin="10,0">
-                        <Button Grid.Column="0" Text="Default" Command="{Binding SetFrequencyCommand}" CommandParameter="20:20000"/>
-                        <Button Grid.Column="1" Text="Maximum" Command="{Binding SetFrequencyMaxCommand}" />
-                        <Button Grid.Column="2" Text="Basic" Command="{Binding SetFrequencyCommand}" CommandParameter="220:880" />
-                        <Button Grid.Column="3" Text="Invert" Command="{Binding SetFrequencyInvertCommand}" />
+                        <Button Grid.Column="0" Text="{x:Static r:AppResources.Sound_Sweep_Freq_Default}" Command="{Binding SetFrequencyCommand}" CommandParameter="20:20000"/>
+                        <Button Grid.Column="1" Text="{x:Static r:AppResources.Sound_Sweep_Freq_Maximum}" Command="{Binding SetFrequencyMaxCommand}" />
+                        <Button Grid.Column="2" Text="{x:Static r:AppResources.Sound_Sweep_Freq_Basic}" Command="{Binding SetFrequencyCommand}" CommandParameter="220:880" />
+                        <Button Grid.Column="3" Text="{x:Static r:AppResources.Sound_Sweep_Freq_Invert}" Command="{Binding SetFrequencyInvertCommand}" />
                     </Grid>
-                    <Label FontSize="Large" Text="Duration" Margin="10"/>
+                    <Label FontSize="Large" Text="{x:Static r:AppResources.Word_Duration}" Margin="10"/>
                     <Slider Margin="0,10,0,10" Value="{Binding Duration}" Maximum="30.0"/>
                     <Grid ColumnDefinitions="1*,1*,1*" Margin="10,0">
                         <Button Grid.Column="0" Text="-1" Command="{Binding DurationAddCommand}" CommandParameter="-1"/>
                         <Button Grid.Column="2" Text="+1" Command="{Binding DurationAddCommand}" CommandParameter="+1"/>
                         <Grid ColumnDefinitions="*,Auto" Grid.Column="1">
                             <Entry Keyboard="Numeric" Text="{Binding Duration}" VerticalOptions="Center" />
-                            <Label Grid.Column="1" Text="sec"  VerticalOptions="Center"/>
+                            <Label Grid.Column="1" Text="{x:Static r:AppResources.Sound_Sweep_Sec}"  VerticalOptions="Center"/>
                         </Grid>
                     </Grid>
                     <ScrollView Orientation="Horizontal">
                         <StackLayout Orientation="Horizontal">
                             <CheckBox IsChecked="{Binding Exponential}" VerticalOptions="Center" />
-                            <Label Text="Exponential" VerticalOptions="Center" />
+                            <Label Text="{x:Static r:AppResources.Sound_Sweep_Option_Exponential}" VerticalOptions="Center" />
                             <CheckBox IsChecked="{Binding EachChannel}" VerticalOptions="Center" />
-                            <Label Text="Each channel" VerticalOptions="Center" />
+                            <Label Text="{x:Static r:LocalResources.LeftRight}" VerticalOptions="Center" />
                             <CheckBox IsChecked="{Binding Semitone}" VerticalOptions="Center" />
-                            <Label Text="Semitone" VerticalOptions="Center" />
+                            <Label Text="{x:Static r:AppResources.Sound_Sweep_Option_Step}" VerticalOptions="Center" />
                         </StackLayout>
                     </ScrollView>
                     <local:AdDefaultView HeightRequest="51" HorizontalOptions="Fill"  WidthRequest="320" />

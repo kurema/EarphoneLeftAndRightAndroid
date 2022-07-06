@@ -263,4 +263,40 @@
   <data name="Sound.Tune.JustIntonation" xml:space="preserve">
     <value>Απλός τονισμός</value>
   </data>
+  <data name="Sound.Sweep.Freq.Default" xml:space="preserve">
+    <value>Προεπιλογή</value>
+  </data>
+  <data name="Sound.Sweep.Freq.Maximum" xml:space="preserve">
+    <value>Μέγιστο</value>
+  </data>
+  <data name="Sound.Sweep.Freq.Basic" xml:space="preserve">
+    <value>Βασικό</value>
+  </data>
+  <data name="Sound.Sweep.Freq.Invert" xml:space="preserve">
+    <value>Αντιστροφή</value>
+  </data>
+  <data name="Word.Duration" xml:space="preserve">
+    <value>Διάρκεια</value>
+  </data>
+  <data name="Sound.Sweep.Sec" xml:space="preserve">
+    <value>δευτ</value>
+  </data>
+  <data name="Sound.Sweep.Option.Exponential" xml:space="preserve">
+    <value>Εκθετικό</value>
+  </data>
+  <data name="Sound.Sweep.Sec.Full" xml:space="preserve">
+    <value>25 δευτερόλεπτα. 15 δευτερόλεπτα.</value>
+  </data>
+  <data name="Sound.Sweep.Option.Step.Full" xml:space="preserve">
+    <value>μουσική κλίμακα</value>
+  </data>
+  <data name="Sound.Sweep.Option.Step" xml:space="preserve">
+    <value>Κλίμακα</value>
+  </data>
+  <data name="Sound.Sweep.Title" xml:space="preserve">
+    <value>Σάρωση</value>
+  </data>
+  <data name="Sound.Sweep.Title.Full" xml:space="preserve">
+    <value>Σάρωση συχνότητας / Ημιτονοειδής σάρωση</value>
+  </data>
 </root>

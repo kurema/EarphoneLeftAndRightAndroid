@@ -502,4 +502,42 @@ All experience hath shown that mankind are more disposed to suffer while evils a
   <data name="Sound.Tune.JustIntonation" xml:space="preserve">
     <value>Just intonation</value>
   </data>
+  <data name="Sound.Sweep.Freq.Default" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="Sound.Sweep.Freq.Maximum" xml:space="preserve">
+    <value>Maximum</value>
+  </data>
+  <data name="Sound.Sweep.Freq.Basic" xml:space="preserve">
+    <value>Basic</value>
+  </data>
+  <data name="Sound.Sweep.Freq.Invert" xml:space="preserve">
+    <value>Invert</value>
+  </data>
+  <data name="Word.Duration" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="Sound.Sweep.Sec" xml:space="preserve">
+    <value>sec</value>
+  </data>
+  <data name="Sound.Sweep.Sec.Full" xml:space="preserve">
+    <value>25 seconds. 15 sec.</value>
+    <comment>Info</comment>
+  </data>
+  <data name="Sound.Sweep.Option.Exponential" xml:space="preserve">
+    <value>Exponential</value>
+  </data>
+  <data name="Sound.Sweep.Option.Step.Full" xml:space="preserve">
+    <value>Steps</value>
+    <comment>Info</comment>
+  </data>
+  <data name="Sound.Sweep.Option.Step" xml:space="preserve">
+    <value>Steps</value>
+  </data>
+  <data name="Sound.Sweep.Title" xml:space="preserve">
+    <value>Sweep</value>
+  </data>
+  <data name="Sound.Sweep.Title.Full" xml:space="preserve">
+    <value>Frequency sweep / Sine sweep</value>
+  </data>
 </root>

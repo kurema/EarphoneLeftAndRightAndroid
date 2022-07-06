@@ -263,4 +263,40 @@
   <data name="Sound.Tune.JustIntonation" xml:space="preserve">
     <value>Чистый строй</value>
   </data>
+  <data name="Sound.Sweep.Freq.Default" xml:space="preserve">
+    <value>По умолчанию</value>
+  </data>
+  <data name="Sound.Sweep.Freq.Maximum" xml:space="preserve">
+    <value>Максимальный</value>
+  </data>
+  <data name="Sound.Sweep.Freq.Basic" xml:space="preserve">
+    <value>Основной</value>
+  </data>
+  <data name="Sound.Sweep.Freq.Invert" xml:space="preserve">
+    <value>Инвертировать</value>
+  </data>
+  <data name="Word.Duration" xml:space="preserve">
+    <value>Продолжительность</value>
+  </data>
+  <data name="Sound.Sweep.Sec" xml:space="preserve">
+    <value>сек</value>
+  </data>
+  <data name="Sound.Sweep.Option.Exponential" xml:space="preserve">
+    <value>Экспоненциальный</value>
+  </data>
+  <data name="Sound.Sweep.Sec.Full" xml:space="preserve">
+    <value>25 сек. 15 сек.</value>
+  </data>
+  <data name="Sound.Sweep.Option.Step.Full" xml:space="preserve">
+    <value>музыкальная шкала</value>
+  </data>
+  <data name="Sound.Sweep.Option.Step" xml:space="preserve">
+    <value>Гамма</value>
+  </data>
+  <data name="Sound.Sweep.Title" xml:space="preserve">
+    <value>Развертка</value>
+  </data>
+  <data name="Sound.Sweep.Title.Full" xml:space="preserve">
+    <value>Частотная развертка / Синусоидальная развертка</value>
+  </data>
 </root>

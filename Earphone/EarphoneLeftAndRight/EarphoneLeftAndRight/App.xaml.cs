@@ -59,6 +59,9 @@ namespace EarphoneLeftAndRight
                     case appActionIdOpen + nameof(Views.ConfigPage):
                         await Shell.Current.GoToAsync($"///{nameof(Views.ConfigPage)}");
                         break;
+                    case appActionIdOpen + nameof(Views.BeepTabbed):
+                        await Shell.Current.GoToAsync($"///{nameof(Views.BeepTabbed)}");
+                        break;
                 }
             });
         }
@@ -78,6 +81,7 @@ namespace EarphoneLeftAndRight
                     //, new Xamarin.Essentials.AppAction("play_voice_left", Resx.LocalResources.Left, null, icon)
                     //, new Xamarin.Essentials.AppAction("play_voice_right", Resx.LocalResources.Right, null, icon)
                     , new Xamarin.Essentials.AppAction(appActionIdOpen + nameof(Views.PlayPage), Resx.AppResources.Play_Title, null, icon)
+                    , new Xamarin.Essentials.AppAction(appActionIdOpen + nameof(Views.BeepTabbed), Resx.AppResources.Sound_Title, null, icon)
                     , new Xamarin.Essentials.AppAction(appActionIdOpen + nameof(Views.DictionaryTabbed), Resx.AppResources.Dict_Header, null, icon)
                     , new Xamarin.Essentials.AppAction(appActionIdOpen + nameof(Views.ConfigPage), Resx.AppResources.Config_Title, null, icon)
                     );

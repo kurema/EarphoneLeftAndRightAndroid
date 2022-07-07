@@ -16,12 +16,14 @@ You can figure out which earbuds is left or right, in the App and on the Quick S
 ![Screenshots](Res/phone/render/007.png)
 
 # Features
-* Play the stereo test voice in
+* Plays the stereo test voice in
   * App
   * Quick Settings Tile
   * Widget
-* Show definitions of left/right.
-* Support
+* Plays sound of a specific frequency.
+* Plays frequency sweep.
+* Shows definitions of left/right.
+* Supports
   * Dark theme (Android 10+)
   * Many languages
 

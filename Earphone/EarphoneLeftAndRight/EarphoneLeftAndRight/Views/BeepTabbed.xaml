@@ -48,6 +48,11 @@
             <Setter Property="Margin" Value="20" />
             <Setter Property="Padding" Value="9" />
         </Style>
+        <Style TargetType="Slider">
+            <Setter Property="MaximumTrackColor" Value="{AppThemeBinding Default=#88000000,Light=#88000000,Dark=#88FFFFFF}" />
+            <Setter Property="MinimumTrackColor" Value="Accent" />
+            <Setter Property="ThumbColor" Value="Accent" />
+        </Style>
     </TabbedPage.Resources>
     <ContentPage Title="{x:Static r:AppResources.Sound_Tune_Title}" BackgroundColor="{AppThemeBinding Default=White,Light=White,Dark=Black}">
         <ContentPage.ToolbarItems>

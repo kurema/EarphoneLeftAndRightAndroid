@@ -36,9 +36,11 @@ You can figure out which earbuds is left or right, in the App and on the Quick S
 
 
 ## Introduction / Tutorial
-https://user-images.githubusercontent.com/10556974/180641146-d95a04ca-2847-4f2d-9630-e794f83b5aa3.mp4
+https://user-images.githubusercontent.com/10556974/180641679-bfbc2d61-d42e-4879-a0a9-91d726ae5188.mp4
+
 [YouTube](https://www.youtube.com/watch?v=TDPHDW3JMRU)
 
 ### 日本語版
-https://user-images.githubusercontent.com/10556974/180641441-ed0cd78b-adcf-4e82-a6fd-106782ff112a.mp4
+https://user-images.githubusercontent.com/10556974/180641709-567f012d-8acf-4da4-8d18-40d55787f6ab.mp4
+
 [YouTube](https://www.youtube.com/watch?v=4K_icWsNJlY)

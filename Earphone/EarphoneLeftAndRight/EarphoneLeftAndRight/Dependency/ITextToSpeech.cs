@@ -11,7 +11,8 @@ namespace EarphoneLeftAndRight.Dependency
         Task Clear();
         Task SpeakLeft();
         Task SpeakRight();
+        void Load();
 
-        Task<bool> SpeakWithPan(string text, float pan, System.Globalization.CultureInfo cultureInfo);
+		Task<bool> SpeakWithPan(string text, float pan, System.Globalization.CultureInfo cultureInfo);
     }
 }

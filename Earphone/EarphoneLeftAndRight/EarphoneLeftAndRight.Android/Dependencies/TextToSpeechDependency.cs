@@ -35,6 +35,8 @@ namespace EarphoneLeftAndRight.Droid
             await Manager.Tts.SpeakRight();
         }
 
+        public void Load() => _ = Manager.Tts.Content;
+
         public async Task<bool> SpeakWithPan(string text, float pan, CultureInfo language)
         {
             var jLoc = new Java.Util.Locale(language.TwoLetterISOLanguageName);

@@ -32,6 +32,7 @@ namespace EarphoneLeftAndRight
             Xamarin.Essentials.MainThread.BeginInvokeOnMainThread(async () =>
             {
                 var tts = DependencyService.Get<Dependency.ITextToSpeech>();
+                tts.Load();
                 switch (e.AppAction.Id)
                 {
                     case "play_voice_lr":

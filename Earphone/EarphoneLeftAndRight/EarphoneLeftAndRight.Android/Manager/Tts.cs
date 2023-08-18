@@ -79,14 +79,15 @@ namespace EarphoneLeftAndRight.Droid.Manager
 
         public static async Task SpeakLeft()
         {
+            //Some device can't handle the value -1.0 and 1.0 in float. I can't believe it...
             var local = GetLocalized(Resource.String.word_left);
-            await SpeakWithPan(local.Item2, -1.0f, local.Item2.ToUpperInvariant() == "LEFT" && Content.IsLanguageAvailable(Java.Util.Locale.English)>=LanguageAvailableResult.Available ? Java.Util.Locale.English : local.Item1);
+            await SpeakWithPan(local.Item2, -0.999999f, local.Item2.ToUpperInvariant() == "LEFT" && Content.IsLanguageAvailable(Java.Util.Locale.English)>=LanguageAvailableResult.Available ? Java.Util.Locale.English : local.Item1);
         }
 
         public static async Task SpeakRight()
         {
             var local = GetLocalized(Resource.String.word_right);
-            await SpeakWithPan(local.Item2, +1.0f, local.Item2.ToUpperInvariant() == "RIGHT" && Content.IsLanguageAvailable(Java.Util.Locale.English) >= LanguageAvailableResult.Available ? Java.Util.Locale.English : local.Item1);
+            await SpeakWithPan(local.Item2, +0.999999f, local.Item2.ToUpperInvariant() == "RIGHT" && Content.IsLanguageAvailable(Java.Util.Locale.English) >= LanguageAvailableResult.Available ? Java.Util.Locale.English : local.Item1);
         }
 
         public static async Task WaitReadyAsync()
@@ -100,7 +101,7 @@ namespace EarphoneLeftAndRight.Droid.Manager
             if (!(locale is null)) Content.SetLanguage(locale);
             var bundle = new Bundle();
             if (paramPan != 0.0f) bundle.PutFloat(TextToSpeech.Engine.KeyParamPan, paramPan);
-            bundle.PutFloat(TextToSpeech.Engine.KeyParamVolume, 1.0f);
+			bundle.PutFloat(TextToSpeech.Engine.KeyParamVolume, 1.0f);
             Content.Speak(text, QueueMode.Add, bundle, Guid.NewGuid().ToString());
         }
 

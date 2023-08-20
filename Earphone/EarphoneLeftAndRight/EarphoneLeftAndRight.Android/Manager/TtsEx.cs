@@ -18,37 +18,6 @@ using JavaLocale = Java.Util.Locale;
 #nullable enable
 namespace EarphoneLeftAndRight.Droid.Manager.TtsEx
 {
-	public class LocaleLocal
-	{
-		//Constracter of Xamarin.Essentials is internal.
-		public string Language { get; }
-
-		public string Country { get; }
-
-		public string Name { get; }
-
-		public string Id { get; }
-
-		internal LocaleLocal(string language, string country, string name, string id)
-		{
-			Language = language;
-			Country = country;
-			Name = name;
-			Id = id;
-		}
-	}
-
-	public class SpeechOptionsEx
-	{
-		public LocaleLocal? Locale { get; set; }
-
-		public float? Pitch { get; set; }
-
-		public float? Volume { get; set; }
-
-		public float? Pan { get; set; }
-	}
-
 	public partial class TextToSpeechImplementation
 	{
 		internal const float PitchMax = 2.0f;
@@ -61,23 +30,26 @@ namespace EarphoneLeftAndRight.Droid.Manager.TtsEx
 
 		SemaphoreSlim? semaphore;
 
-		public Task<IEnumerable<LocaleLocal>> GetLocalesAsync() => PlatformGetLocalesAsync();
+		public Task<IEnumerable<Dependency.TextToSpeechLocale>> GetLocalesAsync() => PlatformGetLocalesAsync();
 
-		public async Task SpeakAsync(string text, SpeechOptionsEx? options = default, CancellationToken cancelToken = default)
+		public async Task SpeakAsync((string Text, Dependency.TextToSpeechOptions Options)[] words, CancellationToken cancelToken = default)
 		{
-			if (string.IsNullOrEmpty(text))
-				throw new ArgumentNullException(nameof(text), "Text cannot be null or empty string");
-
-			if (options?.Volume.HasValue ?? false)
+			foreach (var (text, options) in words)
 			{
-				if (options.Volume.Value < VolumeMin || options.Volume.Value > VolumeMax)
-					throw new ArgumentOutOfRangeException($"Volume must be >= {VolumeMin} and <= {VolumeMax}");
-			}
+				if (string.IsNullOrEmpty(text))
+					throw new ArgumentNullException(nameof(text), "Text cannot be null or empty string");
 
-			if (options?.Pitch.HasValue ?? false)
-			{
-				if (options.Pitch.Value < PitchMin || options.Pitch.Value > PitchMax)
-					throw new ArgumentOutOfRangeException($"Pitch must be >= {PitchMin} and <= {PitchMin}");
+				if (options?.Volume.HasValue ?? false)
+				{
+					if (options.Volume.Value < VolumeMin || options.Volume.Value > VolumeMax)
+						throw new ArgumentOutOfRangeException($"Volume must be >= {VolumeMin} and <= {VolumeMax}");
+				}
+
+				if (options?.Pitch.HasValue ?? false)
+				{
+					if (options.Pitch.Value < PitchMin || options.Pitch.Value > PitchMax)
+						throw new ArgumentOutOfRangeException($"Pitch must be >= {PitchMin} and <= {PitchMin}");
+				}
 			}
 
 			semaphore ??= new SemaphoreSlim(1, 1);
@@ -85,7 +57,7 @@ namespace EarphoneLeftAndRight.Droid.Manager.TtsEx
 			try
 			{
 				await semaphore.WaitAsync(cancelToken);
-				await PlatformSpeakAsync(text, options, cancelToken);
+				await PlatformSpeakAsync(words, cancelToken);
 			}
 			finally
 			{
@@ -113,17 +85,17 @@ namespace EarphoneLeftAndRight.Droid.Manager.TtsEx
 			return tts;
 		}
 
-		Task PlatformSpeakAsync(string text, SpeechOptionsEx options, CancellationToken cancelToken)
+		Task PlatformSpeakAsync((string Text, Dependency.TextToSpeechOptions Options)[] words, CancellationToken cancelToken)
 		{
 			var textToSpeech = GetTextToSpeech() ?? throw new PlatformNotSupportedException("Unable to start text-to-speech engine, not supported on device.");
-			var max = maxSpeechInputLengthDefault;
-			if (Build.VERSION.SdkInt >= BuildVersionCodes.JellyBeanMr2)
-				max = AndroidTextToSpeech.MaxSpeechInputLength;
+			//var max = maxSpeechInputLengthDefault;
+			//if (Build.VERSION.SdkInt >= BuildVersionCodes.JellyBeanMr2)
+			//	max = AndroidTextToSpeech.MaxSpeechInputLength;
 
-			return textToSpeech.SpeakAsync(text, max, options, cancelToken);
+			return textToSpeech.SpeakAsync(words, cancelToken);
 		}
 
-		Task<IEnumerable<LocaleLocal>> PlatformGetLocalesAsync()
+		Task<IEnumerable<Dependency.TextToSpeechLocale>> PlatformGetLocalesAsync()
 		{
 			var textToSpeech = GetTextToSpeech();
 			return textToSpeech == null
@@ -179,7 +151,7 @@ namespace EarphoneLeftAndRight.Droid.Manager.TtsEx
 		int numExpectedUtterances = 0;
 		int numCompletedUtterances = 0;
 
-		public async Task SpeakAsync(string text, int max, SpeechOptionsEx options, CancellationToken cancelToken)
+		public async Task SpeakAsync((string Text, Dependency.TextToSpeechOptions Options)[] words, CancellationToken cancelToken)
 		{
 			await Initialize();
 
@@ -205,48 +177,53 @@ namespace EarphoneLeftAndRight.Droid.Manager.TtsEx
 				});
 			}
 
-			if (options?.Locale?.Language != null)
+			int i = 0;
+			foreach (var (text, options) in words)
 			{
-				JavaLocale locale = null;
-				if (!string.IsNullOrWhiteSpace(options?.Locale.Country))
-					locale = new JavaLocale(options.Locale.Language, options.Locale.Country);
+				if (options?.Locale?.Language != null)
+				{
+					JavaLocale locale = null;
+					if (!string.IsNullOrWhiteSpace(options?.Locale.Country))
+						locale = new JavaLocale(options.Locale.Language, options.Locale.Country);
+					else
+						locale = new JavaLocale(options.Locale.Language);
+
+					tts.SetLanguage(locale);
+				}
 				else
-					locale = new JavaLocale(options.Locale.Language);
+				{
+					SetDefaultLanguage();
+				}
 
-				tts.SetLanguage(locale);
-			}
-			else
-			{
-				SetDefaultLanguage();
-			}
+				if (options?.Pitch.HasValue ?? false)
+					tts.SetPitch(options.Pitch.Value);
+				else
+					tts.SetPitch(1.0f);
 
-			if (options?.Pitch.HasValue ?? false)
-				tts.SetPitch(options.Pitch.Value);
-			else
-				tts.SetPitch(1.0f);
+				tts.SetSpeechRate(1.0f);
 
-			tts.SetSpeechRate(1.0f);
+				var guid = Guid.NewGuid().ToString();
 
-			var guid = Guid.NewGuid().ToString();
-
-			{
-				// We require the utterance id to be set if we want the completed listener to fire
-				var map = new Dictionary<string, string>(StringComparer.Ordinal)
+				{
+					// We require the utterance id to be set if we want the completed listener to fire
+					var map = new Dictionary<string, string>(StringComparer.Ordinal)
 				{
 					{ AndroidTextToSpeech.Engine.KeyParamUtteranceId, $"{guid}" }
 				};
 
-				if (options != null && options.Volume.HasValue)
-					map.Add(AndroidTextToSpeech.Engine.KeyParamVolume, options.Volume.Value.ToString(CultureInfo.InvariantCulture));
+					if (options != null && options.Volume.HasValue)
+						map.Add(AndroidTextToSpeech.Engine.KeyParamVolume, options.Volume.Value.ToString(CultureInfo.InvariantCulture));
 
-				if (options?.Pan.HasValue ?? false)
-					map.Add(AndroidTextToSpeech.Engine.KeyParamPan, options.Pan.Value.ToString(CultureInfo.InvariantCulture));
+					if (options?.Pan.HasValue ?? false)
+						map.Add(AndroidTextToSpeech.Engine.KeyParamPan, options.Pan.Value.ToString(CultureInfo.InvariantCulture));
 
-				// We use an obsolete overload here so it works on older API levels at runtime
-				// Flush on first entry and add (to not flush our own previous) subsequent entries
+					// We use an obsolete overload here so it works on older API levels at runtime
+					// Flush on first entry and add (to not flush our own previous) subsequent entries
 #pragma warning disable CS0618
-				tts.Speak(text, QueueMode.Add, map);
+					tts.Speak(text, i == 0 ? QueueMode.Flush : QueueMode.Add, map);
 #pragma warning restore CS0618
+				}
+				i++;
 			}
 
 			await tcsUtterances.Task;
@@ -260,13 +237,13 @@ namespace EarphoneLeftAndRight.Droid.Manager.TtsEx
 				tcsInitialize.TrySetException(new ArgumentException("Failed to initialize Text to Speech engine."));
 		}
 
-		public async Task<IEnumerable<LocaleLocal>> GetLocalesAsync()
+		public async Task<IEnumerable<Dependency.TextToSpeechLocale>> GetLocalesAsync()
 		{
 			await Initialize();
 
 			try
 			{
-				return tts.AvailableLanguages.Select(a => new LocaleLocal(a.Language, a.Country, a.DisplayName, string.Empty));
+				return tts.AvailableLanguages.Select(a => new Dependency.TextToSpeechLocale(a.Language, a.Country, a.DisplayName, string.Empty));
 			}
 			catch (Exception ex)
 			{
@@ -275,7 +252,7 @@ namespace EarphoneLeftAndRight.Droid.Manager.TtsEx
 
 			return JavaLocale.GetAvailableLocales()
 				.Where(IsLocaleAvailable)
-				.Select(l => new LocaleLocal(l.Language, l.Country, l.DisplayName, string.Empty))
+				.Select(l => new Dependency.TextToSpeechLocale(l.Language, l.Country, l.DisplayName, string.Empty))
 				.GroupBy(c => c.ToString())
 				.Select(g => g.First());
 		}

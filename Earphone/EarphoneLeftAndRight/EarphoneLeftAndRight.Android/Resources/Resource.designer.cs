@@ -19422,7 +19422,13 @@ namespace EarphoneLeftAndRight.Droid
 			public const int word_left = 2131624101;
 			
 			// aapt resource value: 0x7F0E00A6
-			public const int word_right = 2131624102;
+			public const int word_left_voice = 2131624102;
+			
+			// aapt resource value: 0x7F0E00A7
+			public const int word_right = 2131624103;
+			
+			// aapt resource value: 0x7F0E00A8
+			public const int word_right_voice = 2131624104;
 			
 			static String()
 			{

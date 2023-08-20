@@ -27,12 +27,14 @@ namespace EarphoneLeftAndRight.Droid
 
         public async Task SpeakLeft()
         {
-            await Manager.Tts.SpeakLeft();
+			await Manager.Tts.WaitReadyAsync();
+			await Manager.Tts.SpeakLeft();
         }
 
         public async Task SpeakRight()
         {
-            await Manager.Tts.SpeakRight();
+			await Manager.Tts.WaitReadyAsync();
+			await Manager.Tts.SpeakRight();
         }
 
         public void Load() => _ = Manager.Tts.Content;

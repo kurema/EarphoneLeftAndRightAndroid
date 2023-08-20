@@ -1,8 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8" ?> 
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <resources>
-  <string name="app_name">Stereo Test</string>
-  <string name="tile_play_name">Left/Right</string>
-  <string name="word.left">Left</string>
-  <string name="word.right">Right</string>
-  <string name="widget_name">Stereo Test Widget</string>
+	<string name="app_name">Stereo Test</string>
+	<string name="tile_play_name">Left/Right</string>
+	<string name="word.left">Left</string>
+	<string name="word.right">Right</string>
+	<string name="word.left.voice"></string>
+	<string name="word.right.voice"></string>
+	<string name="widget_name">Stereo Test Widget</string>
 </resources>

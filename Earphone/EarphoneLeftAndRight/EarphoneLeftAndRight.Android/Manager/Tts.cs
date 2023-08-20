@@ -37,7 +37,7 @@ namespace EarphoneLeftAndRight.Droid.Manager
 			if (Content.IsSpeaking) Content.Stop();
 		}
 
-		public static (Java.Util.Locale, string) GetLocalized(int key)
+		public static (Java.Util.Locale, string) GetLocalized(int key1, int key2)
 		{
 			//TTSエンジンがサポートしてる言語の翻訳を優先する。
 			//strings.xmlがその言語を対応しているのか見分ける方法は良く分からない。
@@ -71,21 +71,26 @@ namespace EarphoneLeftAndRight.Droid.Manager
 				{
 					var config = new Android.Content.Res.Configuration(Application.Context.Resources.Configuration);
 					config.SetLocale(item);
-					return (item, Application.Context.CreateConfigurationContext(config).GetString(key));
+					var context = Application.Context.CreateConfigurationContext(config);
+					var text2 = context.GetString(key2);
+					return (item, string.IsNullOrWhiteSpace(text2) ? context.GetString(key1) : text2);
 				}
 			}
-			return (null, Application.Context.GetString(key));
+			{
+				var text2 = Application.Context.GetString(key2);
+				return (null, string.IsNullOrWhiteSpace(text2) ? Application.Context.GetString(key1) : text2);
+			}
 		}
 
 		public static async Task SpeakLeft()
 		{
-			var local = GetLocalized(Resource.String.word_left);
+			var local = GetLocalized(Resource.String.word_left, Resource.String.word_left_voice);
 			await SpeakWithPan(local.Item2, -1.0f, local.Item2.ToUpperInvariant() == "LEFT" && Content.IsLanguageAvailable(Java.Util.Locale.English) >= LanguageAvailableResult.Available ? Java.Util.Locale.English : local.Item1);
 		}
 
 		public static async Task SpeakRight()
 		{
-			var local = GetLocalized(Resource.String.word_right);
+			var local = GetLocalized(Resource.String.word_right, Resource.String.word_right_voice);
 			await SpeakWithPan(local.Item2, +1.0f, local.Item2.ToUpperInvariant() == "RIGHT" && Content.IsLanguageAvailable(Java.Util.Locale.English) >= LanguageAvailableResult.Available ? Java.Util.Locale.English : local.Item1);
 		}
 
@@ -110,9 +115,9 @@ namespace EarphoneLeftAndRight.Droid.Manager
 			};
 			if (paramPan != 0.0f) map.Add(TextToSpeech.Engine.KeyParamPan, paramPan.ToString(System.Globalization.CultureInfo.InvariantCulture));
 			//Maui Essentials use this to support older API levels at runtime. New version worked on Android 5 but anyway.
-			//https://github.com/dotnet/maui/blob/main/src/Essentials/src/TextToSpeech/TextToSpeech.android.cs#L62
+			//https://github.com/dotnet/maui/blob/main/src/Essentials/src/TextToSpeech/TextToSpeech.android.cs
 #pragma warning disable CS0618
-			var result= Content.Speak(text, QueueMode.Add, map);
+			Content.Speak(text, QueueMode.Add, map);
 #pragma warning restore CS0618
 			//System.Diagnostics.Debug.WriteLine(result);
 

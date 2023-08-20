@@ -4,5 +4,8 @@
   <string name="tile_play_name">左/右</string>
   <string name="word.left">左</string>
   <string name="word.right">右</string>
-  <string name="widget_name">ステレオテストウィジェット</string>
+	<string name="word.left.voice">ひだり</string>
+	<string name="word.right.voice">みぎ</string>
+
+	<string name="widget_name">ステレオテストウィジェット</string>
 </resources>

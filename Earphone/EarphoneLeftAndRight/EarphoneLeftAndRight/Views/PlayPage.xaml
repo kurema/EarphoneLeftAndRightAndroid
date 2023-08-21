@@ -12,6 +12,11 @@
         <vm:PlayViewModel />
     </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding ShellGoToCommand}" CommandParameter="/PlayConfigPage">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="Material" Glyph="&#xe8b8;" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
         <ToolbarItem Command="{Binding OpenWebCommand}" CommandParameter="{x:Static r:AppResources.More_OpenVideo_URL}">
             <ToolbarItem.IconImageSource>
                 <!--<FontImageSource FontFamily="Material" Glyph="&#xe8fd;" />-->

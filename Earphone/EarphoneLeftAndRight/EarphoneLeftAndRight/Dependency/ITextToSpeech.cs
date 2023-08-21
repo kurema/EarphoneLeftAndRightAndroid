@@ -38,6 +38,16 @@ namespace EarphoneLeftAndRight.Dependency
 
 	public class TextToSpeechOptions
 	{
+		public const float PitchMax = 2.0f;
+		public const float PitchDefault = 1.0f;
+		public const float PitchMin = 0.0f;
+
+		public const float VolumeMax = 1.0f;
+		public const float VolumeDefault = 0.5f;
+		public const float VolumeMin = 0.0f;
+
+		public const float PanAbsDefault = 1.0f;
+
 		public TextToSpeechOptions()
 		{
 		}

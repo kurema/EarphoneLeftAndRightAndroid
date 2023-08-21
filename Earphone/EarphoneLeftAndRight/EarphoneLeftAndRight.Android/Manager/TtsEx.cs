@@ -5,8 +5,10 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Android.App;
+using Android.Gms.Ads.Formats;
 using Android.OS;
 using Android.Speech.Tts;
+using EarphoneLeftAndRight.Dependency;
 using Xamarin.Essentials;
 using AndroidTextToSpeech = Android.Speech.Tts.TextToSpeech;
 using Debug = System.Diagnostics.Debug;
@@ -20,14 +22,6 @@ namespace EarphoneLeftAndRight.Droid.Manager.TtsEx
 {
 	public partial class TextToSpeechImplementation
 	{
-		internal const float PitchMax = 2.0f;
-		internal const float PitchDefault = 1.0f;
-		internal const float PitchMin = 0.0f;
-
-		internal const float VolumeMax = 1.0f;
-		internal const float VolumeDefault = 0.5f;
-		internal const float VolumeMin = 0.0f;
-
 		SemaphoreSlim? semaphore;
 
 		public Task<IEnumerable<Dependency.TextToSpeechLocale>> GetLocalesAsync() => PlatformGetLocalesAsync();
@@ -41,14 +35,14 @@ namespace EarphoneLeftAndRight.Droid.Manager.TtsEx
 
 				if (options?.Volume.HasValue ?? false)
 				{
-					if (options.Volume.Value < VolumeMin || options.Volume.Value > VolumeMax)
-						throw new ArgumentOutOfRangeException($"Volume must be >= {VolumeMin} and <= {VolumeMax}");
+					if (options.Volume.Value < TextToSpeechOptions.VolumeMin || options.Volume.Value > TextToSpeechOptions.VolumeMax)
+						throw new ArgumentOutOfRangeException($"Volume must be >= {TextToSpeechOptions.VolumeMin} and <= {TextToSpeechOptions.VolumeMax}");
 				}
 
 				if (options?.Pitch.HasValue ?? false)
 				{
-					if (options.Pitch.Value < PitchMin || options.Pitch.Value > PitchMax)
-						throw new ArgumentOutOfRangeException($"Pitch must be >= {PitchMin} and <= {PitchMin}");
+					if (options.Pitch.Value < TextToSpeechOptions.PitchMin || options.Pitch.Value > TextToSpeechOptions.PitchMax)
+						throw new ArgumentOutOfRangeException($"Pitch must be >= {TextToSpeechOptions.PitchMin} and <= {TextToSpeechOptions.PitchMin}");
 				}
 			}
 
@@ -70,7 +64,7 @@ namespace EarphoneLeftAndRight.Droid.Manager.TtsEx
 
 	public partial class TextToSpeechImplementation
 	{
-		const int maxSpeechInputLengthDefault = 4000;
+		//const int maxSpeechInputLengthDefault = 4000;
 
 		WeakReference<TextToSpeechInternalImplementation> textToSpeechRef = null;
 

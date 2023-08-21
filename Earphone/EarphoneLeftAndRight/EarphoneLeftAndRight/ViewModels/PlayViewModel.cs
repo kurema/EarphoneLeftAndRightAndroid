@@ -49,9 +49,13 @@ namespace EarphoneLeftAndRight.ViewModels
                 }
                 catch { }
             });
-        }
+			ShellGoToCommand = new Xamarin.Forms.Command(async a =>
+			{
+				await Shell.Current.GoToAsync(a?.ToString());
+			});
+		}
 
-        private async static void Speak(object a)
+        public async static void Speak(object a)
         {
             var tts = DependencyService.Get<Dependency.ITextToSpeech>();
             switch (a.ToString())
@@ -76,8 +80,8 @@ namespace EarphoneLeftAndRight.ViewModels
         public ICommand SpeakCommand { get; }
         public ICommand OpenDictionaryCommand { get; }
         public ICommand OpenSearchCommand { get; }
-
-        public ICommand PlayBeepCommand { get; }
+		public ICommand ShellGoToCommand { get; }
+		public ICommand PlayBeepCommand { get; }
         public ICommand PlayBeepShiftCommand { get; }
 
         private string[]? _SearchWords;

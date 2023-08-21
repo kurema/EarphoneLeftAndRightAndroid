@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:r="clr-namespace:EarphoneLeftAndRight.Resx"
+             x:Class="EarphoneLeftAndRight.Views.PlayConfigPage"
+             BackgroundColor="{AppThemeBinding Default=White,Light=White,Dark=Black}"
+             xmlns:vm="clr-namespace:EarphoneLeftAndRight.ViewModels"
+             >
+    <ContentPage.BindingContext>
+        <vm:PlayConfigViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout Margin="10">
+                <Label Text="{x:Static r:AppResources.Play_StereoTest_Title}" FontSize="Large" />
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Row="0" Grid.Column="0" Text="{x:Static r:LocalResources.Left}" Command="{Binding SpeakCommand}" CommandParameter="Left"/>
+                    <Button Grid.Row="0" Grid.Column="1" Text="{x:Static r:LocalResources.Right}" Command="{Binding SpeakCommand}" CommandParameter="Right"/>
+                </Grid>
+                <Label Text="Volume" FontSize="Large" />
+                <Slider />
+                <Label Text="Pitch" FontSize="Large" />
+                <Slider />
+                <Label Text="Stereo level" FontSize="Large" />
+                <Slider />
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

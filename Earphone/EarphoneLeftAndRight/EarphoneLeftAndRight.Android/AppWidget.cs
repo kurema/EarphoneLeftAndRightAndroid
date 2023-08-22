@@ -50,10 +50,7 @@ namespace EarphoneLeftAndRight.Droid
             switch (intent.Action)
             {
                 case ACTION_SELECTED:
-                    Manager.Tts.StopIfSpeaking();
-
-                    await Manager.Tts.SpeakLeft();
-                    await Manager.Tts.SpeakRight();
+                    await Manager.Tts.SpeakLeftRight();
                     break;
             }
         }

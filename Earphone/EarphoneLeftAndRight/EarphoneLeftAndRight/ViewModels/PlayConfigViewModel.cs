@@ -11,17 +11,43 @@ namespace EarphoneLeftAndRight.ViewModels
 		public PlayConfigViewModel()
 		{
 			SpeakCommand = new Command(PlayViewModel.Speak);
-			ForceEnglish = Storages.ConfigStorage.VoiceForeceEnglish.Value;
+			RestoreCommand = new Command(Restore);
+			SaveCommand = new Command(Save);
 		}
 
 		public void Save()
 		{
 			Storages.ConfigStorage.VoiceForeceEnglish.Value = ForceEnglish;
+			Storages.ConfigStorage.VoiceVolume.Value = Volume;
+			Storages.ConfigStorage.VoicePitch.Value = Pitch;
+			Storages.ConfigStorage.VoicePan.Value = Pan;
 		}
 
+		public void Restore()
+		{
+			ForceEnglish = Storages.ConfigStorage.VoiceForeceEnglish.Value;
+			Volume = Storages.ConfigStorage.VoiceVolume.Value;
+			Pitch = Storages.ConfigStorage.VoicePitch.Value;
+			Pan = Storages.ConfigStorage.VoicePan.Value;
+		}
+
+
 		public ICommand SpeakCommand { get; }
+		public ICommand RestoreCommand { get; }
+		public ICommand SaveCommand { get; }
+
 
 		private bool _ForceEnglish;
 		public bool ForceEnglish { get => _ForceEnglish; set => SetProperty(ref _ForceEnglish, value); }
+
+		private float _Pitch;
+		public float Pitch { get => _Pitch; set => SetProperty(ref _Pitch, value); }
+
+		private float _Pan;
+		public float Pan { get => _Pan; set => SetProperty(ref _Pan, value); }
+
+
+		private float _Volume;
+		public float Volume { get => _Volume; set => SetProperty(ref _Volume, value); }
 	}
 }

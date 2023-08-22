@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace EarphoneLeftAndRight.Dependency
@@ -9,11 +11,11 @@ namespace EarphoneLeftAndRight.Dependency
 	{
 		bool IsSpeaking { get; }
 		Task Clear();
-		Task SpeakLeft();
-		Task SpeakRight();
+		Task SpeakLeftAsync();
+		Task SpeakRightAsync();
+		Task SpeakLeftRightAsync();
 		void Load();
-
-		Task<bool> SpeakWithPan(string text, float pan, System.Globalization.CultureInfo cultureInfo);
+		Task SpeakAsync(string text, TextToSpeechOptions optionOverride);
 	}
 
 	public class TextToSpeechLocale
@@ -33,6 +35,14 @@ namespace EarphoneLeftAndRight.Dependency
 			Country = country;
 			Name = name;
 			Id = id;
+		}
+
+		public TextToSpeechLocale(CultureInfo cultureInfo)
+		{
+			Language = cultureInfo.ThreeLetterISOLanguageName;
+			Country = string.Empty;
+			Name = cultureInfo.Name;
+			Id = string.Empty;
 		}
 	}
 

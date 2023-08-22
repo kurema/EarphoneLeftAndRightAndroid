@@ -4,6 +4,8 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using EarphoneLeftAndRight.Dependency;
+using EarphoneLeftAndRight.Droid.Manager;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -15,41 +17,37 @@ using System.Threading.Tasks;
 namespace EarphoneLeftAndRight.Droid
 {
 
-    public class TextToSpeechDependency : Dependency.ITextToSpeech
-    {
-        public bool IsSpeaking => Manager.Tts.Content?.IsSpeaking ?? false;
+	public class TextToSpeechDependency : Dependency.ITextToSpeech
+	{
+		public bool IsSpeaking => Manager.Tts.Content?.IsSpeaking ?? false;
 
-        public Task Clear()
-        {
-            Manager.Tts.StopIfSpeaking();
-            return Task.CompletedTask;
-        }
+		public Task Clear()
+		{
+			Manager.Tts.Content.Stop();
+			return Task.CompletedTask;
+		}
 
-        public async Task SpeakLeft()
-        {
-			await Manager.Tts.WaitReadyAsync();
+		public async Task SpeakLeftAsync()
+		{
 			await Manager.Tts.SpeakLeft();
-        }
+		}
 
-        public async Task SpeakRight()
-        {
-			await Manager.Tts.WaitReadyAsync();
+		public async Task SpeakRightAsync()
+		{
 			await Manager.Tts.SpeakRight();
-        }
+		}
 
-        public void Load() => _ = Manager.Tts.Content;
+		public async Task SpeakLeftRightAsync()
+		{
+			await Manager.Tts.SpeakLeftRight();
+		}
 
-        public async Task<bool> SpeakWithPan(string text, float pan, CultureInfo language)
-        {
-            var jLoc = new Java.Util.Locale(language.TwoLetterISOLanguageName);
-            var tts = Manager.Tts.Content;
-            await Manager.Tts.WaitReadyAsync();
-            var lang = tts.IsLanguageAvailable(jLoc) >= Android.Speech.Tts.LanguageAvailableResult.Available ? jLoc : null;
-            lang ??= (tts.IsLanguageAvailable(Java.Util.Locale.English) >= Android.Speech.Tts.LanguageAvailableResult.Available ? Java.Util.Locale.English : null);
-            lang ??= tts.DefaultVoice?.Locale;
-            if (lang is null) return false;
-            await Manager.Tts.SpeakWithPan(text, pan, jLoc);
-            return true;
-        }
-    }
+		public void Load() => Manager.Tts.Content?.Initialize();
+
+		public async Task SpeakAsync(string text, TextToSpeechOptions optionOverride)
+		{
+			await Tts.SpeakAsync(text, optionOverride);
+		}
+
+	}
 }

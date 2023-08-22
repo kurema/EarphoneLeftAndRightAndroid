@@ -19,7 +19,6 @@ namespace EarphoneLeftAndRight.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             try
             {
-                _ = Manager.Tts.Content;
                 Android.Gms.Ads.MobileAds.Initialize(ApplicationContext);
                 new GDPR().SetGDPR(this, ContentResolver);
             }

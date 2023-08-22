@@ -29,7 +29,8 @@ namespace EarphoneLeftAndRight.Views
                 var text = item;
                 text = System.Text.RegularExpressions.Regex.Replace(text, @"\([^\)]*\)", "");
                 text = System.Text.RegularExpressions.Regex.Replace(text, @"\[[^\]]*\]", "");
-                await tts.SpeakWithPan(text, 0, new System.Globalization.CultureInfo(vm.HtmlLocale));
+                var cultureInfo = new System.Globalization.CultureInfo(vm.HtmlLocale);
+				await tts.SpeakAsync(text, new Dependency.TextToSpeechOptions() { Locale = new Dependency.TextToSpeechLocale(cultureInfo) });
             }
         }
     }

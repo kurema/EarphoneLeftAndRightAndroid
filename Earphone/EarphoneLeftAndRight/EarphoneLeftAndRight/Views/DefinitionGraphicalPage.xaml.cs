@@ -76,14 +76,14 @@ namespace EarphoneLeftAndRight.Views
         {
             var tts = DependencyService.Get<Dependency.ITextToSpeech>();
             tts.Clear();
-            tts.SpeakLeft();
+            tts.SpeakLeftAsync();
         }
 
         private void TapGestureRecognizer_Tapped_Right(object sender, EventArgs e)
         {
             var tts = DependencyService.Get<Dependency.ITextToSpeech>();
             tts.Clear();
-            tts.SpeakRight();
+            tts.SpeakRightAsync();
         }
     }
 }

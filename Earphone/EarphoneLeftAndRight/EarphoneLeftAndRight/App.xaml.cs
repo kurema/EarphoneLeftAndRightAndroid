@@ -38,18 +38,18 @@ namespace EarphoneLeftAndRight
                     case "play_voice_lr":
                         await Shell.Current.GoToAsync($"///{nameof(Views.PlayPage)}");
                         await tts.Clear();
-                        await tts.SpeakLeft();
-                        await tts.SpeakRight();
+                        await tts.SpeakLeftAsync();
+                        await tts.SpeakRightAsync();
                         break;
                     case "play_voice_left":
                         await Shell.Current.GoToAsync($"///{nameof(Views.PlayPage)}");
                         await tts.Clear();
-                        await tts.SpeakLeft();
+                        await tts.SpeakLeftAsync();
                         break;
                     case "play_voice_right":
                         await Shell.Current.GoToAsync($"///{nameof(Views.PlayPage)}");
                         await tts.Clear();
-                        await tts.SpeakRight();
+                        await tts.SpeakRightAsync();
                         break;
                     case appActionIdOpen + nameof(Views.DictionaryTabbed):
                         await Shell.Current.GoToAsync($"///{nameof(Views.DictionaryTabbed)}");

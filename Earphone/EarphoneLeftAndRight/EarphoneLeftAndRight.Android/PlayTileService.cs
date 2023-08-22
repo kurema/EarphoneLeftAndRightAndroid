@@ -29,9 +29,7 @@ namespace EarphoneLeftAndRight.Droid
         {
             base.OnClick();
 
-            Manager.Tts.StopIfSpeaking();
-            await Manager.Tts.SpeakLeft();
-            await Manager.Tts.SpeakRight();
+            await Manager.Tts.SpeakLeftRight();
         }
 
         public override void OnStartListening()

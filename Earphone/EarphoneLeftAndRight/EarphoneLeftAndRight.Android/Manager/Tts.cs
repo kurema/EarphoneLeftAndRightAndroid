@@ -13,6 +13,10 @@ using Android.Speech.Tts;
 using System.Threading.Tasks;
 using Java.Interop;
 using EarphoneLeftAndRight.Dependency;
+using EarphoneLeftAndRight.Droid.Manager.TtsEx;
+using static System.Net.Mime.MediaTypeNames;
+using static Android.Provider.UserDictionary;
+using Android.Gms.Auth.Api.SignIn.Internal;
 
 namespace EarphoneLeftAndRight.Droid.Manager
 {
@@ -34,31 +38,86 @@ namespace EarphoneLeftAndRight.Droid.Manager
 
 		public static async Task SpeakLeft()
 		{
+			await SpeakLeftGeneral(LeftRight.Left);
+		}
+
+
+		private enum LeftRight
+		{
+			Left = 1, Right = 2
+		}
+
+		static async Task SpeakLeftGeneral(LeftRight leftRight)
+		{
 			var option = GetCurrentOption();
-			option.Pan = -Storages.ConfigStorage.VoicePan.Value;
-			if (Storages.ConfigStorage.VoiceForeceEnglish.Value)
+			option.Pan = Storages.ConfigStorage.VoicePan.Value * (leftRight switch
 			{
-				var en = Java.Util.Locale.English;
-				option.Locale = new Dependency.TextToSpeechLocale(en?.Language, en?.Country, en?.DisplayName, string.Empty);
-				await Content.SpeakAsync(new (string Text, Dependency.TextToSpeechOptions Options)[] { ("Left", option) });
-			}
-			else
+				LeftRight.Left => -1,
+				LeftRight.Right => 1,
+				_ => 1,
+			});
+			string word = leftRight switch { LeftRight.Left => "Left", LeftRight.Right => "Right", _ => string.Empty };
+			if (Storages.ConfigStorage.VoiceForeceEnglish.Value) goto English;
+
+			static async Task<(Java.Util.Locale, string)> GetLocalizedTextLocalAsync(Storages.ConfigStorage.ConfigEntryString entry, int key1, int key2)
 			{
-				var (locale, text) = await Content.GetLocalizedTextAsync(Resource.String.word_left, Resource.String.word_left_voice);
-				await Content.SpeakAsync(new (string Text, Dependency.TextToSpeechOptions Options)[] { });
-				//await SpeakWithPan(local.Item2, +1.0f, local.Item2.ToUpperInvariant() == "RIGHT" && Content.IsLanguageAvailable(Java.Util.Locale.English) >= LanguageAvailableResult.Available ? Java.Util.Locale.English : local.Item1);
+				var (locale, text) = await Content.GetLocalizedTextAsync(key1, key2);
+				return string.IsNullOrWhiteSpace(entry.Value) ? (locale, text) : (locale, entry.Value);
 			}
+
+			var (locale, text) = leftRight switch
+			{
+				LeftRight.Left => await GetLocalizedTextLocalAsync(Storages.ConfigStorage.VoiceOverrideLeft, Resource.String.word_left, Resource.String.word_left_voice),
+				LeftRight.Right => await GetLocalizedTextLocalAsync(Storages.ConfigStorage.VoiceOverrideRight, Resource.String.word_right, Resource.String.word_right_voice),
+				_ => (null, string.Empty),
+			};
+			if (text.Equals(word, StringComparison.InvariantCultureIgnoreCase) && (await Content.GetLocalesAsync()).Any(a => a.Language == "English")) goto English;
+			option.Locale = TextToSpeechImplementation.GetLocaleFromJavaLocale(locale);
+			await Content.SpeakAsync(new (string Text, Dependency.TextToSpeechOptions Options)[] { (text, option) });
+		//await SpeakWithPan(local.Item2, +1.0f, local.Item2.ToUpperInvariant() == "RIGHT" && Content.IsLanguageAvailable(Java.Util.Locale.English) >= LanguageAvailableResult.Available ? Java.Util.Locale.English : local.Item1);
+
+		English:;
+			await SpeakWordInEnglish(word, option);
+			return;
+
+		}
+
+		private static async Task SpeakWordInEnglish(string text, TextToSpeechOptions options)
+		{
+			var op = new TextToSpeechOptions(options);
+			op.Locale = TextToSpeechImplementation.GetLocaleFromJavaLocale(Java.Util.Locale.English);
+			await Content.SpeakAsync(new (string Text, Dependency.TextToSpeechOptions Options)[] { (text, op) });
 		}
 
 		public static async Task SpeakRight()
 		{
-			var local = await Content.GetLocalizedTextAsync(Resource.String.word_right, Resource.String.word_right_voice);
-
+			await SpeakLeftGeneral(LeftRight.Right);
 		}
 
 		public static async Task SpeakLeftRight()
 		{
+			var option = GetCurrentOption();
+			option.Pan = Storages.ConfigStorage.VoicePan.Value;
+			if (Storages.ConfigStorage.VoiceForeceEnglish.Value) goto English;
+			{
+				var (locale, textLeft) = await Content.GetLocalizedTextAsync(Resource.String.word_left, Resource.String.word_left_voice);
+				var (_, textRight) = await Content.GetLocalizedTextAsync(Resource.String.word_right, Resource.String.word_right_voice);
+				option.Locale = TextToSpeechImplementation.GetLocaleFromJavaLocale(locale);
+				var optionLeft = new TextToSpeechOptions(option);
+				optionLeft.Pan = -option.Pan;
+				if (textLeft.Equals("Left", StringComparison.InvariantCultureIgnoreCase) && (await Content.GetLocalesAsync()).Any(a => a.Language == "English")) goto English;
+				await Content.SpeakAsync(new (string Text, Dependency.TextToSpeechOptions Options)[] { (textLeft, optionLeft), (textRight, option) });
+				return;
+			}
 
+		English:;
+			{
+				option.Locale = TextToSpeechImplementation.GetLocaleFromJavaLocale(Java.Util.Locale.English);
+				var optionLeft = new TextToSpeechOptions(option);
+				optionLeft.Pan = -option.Pan;
+				await Content.SpeakAsync(new (string Text, Dependency.TextToSpeechOptions Options)[] { ("Left", optionLeft), ("Right", option) });
+				return;
+			}
 		}
 
 		public static Task<bool> Initialize() => Content.Initialize();

@@ -22,6 +22,8 @@ namespace EarphoneLeftAndRight.Droid.Manager.TtsEx
 {
 	public partial class TextToSpeechImplementation
 	{
+		public static TextToSpeechLocale GetLocaleFromJavaLocale(JavaLocale locale) => new TextToSpeechLocale(locale.Language, locale.Country, locale.DisplayName, string.Empty);
+
 		SemaphoreSlim? semaphore;
 
 		public Task<IEnumerable<TextToSpeechLocale>> GetLocalesAsync() => PlatformGetLocalesAsync();

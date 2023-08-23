@@ -19,7 +19,13 @@ public static class ConfigStorage
 	private static ConfigEntryFloat? _VoiceVolume;
 	public static ConfigEntryFloat VoiceVolume { get => _VoiceVolume ??= new ConfigEntryFloat("VoiceVolume", TextToSpeechOptions.VolumeMax); }
 
-	
+	private static ConfigEntryString? _VoiceOverrideLeft;
+	public static ConfigEntryString VoiceOverrideLeft { get => _VoiceOverrideLeft ??= new ConfigEntryString("VoiceOverrideLeft", string.Empty); }
+
+	private static ConfigEntryString? _VoiceOverrideRight;
+	public static ConfigEntryString VoiceOverrideRight { get => _VoiceOverrideRight ??= new ConfigEntryString("VoiceOverrideRight", string.Empty); }
+
+
 	public abstract class ConfigEntry<T>
 	{
 		public ConfigEntry(string key, T defaultValue)
@@ -60,5 +66,19 @@ public static class ConfigStorage
 			set { Xamarin.Essentials.Preferences.Set(Key, value); }
 		}
 	}
+
+	public class ConfigEntryString : ConfigEntry<string>
+	{
+		public ConfigEntryString(string key, string defaultValue) : base(key, defaultValue)
+		{
+		}
+
+		public override string Value
+		{
+			get => Xamarin.Essentials.Preferences.Get(Key, DefaultValue);
+			set { Xamarin.Essentials.Preferences.Set(Key, value); }
+		}
+	}
+
 
 }

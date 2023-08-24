@@ -38,7 +38,7 @@ namespace EarphoneLeftAndRight.Droid.Manager
 
 		public static async Task SpeakLeft()
 		{
-			await SpeakLeftGeneral(LeftRight.Left);
+			await SpeakLeftOrRightCommon(LeftRight.Left);
 		}
 
 
@@ -47,7 +47,7 @@ namespace EarphoneLeftAndRight.Droid.Manager
 			Left = 1, Right = 2
 		}
 
-		static async Task SpeakLeftGeneral(LeftRight leftRight)
+		static async Task SpeakLeftOrRightCommon(LeftRight leftRight)
 		{
 			var option = GetCurrentOption();
 			option.Pan = Storages.ConfigStorage.VoicePan.Value * (leftRight switch
@@ -74,7 +74,8 @@ namespace EarphoneLeftAndRight.Droid.Manager
 			if (text.Equals(word, StringComparison.InvariantCultureIgnoreCase) && (await Content.GetLocalesAsync()).Any(a => a.Language == "English")) goto English;
 			option.Locale = TextToSpeechImplementation.GetLocaleFromJavaLocale(locale);
 			await Content.SpeakAsync(new (string Text, Dependency.TextToSpeechOptions Options)[] { (text, option) });
-		//await SpeakWithPan(local.Item2, +1.0f, local.Item2.ToUpperInvariant() == "RIGHT" && Content.IsLanguageAvailable(Java.Util.Locale.English) >= LanguageAvailableResult.Available ? Java.Util.Locale.English : local.Item1);
+			//await SpeakWithPan(local.Item2, +1.0f, local.Item2.ToUpperInvariant() == "RIGHT" && Content.IsLanguageAvailable(Java.Util.Locale.English) >= LanguageAvailableResult.Available ? Java.Util.Locale.English : local.Item1);
+			return;
 
 		English:;
 			await SpeakWordInEnglish(word, option);
@@ -91,7 +92,7 @@ namespace EarphoneLeftAndRight.Droid.Manager
 
 		public static async Task SpeakRight()
 		{
-			await SpeakLeftGeneral(LeftRight.Right);
+			await SpeakLeftOrRightCommon(LeftRight.Right);
 		}
 
 		public static async Task SpeakLeftRight()

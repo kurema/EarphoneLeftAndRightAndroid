@@ -16,30 +16,30 @@ using Java.Interop;
 
 namespace EarphoneLeftAndRight.Droid
 {
-    [Service(Name = "com.github.kurema.earphoneleftandright.PlayService",
-        Permission = Android.Manifest.Permission.BindQuickSettingsTile,
-        Label = "@string/tile_play_name",
-        Icon = "@drawable/outline_earbuds_24", Exported = true)]
-    [IntentFilter(new[] { ActionQsTile })]
-    public class PlayTileService : TileService
-    {
-        //https://devblogs.microsoft.com/xamarin/android-nougat-quick-setting-tiles/
+	[Service(Name = "com.github.kurema.earphoneleftandright.PlayService",
+		Permission = Android.Manifest.Permission.BindQuickSettingsTile,
+		Label = "@string/tile_play_name",
+		Icon = "@drawable/outline_earbuds_24", Exported = true)]
+	[IntentFilter(new[] { ActionQsTile })]
+	public class PlayTileService : TileService
+	{
+		//https://devblogs.microsoft.com/xamarin/android-nougat-quick-setting-tiles/
 
-        public override async void OnClick()
-        {
-            base.OnClick();
+		public override async void OnClick()
+		{
+			base.OnClick();
 
-            await Manager.Tts.SpeakLeftRight();
-        }
+			await Manager.Tts.SpeakLeftRight();
+		}
 
-        public override void OnStartListening()
-        {
-            base.OnStartListening();
+		public override async void OnStartListening()
+		{
+			base.OnStartListening();
 
-            // Load tts engine when the user swipes down.
-            // This shold improve the lag.
-            //https://devblogs.microsoft.com/xamarin/android-nougat-quick-setting-tiles/
-            _ = Manager.Tts.Content;
-        }
-    }
+			// Load tts engine when the user swipes down.
+			// This shold improve the lag.
+			//https://devblogs.microsoft.com/xamarin/android-nougat-quick-setting-tiles/
+			await Manager.Tts.Content.Initialize();
+		}
+	}
 }

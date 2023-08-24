@@ -24,14 +24,16 @@ namespace EarphoneLeftAndRight.Views
             if (this.SelectedItem is not ViewModels.DictionaryViewModel vm) return;
             var strings = Helper.Helpers.XhtmlToStrings(vm.Html);
             await tts.Clear();
+            var sb=new StringBuilder();
             foreach (var item in strings)
             {
                 var text = item;
                 text = System.Text.RegularExpressions.Regex.Replace(text, @"\([^\)]*\)", "");
                 text = System.Text.RegularExpressions.Regex.Replace(text, @"\[[^\]]*\]", "");
-                var cultureInfo = new System.Globalization.CultureInfo(vm.HtmlLocale);
-				await tts.SpeakAsync(text, new Dependency.TextToSpeechOptions() { Locale = new Dependency.TextToSpeechLocale(cultureInfo) });
+                sb.AppendLine(text);
             }
-        }
-    }
+			var cultureInfo = new System.Globalization.CultureInfo(vm.HtmlLocale);
+            await tts.SpeakAsync(sb.ToString(), new Dependency.TextToSpeechOptions() { Locale = new Dependency.TextToSpeechLocale(cultureInfo) });
+		}
+	}
 }

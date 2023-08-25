@@ -13,6 +13,8 @@ namespace EarphoneLeftAndRight.ViewModels
 			SpeakCommand = new Command(PlayViewModel.Speak);
 			RestoreCommand = new Command(Restore);
 			SaveCommand = new Command(Save);
+
+			Restore();
 		}
 
 		public void Save()
@@ -49,5 +51,14 @@ namespace EarphoneLeftAndRight.ViewModels
 
 		private float _Volume;
 		public float Volume { get => _Volume; set => SetProperty(ref _Volume, value); }
+
+		public float PitchMax => Dependency.TextToSpeechOptions.PitchMax;
+		public float PitchDefault => Dependency.TextToSpeechOptions.PitchDefault;
+		public float PitchMin => Dependency.TextToSpeechOptions.PitchMin;
+		public float VolumeMax => Dependency.TextToSpeechOptions.VolumeMax;
+		public float VolumeDefault => Dependency.TextToSpeechOptions.VolumeDefault;
+		public float VolumeMin => Dependency.TextToSpeechOptions.VolumeMin;
+
+
 	}
 }

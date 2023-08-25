@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EarphoneLeftAndRight.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,8 @@ namespace EarphoneLeftAndRight.Views
 
 		protected override void OnDisappearing()
 		{
+			(BindingContext as PlayConfigViewModel)?.Save();
+
 			base.OnDisappearing();
 		}
 	}

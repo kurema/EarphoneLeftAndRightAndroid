@@ -32,8 +32,6 @@ namespace EarphoneLeftAndRight.Views
             public int PressedKey { get; }
         }
 
-
-
         public void PreparePiano()
         {
             pianoGrid.Children.Clear();
@@ -78,8 +76,6 @@ namespace EarphoneLeftAndRight.Views
             }
             foreach (var item in blackKeys) pianoGrid.Children.Add(item);
         }
-
-
 
         public double KeyWidth
         {

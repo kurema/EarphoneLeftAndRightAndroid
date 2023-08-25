@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EarphoneLeftAndRight.Views.ValueEntryView"
+             BindingContext="{Binding Source={RelativeSource Self}}"
+             >
+    <ContentView.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Slider Grid.ColumnSpan="2" Value="{x:Binding Value,Mode=TwoWay}" Minimum="{x:Binding Min,Mode=OneWay}" Maximum="{x:Binding Max,Mode=OneWay}" />
+            <!--<Slider Grid.ColumnSpan="2" Value="{Binding Value,Mode=TwoWay}" Minimum="{Binding Min}" Maximum="{Binding Max}" />-->
+            <Entry Text="{x:Binding Value,Mode=TwoWay}" Grid.Row="1" Keyboard="Numeric" />
+            <Button Grid.Row="1" Grid.Column="1" Text="Reset" Clicked="Button_Clicked" />
+        </Grid>
+    </ContentView.Content>
+</ContentView>

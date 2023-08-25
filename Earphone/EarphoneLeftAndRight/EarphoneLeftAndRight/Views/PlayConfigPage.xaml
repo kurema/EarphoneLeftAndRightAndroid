@@ -5,7 +5,14 @@
              x:Class="EarphoneLeftAndRight.Views.PlayConfigPage"
              BackgroundColor="{AppThemeBinding Default=White,Light=White,Dark=Black}"
              xmlns:vm="clr-namespace:EarphoneLeftAndRight.ViewModels"
+             xmlns:s="clr-namespace:EarphoneLeftAndRight.Storages"
+             xmlns:v="clr-namespace:EarphoneLeftAndRight.Views"
+             xmlns:dep="clr-namespace:EarphoneLeftAndRight.Dependency"
+             xmlns:vc="clr-namespace:EarphoneLeftAndRight.ValueConverters"
              >
+    <ContentPage.Resources>
+        <vc:FloatToDoubleConverter x:Key="fdVC" />
+    </ContentPage.Resources>
     <ContentPage.BindingContext>
         <vm:PlayConfigViewModel />
     </ContentPage.BindingContext>
@@ -26,12 +33,23 @@
                     <Button Grid.Row="0" Grid.Column="1" Text="{x:Static r:LocalResources.Right}" Command="{Binding SpeakCommand}" CommandParameter="Right"/>
                 </Grid>
                 <Label Text="Volume" FontSize="Large" />
-                <Slider />
+                <v:ValueEntryView Value="{Binding Volume,Mode=TwoWay}" 
+                                  Max="{Binding VolumeMax,Mode=OneWay}" 
+                                  Min="{Binding VolumeMin,Mode=OneWay}"
+                                  Default="{Binding VolumeDefault,Mode=OneWay}"
+                                  />
                 <Label Text="Pitch" FontSize="Large" />
-                <Slider />
+                <v:ValueEntryView Value="{Binding Pitch,Mode=TwoWay}" 
+                                  Max="{Binding PitchMax,Mode=OneWay}" 
+                                  Min="{Binding PitchMin,Mode=OneWay}"
+                                  Default="{Binding PitchDefault,Mode=OneWay}"
+                                  />
                 <Label Text="Stereo level" FontSize="Large" />
-                <Slider />
-
+                <v:ValueEntryView Value="{Binding Pan,Mode=TwoWay}" 
+                                  Max="1.0" 
+                                  Min="0.0"
+                                  Default="1.0"
+                                  />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

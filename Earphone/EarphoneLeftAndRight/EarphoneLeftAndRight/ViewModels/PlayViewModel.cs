@@ -61,13 +61,16 @@ namespace EarphoneLeftAndRight.ViewModels
             switch (a.ToString())
             {
                 case "Left":
+                    if (tts.IsSpeaking) await tts.Clear();
                     await tts.SpeakLeftAsync();
                     break;
                 case "Right":
-                    await tts.SpeakRightAsync();
+					if (tts.IsSpeaking) await tts.Clear();
+					await tts.SpeakRightAsync();
                     break;
                 case "Both":
-                    await tts.SpeakLeftRightAsync();
+					if (tts.IsSpeaking) await tts.Clear();
+					await tts.SpeakLeftRightAsync();
                     break;
             }
         }

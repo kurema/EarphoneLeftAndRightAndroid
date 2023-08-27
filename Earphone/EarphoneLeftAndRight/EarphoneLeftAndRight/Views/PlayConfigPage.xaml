@@ -11,7 +11,6 @@
              xmlns:vc="clr-namespace:EarphoneLeftAndRight.ValueConverters"
              >
     <ContentPage.Resources>
-        <vc:FloatToDoubleConverter x:Key="fdVC" />
     </ContentPage.Resources>
     <ContentPage.BindingContext>
         <vm:PlayConfigViewModel />
@@ -33,16 +32,30 @@
                     <Button Grid.Row="0" Grid.Column="1" Text="{x:Static r:LocalResources.Right}" Command="{Binding SpeakCommand}" CommandParameter="Right"/>
                 </Grid>
                 <Label Text="Volume" FontSize="Large" />
-                <v:ValueEntryView Value="{Binding Volume,Mode=TwoWay}" 
+                <!--<v:ValueEntryView Value="{Binding Volume,Mode=TwoWay}" 
                                   Max="{Binding VolumeMax,Mode=OneWay}" 
                                   Min="{Binding VolumeMin,Mode=OneWay}"
                                   Default="{Binding VolumeDefault,Mode=OneWay}"
-                                  />
+                                  />-->
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Slider Grid.ColumnSpan="2" Value="{Binding Volume,Mode=TwoWay}" Minimum="{Binding VolumeMin,Mode=OneWay}" Maximum="{Binding VolumeMax,Mode=OneWay}" />
+                    <Entry Text="{Binding Volume,Mode=TwoWay}" Grid.Row="1" Keyboard="Numeric" />
+                    <Button Grid.Row="1" Grid.Column="1" Text="Reset"/>
+                </Grid>
+
                 <Label Text="Pitch" FontSize="Large" />
-                <v:ValueEntryView Value="{Binding Pitch,Mode=TwoWay}" 
-                                  Max="{Binding PitchMax,Mode=OneWay}" 
-                                  Min="{Binding PitchMin,Mode=OneWay}"
-                                  Default="{Binding PitchDefault,Mode=OneWay}"
+                <v:ValueEntryView Value="{x:Binding Pitch,Mode=TwoWay}" 
+                                  Max="{x:Binding PitchMax,Mode=OneWay}" 
+                                  Min="{x:Binding PitchMin,Mode=OneWay}"
+                                  Default="{x:Binding PitchDefault,Mode=OneWay}"
                                   />
                 <Label Text="Stereo level" FontSize="Large" />
                 <v:ValueEntryView Value="{Binding Pan,Mode=TwoWay}" 

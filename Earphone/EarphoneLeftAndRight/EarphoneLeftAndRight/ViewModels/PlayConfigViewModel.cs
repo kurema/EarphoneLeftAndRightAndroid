@@ -10,7 +10,7 @@ namespace EarphoneLeftAndRight.ViewModels
 	{
 		public PlayConfigViewModel()
 		{
-			SpeakCommand = new Command(PlayViewModel.Speak);
+			SpeakCommand = new Command((o) => { Save(); PlayViewModel.Speak(o); });
 			RestoreCommand = new Command(Restore);
 			SaveCommand = new Command(Save);
 

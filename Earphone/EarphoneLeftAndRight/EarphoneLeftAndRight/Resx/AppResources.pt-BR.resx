@@ -299,4 +299,34 @@
   <data name="Sound.Sweep.Title.Full" xml:space="preserve">
     <value>Varredura de frequência / Varredura sinusoidal</value>
   </data>
+  <data name="Settings.Title" xml:space="preserve">
+    <value>Configuração</value>
+  </data>
+  <data name="Settings.Pitch.Full" xml:space="preserve">
+    <value>Tom de voz</value>
+  </data>
+  <data name="Settings.Pitch.Short" xml:space="preserve">
+    <value>Pitch</value>
+  </data>
+  <data name="Settings.Volume" xml:space="preserve">
+    <value>Volume</value>
+  </data>
+  <data name="Settings.Volume.Full" xml:space="preserve">
+    <value>Volume do som</value>
+  </data>
+  <data name="Settings.Speed" xml:space="preserve">
+    <value>Velocidade</value>
+  </data>
+  <data name="Settings.Word" xml:space="preserve">
+    <value>Palavra</value>
+  </data>
+  <data name="Settings.Word.ForceEnglish" xml:space="preserve">
+    <value>Utilizar o inglês.</value>
+  </data>
+  <data name="Settings.Panning" xml:space="preserve">
+    <value>Valor de panorâmica</value>
+  </data>
+  <data name="Settings.Pitch" xml:space="preserve">
+    <value>Tom de voz</value>
+  </data>
 </root>

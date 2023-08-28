@@ -299,4 +299,34 @@
   <data name="Sound.Sweep.Title.Full" xml:space="preserve">
     <value>Частотная развертка / Синусоидальная развертка</value>
   </data>
+  <data name="Settings.Title" xml:space="preserve">
+    <value>Конфигурация</value>
+  </data>
+  <data name="Settings.Pitch.Full" xml:space="preserve">
+    <value>Высота голоса</value>
+  </data>
+  <data name="Settings.Pitch.Short" xml:space="preserve">
+    <value>Pitch</value>
+  </data>
+  <data name="Settings.Volume" xml:space="preserve">
+    <value>Объем</value>
+  </data>
+  <data name="Settings.Volume.Full" xml:space="preserve">
+    <value>Громкость звука</value>
+  </data>
+  <data name="Settings.Speed" xml:space="preserve">
+    <value>Скорость</value>
+  </data>
+  <data name="Settings.Word" xml:space="preserve">
+    <value>Слово</value>
+  </data>
+  <data name="Settings.Word.ForceEnglish" xml:space="preserve">
+    <value>Используйте английский язык.</value>
+  </data>
+  <data name="Settings.Panning" xml:space="preserve">
+    <value>Значение панорамирования</value>
+  </data>
+  <data name="Settings.Pitch" xml:space="preserve">
+    <value>Высота голоса</value>
+  </data>
 </root>

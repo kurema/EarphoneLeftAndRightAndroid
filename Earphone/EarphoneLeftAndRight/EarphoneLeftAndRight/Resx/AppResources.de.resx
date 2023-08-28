@@ -308,4 +308,34 @@
   <data name="Sound.Sweep.Title.Full" xml:space="preserve">
     <value>Frequenz-Sweep / Sinus-Sweep</value>
   </data>
+  <data name="Settings.Title" xml:space="preserve">
+    <value>Konfigurieren Sie</value>
+  </data>
+  <data name="Settings.Pitch.Full" xml:space="preserve">
+    <value>Tonlage der Stimme</value>
+  </data>
+  <data name="Settings.Pitch.Short" xml:space="preserve">
+    <value>Stellplatz</value>
+  </data>
+  <data name="Settings.Volume" xml:space="preserve">
+    <value>Band</value>
+  </data>
+  <data name="Settings.Volume.Full" xml:space="preserve">
+    <value>Lautstärke</value>
+  </data>
+  <data name="Settings.Speed" xml:space="preserve">
+    <value>Geschwindigkeit</value>
+  </data>
+  <data name="Settings.Word" xml:space="preserve">
+    <value>Wort</value>
+  </data>
+  <data name="Settings.Word.ForceEnglish" xml:space="preserve">
+    <value>Verwenden Sie Englisch.</value>
+  </data>
+  <data name="Settings.Panning" xml:space="preserve">
+    <value>Panning-Wert</value>
+  </data>
+  <data name="Settings.Pitch" xml:space="preserve">
+    <value>Stellplatz</value>
+  </data>
 </root>

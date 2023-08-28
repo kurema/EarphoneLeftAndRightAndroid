@@ -299,4 +299,34 @@
   <data name="Sound.Sweep.Title.Full" xml:space="preserve">
     <value>Frekvences slaucīšana / sinusoidālā slaucīšana</value>
   </data>
+  <data name="Settings.Title" xml:space="preserve">
+    <value>Konfigurēšana</value>
+  </data>
+  <data name="Settings.Pitch.Full" xml:space="preserve">
+    <value>Balss augstums</value>
+  </data>
+  <data name="Settings.Pitch.Short" xml:space="preserve">
+    <value>Pitch</value>
+  </data>
+  <data name="Settings.Volume" xml:space="preserve">
+    <value>Tilpums</value>
+  </data>
+  <data name="Settings.Volume.Full" xml:space="preserve">
+    <value>Skaņas skaļums</value>
+  </data>
+  <data name="Settings.Speed" xml:space="preserve">
+    <value>Ātrums</value>
+  </data>
+  <data name="Settings.Word" xml:space="preserve">
+    <value>Vārds</value>
+  </data>
+  <data name="Settings.Word.ForceEnglish" xml:space="preserve">
+    <value>Lietojiet angļu valodu.</value>
+  </data>
+  <data name="Settings.Panning" xml:space="preserve">
+    <value>Panning vērtība</value>
+  </data>
+  <data name="Settings.Pitch" xml:space="preserve">
+    <value>Balss augstums</value>
+  </data>
 </root>

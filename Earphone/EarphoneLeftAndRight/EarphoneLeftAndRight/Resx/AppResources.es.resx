@@ -302,4 +302,34 @@
   <data name="Sound.Sweep.Title.Full" xml:space="preserve">
     <value>Barrido de frecuencia / Barrido sinusoidal</value>
   </data>
+  <data name="Settings.Title" xml:space="preserve">
+    <value>Configurar</value>
+  </data>
+  <data name="Settings.Pitch.Full" xml:space="preserve">
+    <value>Tono de voz</value>
+  </data>
+  <data name="Settings.Pitch.Short" xml:space="preserve">
+    <value>Pitch</value>
+  </data>
+  <data name="Settings.Volume" xml:space="preserve">
+    <value>Volumen</value>
+  </data>
+  <data name="Settings.Volume.Full" xml:space="preserve">
+    <value>Volumen del sonido</value>
+  </data>
+  <data name="Settings.Speed" xml:space="preserve">
+    <value>Velocidad</value>
+  </data>
+  <data name="Settings.Word" xml:space="preserve">
+    <value>Palabra</value>
+  </data>
+  <data name="Settings.Word.ForceEnglish" xml:space="preserve">
+    <value>Usa el inglés.</value>
+  </data>
+  <data name="Settings.Panning" xml:space="preserve">
+    <value>Valor de panoramización</value>
+  </data>
+  <data name="Settings.Pitch" xml:space="preserve">
+    <value>Tono de voz</value>
+  </data>
 </root>

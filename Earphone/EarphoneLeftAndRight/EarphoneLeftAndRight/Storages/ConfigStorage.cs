@@ -19,6 +19,9 @@ public static class ConfigStorage
 	private static ConfigEntryFloat? _VoiceVolume;
 	public static ConfigEntryFloat VoiceVolume { get => _VoiceVolume ??= new ConfigEntryFloat("VoiceVolume", TextToSpeechOptions.VolumeMax); }
 
+	private static ConfigEntryFloat? _VoiceSpeed;
+	public static ConfigEntryFloat VoiceSpeed { get => _VoiceSpeed ??= new ConfigEntryFloat("VoiceSpeed", 1.0f); }
+
 	private static ConfigEntryString? _VoiceOverrideLeft;
 	public static ConfigEntryString VoiceOverrideLeft { get => _VoiceOverrideLeft ??= new ConfigEntryString("VoiceOverrideLeft", string.Empty); }
 

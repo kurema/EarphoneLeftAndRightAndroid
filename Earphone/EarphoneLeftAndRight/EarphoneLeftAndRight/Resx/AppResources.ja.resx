@@ -419,4 +419,34 @@
   <data name="Sound.Sweep.Title" xml:space="preserve">
     <value>掃引</value>
   </data>
+  <data name="Settings.Title" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="Settings.Pitch.Full" xml:space="preserve">
+    <value>声の高さ</value>
+  </data>
+  <data name="Settings.Pitch.Short" xml:space="preserve">
+    <value>ピッチ</value>
+  </data>
+  <data name="Settings.Volume" xml:space="preserve">
+    <value>ボリューム</value>
+  </data>
+  <data name="Settings.Volume.Full" xml:space="preserve">
+    <value>音量</value>
+  </data>
+  <data name="Settings.Speed" xml:space="preserve">
+    <value>スピード</value>
+  </data>
+  <data name="Settings.Word" xml:space="preserve">
+    <value>単語</value>
+  </data>
+  <data name="Settings.Word.ForceEnglish" xml:space="preserve">
+    <value>英語を使う。</value>
+  </data>
+  <data name="Settings.Panning" xml:space="preserve">
+    <value>ステレオ強度</value>
+  </data>
+  <data name="Settings.Pitch" xml:space="preserve">
+    <value>声の高さ</value>
+  </data>
 </root>

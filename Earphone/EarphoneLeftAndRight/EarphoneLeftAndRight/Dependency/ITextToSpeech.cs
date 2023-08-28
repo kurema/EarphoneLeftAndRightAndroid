@@ -62,16 +62,17 @@ namespace EarphoneLeftAndRight.Dependency
 		{
 		}
 
-		public TextToSpeechOptions(TextToSpeechOptions original) : this(original.Locale, original.Pitch, original.Volume, original.Pan)
+		public TextToSpeechOptions(TextToSpeechOptions original) : this(original.Locale, original.Pitch, original.Volume, original.Pan, original.SpeechRate)
 		{
 		}
 
-		public TextToSpeechOptions(TextToSpeechLocale? locale, float? pitch, float? volume, float? pan)
+		public TextToSpeechOptions(TextToSpeechLocale? locale, float? pitch, float? volume, float? pan, float? speechRate)
 		{
 			Locale = locale;
 			Pitch = pitch;
 			Volume = volume;
 			Pan = pan;
+			SpeechRate = speechRate;
 		}
 
 		public TextToSpeechLocale? Locale { get; set; }
@@ -81,5 +82,7 @@ namespace EarphoneLeftAndRight.Dependency
 		public float? Volume { get; set; }
 
 		public float? Pan { get; set; }
+
+		public float? SpeechRate { get; set; }
 	}
 }

@@ -299,4 +299,34 @@
   <data name="Sound.Sweep.Title.Full" xml:space="preserve">
     <value>Przemiatanie częstotliwości / przemiatanie sinusoidalne</value>
   </data>
+  <data name="Settings.Title" xml:space="preserve">
+    <value>Konfiguracja</value>
+  </data>
+  <data name="Settings.Pitch.Full" xml:space="preserve">
+    <value>Wysokość głosu</value>
+  </data>
+  <data name="Settings.Pitch.Short" xml:space="preserve">
+    <value>Boisko</value>
+  </data>
+  <data name="Settings.Volume" xml:space="preserve">
+    <value>Objętość</value>
+  </data>
+  <data name="Settings.Volume.Full" xml:space="preserve">
+    <value>Głośność dźwięku</value>
+  </data>
+  <data name="Settings.Speed" xml:space="preserve">
+    <value>Prędkość</value>
+  </data>
+  <data name="Settings.Word" xml:space="preserve">
+    <value>Słowo</value>
+  </data>
+  <data name="Settings.Word.ForceEnglish" xml:space="preserve">
+    <value>Używaj języka angielskiego.</value>
+  </data>
+  <data name="Settings.Panning" xml:space="preserve">
+    <value>Wartość obrotu</value>
+  </data>
+  <data name="Settings.Pitch" xml:space="preserve">
+    <value>Wysokość głosu</value>
+  </data>
 </root>

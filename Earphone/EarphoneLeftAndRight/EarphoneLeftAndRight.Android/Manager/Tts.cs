@@ -32,7 +32,7 @@ namespace EarphoneLeftAndRight.Droid.Manager
 
 		static Dependency.TextToSpeechOptions GetCurrentOption()
 		{
-			return new Dependency.TextToSpeechOptions(null, Storages.ConfigStorage.VoicePitch.Value, Storages.ConfigStorage.VoiceVolume.Value, null);
+			return new Dependency.TextToSpeechOptions(null, Storages.ConfigStorage.VoicePitch.Value, Storages.ConfigStorage.VoiceVolume.Value, null, Storages.ConfigStorage.VoiceSpeed.Value);
 		}
 
 
@@ -54,7 +54,7 @@ namespace EarphoneLeftAndRight.Droid.Manager
 			{
 				LeftRight.Left => -1,
 				LeftRight.Right => 1,
-				_ => 1,
+				_ => 0,
 			});
 			string word = leftRight switch { LeftRight.Left => "Left", LeftRight.Right => "Right", _ => string.Empty };
 			if (Storages.ConfigStorage.VoiceForeceEnglish.Value) goto English;
@@ -103,6 +103,9 @@ namespace EarphoneLeftAndRight.Droid.Manager
 			{
 				var (locale, textLeft) = await Content.GetLocalizedTextAsync(Resource.String.word_left, Resource.String.word_left_voice);
 				var (_, textRight) = await Content.GetLocalizedTextAsync(Resource.String.word_right, Resource.String.word_right_voice);
+				var (textLeftOr, textRightOr) = (Storages.ConfigStorage.VoiceOverrideLeft.Value, Storages.ConfigStorage.VoiceOverrideRight.Value);
+				textLeft = string.IsNullOrWhiteSpace(textLeftOr) ? textLeft : textLeftOr;
+				textRight = string.IsNullOrWhiteSpace(textRightOr) ? textRight : textRightOr;
 				option.Locale = TextToSpeechImplementation.GetLocaleFromJavaLocale(locale);
 				var optionLeft = new TextToSpeechOptions(option);
 				optionLeft.Pan = -option.Pan;
@@ -126,7 +129,7 @@ namespace EarphoneLeftAndRight.Droid.Manager
 		public static async Task SpeakAsync(string text, TextToSpeechOptions optionOverride)
 		{
 			var option = GetCurrentOption();
-			await Content.SpeakAsync(new (string Text, TextToSpeechOptions Options)[] { (text, new TextToSpeechOptions(optionOverride?.Locale ?? option?.Locale, optionOverride?.Pitch ?? option?.Pitch, optionOverride?.Volume ?? option?.Volume, optionOverride?.Pan ?? option?.Pan)) });
+			await Content.SpeakAsync(new (string Text, TextToSpeechOptions Options)[] { (text, new TextToSpeechOptions(optionOverride?.Locale ?? option?.Locale, optionOverride?.Pitch ?? option?.Pitch, optionOverride?.Volume ?? option?.Volume, optionOverride?.Pan ?? option?.Pan, optionOverride?.SpeechRate ?? option.SpeechRate)) });
 		}
 	}
 }

@@ -610,6 +610,96 @@ namespace EarphoneLeftAndRight.Resx {
         }
         
         /// <summary>
+        ///   Panning value に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Settings_Panning {
+            get {
+                return ResourceManager.GetString("Settings.Panning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Pitch に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Settings_Pitch {
+            get {
+                return ResourceManager.GetString("Settings.Pitch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Pitch of the voice に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Settings_Pitch_Full {
+            get {
+                return ResourceManager.GetString("Settings.Pitch.Full", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Pitch に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Settings_Pitch_Short {
+            get {
+                return ResourceManager.GetString("Settings.Pitch.Short", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Speed に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Settings_Speed {
+            get {
+                return ResourceManager.GetString("Settings.Speed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Config に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Settings_Title {
+            get {
+                return ResourceManager.GetString("Settings.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Volume に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Settings_Volume {
+            get {
+                return ResourceManager.GetString("Settings.Volume", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sound volume に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Settings_Volume_Full {
+            get {
+                return ResourceManager.GetString("Settings.Volume.Full", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Word に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Settings_Word {
+            get {
+                return ResourceManager.GetString("Settings.Word", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Use English. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Settings_Word_ForceEnglish {
+            get {
+                return ResourceManager.GetString("Settings.Word.ForceEnglish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Basic に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Sound_Sweep_Freq_Basic {

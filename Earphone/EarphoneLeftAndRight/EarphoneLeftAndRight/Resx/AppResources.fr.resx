@@ -308,4 +308,34 @@
   <data name="Sound.Sweep.Title.Full" xml:space="preserve">
     <value>Balayage de fréquence / Balayage sinusoïdal</value>
   </data>
+  <data name="Settings.Title" xml:space="preserve">
+    <value>Config</value>
+  </data>
+  <data name="Settings.Pitch.Full" xml:space="preserve">
+    <value>Hauteur de la voix</value>
+  </data>
+  <data name="Settings.Pitch.Short" xml:space="preserve">
+    <value>Pitch</value>
+  </data>
+  <data name="Settings.Volume" xml:space="preserve">
+    <value>Volume</value>
+  </data>
+  <data name="Settings.Volume.Full" xml:space="preserve">
+    <value>Volume sonore</value>
+  </data>
+  <data name="Settings.Speed" xml:space="preserve">
+    <value>Vitesse</value>
+  </data>
+  <data name="Settings.Word" xml:space="preserve">
+    <value>Mot</value>
+  </data>
+  <data name="Settings.Word.ForceEnglish" xml:space="preserve">
+    <value>Utilisez l'anglais.</value>
+  </data>
+  <data name="Settings.Panning" xml:space="preserve">
+    <value>Valeur panoramique</value>
+  </data>
+  <data name="Settings.Pitch" xml:space="preserve">
+    <value>Hauteur</value>
+  </data>
 </root>

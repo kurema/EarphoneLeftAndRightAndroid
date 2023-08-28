@@ -299,4 +299,34 @@
   <data name="Sound.Sweep.Title.Full" xml:space="preserve">
     <value>Σάρωση συχνότητας / Ημιτονοειδής σάρωση</value>
   </data>
+  <data name="Settings.Title" xml:space="preserve">
+    <value>Διαμόρφωση</value>
+  </data>
+  <data name="Settings.Pitch.Full" xml:space="preserve">
+    <value>Ύψος της φωνής</value>
+  </data>
+  <data name="Settings.Pitch.Short" xml:space="preserve">
+    <value>Στάση</value>
+  </data>
+  <data name="Settings.Volume" xml:space="preserve">
+    <value>Τόμος</value>
+  </data>
+  <data name="Settings.Volume.Full" xml:space="preserve">
+    <value>Ένταση ήχου</value>
+  </data>
+  <data name="Settings.Speed" xml:space="preserve">
+    <value>Ταχύτητα</value>
+  </data>
+  <data name="Settings.Word" xml:space="preserve">
+    <value>Λέξη</value>
+  </data>
+  <data name="Settings.Word.ForceEnglish" xml:space="preserve">
+    <value>Χρησιμοποιήστε αγγλικά.</value>
+  </data>
+  <data name="Settings.Panning" xml:space="preserve">
+    <value>Τιμή σάρωσης</value>
+  </data>
+  <data name="Settings.Pitch" xml:space="preserve">
+    <value>Ύψος της φωνής</value>
+  </data>
 </root>

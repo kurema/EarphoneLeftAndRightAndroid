@@ -224,7 +224,10 @@ namespace EarphoneLeftAndRight.Droid.Manager.TtsEx
 				else
 					tts.SetPitch(1.0f);
 
-				tts.SetSpeechRate(1.0f);
+				if (options?.SpeechRate.HasValue ?? false)
+					tts.SetSpeechRate(options.SpeechRate.Value);
+				else
+					tts.SetSpeechRate(1.0f);
 
 				var guid = Guid.NewGuid().ToString();
 

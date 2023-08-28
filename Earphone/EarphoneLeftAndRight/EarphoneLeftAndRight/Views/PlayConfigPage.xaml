@@ -5,10 +5,10 @@
              x:Class="EarphoneLeftAndRight.Views.PlayConfigPage"
              BackgroundColor="{AppThemeBinding Default=White,Light=White,Dark=Black}"
              xmlns:vm="clr-namespace:EarphoneLeftAndRight.ViewModels"
-             xmlns:s="clr-namespace:EarphoneLeftAndRight.Storages"
-             xmlns:v="clr-namespace:EarphoneLeftAndRight.Views"
              xmlns:dep="clr-namespace:EarphoneLeftAndRight.Dependency"
              xmlns:vc="clr-namespace:EarphoneLeftAndRight.ValueConverters"
+             
+             Title="{x:Static r:AppResources.Settings_Title}"
              >
     <ContentPage.Resources>
     </ContentPage.Resources>
@@ -31,24 +31,89 @@
                     <Button Grid.Row="0" Grid.Column="0" Text="{x:Static r:LocalResources.Left}" Command="{Binding SpeakCommand}" CommandParameter="Left"/>
                     <Button Grid.Row="0" Grid.Column="1" Text="{x:Static r:LocalResources.Right}" Command="{Binding SpeakCommand}" CommandParameter="Right"/>
                 </Grid>
-                <Label Text="Volume" FontSize="Large" />
-                <v:ValueEntryView Value="{Binding Volume,Mode=TwoWay}" 
-                                  Max="{Binding VolumeMax,Mode=OneWay}" 
-                                  Min="{Binding VolumeMin,Mode=OneWay}"
-                                  Default="{Binding VolumeDefault,Mode=OneWay}"
-                                  />
-                <Label Text="Pitch" FontSize="Large" />
-                <v:ValueEntryView Value="{x:Binding Pitch,Mode=TwoWay}" 
-                                  Max="{x:Binding PitchMax,Mode=OneWay}" 
-                                  Min="{x:Binding PitchMin,Mode=OneWay}"
-                                  Default="{x:Binding PitchDefault,Mode=OneWay}"
-                                  />
-                <Label Text="Stereo level" FontSize="Large" />
-                <v:ValueEntryView Value="{Binding Pan,Mode=TwoWay}" 
-                                  Max="1.0" 
-                                  Min="0.0"
-                                  Default="1.0"
-                                  />
+                <Label Text="{x:Static r:AppResources.Settings_Volume_Full}" FontSize="Large" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Slider Grid.ColumnSpan="2" Value="{Binding Volume,Mode=TwoWay}" Minimum="{Binding VolumeMin,Mode=OneWay}" Maximum="{Binding VolumeMax,Mode=OneWay}" />
+                    <Entry Text="{Binding Volume,Mode=TwoWay}" Grid.Row="1" Keyboard="Numeric" />
+                    <Button Grid.Row="1" Grid.Column="1" Command="{Binding ResetValueCommand}" CommandParameter="Volume">
+                        <Button.ImageSource>
+                            <FontImageSource FontFamily="Material" Glyph="&#xe14c;" />
+                        </Button.ImageSource>
+                    </Button>
+                </Grid>
+                <Label Text="{x:Static r:AppResources.Settings_Pitch}" FontSize="Large" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Slider Grid.ColumnSpan="2" Value="{Binding Pitch,Mode=TwoWay}" Minimum="{Binding PitchMin,Mode=OneWay}" Maximum="{Binding PitchMax,Mode=OneWay}" />
+                    <Entry Text="{Binding Pitch,Mode=TwoWay}" Grid.Row="1" Keyboard="Numeric" />
+                    <Button Grid.Row="1" Grid.Column="1" Command="{Binding ResetValueCommand}" CommandParameter="Pitch">
+                        <Button.ImageSource>
+                            <FontImageSource FontFamily="Material" Glyph="&#xe14c;" />
+                        </Button.ImageSource>
+                    </Button>
+                </Grid>
+                <Label Text="{x:Static r:AppResources.Settings_Panning}" FontSize="Large" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Slider Grid.ColumnSpan="2" Value="{Binding Pan,Mode=TwoWay}" Minimum="0.0" Maximum="1.0" />
+                    <Entry Text="{Binding Pan,Mode=TwoWay}" Grid.Row="1" Keyboard="Numeric" />
+                    <Button Grid.Row="1" Grid.Column="1" Command="{Binding ResetValueCommand}" CommandParameter="Pan">
+                        <Button.ImageSource>
+                            <FontImageSource FontFamily="Material" Glyph="&#xe14c;" />
+                        </Button.ImageSource>
+                    </Button>
+                </Grid>
+                <Label Text="{x:Static r:AppResources.Settings_Speed}" FontSize="Large" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Slider Grid.ColumnSpan="2" Value="{Binding SpeechRate,Mode=TwoWay}" Minimum="0.0" Maximum="5.0" />
+                    <Entry Text="{Binding SpeechRate,Mode=TwoWay}" Grid.Row="1" Keyboard="Numeric" />
+                    <Button Grid.Row="1" Grid.Column="1" Command="{Binding ResetValueCommand}" CommandParameter="SpeechRate">
+                        <Button.ImageSource>
+                            <FontImageSource FontFamily="Material" Glyph="&#xe14c;" />
+                        </Button.ImageSource>
+                    </Button>
+                </Grid>
+                <Label Text="{x:Static r:AppResources.Settings_Word}" FontSize="Large" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <CheckBox Grid.Column="0" IsChecked="{Binding ForceEnglish,Mode=TwoWay}" VerticalOptions="Center" />
+                    <Label Grid.Column="1" Text="{x:Static r:AppResources.Settings_Word_ForceEnglish}" VerticalOptions="Center" />
+                </Grid>
+                <Entry Text="{Binding OverrideLeft,Mode=TwoWay}" Placeholder="{x:Static r:LocalResources.Left}" />
+                <Entry Text="{Binding OverrideRight,Mode=TwoWay}" Placeholder="{x:Static r:LocalResources.Right}" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

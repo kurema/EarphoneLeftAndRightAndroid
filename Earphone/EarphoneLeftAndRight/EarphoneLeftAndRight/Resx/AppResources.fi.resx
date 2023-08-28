@@ -299,4 +299,34 @@
   <data name="Sound.Sweep.Title.Full" xml:space="preserve">
     <value>Taajuuspyyhkäisy / Sinuspyyhkäisy</value>
   </data>
+  <data name="Settings.Title" xml:space="preserve">
+    <value>Config</value>
+  </data>
+  <data name="Settings.Pitch.Full" xml:space="preserve">
+    <value>Äänen korkeus</value>
+  </data>
+  <data name="Settings.Pitch.Short" xml:space="preserve">
+    <value>Pitch</value>
+  </data>
+  <data name="Settings.Volume" xml:space="preserve">
+    <value>Volume</value>
+  </data>
+  <data name="Settings.Volume.Full" xml:space="preserve">
+    <value>Äänenvoimakkuus</value>
+  </data>
+  <data name="Settings.Speed" xml:space="preserve">
+    <value>Nopeus</value>
+  </data>
+  <data name="Settings.Word" xml:space="preserve">
+    <value>Sana</value>
+  </data>
+  <data name="Settings.Word.ForceEnglish" xml:space="preserve">
+    <value>Käytä englantia.</value>
+  </data>
+  <data name="Settings.Panning" xml:space="preserve">
+    <value>Panning-arvo</value>
+  </data>
+  <data name="Settings.Pitch" xml:space="preserve">
+    <value>Äänen korkeus</value>
+  </data>
 </root>

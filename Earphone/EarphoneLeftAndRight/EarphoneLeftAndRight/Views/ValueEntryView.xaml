@@ -15,7 +15,7 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <Slider Grid.ColumnSpan="2" Value="{Binding Value,Mode=TwoWay}" Minimum="{Binding Min,Mode=OneWay}" Maximum="{Binding Max,Mode=OneWay}" />
-            <!--<Entry Text="{Binding Value,Mode=TwoWay,UpdateSourceEventName=Completed}" Grid.Row="1" Keyboard="Numeric" />-->
+            <Entry Text="{Binding Value,Mode=TwoWay,UpdateSourceEventName=Completed}" Grid.Row="1" Keyboard="Numeric" />
             <Button Grid.Row="1" Grid.Column="1" Text="Reset" Clicked="Button_Clicked" />
         </Grid>
     </ContentView.Content>

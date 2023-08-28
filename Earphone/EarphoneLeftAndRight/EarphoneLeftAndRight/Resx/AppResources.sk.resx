@@ -299,4 +299,34 @@
   <data name="Sound.Sweep.Title.Full" xml:space="preserve">
     <value>Frekvenčný posun / Sínusový posun</value>
   </data>
+  <data name="Settings.Title" xml:space="preserve">
+    <value>Konfigurácia</value>
+  </data>
+  <data name="Settings.Pitch.Full" xml:space="preserve">
+    <value>Výška hlasu</value>
+  </data>
+  <data name="Settings.Pitch.Short" xml:space="preserve">
+    <value>Výber ihriska</value>
+  </data>
+  <data name="Settings.Volume" xml:space="preserve">
+    <value>Zväzok</value>
+  </data>
+  <data name="Settings.Volume.Full" xml:space="preserve">
+    <value>Hlasitosť zvuku</value>
+  </data>
+  <data name="Settings.Speed" xml:space="preserve">
+    <value>Rýchlosť</value>
+  </data>
+  <data name="Settings.Word" xml:space="preserve">
+    <value>Slovo</value>
+  </data>
+  <data name="Settings.Word.ForceEnglish" xml:space="preserve">
+    <value>Používajte angličtinu.</value>
+  </data>
+  <data name="Settings.Panning" xml:space="preserve">
+    <value>Hodnota panorámovania</value>
+  </data>
+  <data name="Settings.Pitch" xml:space="preserve">
+    <value>Výška hlasu</value>
+  </data>
 </root>

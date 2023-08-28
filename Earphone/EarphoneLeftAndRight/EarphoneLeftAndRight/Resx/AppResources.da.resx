@@ -299,4 +299,34 @@
   <data name="Sound.Sweep.Title.Full" xml:space="preserve">
     <value>Frekvenssøgning / Sinussøgning</value>
   </data>
+  <data name="Settings.Title" xml:space="preserve">
+    <value>Konfig</value>
+  </data>
+  <data name="Settings.Pitch.Full" xml:space="preserve">
+    <value>Stemmens tonehøjde</value>
+  </data>
+  <data name="Settings.Pitch.Short" xml:space="preserve">
+    <value>Pitch</value>
+  </data>
+  <data name="Settings.Volume" xml:space="preserve">
+    <value>Volumen</value>
+  </data>
+  <data name="Settings.Volume.Full" xml:space="preserve">
+    <value>Lydstyrke</value>
+  </data>
+  <data name="Settings.Speed" xml:space="preserve">
+    <value>Hastighed</value>
+  </data>
+  <data name="Settings.Word" xml:space="preserve">
+    <value>Ord</value>
+  </data>
+  <data name="Settings.Word.ForceEnglish" xml:space="preserve">
+    <value>Brug engelsk.</value>
+  </data>
+  <data name="Settings.Panning" xml:space="preserve">
+    <value>Panoreringsværdi</value>
+  </data>
+  <data name="Settings.Pitch" xml:space="preserve">
+    <value>Stemmens tonehøjde</value>
+  </data>
 </root>

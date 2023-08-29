@@ -320,7 +320,7 @@ Bir yarım tonla karşılaştırıldığında 2 sent.</value>
   <data name="Settings.Word" xml:space="preserve">
     <value>Kelime</value>
   </data>
-  <data name="Settings.Word.ForceEnglish" xml:space="preserve">
+  <data name="Settings.Word.ForceEnglish.Use" xml:space="preserve">
     <value>İngilizce kullanın.</value>
   </data>
   <data name="Settings.Panning" xml:space="preserve">
@@ -328,5 +328,8 @@ Bir yarım tonla karşılaştırıldığında 2 sent.</value>
   </data>
   <data name="Settings.Pitch" xml:space="preserve">
     <value>Ses tonu</value>
+  </data>
+  <data name="Settings.Word.ForceEnglish" xml:space="preserve">
+    <value>İngilizce ses</value>
   </data>
 </root>

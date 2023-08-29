@@ -320,7 +320,7 @@
   <data name="Settings.Word" xml:space="preserve">
     <value>Szó</value>
   </data>
-  <data name="Settings.Word.ForceEnglish" xml:space="preserve">
+  <data name="Settings.Word.ForceEnglish.Use" xml:space="preserve">
     <value>Használjon angolul.</value>
   </data>
   <data name="Settings.Panning" xml:space="preserve">
@@ -328,5 +328,8 @@
   </data>
   <data name="Settings.Pitch" xml:space="preserve">
     <value>A hangmagasság</value>
+  </data>
+  <data name="Settings.Word.ForceEnglish" xml:space="preserve">
+    <value>Angol hang</value>
   </data>
 </root>

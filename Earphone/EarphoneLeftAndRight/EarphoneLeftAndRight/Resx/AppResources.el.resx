@@ -320,7 +320,7 @@
   <data name="Settings.Word" xml:space="preserve">
     <value>Λέξη</value>
   </data>
-  <data name="Settings.Word.ForceEnglish" xml:space="preserve">
+  <data name="Settings.Word.ForceEnglish.Use" xml:space="preserve">
     <value>Χρησιμοποιήστε αγγλικά.</value>
   </data>
   <data name="Settings.Panning" xml:space="preserve">
@@ -328,5 +328,8 @@
   </data>
   <data name="Settings.Pitch" xml:space="preserve">
     <value>Ύψος της φωνής</value>
+  </data>
+  <data name="Settings.Word.ForceEnglish" xml:space="preserve">
+    <value>Αγγλική φωνή</value>
   </data>
 </root>

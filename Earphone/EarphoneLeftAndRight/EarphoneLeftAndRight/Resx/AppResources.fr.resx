@@ -329,7 +329,7 @@
   <data name="Settings.Word" xml:space="preserve">
     <value>Mot</value>
   </data>
-  <data name="Settings.Word.ForceEnglish" xml:space="preserve">
+  <data name="Settings.Word.ForceEnglish.Use" xml:space="preserve">
     <value>Utilisez l'anglais.</value>
   </data>
   <data name="Settings.Panning" xml:space="preserve">
@@ -337,5 +337,8 @@
   </data>
   <data name="Settings.Pitch" xml:space="preserve">
     <value>Hauteur</value>
+  </data>
+  <data name="Settings.Word.ForceEnglish" xml:space="preserve">
+    <value>Voix en anglais</value>
   </data>
 </root>

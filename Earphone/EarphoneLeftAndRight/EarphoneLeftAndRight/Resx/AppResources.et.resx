@@ -320,7 +320,7 @@
   <data name="Settings.Word" xml:space="preserve">
     <value>Sõna</value>
   </data>
-  <data name="Settings.Word.ForceEnglish" xml:space="preserve">
+  <data name="Settings.Word.ForceEnglish.Use" xml:space="preserve">
     <value>Kasutage inglise keelt.</value>
   </data>
   <data name="Settings.Panning" xml:space="preserve">
@@ -328,5 +328,8 @@
   </data>
   <data name="Settings.Pitch" xml:space="preserve">
     <value>Häälekõrgus</value>
+  </data>
+  <data name="Settings.Word.ForceEnglish" xml:space="preserve">
+    <value>Inglise keelne hääl</value>
   </data>
 </root>

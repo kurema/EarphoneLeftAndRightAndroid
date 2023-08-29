@@ -691,11 +691,20 @@ namespace EarphoneLeftAndRight.Resx {
         }
         
         /// <summary>
-        ///   Use English. に類似しているローカライズされた文字列を検索します。
+        ///   English voice に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Settings_Word_ForceEnglish {
             get {
                 return ResourceManager.GetString("Settings.Word.ForceEnglish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Use English. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Settings_Word_ForceEnglish_Use {
+            get {
+                return ResourceManager.GetString("Settings.Word.ForceEnglish.Use", resourceCulture);
             }
         }
         

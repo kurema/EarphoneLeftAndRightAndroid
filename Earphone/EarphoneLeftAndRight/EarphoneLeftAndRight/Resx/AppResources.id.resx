@@ -320,7 +320,7 @@
   <data name="Settings.Word" xml:space="preserve">
     <value>Kata</value>
   </data>
-  <data name="Settings.Word.ForceEnglish" xml:space="preserve">
+  <data name="Settings.Word.ForceEnglish.Use" xml:space="preserve">
     <value>Gunakan bahasa Inggris.</value>
   </data>
   <data name="Settings.Panning" xml:space="preserve">
@@ -328,5 +328,8 @@
   </data>
   <data name="Settings.Pitch" xml:space="preserve">
     <value>Nada suara</value>
+  </data>
+  <data name="Settings.Word.ForceEnglish" xml:space="preserve">
+    <value>Suara bahasa Inggris</value>
   </data>
 </root>

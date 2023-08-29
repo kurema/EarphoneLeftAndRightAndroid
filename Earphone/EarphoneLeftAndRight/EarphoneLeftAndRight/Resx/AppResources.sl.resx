@@ -320,7 +320,7 @@
   <data name="Settings.Word" xml:space="preserve">
     <value>Beseda</value>
   </data>
-  <data name="Settings.Word.ForceEnglish" xml:space="preserve">
+  <data name="Settings.Word.ForceEnglish.Use" xml:space="preserve">
     <value>Uporabljajte angleščino.</value>
   </data>
   <data name="Settings.Panning" xml:space="preserve">
@@ -328,5 +328,8 @@
   </data>
   <data name="Settings.Pitch" xml:space="preserve">
     <value>Višina glasu</value>
+  </data>
+  <data name="Settings.Word.ForceEnglish" xml:space="preserve">
+    <value>Angleški glas</value>
   </data>
 </root>

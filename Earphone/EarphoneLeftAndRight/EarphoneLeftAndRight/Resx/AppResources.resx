@@ -561,7 +561,7 @@ All experience hath shown that mankind are more disposed to suffer while evils a
   <data name="Settings.Word" xml:space="preserve">
     <value>Word</value>
   </data>
-  <data name="Settings.Word.ForceEnglish" xml:space="preserve">
+  <data name="Settings.Word.ForceEnglish.Use" xml:space="preserve">
     <value>Use English.</value>
   </data>
   <data name="Settings.Panning" xml:space="preserve">
@@ -569,5 +569,8 @@ All experience hath shown that mankind are more disposed to suffer while evils a
   </data>
   <data name="Settings.Pitch" xml:space="preserve">
     <value>Pitch</value>
+  </data>
+  <data name="Settings.Word.ForceEnglish" xml:space="preserve">
+    <value>English voice</value>
   </data>
 </root>

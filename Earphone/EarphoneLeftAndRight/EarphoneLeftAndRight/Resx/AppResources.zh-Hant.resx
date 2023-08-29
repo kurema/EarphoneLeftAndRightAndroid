@@ -326,7 +326,7 @@
   <data name="Settings.Word" xml:space="preserve">
     <value>字词</value>
   </data>
-  <data name="Settings.Word.ForceEnglish" xml:space="preserve">
+  <data name="Settings.Word.ForceEnglish.Use" xml:space="preserve">
     <value>使用英语。</value>
   </data>
   <data name="Settings.Panning" xml:space="preserve">
@@ -334,5 +334,8 @@
   </data>
   <data name="Settings.Pitch" xml:space="preserve">
     <value>声音的高低</value>
+  </data>
+  <data name="Settings.Word.ForceEnglish" xml:space="preserve">
+    <value>英语语音</value>
   </data>
 </root>

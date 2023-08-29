@@ -64,7 +64,6 @@ namespace EarphoneLeftAndRight.Droid
             //https://akira-watson.com/android/audiotrack.html
             //https://qiita.com/takahamarn/items/e375a6a3ed806185e540
 
-
             await Semaphore.WaitAsync();
             try
             {

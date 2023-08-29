@@ -23,30 +23,30 @@ namespace EarphoneLeftAndRight.Droid
 
 		public Task Clear()
 		{
-			Manager.Tts.Content.Stop();
+			try { Manager.Tts.Content.Stop(); } catch { }
 			return Task.CompletedTask;
 		}
 
 		public async Task SpeakLeftAsync()
 		{
-			await Manager.Tts.SpeakLeft();
+			try { await Manager.Tts.SpeakLeft(); } catch { }
 		}
 
 		public async Task SpeakRightAsync()
 		{
-			await Manager.Tts.SpeakRight();
+			try { await Manager.Tts.SpeakRight(); } catch { }
 		}
 
 		public async Task SpeakLeftRightAsync()
 		{
-			await Manager.Tts.SpeakLeftRight();
+			try { await Manager.Tts.SpeakLeftRight(); } catch { }
 		}
 
 		public void Load() => Manager.Tts.Content?.Initialize();
 
 		public async Task SpeakAsync(string text, TextToSpeechOptions optionOverride)
 		{
-			await Tts.SpeakAsync(text, optionOverride);
+			try { await Tts.SpeakAsync(text, optionOverride); } catch { }
 		}
 
 	}

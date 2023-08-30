@@ -24,5 +24,12 @@ namespace EarphoneLeftAndRight.Views
 
 			base.OnDisappearing();
 		}
+
+		protected override void OnAppearing()
+		{
+			(BindingContext as PlayConfigViewModel)?.Restore();
+
+			base.OnAppearing();
+		}
 	}
 }

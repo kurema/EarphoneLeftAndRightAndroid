@@ -332,4 +332,10 @@
   <data name="Settings.Word.ForceEnglish" xml:space="preserve">
     <value>Anglų kalba</value>
   </data>
+  <data name="Settings.Tile" xml:space="preserve">
+    <value>Greitųjų nustatymų plytelė</value>
+  </data>
+  <data name="Settings.Tile.UseBeep" xml:space="preserve">
+    <value>Plytelės groja grynais tonais.</value>
+  </data>
 </root>

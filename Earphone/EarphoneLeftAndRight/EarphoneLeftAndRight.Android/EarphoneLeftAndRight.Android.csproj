@@ -87,6 +87,7 @@
     <Compile Include="AdMobBannerRenderer.cs" />
     <Compile Include="AppWidget.cs" />
     <Compile Include="Dependencies\AudioTestDependency.cs" />
+    <Compile Include="Dependencies\StatusBarManagerDependency.cs" />
     <Compile Include="GDPR.cs" />
     <Compile Include="Dependencies\PlatformLocalizationDependency.cs" />
     <Compile Include="Manager\Tts.cs" />

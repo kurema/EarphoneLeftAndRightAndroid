@@ -332,4 +332,10 @@
   <data name="Settings.Word.ForceEnglish" xml:space="preserve">
     <value>Balss angļu valodā</value>
   </data>
+  <data name="Settings.Tile" xml:space="preserve">
+    <value>Ātro iestatījumu elements!</value>
+  </data>
+  <data name="Settings.Tile.UseBeep" xml:space="preserve">
+    <value>Flīzes atskaņo tīrus toņus.</value>
+  </data>
 </root>

@@ -332,4 +332,10 @@
   <data name="Settings.Word.ForceEnglish" xml:space="preserve">
     <value>Voz inglesa</value>
   </data>
+  <data name="Settings.Tile" xml:space="preserve">
+    <value>Configurações Rápidas</value>
+  </data>
+  <data name="Settings.Tile.UseBeep" xml:space="preserve">
+    <value>O azulejo reproduz tons puros.</value>
+  </data>
 </root>

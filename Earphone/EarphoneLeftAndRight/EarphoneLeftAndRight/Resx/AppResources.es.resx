@@ -335,4 +335,10 @@
   <data name="Settings.Word.ForceEnglish" xml:space="preserve">
     <value>Voz inglesa</value>
   </data>
+  <data name="Settings.Tile" xml:space="preserve">
+    <value>Mosaico de ajustes rápidos</value>
+  </data>
+  <data name="Settings.Tile.UseBeep" xml:space="preserve">
+    <value>El azulejo reproduce tonos puros.</value>
+  </data>
 </root>

@@ -332,4 +332,10 @@
   <data name="Settings.Word.ForceEnglish" xml:space="preserve">
     <value>Englanninkielinen ääni</value>
   </data>
+  <data name="Settings.Tile" xml:space="preserve">
+    <value>Pika-asetusten laatta</value>
+  </data>
+  <data name="Settings.Tile.UseBeep" xml:space="preserve">
+    <value>Laatta soittaa puhtaita sävyjä.</value>
+  </data>
 </root>

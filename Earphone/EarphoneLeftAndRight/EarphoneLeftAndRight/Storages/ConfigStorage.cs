@@ -28,6 +28,9 @@ public static class ConfigStorage
 	private static ConfigEntryString? _VoiceOverrideRight;
 	public static ConfigEntryString VoiceOverrideRight { get => _VoiceOverrideRight ??= new ConfigEntryString("VoiceOverrideRight", string.Empty); }
 
+	private static ConfigEntryBool? _TileForceBeep;
+	public static ConfigEntryBool TileForceBeep { get => _TileForceBeep ??= new ConfigEntryBool("TileForceBeep", false); }
+
 
 	public abstract class ConfigEntry<T>
 	{

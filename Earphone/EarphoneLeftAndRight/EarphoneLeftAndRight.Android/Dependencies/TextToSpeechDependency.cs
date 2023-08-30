@@ -49,5 +49,9 @@ namespace EarphoneLeftAndRight.Droid
 			try { await Tts.SpeakAsync(text, optionOverride); } catch { }
 		}
 
+		public async Task SpeakAsync((string text, TextToSpeechOptions optionOverride)[] values)
+		{
+			try { await Tts.SpeakAsync(values); } catch { }
+		}
 	}
 }

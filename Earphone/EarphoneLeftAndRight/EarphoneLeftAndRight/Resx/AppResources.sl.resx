@@ -332,4 +332,10 @@
   <data name="Settings.Word.ForceEnglish" xml:space="preserve">
     <value>Angleški glas</value>
   </data>
+  <data name="Settings.Tile" xml:space="preserve">
+    <value>Ploščica s hitrimi nastavitvami!</value>
+  </data>
+  <data name="Settings.Tile.UseBeep" xml:space="preserve">
+    <value>Ploščice igrajo čiste tone.</value>
+  </data>
 </root>

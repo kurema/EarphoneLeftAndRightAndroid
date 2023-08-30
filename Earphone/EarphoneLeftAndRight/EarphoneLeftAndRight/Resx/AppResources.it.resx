@@ -335,4 +335,10 @@
   <data name="Settings.Word.ForceEnglish" xml:space="preserve">
     <value>Voce inglese</value>
   </data>
+  <data name="Settings.Tile" xml:space="preserve">
+    <value>Piastrella Impostazioni rapide</value>
+  </data>
+  <data name="Settings.Tile.UseBeep" xml:space="preserve">
+    <value>La piastrella riproduce toni puri.</value>
+  </data>
 </root>

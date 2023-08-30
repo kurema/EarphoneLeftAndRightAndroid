@@ -332,4 +332,10 @@
   <data name="Settings.Word.ForceEnglish" xml:space="preserve">
     <value>Angol hang</value>
   </data>
+  <data name="Settings.Tile" xml:space="preserve">
+    <value>Gyorsbeállítások csempe</value>
+  </data>
+  <data name="Settings.Tile.UseBeep" xml:space="preserve">
+    <value>A csempe tiszta hangokat játszik.</value>
+  </data>
 </root>

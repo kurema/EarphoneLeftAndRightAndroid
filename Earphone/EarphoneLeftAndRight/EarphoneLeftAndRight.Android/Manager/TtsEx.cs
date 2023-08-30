@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Android.App;
 using Android.Gms.Ads.Formats;
+using Android.Media;
 using Android.OS;
 using Android.Speech.Tts;
 using EarphoneLeftAndRight.Dependency;
@@ -32,8 +33,8 @@ namespace EarphoneLeftAndRight.Droid.Manager.TtsEx
 		{
 			foreach (var (text, options) in words)
 			{
-				if (string.IsNullOrEmpty(text))
-					throw new ArgumentNullException(nameof(text), "Text cannot be null or empty string");
+				//if (string.IsNullOrEmpty(text))
+				//	throw new ArgumentNullException(nameof(text), "Text cannot be null or empty string");
 
 				if (options?.Volume.HasValue ?? false)
 				{
@@ -147,6 +148,14 @@ namespace EarphoneLeftAndRight.Droid.Manager.TtsEx
 			{
 				// set up the TextToSpeech object
 				tts = new AndroidTextToSpeech(Application.Context, this);
+				//SetAudioAttributesでステレオの強制はできないようだ。
+				//if (Build.VERSION.SdkInt >= BuildVersionCodes.M)
+				//{
+				//	tts.SetAudioAttributes(new AudioAttributes.Builder()
+				//			.SetUsage(AudioUsageKind.Media)
+				//			.SetContentType(AudioContentType.Music)
+				//			.Build());
+				//}
 #pragma warning disable CS0618
 				tts.SetOnUtteranceCompletedListener(this);
 #pragma warning restore CS0618
@@ -204,6 +213,7 @@ namespace EarphoneLeftAndRight.Droid.Manager.TtsEx
 			int i = 0;
 			foreach (var (text, options) in words)
 			{
+				if (string.IsNullOrEmpty(text)) continue;
 				if (options?.Locale?.Language != null)
 				{
 					JavaLocale locale = null;

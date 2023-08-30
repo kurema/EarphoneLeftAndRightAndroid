@@ -16,6 +16,7 @@ namespace EarphoneLeftAndRight.Dependency
 		Task SpeakLeftRightAsync();
 		void Load();
 		Task SpeakAsync(string text, TextToSpeechOptions optionOverride);
+		Task SpeakAsync((string text, TextToSpeechOptions optionOverride)[] values);
 	}
 
 	public class TextToSpeechLocale

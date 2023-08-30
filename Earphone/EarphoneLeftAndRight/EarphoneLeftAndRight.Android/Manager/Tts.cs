@@ -131,5 +131,11 @@ namespace EarphoneLeftAndRight.Droid.Manager
 			var option = GetCurrentOption();
 			await Content.SpeakAsync(new (string Text, TextToSpeechOptions Options)[] { (text, new TextToSpeechOptions(optionOverride?.Locale ?? option?.Locale, optionOverride?.Pitch ?? option?.Pitch, optionOverride?.Volume ?? option?.Volume, optionOverride?.Pan ?? option?.Pan, optionOverride?.SpeechRate ?? option.SpeechRate)) });
 		}
+
+		public static async Task SpeakAsync((string text, TextToSpeechOptions optionOverride)[] values)
+		{
+			var option = GetCurrentOption();
+			await Content.SpeakAsync(values.Select(a => (a.text, new TextToSpeechOptions(a.optionOverride?.Locale ?? option?.Locale, a.optionOverride?.Pitch ?? option?.Pitch, a.optionOverride?.Volume ?? option?.Volume, a.optionOverride?.Pan ?? option?.Pan, a.optionOverride?.SpeechRate ?? option.SpeechRate))).ToArray());
+		}
 	}
 }

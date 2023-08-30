@@ -332,4 +332,10 @@
   <data name="Settings.Word.ForceEnglish" xml:space="preserve">
     <value>Voce în engleză</value>
   </data>
+  <data name="Settings.Tile" xml:space="preserve">
+    <value>Cadru Setări rapide!</value>
+  </data>
+  <data name="Settings.Tile.UseBeep" xml:space="preserve">
+    <value>Țigla joacă tonuri pure.</value>
+  </data>
 </root>

@@ -332,4 +332,10 @@
   <data name="Settings.Word.ForceEnglish" xml:space="preserve">
     <value>Engelsk stemme</value>
   </data>
+  <data name="Settings.Tile" xml:space="preserve">
+    <value>Flise til hurtige indstillinger</value>
+  </data>
+  <data name="Settings.Tile.UseBeep" xml:space="preserve">
+    <value>Flisen spiller rene toner.</value>
+  </data>
 </root>

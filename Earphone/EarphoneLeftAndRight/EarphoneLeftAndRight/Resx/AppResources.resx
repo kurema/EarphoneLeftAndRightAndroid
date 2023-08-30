@@ -573,4 +573,10 @@ All experience hath shown that mankind are more disposed to suffer while evils a
   <data name="Settings.Word.ForceEnglish" xml:space="preserve">
     <value>English voice</value>
   </data>
+  <data name="Settings.Tile" xml:space="preserve">
+    <value>Quick Settings Tile</value>
+  </data>
+  <data name="Settings.Tile.UseBeep" xml:space="preserve">
+    <value>The tile plays pure tones.</value>
+  </data>
 </root>

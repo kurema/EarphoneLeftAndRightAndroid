@@ -332,4 +332,10 @@
   <data name="Settings.Word.ForceEnglish" xml:space="preserve">
     <value>Engelsk röst</value>
   </data>
+  <data name="Settings.Tile" xml:space="preserve">
+    <value>Snabbinställningar</value>
+  </data>
+  <data name="Settings.Tile.UseBeep" xml:space="preserve">
+    <value>Kaklet spelar rena toner.</value>
+  </data>
 </root>

@@ -332,4 +332,10 @@
   <data name="Settings.Word.ForceEnglish" xml:space="preserve">
     <value>Inglise keelne hääl</value>
   </data>
+  <data name="Settings.Tile" xml:space="preserve">
+    <value>Kiirseadete plaat</value>
+  </data>
+  <data name="Settings.Tile.UseBeep" xml:space="preserve">
+    <value>Plaat mängib puhtaid toone.</value>
+  </data>
 </root>

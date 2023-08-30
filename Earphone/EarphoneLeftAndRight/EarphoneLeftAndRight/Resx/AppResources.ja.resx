@@ -452,4 +452,10 @@
   <data name="Settings.Word.ForceEnglish" xml:space="preserve">
     <value>英語音声</value>
   </data>
+  <data name="Settings.Tile" xml:space="preserve">
+    <value>クイック設定タイル</value>
+  </data>
+  <data name="Settings.Tile.UseBeep" xml:space="preserve">
+    <value>純音を再生する。</value>
+  </data>
 </root>

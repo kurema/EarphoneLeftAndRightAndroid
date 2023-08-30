@@ -332,4 +332,10 @@
   <data name="Settings.Word.ForceEnglish" xml:space="preserve">
     <value>Anglický hlas</value>
   </data>
+  <data name="Settings.Tile" xml:space="preserve">
+    <value>Dlaždice rychlého nastavení</value>
+  </data>
+  <data name="Settings.Tile.UseBeep" xml:space="preserve">
+    <value>Dlaždice hraje čistými tóny.</value>
+  </data>
 </root>

@@ -332,4 +332,10 @@
   <data name="Settings.Word.ForceEnglish" xml:space="preserve">
     <value>Angielski głos</value>
   </data>
+  <data name="Settings.Tile" xml:space="preserve">
+    <value>Szybkie ustawienia</value>
+  </data>
+  <data name="Settings.Tile.UseBeep" xml:space="preserve">
+    <value>Płytka odtwarza czyste tony.</value>
+  </data>
 </root>

@@ -655,6 +655,24 @@ namespace EarphoneLeftAndRight.Resx {
         }
         
         /// <summary>
+        ///   Quick Settings Tile に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Settings_Tile {
+            get {
+                return ResourceManager.GetString("Settings.Tile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   The tile plays pure tones. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Settings_Tile_UseBeep {
+            get {
+                return ResourceManager.GetString("Settings.Tile.UseBeep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Config に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Settings_Title {

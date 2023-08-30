@@ -344,4 +344,10 @@
   <data name="Settings.Word.ForceEnglish" xml:space="preserve">
     <value>英语语音</value>
   </data>
+  <data name="Settings.Tile" xml:space="preserve">
+    <value>快速设置图块</value>
+  </data>
+  <data name="Settings.Tile.UseBeep" xml:space="preserve">
+    <value>瓷砖播放纯色调。</value>
+  </data>
 </root>

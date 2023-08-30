@@ -338,4 +338,10 @@
   <data name="Settings.Word.ForceEnglish" xml:space="preserve">
     <value>英语语音</value>
   </data>
+  <data name="Settings.Tile" xml:space="preserve">
+    <value>快速設置圖塊</value>
+  </data>
+  <data name="Settings.Tile.UseBeep" xml:space="preserve">
+    <value>瓷磚播放純音。</value>
+  </data>
 </root>

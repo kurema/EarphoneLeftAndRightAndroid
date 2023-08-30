@@ -50,6 +50,8 @@ namespace EarphoneLeftAndRight.Droid
 		{
 			base.OnReceive(context, intent);
 
+			await PlayTileService.PlayDummyAudioIfRequired();
+
 			switch (intent.Action)
 			{
 				case ACTION_SELECTED:

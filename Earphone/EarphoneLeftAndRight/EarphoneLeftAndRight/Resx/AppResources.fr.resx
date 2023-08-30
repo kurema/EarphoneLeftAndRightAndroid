@@ -341,4 +341,10 @@
   <data name="Settings.Word.ForceEnglish" xml:space="preserve">
     <value>Voix en anglais</value>
   </data>
+  <data name="Settings.Tile" xml:space="preserve">
+    <value>Tuile des réglages rapides</value>
+  </data>
+  <data name="Settings.Tile.UseBeep" xml:space="preserve">
+    <value>Le carrelage joue les tons purs.</value>
+  </data>
 </root>

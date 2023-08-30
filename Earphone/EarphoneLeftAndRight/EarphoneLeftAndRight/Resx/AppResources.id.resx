@@ -332,4 +332,10 @@
   <data name="Settings.Word.ForceEnglish" xml:space="preserve">
     <value>Suara bahasa Inggris</value>
   </data>
+  <data name="Settings.Tile" xml:space="preserve">
+    <value>Ubin Pengaturan Cepat</value>
+  </data>
+  <data name="Settings.Tile.UseBeep" xml:space="preserve">
+    <value>Ubin memainkan nada murni.</value>
+  </data>
 </root>

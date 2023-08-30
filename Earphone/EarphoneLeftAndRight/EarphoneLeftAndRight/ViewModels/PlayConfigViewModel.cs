@@ -14,7 +14,7 @@ namespace EarphoneLeftAndRight.ViewModels
 			SpeakCommand = new Command((o) => { Save(); PlayViewModel.Speak(o); });
 			RestoreCommand = new Command(Restore);
 			SaveCommand = new Command(Save);
-			ResetValueCommand=new Command((o)=>Reset(o.ToString()));
+			ResetValueCommand = new Command((o) => Reset(o.ToString()));
 
 			Restore();
 		}
@@ -28,6 +28,7 @@ namespace EarphoneLeftAndRight.ViewModels
 			Storages.ConfigStorage.VoiceSpeed.Value = SpeechRate;
 			Storages.ConfigStorage.VoiceOverrideLeft.Value = OverrideLeft;
 			Storages.ConfigStorage.VoiceOverrideRight.Value = OverrideRight;
+			Storages.ConfigStorage.TileForceBeep.Value = ForceBeep;
 		}
 
 		public void Restore()
@@ -39,6 +40,7 @@ namespace EarphoneLeftAndRight.ViewModels
 			SpeechRate = Storages.ConfigStorage.VoiceSpeed.Value;
 			OverrideLeft = Storages.ConfigStorage.VoiceOverrideLeft.Value;
 			OverrideRight = Storages.ConfigStorage.VoiceOverrideRight.Value;
+			ForceBeep = Storages.ConfigStorage.TileForceBeep.Value;
 		}
 
 		public void Reset(string text)
@@ -57,6 +59,10 @@ namespace EarphoneLeftAndRight.ViewModels
 		public ICommand RestoreCommand { get; }
 		public ICommand SaveCommand { get; }
 		public ICommand ResetValueCommand { get; }
+
+
+		private bool _ForceBeep;
+		public bool ForceBeep { get => _ForceBeep; set => SetProperty(ref _ForceBeep, value); }
 
 
 		private bool _ForceEnglish;

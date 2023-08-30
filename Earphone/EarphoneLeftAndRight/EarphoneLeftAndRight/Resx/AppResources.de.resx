@@ -341,4 +341,10 @@
   <data name="Settings.Word.ForceEnglish" xml:space="preserve">
     <value>Englische Stimme</value>
   </data>
+  <data name="Settings.Tile" xml:space="preserve">
+    <value>Kachel für Schnelleinstellungen</value>
+  </data>
+  <data name="Settings.Tile.UseBeep" xml:space="preserve">
+    <value>Die Fliese spielt reine Töne.</value>
+  </data>
 </root>

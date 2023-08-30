@@ -332,4 +332,10 @@ Bir yarım tonla karşılaştırıldığında 2 sent.</value>
   <data name="Settings.Word.ForceEnglish" xml:space="preserve">
     <value>İngilizce ses</value>
   </data>
+  <data name="Settings.Tile" xml:space="preserve">
+    <value>Kısa Ayarlar</value>
+  </data>
+  <data name="Settings.Tile.UseBeep" xml:space="preserve">
+    <value>Karo saf tonlarda çalıyor.</value>
+  </data>
 </root>

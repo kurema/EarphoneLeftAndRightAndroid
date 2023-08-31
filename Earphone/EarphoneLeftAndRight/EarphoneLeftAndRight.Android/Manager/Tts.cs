@@ -85,8 +85,10 @@ namespace EarphoneLeftAndRight.Droid.Manager
 
 		private static async Task SpeakWordInEnglish(string text, TextToSpeechOptions options)
 		{
-			var op = new TextToSpeechOptions(options);
-			op.Locale = TextToSpeechImplementation.GetLocaleFromJavaLocale(Java.Util.Locale.English);
+			var op = new TextToSpeechOptions(options)
+			{
+				Locale = TextToSpeechImplementation.GetLocaleFromJavaLocale(Java.Util.Locale.English)
+			};
 			await Content.SpeakAsync(new (string Text, Dependency.TextToSpeechOptions Options)[] { (text, op) });
 		}
 
@@ -107,8 +109,10 @@ namespace EarphoneLeftAndRight.Droid.Manager
 				textLeft = string.IsNullOrWhiteSpace(textLeftOr) ? textLeft : textLeftOr;
 				textRight = string.IsNullOrWhiteSpace(textRightOr) ? textRight : textRightOr;
 				option.Locale = TextToSpeechImplementation.GetLocaleFromJavaLocale(locale);
-				var optionLeft = new TextToSpeechOptions(option);
-				optionLeft.Pan = -option.Pan;
+				var optionLeft = new TextToSpeechOptions(option)
+				{
+					Pan = -option.Pan
+				};
 				if (textLeft.Equals("Left", StringComparison.InvariantCultureIgnoreCase) && (await Content.GetLocalesAsync()).Any(a => a.Language == "English")) goto English;
 				await Content.SpeakAsync(new (string Text, Dependency.TextToSpeechOptions Options)[] { (textLeft, optionLeft), (textRight, option) });
 				return;
@@ -117,8 +121,10 @@ namespace EarphoneLeftAndRight.Droid.Manager
 		English:;
 			{
 				option.Locale = TextToSpeechImplementation.GetLocaleFromJavaLocale(Java.Util.Locale.English);
-				var optionLeft = new TextToSpeechOptions(option);
-				optionLeft.Pan = -option.Pan;
+				var optionLeft = new TextToSpeechOptions(option)
+				{
+					Pan = -option.Pan
+				};
 				await Content.SpeakAsync(new (string Text, Dependency.TextToSpeechOptions Options)[] { ("Left", optionLeft), ("Right", option) });
 				return;
 			}

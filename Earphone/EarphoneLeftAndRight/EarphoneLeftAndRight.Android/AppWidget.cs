@@ -21,9 +21,12 @@ namespace EarphoneLeftAndRight.Droid
 
 		public override void OnUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds)
 		{
-			var me = new ComponentName(context, Java.Lang.Class.FromType(typeof(AppWidget)).Name);
-
-			appWidgetManager.UpdateAppWidget(me, BuildRemoteViews(context, appWidgetIds));
+			//https://developer.android.com/guide/topics/appwidgets
+			//var me = new ComponentName(context, Java.Lang.Class.FromType(typeof(AppWidget)).Name);
+			foreach (var appWidgetId in appWidgetIds)
+			{
+				appWidgetManager.UpdateAppWidget(appWidgetId, BuildRemoteViews(context, appWidgetIds));
+			}
 
 			//base.OnUpdate(context, appWidgetManager, appWidgetIds);
 		}
@@ -50,12 +53,10 @@ namespace EarphoneLeftAndRight.Droid
 		{
 			base.OnReceive(context, intent);
 
-			await PlayTileService.PlayDummyAudioIfRequired();
-
 			switch (intent.Action)
 			{
 				case ACTION_SELECTED:
-					await Manager.Tts.SpeakLeftRight();
+					await PlayTileService.PlayLeftRightSound();
 					break;
 			}
 		}

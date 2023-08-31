@@ -13,7 +13,7 @@ namespace EarphoneLeftAndRight.Storages
 		//https://learn.microsoft.com/xamarin/community-toolkit/helpers/weakeventmanagert
 		//https://learn.microsoft.com/dotnet/api/system.windows.weakeventmanager
 		//Or just hit F12 on Command.
-		static readonly WeakEventManager _weakEventManager = new WeakEventManager();
+		static readonly WeakEventManager _weakEventManager = new();
 
 		public static bool IsTileAdded
 		{

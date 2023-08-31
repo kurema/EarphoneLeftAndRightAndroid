@@ -260,6 +260,8 @@
                             <Label Text="{x:Static r:LocalResources.LeftRight}" VerticalOptions="Center" />
                             <CheckBox IsChecked="{Binding Semitone}" VerticalOptions="Center" />
                             <Label Text="{x:Static r:AppResources.Sound_Sweep_Option_Step}" VerticalOptions="Center" />
+                            <CheckBox IsChecked="{Binding OppositePhase}"  VerticalOptions="Center" />
+                            <Label Text="{x:Static r:AppResources.Sound_Tune_OppositePhase}" VerticalOptions="Center" />
                         </StackLayout>
                     </ScrollView>
                     <local:AdDefaultView HeightRequest="51" HorizontalOptions="Fill"  WidthRequest="320" Margin="0,16,0,16" />

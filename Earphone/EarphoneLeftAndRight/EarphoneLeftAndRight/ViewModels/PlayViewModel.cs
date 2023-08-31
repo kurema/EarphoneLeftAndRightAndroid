@@ -56,23 +56,7 @@ namespace EarphoneLeftAndRight.ViewModels
 
 			_StatusBarManager = DependencyService.Get<Dependency.IStatusBarManager>();
 
-			//{
-			//	var command = new Command(() => { _StatusBarManager.RequestAddTileService(); OnPropertyChanged(nameof(IsStatusBarManagerSupported)); }, () => IsStatusBarManagerSupported);
-			//	this.PropertyChanged += (_, e) =>
-			//	{
-			//		if (e.PropertyName == nameof(IsStatusBarManagerSupported)) command.ChangeCanExecute();
-			//	};
-			//	RequestAddTile = command;
-			//}
 			RequestAddTile = new Command(_StatusBarManager.RequestAddTileService, () => IsStatusBarManagerSupported);
-
-			//外部から参照され続けるとGCで解放されない気がするからWeakReferenceにしたけどこれ合ってる？
-			//Storages.StatusBarManagerStorage.IsTileAddedChangedをWeakEventManagerで制御するようにしたのでもう心配する必要はない。
-			//次回コミットで削除。
-			//WeakReference<Action> weak = new(() => OnPropertyChanged(nameof(IsStatusBarManagerSupported)), false);
-			//Storages.StatusBarManagerStorage.IsTileAddedChanged += (_, _) => { try { if (weak.TryGetTarget(out var action)) action?.Invoke(); } catch { } };
-
-			//Storages.StatusBarManagerStorage.IsTileAddedChanged += (_, _) => OnPropertyChanged(nameof(IsStatusBarManagerSupported));
 		}
 
 		public async static void Speak(object a)
@@ -135,7 +119,7 @@ namespace EarphoneLeftAndRight.ViewModels
 			new SearchService("YouTube","https://www.youtube.com/results?search_query={0}"),
 			new SearchService("GitHub","https://github.com/search?q={0}"),
 			new SearchService("Amazon","https://www.amazon.com/s?k={0}&tag=kuremastereotest-22"),
-			new SearchService("Twitter","https://twitter.com/search?q={0}"),
+			new SearchService("Twitter / X","https://twitter.com/search?q={0}"),
 			new SearchService("Google Play","https://play.google.com/store/search?q={0}"),
 		};
 
@@ -153,9 +137,7 @@ namespace EarphoneLeftAndRight.ViewModels
 
 		readonly Dependency.IStatusBarManager _StatusBarManager;
 
-		//IsTileAddedが機能してなさそうなので、とりあえずコメントアウト。
 		public bool IsStatusBarManagerSupported => _StatusBarManager.RequestAddTileServiceIsSupported && !Storages.StatusBarManagerStorage.IsTileAdded;
-		//public bool IsStatusBarManagerSupported => _StatusBarManager.RequestAddTileServiceIsSupported;
 
 	}
 }

@@ -53,9 +53,12 @@ namespace EarphoneLeftAndRight.Droid
 		public override async void OnClick()
 		{
 			base.OnClick();
-
 			Storages.StatusBarManagerStorage.IsTileAdded = true;
+			await PlayLeftRightSound();
+		}
 
+		public static async System.Threading.Tasks.Task PlayLeftRightSound()
+		{
 			if (Storages.ConfigStorage.TileForceBeep.Value)
 			{
 				var audioTest = AudioTest;
@@ -80,26 +83,6 @@ namespace EarphoneLeftAndRight.Droid
 						amplifications = new[] { 0, Math.Max(Math.Min(1, 1 - (t - duration * 3) / easing), 0) };
 						return (amplifications[channel] * Math.Sin(2.0 * Math.PI * freqR * (t - duration * 2)), false);
 					}
-
-					//if (sample < actualSampleRate * Math.Floor(duration * freqL * 2) / freqL / 2)
-					//{
-					//	amplifications = new[] { 1, 0 };
-					//	return (amplifications[channel] * Math.Sin(2.0 * Math.PI * freqL * t), false);
-					//}
-					//else if (sample < duration * actualSampleRate * 2)
-					//{
-					//	return (0, false);
-					//}
-					//else if (sample < actualSampleRate * (duration * 2 + Math.Floor(duration * freqR * 2) / freqR / 2))
-					//{
-					//	amplifications = new[] { 0, 1 };
-					//	return (amplifications[channel] * Math.Sin(2.0 * Math.PI * freqR * (t - duration * 2)), false);
-					//}
-					//else
-					//{
-					//	var temp = Math.Sin(2.0 * Math.PI * freqR * (t - duration * 2));
-					//	return (0, false);
-					//}
 				}, duration * 3 + easing, sample);
 				await System.Threading.Tasks.Task.Run(() => { try { audioTest.Play(); } catch { } });
 			}

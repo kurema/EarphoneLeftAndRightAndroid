@@ -17,22 +17,6 @@ namespace EarphoneLeftAndRight.Views
 		{
 			InitializeComponent();
 
-			//以下のコードは誤り。
-			//WeakReference<Action> weak = new(() =>
-			//{
-			//	if (!Storages.StatusBarManagerStorage.IsTileAdded) return;
-			//	this.ToolbarItems.Remove(ToolbarItemRequestAddTile);
-			//}, false);
-			//Storages.StatusBarManagerStorage.IsTileAddedChanged += (_, _) =>
-			//{
-			//	try
-			//	{
-			//		if (weak.TryGetTarget(out var action)) action?.Invoke();
-			//	}
-			//	catch { }
-			//};
-
-			//外部のイベントに登録するとGC上問題がある。どうすれば良い？
 			//IsEnabledは初回しか見てくれない。
 			//https://github.com/xamarin/Xamarin.Forms/issues/3838
 			Storages.StatusBarManagerStorage.IsTileAddedChanged += OnIsTileAddedChanged;
